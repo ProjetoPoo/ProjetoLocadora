@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings status="GENERATED" id="_1402877864001171" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity class="Titulos" minimized="false" id="_1402877864001174">
+        <jpa:table name="titulos"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864002187">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="titulos"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nome" optional="true" attribute-type="java.lang.String" id="_1402877864002188">
+                <jpa:column name="nome" unique="false" nullable="true" insertable="true" updatable="true" table="titulos" length="100"/>
+            </jpa:basic>
+            <jpa:many-to-one name="classe" target-entity="Classes" optional="false" primaryKey="false" connected-entity-id="_1402877864002180" connected-attribute-id="_1402877864003225" id="_1402877864002189">
+                <jpa:join-column name="classe" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="categoria" target-entity="Categorias" optional="false" primaryKey="false" connected-entity-id="_1402877864002179" connected-attribute-id="_1402877864003220" id="_1402877864002190">
+                <jpa:join-column name="categoria" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="midiasCollection" target-entity="Midias" mapped-by="titulo" connected-entity-id="_1402877864001176" connected-attribute-id="_1402877864003200" id="_1402877864002191"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="TipoMidias" minimized="false" id="_1402877864001175">
+        <jpa:table name="tipo_midias"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864002192">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="tipo_midias"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nome" optional="true" attribute-type="java.lang.String" id="_1402877864002193">
+                <jpa:column name="nome" unique="false" nullable="true" insertable="true" updatable="true" table="tipo_midias" length="50"/>
+            </jpa:basic>
+            <jpa:one-to-many name="midiasCollection" target-entity="Midias" mapped-by="tipoMidia" connected-entity-id="_1402877864001176" connected-attribute-id="_1402877864003201" id="_1402877864002194"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Midias" minimized="false" id="_1402877864001176">
+        <jpa:table name="midias"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864003195">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="midias"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="situacao" optional="true" attribute-type="java.lang.Integer" id="_1402877864003196">
+                <jpa:column name="situacao" unique="false" nullable="true" insertable="true" updatable="true" table="midias"/>
+            </jpa:basic>
+            <jpa:basic name="dataaquisicao" optional="true" attribute-type="java.util.Date" id="_1402877864003197">
+                <jpa:column name="dataaquisicao" unique="false" nullable="true" insertable="true" updatable="true" table="midias"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="nrserie" optional="true" attribute-type="java.lang.String" id="_1402877864003198">
+                <jpa:column name="nrserie" unique="false" nullable="true" insertable="true" updatable="true" table="midias" length="100"/>
+            </jpa:basic>
+            <jpa:many-to-one name="distribuidor" target-entity="Distribuidores" optional="false" primaryKey="false" connected-entity-id="_1402877864002186" connected-attribute-id="_1402877864004276" id="_1402877864003199">
+                <jpa:join-column name="distribuidor" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="titulo" target-entity="Titulos" optional="false" primaryKey="false" connected-entity-id="_1402877864001174" connected-attribute-id="_1402877864002191" id="_1402877864003200">
+                <jpa:join-column name="titulo" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="tipoMidia" target-entity="TipoMidias" optional="false" primaryKey="false" connected-entity-id="_1402877864001175" connected-attribute-id="_1402877864002194" id="_1402877864003201">
+                <jpa:join-column name="tipo_midia" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="reservasCollection" target-entity="Reservas" mapped-by="midia" connected-entity-id="_1402877864001178" connected-attribute-id="_1402877864003217" id="_1402877864003202"/>
+            <jpa:one-to-many name="locacaoMidiaCollection" target-entity="LocacaoMidia" mapped-by="midia" connected-entity-id="_1402877864002182" connected-attribute-id="_1402877864004240" id="_1402877864003203"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Dependentes" minimized="false" id="_1402877864001177">
+        <jpa:table name="dependentes"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864003204">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="dependentes"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nome" optional="true" attribute-type="java.lang.String" id="_1402877864003205">
+                <jpa:column name="nome" unique="false" nullable="true" insertable="true" updatable="true" table="dependentes" length="100"/>
+            </jpa:basic>
+            <jpa:basic name="sexo" optional="true" attribute-type="java.lang.Integer" id="_1402877864003206">
+                <jpa:column name="sexo" unique="false" nullable="true" insertable="true" updatable="true" table="dependentes"/>
+            </jpa:basic>
+            <jpa:basic name="datanascimento" optional="true" attribute-type="java.util.Date" id="_1402877864003207">
+                <jpa:column name="datanascimento" unique="false" nullable="true" insertable="true" updatable="true" table="dependentes"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="inscricao" optional="true" attribute-type="java.lang.String" id="_1402877864003208">
+                <jpa:column name="inscricao" unique="false" nullable="true" insertable="true" updatable="true" table="dependentes" length="10"/>
+            </jpa:basic>
+            <jpa:many-to-one name="socio" target-entity="Socios" optional="false" primaryKey="false" connected-entity-id="_1402877864002183" connected-attribute-id="_1402877864004252" id="_1402877864003209">
+                <jpa:join-column name="socio" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="reservasCollection" target-entity="Reservas" mapped-by="dependente" connected-entity-id="_1402877864001178" connected-attribute-id="_1402877864003216" id="_1402877864003210"/>
+            <jpa:one-to-many name="locacaoCollection" target-entity="Locacao" mapped-by="dependente" connected-entity-id="_1402877864002185" connected-attribute-id="_1402877864004268" id="_1402877864003211"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Reservas" minimized="false" id="_1402877864001178">
+        <jpa:table name="reservas"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864003212">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="reservas"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="data2" optional="true" attribute-type="java.util.Date" id="_1402877864003213">
+                <jpa:column name="data_2" unique="false" nullable="true" insertable="true" updatable="true" table="reservas"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="hora" optional="true" attribute-type="java.util.Date" id="_1402877864003214">
+                <jpa:column name="hora" unique="false" nullable="true" insertable="true" updatable="true" table="reservas"/>
+                <jpa:temporal>TIME</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="socio" target-entity="Socios" optional="false" primaryKey="false" connected-entity-id="_1402877864002183" connected-attribute-id="_1402877864004253" id="_1402877864003215">
+                <jpa:join-column name="socio" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="dependente" target-entity="Dependentes" optional="false" primaryKey="false" connected-entity-id="_1402877864001177" connected-attribute-id="_1402877864003210" id="_1402877864003216">
+                <jpa:join-column name="dependente" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="midia" target-entity="Midias" optional="false" primaryKey="false" connected-entity-id="_1402877864001176" connected-attribute-id="_1402877864003202" id="_1402877864003217">
+                <jpa:join-column name="midia" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Categorias" minimized="false" id="_1402877864002179">
+        <jpa:table name="categorias"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864003218">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="categorias"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nome" optional="true" attribute-type="java.lang.String" id="_1402877864003219">
+                <jpa:column name="nome" unique="false" nullable="true" insertable="true" updatable="true" table="categorias" length="50"/>
+            </jpa:basic>
+            <jpa:one-to-many name="titulosCollection" target-entity="Titulos" mapped-by="categoria" connected-entity-id="_1402877864001174" connected-attribute-id="_1402877864002190" id="_1402877864003220"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Classes" minimized="false" id="_1402877864002180">
+        <jpa:table name="classes"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864003221">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="classes"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nome" optional="true" attribute-type="java.lang.String" id="_1402877864003222">
+                <jpa:column name="nome" unique="false" nullable="true" insertable="true" updatable="true" table="classes" length="50"/>
+            </jpa:basic>
+            <jpa:basic name="valor" optional="true" attribute-type="java.lang.Double" id="_1402877864003223">
+                <jpa:column name="valor" unique="false" nullable="true" insertable="true" updatable="true" table="classes" precision="22"/>
+            </jpa:basic>
+            <jpa:basic name="diasdevolucao" optional="true" attribute-type="java.lang.Integer" id="_1402877864003224">
+                <jpa:column name="diasdevolucao" unique="false" nullable="true" insertable="true" updatable="true" table="classes"/>
+            </jpa:basic>
+            <jpa:one-to-many name="titulosCollection" target-entity="Titulos" mapped-by="classe" connected-entity-id="_1402877864001174" connected-attribute-id="_1402877864002189" id="_1402877864003225"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Devolucao" minimized="false" id="_1402877864002181">
+        <jpa:table name="devolucao"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" id="_1402877864004226">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="devolucao"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="locacaoMidia" attribute-type="int" id="_1402877864004227">
+                <jpa:column name="locacao_midia" unique="false" nullable="false" insertable="true" updatable="true" table="devolucao"/>
+            </jpa:id>
+            <jpa:basic name="data2" optional="true" attribute-type="java.util.Date" id="_1402877864004228">
+                <jpa:column name="data_2" unique="false" nullable="true" insertable="true" updatable="true" table="devolucao"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="hora" optional="true" attribute-type="java.util.Date" id="_1402877864004229">
+                <jpa:column name="hora" unique="false" nullable="true" insertable="true" updatable="true" table="devolucao"/>
+                <jpa:temporal>TIME</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="diasAtraso" optional="true" attribute-type="java.lang.Integer" id="_1402877864004230">
+                <jpa:column name="dias_atraso" unique="false" nullable="true" insertable="true" updatable="true" table="devolucao"/>
+            </jpa:basic>
+            <jpa:basic name="multa" optional="true" attribute-type="java.lang.Double" id="_1402877864004231">
+                <jpa:column name="multa" unique="false" nullable="true" insertable="true" updatable="true" table="devolucao" precision="22"/>
+            </jpa:basic>
+            <jpa:basic name="desconto" optional="true" attribute-type="java.lang.Double" id="_1402877864004232">
+                <jpa:column name="desconto" unique="false" nullable="true" insertable="true" updatable="true" table="devolucao" precision="22"/>
+            </jpa:basic>
+            <jpa:basic name="valor" optional="true" attribute-type="java.lang.Double" id="_1402877864004233">
+                <jpa:column name="valor" unique="false" nullable="true" insertable="true" updatable="true" table="devolucao" precision="22"/>
+            </jpa:basic>
+            <jpa:many-to-one name="locacaoMidia1" target-entity="LocacaoMidia" optional="false" primaryKey="false" connected-entity-id="_1402877864002182" connected-attribute-id="_1402877864004238" id="_1402877864004234">
+                <jpa:join-column name="locacao_midia" referenced-column-name="id" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="funcionario" target-entity="Funcionarios" optional="false" primaryKey="false" connected-entity-id="_1402877864002184" connected-attribute-id="_1402877864004260" id="_1402877864004235">
+                <jpa:join-column name="funcionario" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="LocacaoMidia" minimized="false" id="_1402877864002182">
+        <jpa:table name="locacao_midia"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864004236">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="locacao_midia"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="pago" optional="true" attribute-type="java.lang.Boolean" id="_1402877864004237">
+                <jpa:column name="pago" unique="false" nullable="true" insertable="true" updatable="true" table="locacao_midia"/>
+            </jpa:basic>
+            <jpa:many-to-one name="locacao" target-entity="Locacao" optional="false" primaryKey="false" connected-entity-id="_1402877864002185" connected-attribute-id="_1402877864004266" id="_1402877864004239">
+                <jpa:join-column name="locacao" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="midia" target-entity="Midias" optional="false" primaryKey="false" connected-entity-id="_1402877864001176" connected-attribute-id="_1402877864003203" id="_1402877864004240">
+                <jpa:join-column name="midia" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="devolucaoCollection" target-entity="Devolucao" mapped-by="locacaoMidia1" connected-entity-id="_1402877864002181" connected-attribute-id="_1402877864004234" id="_1402877864004238"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Socios" minimized="false" id="_1402877864002183">
+        <jpa:table name="socios"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864004241">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="socios"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nome" optional="true" attribute-type="java.lang.String" id="_1402877864004242">
+                <jpa:column name="nome" unique="false" nullable="true" insertable="true" updatable="true" table="socios" length="100"/>
+            </jpa:basic>
+            <jpa:basic name="endereco" optional="true" attribute-type="java.lang.String" id="_1402877864004243">
+                <jpa:column name="endereco" unique="false" nullable="true" insertable="true" updatable="true" table="socios" length="200"/>
+            </jpa:basic>
+            <jpa:basic name="foneRes" optional="true" attribute-type="java.lang.String" id="_1402877864004244">
+                <jpa:column name="fone_res" unique="false" nullable="true" insertable="true" updatable="true" table="socios" length="40"/>
+            </jpa:basic>
+            <jpa:basic name="localTrabalho" optional="true" attribute-type="java.lang.String" id="_1402877864004245">
+                <jpa:column name="local_trabalho" unique="false" nullable="true" insertable="true" updatable="true" table="socios" length="100"/>
+            </jpa:basic>
+            <jpa:basic name="foneCom" optional="true" attribute-type="java.lang.String" id="_1402877864004246">
+                <jpa:column name="fone_com" unique="false" nullable="true" insertable="true" updatable="true" table="socios" length="40"/>
+            </jpa:basic>
+            <jpa:basic name="sexo" optional="true" attribute-type="java.lang.Integer" id="_1402877864004247">
+                <jpa:column name="sexo" unique="false" nullable="true" insertable="true" updatable="true" table="socios"/>
+            </jpa:basic>
+            <jpa:basic name="cpf" optional="true" attribute-type="java.lang.String" id="_1402877864004248">
+                <jpa:column name="cpf" unique="false" nullable="true" insertable="true" updatable="true" table="socios" length="15"/>
+            </jpa:basic>
+            <jpa:basic name="datanascimento" optional="true" attribute-type="java.util.Date" id="_1402877864004249">
+                <jpa:column name="datanascimento" unique="false" nullable="true" insertable="true" updatable="true" table="socios"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="tipo" optional="true" attribute-type="java.lang.Integer" id="_1402877864004250">
+                <jpa:column name="tipo" unique="false" nullable="true" insertable="true" updatable="true" table="socios"/>
+            </jpa:basic>
+            <jpa:basic name="inscricao" optional="true" attribute-type="java.lang.String" id="_1402877864004251">
+                <jpa:column name="inscricao" unique="false" nullable="true" insertable="true" updatable="true" table="socios" length="10"/>
+            </jpa:basic>
+            <jpa:one-to-many name="dependentesCollection" target-entity="Dependentes" mapped-by="socio" connected-entity-id="_1402877864001177" connected-attribute-id="_1402877864003209" id="_1402877864004252"/>
+            <jpa:one-to-many name="reservasCollection" target-entity="Reservas" mapped-by="socio" connected-entity-id="_1402877864001178" connected-attribute-id="_1402877864003215" id="_1402877864004253"/>
+            <jpa:one-to-many name="locacaoCollection" target-entity="Locacao" mapped-by="socio" connected-entity-id="_1402877864002185" connected-attribute-id="_1402877864004269" id="_1402877864004254"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Funcionarios" minimized="false" id="_1402877864002184">
+        <jpa:table name="funcionarios"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864004255">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="funcionarios"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nome" optional="true" attribute-type="java.lang.String" id="_1402877864004256">
+                <jpa:column name="nome" unique="false" nullable="true" insertable="true" updatable="true" table="funcionarios" length="100"/>
+            </jpa:basic>
+            <jpa:basic name="fone" optional="true" attribute-type="java.lang.String" id="_1402877864004257">
+                <jpa:column name="fone" unique="false" nullable="true" insertable="true" updatable="true" table="funcionarios" length="50"/>
+            </jpa:basic>
+            <jpa:basic name="usuario" optional="true" attribute-type="java.lang.String" id="_1402877864004258">
+                <jpa:column name="usuario" unique="false" nullable="true" insertable="true" updatable="true" table="funcionarios" length="10"/>
+            </jpa:basic>
+            <jpa:basic name="senha" optional="true" attribute-type="java.lang.String" id="_1402877864004259">
+                <jpa:column name="senha" unique="false" nullable="true" insertable="true" updatable="true" table="funcionarios" length="10"/>
+            </jpa:basic>
+            <jpa:one-to-many name="devolucaoCollection" target-entity="Devolucao" mapped-by="funcionario" connected-entity-id="_1402877864002181" connected-attribute-id="_1402877864004235" id="_1402877864004260"/>
+            <jpa:one-to-many name="locacaoCollection" target-entity="Locacao" mapped-by="funcionario" connected-entity-id="_1402877864002185" connected-attribute-id="_1402877864004267" id="_1402877864004261"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Locacao" minimized="false" id="_1402877864002185">
+        <jpa:table name="locacao"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864004262">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="locacao"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="data2" optional="true" attribute-type="java.util.Date" id="_1402877864004263">
+                <jpa:column name="data_2" unique="false" nullable="true" insertable="true" updatable="true" table="locacao"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="hora" optional="true" attribute-type="java.util.Date" id="_1402877864004264">
+                <jpa:column name="hora" unique="false" nullable="true" insertable="true" updatable="true" table="locacao"/>
+                <jpa:temporal>TIME</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="valortotal" optional="true" attribute-type="java.lang.Double" id="_1402877864004265">
+                <jpa:column name="valortotal" unique="false" nullable="true" insertable="true" updatable="true" table="locacao" precision="22"/>
+            </jpa:basic>
+            <jpa:many-to-one name="funcionario" target-entity="Funcionarios" optional="false" primaryKey="false" connected-entity-id="_1402877864002184" connected-attribute-id="_1402877864004261" id="_1402877864004267">
+                <jpa:join-column name="funcionario" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="dependente" target-entity="Dependentes" optional="false" primaryKey="false" connected-entity-id="_1402877864001177" connected-attribute-id="_1402877864003211" id="_1402877864004268">
+                <jpa:join-column name="dependente" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="socio" target-entity="Socios" optional="false" primaryKey="false" connected-entity-id="_1402877864002183" connected-attribute-id="_1402877864004254" id="_1402877864004269">
+                <jpa:join-column name="socio" referenced-column-name="id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="locacaoMidiaCollection" target-entity="LocacaoMidia" mapped-by="locacao" connected-entity-id="_1402877864002182" connected-attribute-id="_1402877864004239" id="_1402877864004266"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Distribuidores" minimized="false" id="_1402877864002186">
+        <jpa:table name="distribuidores"/>
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="java.lang.Integer" id="_1402877864004270">
+                <jpa:column name="id" unique="false" nullable="false" insertable="true" updatable="true" table="distribuidores"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="razaoSocial" optional="true" attribute-type="java.lang.String" id="_1402877864004271">
+                <jpa:column name="razao_social" unique="false" nullable="true" insertable="true" updatable="true" table="distribuidores" length="100"/>
+            </jpa:basic>
+            <jpa:basic name="cnpj" optional="true" attribute-type="java.lang.String" id="_1402877864004272">
+                <jpa:column name="cnpj" unique="false" nullable="true" insertable="true" updatable="true" table="distribuidores" length="20"/>
+            </jpa:basic>
+            <jpa:basic name="endereco" optional="true" attribute-type="java.lang.String" id="_1402877864004273">
+                <jpa:column name="endereco" unique="false" nullable="true" insertable="true" updatable="true" table="distribuidores" length="200"/>
+            </jpa:basic>
+            <jpa:basic name="fone" optional="true" attribute-type="java.lang.String" id="_1402877864004274">
+                <jpa:column name="fone" unique="false" nullable="true" insertable="true" updatable="true" table="distribuidores" length="100"/>
+            </jpa:basic>
+            <jpa:basic name="pessoaContato" optional="true" attribute-type="java.lang.String" id="_1402877864004275">
+                <jpa:column name="pessoa_contato" unique="false" nullable="true" insertable="true" updatable="true" table="distribuidores" length="100"/>
+            </jpa:basic>
+            <jpa:one-to-many name="midiasCollection" target-entity="Midias" mapped-by="distribuidor" connected-entity-id="_1402877864001176" connected-attribute-id="_1402877864003199" id="_1402877864004276"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:diagram id="_1402877864001172">
+        <plane elementRef="_1402877864001171" id="_1402877864001173_p"/>
+    </jpa:diagram>
+</jpa:entity-mappings>
