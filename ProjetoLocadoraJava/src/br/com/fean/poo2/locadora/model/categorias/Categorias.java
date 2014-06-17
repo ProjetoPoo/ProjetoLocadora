@@ -1,6 +1,7 @@
-package br.com.fean.poo2.locadora.model;
+package br.com.fean.poo2.locadora.model.categorias;
 
 
+import br.com.fean.poo2.locadora.model.Titulos;
 import java.io.Serializable;
 
 import java.lang.Integer;
