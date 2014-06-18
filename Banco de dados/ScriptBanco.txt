@@ -1,4 +1,7 @@
-﻿CREATE SCHEMA `Passatempo` ;
+﻿GRANT ALL ON PASSATEMPO.* TO locadora@localhost identified by "1234";
+
+
+CREATE SCHEMA `Passatempo` ;
 
 
 use passatempo;
