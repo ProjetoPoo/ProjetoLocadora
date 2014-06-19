@@ -1,10 +1,6 @@
 package br.com.fean.poo2.locadora.model;
 
-
 import java.io.Serializable;
-
-import java.lang.Integer;
-import java.lang.String;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -18,7 +14,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="distribuidores")
 public  class Distribuidores implements Serializable {
-
 
     @Column(name="fone",table="distribuidores",length=100)
     @Basic

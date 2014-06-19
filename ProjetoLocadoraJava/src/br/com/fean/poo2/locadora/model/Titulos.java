@@ -1,11 +1,7 @@
 package br.com.fean.poo2.locadora.model;
 
-
 import br.com.fean.poo2.locadora.model.categorias.Categorias;
 import java.io.Serializable;
-
-import java.lang.Integer;
-import java.lang.String;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -22,27 +18,22 @@ import javax.persistence.Table;
 @Table(name="titulos")
 public  class Titulos implements Serializable {
 
-
-    @ManyToOne(optional=false,targetEntity=Classes.class)
+//    @ManyToOne(optional=false,targetEntity=Classes.class)
     @JoinColumn(name="classe",referencedColumnName="id",insertable=true,nullable=true,unique=false,updatable=true)
     private Classes classe;
 
-
-    @ManyToOne(optional=false,targetEntity=Categorias.class)
+//    @ManyToOne(optional=false,targetEntity=Categorias.class)
     @JoinColumn(name="categoria",referencedColumnName="id",insertable=true,nullable=true,unique=false,updatable=true)
     private Categorias categoria;
-
 
     @Column(name="nome",table="titulos",length=100)
     @Basic
     private String nome;
 
-
     @Column(name="id",table="titulos",nullable=false)
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-
 
     @OneToMany(targetEntity=Midias.class,mappedBy="titulo")
     private Collection<Midias> midiasCollection;
@@ -51,59 +42,44 @@ public  class Titulos implements Serializable {
 
     }
 
-
    public Classes getClasse() {
         return this.classe;
     }
 
-
-  public void setClasse (Classes classe) {
+   public void setClasse (Classes classe) {
         this.classe = classe;
     }
-
-
 
    public Categorias getCategoria() {
         return this.categoria;
     }
 
-
-  public void setCategoria (Categorias categoria) {
+   public void setCategoria (Categorias categoria) {
         this.categoria = categoria;
     }
-
-
 
    public String getNome() {
         return this.nome;
     }
 
-
-  public void setNome (String nome) {
+   public void setNome (String nome) {
         this.nome = nome;
     }
-
-
 
    public Integer getId() {
         return this.id;
     }
 
-
-  public void setId (Integer id) {
+   public void setId (Integer id) {
         this.id = id;
     }
-
-
 
    public Collection<Midias> getMidiasCollection() {
         return this.midiasCollection;
     }
 
-
-  public void setMidiasCollection (Collection<Midias> midiasCollection) {
+   public void setMidiasCollection (Collection<Midias> midiasCollection) {
         this.midiasCollection = midiasCollection;
     }
-
 }
 

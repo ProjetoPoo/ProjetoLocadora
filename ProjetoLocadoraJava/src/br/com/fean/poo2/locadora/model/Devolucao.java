@@ -66,13 +66,13 @@ public  class Devolucao implements Serializable {
     private int id;
 
 
-    @ManyToOne(optional=false,targetEntity=LocacaoMidia.class)
-    @JoinColumn(name="locacao_midia",referencedColumnName="id",insertable=false,nullable=true,unique=false,updatable=false)
+//    @ManyToOne(optional=false,targetEntity=LocacaoMidia.class)
+//    @JoinColumn(name="locacao_midia",referencedColumnName="id",insertable=false,nullable=true,unique=false,updatable=false)
     private LocacaoMidia locacaoMidia1;
 
 
-    @ManyToOne(optional=false,targetEntity=Funcionarios.class)
-    @JoinColumn(name="funcionario",referencedColumnName="id",insertable=true,nullable=true,unique=false,updatable=true)
+//    @ManyToOne(optional=false,targetEntity=Funcionarios.class)
+//    @JoinColumn(name="funcionario",referencedColumnName="id",insertable=true,nullable=true,unique=false,updatable=true)
     private Funcionarios funcionario;
 
     public Devolucao(){
