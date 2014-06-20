@@ -1,7 +1,8 @@
-﻿GRANT ALL ON PASSATEMPO.* TO locadora@localhost identified by "1234";
+﻿CREATE USER 'locadora'@'localhost' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON * . * TO 'locadora'@'localhost';
 
 
-CREATE SCHEMA `Passatempo` ;
+CREATE SCHEMA 'Passatempo' ;
 
 
 use passatempo;
