@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-  <persistence-unit name="DEFAULT_PU" transaction-type="RESOURCE_LOCAL">
-    
-  <!--    
-      <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>br.com.fean.poo2.locadora.model.Funcionarios</class>
-    <class>br.com.fean.poo2.locadora.model.Titulos</class>
-    <class>br.com.fean.poo2.locadora.model.TipoMidias</class>
-    <class>br.com.fean.poo2.locadora.model.LocacaoMidia</class>
-    <class>br.com.fean.poo2.locadora.model.Distribuidores</class>
-    <class>br.com.fean.poo2.locadora.model.Reservas</class>
-    <class>br.com.fean.poo2.locadora.model.Classes</class>
-    <class>br.com.fean.poo2.locadora.model.Devolucao</class>
-    <class>br.com.fean.poo2.locadora.model.Socios</class>
-    <class>br.com.fean.poo2.locadora.model.Midias</class>
-    <class>br.com.fean.poo2.locadora.model.Locacao</class>
-    <class>br.com.fean.poo2.locadora.model.Dependentes</class>
-    <class>br.com.fean.poo2.locadora.model.categorias.Categorias</class>
-    -->
-      <properties>
+  <persistence-unit name="ProjetoLocadoraJavaPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/passatempo?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="locadora"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="1234"/>
-      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
     </properties>
   </persistence-unit>
 </persistence>

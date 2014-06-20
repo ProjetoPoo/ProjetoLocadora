@@ -8,7 +8,7 @@ public class EntityManagerUtil {
   private static EntityManagerFactory emf;
          public static EntityManager getEntityManager() {
                  if (emf == null){
-                          emf = Persistence.createEntityManagerFactory("DEFAULT_PU");
+                          emf = Persistence.createEntityManagerFactory("ProjetoLocadoraJavaPU");
                  }
                  return emf.createEntityManager();
          }
