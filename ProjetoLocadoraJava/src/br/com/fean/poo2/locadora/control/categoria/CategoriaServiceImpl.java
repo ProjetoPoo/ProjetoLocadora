@@ -31,6 +31,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     public void deletarCategoria(Categoria categoria) throws Exception {
+        
         categoriaDAO.deletarCategorias(categoria);
     }
 

@@ -247,9 +247,9 @@ public class TelaCadastroCategoria extends javax.swing.JPanel {
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
             //JOptionPane.showMessageDialog(null, "ERRO: " + controle);
             try {
-                Categoria categoria = categoriaServiceImpl.retornarCategoria(idControle);
+                ;
                 
-                categoriaServiceImpl.deletarCategoria(categoria);
+                categoriaServiceImpl.deletarCategoria(categoriaServiceImpl.retornarCategoria(idControle));
 
                 JOptionPane.showMessageDialog(null, "Registro excluido!");
 
