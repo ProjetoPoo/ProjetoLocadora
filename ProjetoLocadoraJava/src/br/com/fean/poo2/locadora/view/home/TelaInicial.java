@@ -77,11 +77,11 @@ public class TelaInicial extends javax.swing.JFrame {
         devolucao = new javax.swing.JMenu();
         reserva = new javax.swing.JMenu();
         cadastros = new javax.swing.JMenu();
+        categoria = new javax.swing.JMenuItem();
         cliente = new javax.swing.JMenuItem();
         distribuidor = new javax.swing.JMenuItem();
         filmes = new javax.swing.JMenuItem();
         usuario = new javax.swing.JMenuItem();
-        categoria = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         consultarCadastros = new javax.swing.JMenu();
         consultaCliente = new javax.swing.JMenuItem();
@@ -133,6 +133,14 @@ public class TelaInicial extends javax.swing.JFrame {
 
         cadastros.setText("Cadastro");
 
+        categoria.setText("Categoria");
+        categoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoriaActionPerformed(evt);
+            }
+        });
+        cadastros.add(categoria);
+
         cliente.setText("Cliente");
         cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,14 +172,6 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         cadastros.add(usuario);
-
-        categoria.setText("Categoria");
-        categoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoriaActionPerformed(evt);
-            }
-        });
-        cadastros.add(categoria);
 
         jMenuBar1.add(cadastros);
         jMenuBar1.add(jMenu8);
