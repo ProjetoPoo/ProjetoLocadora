@@ -249,8 +249,6 @@ public class TelaCadastroCategoria extends javax.swing.JPanel {
             try {
                 Categoria categoria = categoriaServiceImpl.retornarCategoria(idControle);
                 
-                JOptionPane.showMessageDialog(null, id);
-
                 categoriaServiceImpl.deletarCategoria(categoria);
 
                 JOptionPane.showMessageDialog(null, "Registro excluido!");
