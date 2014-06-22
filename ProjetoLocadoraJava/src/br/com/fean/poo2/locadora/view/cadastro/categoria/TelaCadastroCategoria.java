@@ -203,7 +203,6 @@ public class TelaCadastroCategoria extends javax.swing.JPanel {
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void btnNovoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseClicked
-
         idControle = 0;
         limparCamposTexto();
         editarCamposTexto();
@@ -249,6 +248,8 @@ public class TelaCadastroCategoria extends javax.swing.JPanel {
             //JOptionPane.showMessageDialog(null, "ERRO: " + controle);
             try {
                 Categoria categoria = categoriaServiceImpl.retornarCategoria(idControle);
+                
+                JOptionPane.showMessageDialog(null, id);
 
                 categoriaServiceImpl.deletarCategoria(categoria);
 
