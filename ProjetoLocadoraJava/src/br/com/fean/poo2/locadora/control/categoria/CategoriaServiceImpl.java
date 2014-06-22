@@ -10,14 +10,22 @@ public class CategoriaServiceImpl implements CategoriaService {
     CategoriaDAO categoriaDAO = new CategoriaDAO();
 
     @Override
-    public void inserirCategoria(Categoria categoria) throws Exception {
-        if (categoria.getNome().length() > 3) {
+    public void inserirCategoria(String nome) throws Exception {
+        
+        if (nome.length() > 3) {
+            Categoria categoria = new Categoria();
+            categoria.setNome(nome);
             categoriaDAO.inserirCategorias(categoria);
         }
     }
 
     @Override
-    public void alterarCategoria(Categoria categoria) throws Exception {
+    public void alterarCategoria(Integer id, String nome) throws Exception {
+        
+        Categoria categoria = new Categoria();
+        categoria.setId(id);
+        categoria.setNome(nome);
+        
         categoriaDAO.alterarCategorias(categoria);
     }
 

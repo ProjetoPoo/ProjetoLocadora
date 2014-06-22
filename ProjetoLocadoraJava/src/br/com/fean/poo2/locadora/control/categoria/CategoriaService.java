@@ -11,9 +11,9 @@ public interface CategoriaService {
      * Nesta classe será criado a interface dos serviços de categoria.
      *
      */
-    public void inserirCategoria(Categoria categoria) throws Exception;//Inserir
+    public void inserirCategoria(String nome) throws Exception;//Inserir
 
-    public void alterarCategoria(Categoria categoria) throws Exception;//Alterar
+    public void alterarCategoria(Integer id, String nome) throws Exception;//Alterar
 
     public void deletarCategoria(Categoria categoria) throws Exception;//Apagar
 

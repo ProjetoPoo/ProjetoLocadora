@@ -215,33 +215,22 @@ public class TelaCadastroCategoria extends javax.swing.JPanel {
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
         if ((txtNome.getText().length() == 0)) {
             JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");
-
         } else if (txtNome.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Preencha o campo de nome!");
         } else {
-
-            Categoria categoria = new Categoria();
-            categoria.setId(idControle);
-            categoria.setNome(txtNome.getText());
-
             if (idControle == 0) {
-
                 try {
-                    categoriaServiceImpl.inserirCategoria(categoria);
+                    categoriaServiceImpl.inserirCategoria(txtNome.getText());
                     JOptionPane.showMessageDialog(null, "Novo registro salvo!");
-
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
                 } finally {
                     limparCamposTexto();
                 }
-
             } else {
-
                 try {
-                    categoriaServiceImpl.alterarCategoria(categoria);
+                    categoriaServiceImpl.alterarCategoria(idControle, txtNome.getText());
                     JOptionPane.showMessageDialog(null, "Alteração realizada!");
-
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n Erro: " + ex);
                 }
