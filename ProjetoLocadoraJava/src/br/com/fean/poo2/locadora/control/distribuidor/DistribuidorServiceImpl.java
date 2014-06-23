@@ -10,29 +10,29 @@ public class DistribuidorServiceImpl implements DistribuidorService{
     DistribuidorDAO distribuidorDAO = new DistribuidorDAO();
 
     @Override
-    public void inserirDistribuidor(Distribuidor distribuidor) {
+    public void inserirDistribuidor(Distribuidor distribuidor)throws Exception {
         if (distribuidor.getRazaoSocial().length() > 3) {
             distribuidorDAO.inserirDistribuidor(distribuidor);
         }
     }
 
     @Override
-    public void alterarDistribuidor(Distribuidor distribuidor) {
+    public void alterarDistribuidor(Distribuidor distribuidor)throws Exception {
        distribuidorDAO.alterarDistribuidor(distribuidor);
     }
 
     @Override
-    public void deletarDistribuidor(Distribuidor distribuidor) {
+    public void deletarDistribuidor(Distribuidor distribuidor)throws Exception {
         distribuidorDAO.deletarDistribuidor(distribuidor);
     }
 
     @Override
-    public Distribuidor retornarDistribuidor(Integer id) {
+    public Distribuidor retornarDistribuidor(Integer id)throws Exception {
        return distribuidorDAO.retornarDistribuidor(id);
     }
 
     @Override
-    public ArrayList<Distribuidor> retornarDistribuidor() {
+    public ArrayList<Distribuidor> retornarDistribuidores()throws Exception {
        return distribuidorDAO.retornarDistribuidores();
     }
     

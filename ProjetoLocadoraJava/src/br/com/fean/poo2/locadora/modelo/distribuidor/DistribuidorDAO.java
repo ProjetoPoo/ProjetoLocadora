@@ -1,14 +1,12 @@
 package br.com.fean.poo2.locadora.modelo.distribuidor;
 
 import br.com.fean.poo2.locadora.util.EntityManagerUtil;
-import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
+import static br.com.fean.poo2.locadora.util.EntityManagerUtil.getEntityManager;
+import static com.mysql.jdbc.AbandonedConnectionCleanupThread.shutdown;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceContext;
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
+import javax.persistence.Query;
 
 public class DistribuidorDAO {
     
@@ -17,11 +15,11 @@ public class DistribuidorDAO {
         return entityManager;
     }
     
-    public void inserirDistribuidor (Distribuidor distribuidor){
+    public void inserirDistribuidor (Distribuidor distribuidor) throws Exception{
         EntityTransaction tx = getEntityManager().getTransaction();
         try{
             tx.begin();
-            getEntityManager().persist(distribuidor);
+            getEntityManager().merge(distribuidor);
             tx.commit();
         }catch (Throwable t){
             t.printStackTrace();
@@ -31,7 +29,7 @@ public class DistribuidorDAO {
         }
     }
     
-    public void alterarDistribuidor (Distribuidor distribuidor){
+    public void alterarDistribuidor (Distribuidor distribuidor) throws Exception{
         EntityTransaction tx = getEntityManager().getTransaction();
         
     try{
@@ -46,7 +44,7 @@ public class DistribuidorDAO {
     }    
     }
     
-    public void deletarDistribuidor (Distribuidor distribuidor){
+    public void deletarDistribuidor (Distribuidor distribuidor) throws Exception{
         EntityTransaction tx = getEntityManager().getTransaction();
     try{
         tx.begin();
@@ -60,17 +58,32 @@ public class DistribuidorDAO {
 }
 }
 
-    public Distribuidor retornarDistribuidor(Integer id){
-        Session session = (Session) getEntityManager().getDelegate();
-        return (Distribuidor) session.createCriteria(Distribuidor.class).add(Restrictions.eq("id", id)).uniqueResult();
+    public Distribuidor retornarDistribuidor(Integer id) throws Exception{
+        Distribuidor distribuidor = null;
+        try {
+            distribuidor = entityManager.find(Distribuidor.class, id);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        } finally {
+            close();
+        }
+        return distribuidor;
     }
     
-    public ArrayList<Distribuidor> retornarDistribuidores(){
-        Session session = (Session) getEntityManager().getDelegate();
-        return (ArrayList<Distribuidor>) session.createCriteria(Distribuidor.class).list();
-}
+    public ArrayList<Distribuidor> retornarDistribuidores() throws Exception{
+        ArrayList<Distribuidor> lista = new ArrayList<Distribuidor>();
+        Query query = entityManager.createQuery("select x from Distribuidor x");
+        lista = (ArrayList<Distribuidor>) query.getResultList();
+        return lista;
+    }
     
-    private void close(){
+   private void close() throws InterruptedException {
+
+        if (getEntityManager().isOpen()) {
+            getEntityManager().close();
+        }
+        shutdown();
     }
     
 }

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public interface DistribuidorService {
     
-    public void inserirDistribuidor (Distribuidor distribuidor); 
-    public void alterarDistribuidor (Distribuidor distribuidor); 
-    public void deletarDistribuidor (Distribuidor distribuidor); 
-    public Distribuidor retornarDistribuidor (Integer id);
-    public ArrayList<Distribuidor> retornarDistribuidor(); 
+    public void inserirDistribuidor (Distribuidor distribuidor)throws Exception; 
+    public void alterarDistribuidor (Distribuidor distribuidor)throws Exception; 
+    public void deletarDistribuidor (Distribuidor distribuidor)throws Exception; 
+    public Distribuidor retornarDistribuidor (Integer id)throws Exception;
+    public ArrayList<Distribuidor> retornarDistribuidores()throws Exception; 
 }
