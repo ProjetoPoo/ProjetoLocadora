@@ -86,7 +86,6 @@ public class TelaInicial extends javax.swing.JFrame {
         consultarCadastros = new javax.swing.JMenu();
         consultaCliente = new javax.swing.JMenuItem();
         consultaDependente = new javax.swing.JMenuItem();
-        consultaDistribuidor = new javax.swing.JMenuItem();
         consultaFilme = new javax.swing.JMenuItem();
         sobre = new javax.swing.JMenu();
         sair = new javax.swing.JMenu();
@@ -194,14 +193,6 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         consultarCadastros.add(consultaDependente);
 
-        consultaDistribuidor.setText("Distribuidor");
-        consultaDistribuidor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaDistribuidorActionPerformed(evt);
-            }
-        });
-        consultarCadastros.add(consultaDistribuidor);
-
         consultaFilme.setText("Filmes");
         consultaFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,12 +282,6 @@ public class TelaInicial extends javax.swing.JFrame {
         listaDependente.setVisible(true);
     }//GEN-LAST:event_consultaDependenteActionPerformed
 
-    private void consultaDistribuidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaDistribuidorActionPerformed
-        // tela lista de distribuidor
-        TelaListaDistribuidor listaDistriuidor = new TelaListaDistribuidor();
-        listaDistriuidor.setVisible(true);
-    }//GEN-LAST:event_consultaDistribuidorActionPerformed
-
     private void consultaFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaFilmeActionPerformed
         // tela lista filme
         TelaListaFilmes listaFilme = new TelaListaFilmes();
@@ -330,7 +315,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem cliente;
     private javax.swing.JMenuItem consultaCliente;
     private javax.swing.JMenuItem consultaDependente;
-    private javax.swing.JMenuItem consultaDistribuidor;
     private javax.swing.JMenuItem consultaFilme;
     private javax.swing.JMenu consultarCadastros;
     private javax.swing.JMenu devolucao;
