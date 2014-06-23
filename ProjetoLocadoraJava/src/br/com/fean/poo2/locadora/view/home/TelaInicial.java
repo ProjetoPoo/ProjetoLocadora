@@ -1,16 +1,15 @@
 package br.com.fean.poo2.locadora.view.home;
 
-import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
-import br.com.fean.poo2.locadora.view.consultar.TelaListaDependente;
-import br.com.fean.poo2.locadora.view.consultar.TelaListaDistribuidor;
-import br.com.fean.poo2.locadora.view.consultar.TelaListaFilmes;
 import br.com.fean.poo2.locadora.view.cadastro.categoria.TelaCadastroCategoria;
 import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
 import br.com.fean.poo2.locadora.view.cadastro.distribuidor.TelaCadastroDistribuidor;
 import br.com.fean.poo2.locadora.view.cadastro.filme.TelaCadastroFilme;
+import br.com.fean.poo2.locadora.view.cadastro.tipomidia.TelaCadastroTipoMidia;
 import br.com.fean.poo2.locadora.view.cadastro.usuario.TelaCadastroUsuario;
+import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
+import br.com.fean.poo2.locadora.view.consultar.TelaListaDependente;
+import br.com.fean.poo2.locadora.view.consultar.TelaListaFilmes;
 import br.com.fean.poo2.locadora.view.devolver.TelaDevolucao;
-
 import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
 import br.com.fean.poo2.locadora.view.resevar.TelaReserva;
 import java.awt.BorderLayout;
@@ -42,6 +41,7 @@ public class TelaInicial extends javax.swing.JFrame {
             painelCardLayout = new JPanel();
             painelCardLayout.setLayout(cardLayout);
 
+            painelCardLayout.add(new TelaCadastroTipoMidia(), "telaCadastroTipoMidia");
             painelCardLayout.add(new TelaReserva(), "telaReserva");
             painelCardLayout.add(new TelaLocacao(), "telaLocacao");
             painelCardLayout.add(new TelaDevolucao(), "telaDevolucao");
@@ -82,6 +82,7 @@ public class TelaInicial extends javax.swing.JFrame {
         distribuidor = new javax.swing.JMenuItem();
         filmes = new javax.swing.JMenuItem();
         usuario = new javax.swing.JMenuItem();
+        tipoMidia = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         consultarCadastros = new javax.swing.JMenu();
         consultaCliente = new javax.swing.JMenuItem();
@@ -171,6 +172,14 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         cadastros.add(usuario);
+
+        tipoMidia.setText("Tipos de midia");
+        tipoMidia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoMidiaActionPerformed(evt);
+            }
+        });
+        cadastros.add(tipoMidia);
 
         jMenuBar1.add(cadastros);
         jMenuBar1.add(jMenu8);
@@ -307,6 +316,10 @@ public class TelaInicial extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "FEAN - Faculdades Energia de Administração e Negocio \n\n"
                 + "Sistema desenvolvido pela equipe 2.", "Sobre", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_sobreMouseClicked
+
+    private void tipoMidiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoMidiaActionPerformed
+       cardLayout.show(painelCardLayout, "telaCadastroTipoMidia");
+    }//GEN-LAST:event_tipoMidiaActionPerformed
 //........................................................................................................................
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -333,6 +346,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu reserva;
     private javax.swing.JMenu sair;
     private javax.swing.JMenu sobre;
+    private javax.swing.JMenuItem tipoMidia;
     private javax.swing.JMenuItem usuario;
     // End of variables declaration//GEN-END:variables
 }

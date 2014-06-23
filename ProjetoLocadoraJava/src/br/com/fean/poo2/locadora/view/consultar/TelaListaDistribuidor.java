@@ -138,8 +138,7 @@ public class TelaListaDistribuidor extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tabelaListaDistribuidor.getModel();
 
         cnpj = Integer.parseInt(modelo.getValueAt(tabelaListaDistribuidor.getSelectedRow(), 0).toString());
-        
-        
+
 
     }//GEN-LAST:event_tabelaListaDistribuidorMouseClicked
 
@@ -147,9 +146,9 @@ public class TelaListaDistribuidor extends javax.swing.JFrame {
 
         ArrayList<Distribuidor> lista = new ArrayList<Distribuidor>();
         try {
-            lista = (distribuidorServiceImpl.retornarDistribuidor());
+            lista = (distribuidorServiceImpl.retornarDistribuidores());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao retornar Cursos! \n \n ERRO: " + ex);
+            JOptionPane.showMessageDialog(null, "Erro ao retornar Distribuidores! \n \n ERRO: " + ex);
         }
         carregarDadosTabela(lista);
 
