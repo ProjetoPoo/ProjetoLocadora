@@ -1,24 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package br.com.fean.poo2.locadora.control.classe;
 
-import br.com.fean.poo2.locadora.modelo.funcionario.Funcionario;
+
+import br.com.fean.poo2.locadora.modelo.classe.Classe;
 import java.util.ArrayList;
 
-/**
- *
- * @author Linali
- */
+
 public interface classeService {
-    public void inserirFuncionario(Funcionario funcionario)  throws Exception;
-    public void alterarFuncionario(Funcionario funcionario) throws Exception;
-    public void deletarFuncionario(Funcionario funcionario) throws Exception;
-    public Funcionario retornarFuncionario(int id) throws Exception;
-    public Funcionario retornarFuncionario(String nome) throws Exception;
-    public ArrayList<Funcionario> retornarFuncionarios() throws Exception;  
+    public void inserirClasse(Classe classe)  throws Exception;
+    public void alterarClasse(Classe classe) throws Exception;
+    public void deletarClasse(Classe classe) throws Exception;
+    public Classe retornarClasse(int id) throws Exception;
+    public Classe retornarClasse(String nome) throws Exception;
+    public ArrayList<Classe> retornarClasses() throws Exception;  
     
 }

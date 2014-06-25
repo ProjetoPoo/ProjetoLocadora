@@ -6,8 +6,8 @@
 
 package br.com.fean.poo2.locadora.control.classe;
 
-import br.com.fean.poo2.locadora.modelo.funcionario.Funcionario;
-import br.com.fean.poo2.locadora.modelo.funcionario.FuncionarioDAO;
+import br.com.fean.poo2.locadora.modelo.classe.Classe;
+import br.com.fean.poo2.locadora.modelo.classe.ClasseDAO;
 import java.util.ArrayList;
 
 /**
@@ -15,38 +15,38 @@ import java.util.ArrayList;
  * @author Linali
  */
 public class classeServiceImpl {
-     FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+     ClasseDAO classeDAO = new ClasseDAO();
 
     /**
      *
-     * @param funcionario
+     * @param classe
      * @throws Exception
      */
-    public void inserirFuncionario(Funcionario funcionario) throws Exception{
-        if (funcionario.getNome().length()>3){
-            funcionarioDAO.inserirFuncionario(funcionario);
+    public void inserirClasse(Classe classe) throws Exception{
+        if (classe.getNome().length()>3){
+            classeDAO.inserirClasse(classe);
         }
     }
 
-    public void alterarFuncionario(Funcionario funcionario) throws Exception {
-            funcionarioDAO.alterarFuncionario(funcionario);
+    public void alterarClasse(Classe classe) throws Exception {
+            classeDAO.alterarClasse(classe);
     }
 
-    public void deletarFuncionario(Funcionario funcionario) throws Exception {
-        funcionarioDAO.deletarFuncionario(funcionario);
+    public void deletarClasse(Classe classe) throws Exception {
+        classeDAO.deletarClasse(classe);
     }
 
-    public Funcionario retornarFuncionario(int id) throws Exception {
-        return funcionarioDAO.retornarFuncionario(id);
+    public Classe retornarClasse(int id) throws Exception {
+        return classeDAO.retornarClasse(id);
     }
      
-    public Funcionario retornarFuncionario(String nome) throws Exception {
-        return funcionarioDAO.retornarFuncionario(nome);
+    public Classe retornarClasse(String nome) throws Exception {
+        return classeDAO.retornarClasse(nome);
     }
 
    
-    public ArrayList<Funcionario> retornarFuncionarios() throws Exception  {
-        return funcionarioDAO.retornarFuncionarios();
+    public ArrayList<Classe> retornarClasses() throws Exception  {
+        return classeDAO.retornarClasses();
     }
     
 }
