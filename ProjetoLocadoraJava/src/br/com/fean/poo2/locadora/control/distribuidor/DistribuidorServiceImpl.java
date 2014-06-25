@@ -8,17 +8,29 @@ import java.util.ArrayList;
 
 public class DistribuidorServiceImpl implements DistribuidorService{
     DistribuidorDAO distribuidorDAO = new DistribuidorDAO();
+    Distribuidor distribuidor = new Distribuidor();
 
     @Override
-    public void inserirDistribuidor(Distribuidor distribuidor)throws Exception {
-        if (distribuidor.getRazaoSocial().length() > 3) {
+    public void inserirDistribuidor(String cnpj, String razaoSocial, String endereco, String pessoaContato, String fone)throws Exception {
+        if (razaoSocial.length() > 3) {
+            distribuidor.setCnpj(cnpj);
+            distribuidor.setRazaoSocial(razaoSocial);
+            distribuidor.setEndereco(endereco);
+            distribuidor.setPessoaContato(pessoaContato);
+            distribuidor.setFone(fone);
             distribuidorDAO.inserirDistribuidor(distribuidor);
         }
     }
 
     @Override
-    public void alterarDistribuidor(Distribuidor distribuidor)throws Exception {
-       distribuidorDAO.alterarDistribuidor(distribuidor);
+    public void alterarDistribuidor(Integer id, String cnpj, String razaoSocial, String endereco, String pessoaContato, String fone)throws Exception {
+        distribuidor.setId(id);
+        distribuidor.setCnpj(cnpj);
+        distribuidor.setRazaoSocial(razaoSocial);
+        distribuidor.setEndereco(endereco);
+        distribuidor.setPessoaContato(pessoaContato);
+        distribuidor.setFone(fone);
+        distribuidorDAO.alterarDistribuidor(distribuidor);
     }
 
     @Override

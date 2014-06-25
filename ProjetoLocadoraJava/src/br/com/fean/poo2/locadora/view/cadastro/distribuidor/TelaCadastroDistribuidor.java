@@ -9,10 +9,14 @@ import javax.swing.table.DefaultTableModel;
 
 public class TelaCadastroDistribuidor extends javax.swing.JPanel {
 
-
+    private int idDistribuidor = 0;
+    DistribuidorServiceImpl distribuidorServiceImpl = new DistribuidorServiceImpl();
+   
     public TelaCadastroDistribuidor() {
         initComponents();
-       
+        retornarTodosDistribuidores();
+        desabilitarBotoes();
+        bloquearCamposDeTexto();
     }
 
     @SuppressWarnings("unchecked")
@@ -36,7 +40,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         btnSalvar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaListaDistribuidor = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox();
         jTextField1 = new javax.swing.JTextField();
@@ -47,6 +51,11 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         btnCancelar.setText("Cancelar");
         btnCancelar.setMaximumSize(new java.awt.Dimension(52, 52));
         btnCancelar.setMinimumSize(new java.awt.Dimension(32, 32));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro Distribuidor"));
 
@@ -134,16 +143,31 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         btnNovo.setText("Novo");
         btnNovo.setMaximumSize(new java.awt.Dimension(52, 52));
         btnNovo.setMinimumSize(new java.awt.Dimension(32, 32));
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.setMaximumSize(new java.awt.Dimension(52, 52));
         btnSalvar.setMinimumSize(new java.awt.Dimension(32, 32));
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Deletar");
         btnExcluir.setMaximumSize(new java.awt.Dimension(52, 52));
         btnExcluir.setMinimumSize(new java.awt.Dimension(32, 32));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
-        tabelaListaDistribuidor.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -159,14 +183,19 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tabelaListaDistribuidor);
-        if (tabelaListaDistribuidor.getColumnModel().getColumnCount() > 0) {
-            tabelaListaDistribuidor.getColumnModel().getColumn(0).setMinWidth(60);
-            tabelaListaDistribuidor.getColumnModel().getColumn(0).setMaxWidth(60);
-            tabelaListaDistribuidor.getColumnModel().getColumn(1).setMinWidth(120);
-            tabelaListaDistribuidor.getColumnModel().getColumn(1).setMaxWidth(120);
-            tabelaListaDistribuidor.getColumnModel().getColumn(3).setMinWidth(100);
-            tabelaListaDistribuidor.getColumnModel().getColumn(3).setMaxWidth(100);
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabela);
+        if (tabela.getColumnModel().getColumnCount() > 0) {
+            tabela.getColumnModel().getColumn(0).setMinWidth(60);
+            tabela.getColumnModel().getColumn(0).setMaxWidth(60);
+            tabela.getColumnModel().getColumn(1).setMinWidth(120);
+            tabela.getColumnModel().getColumn(1).setMaxWidth(120);
+            tabela.getColumnModel().getColumn(3).setMinWidth(100);
+            tabela.getColumnModel().getColumn(3).setMaxWidth(100);
         }
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar"));
@@ -204,7 +233,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -214,8 +243,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,6 +268,149 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        idDistribuidor = Integer.parseInt(modelo.getValueAt(tabela.getSelectedRow(), 0).toString());
+        txtCNPJ.setText(modelo.getValueAt(tabela.getSelectedRow(), 1).toString());
+        txtRazaoSocial.setText(modelo.getValueAt(tabela.getSelectedRow(), 2).toString());
+        txtEndereco.setText(modelo.getValueAt(tabela.getSelectedRow(), 3).toString());
+        txtNomeContato.setText(modelo.getValueAt(tabela.getSelectedRow(), 4).toString());
+        txtTelefoneContato.setText(modelo.getValueAt(tabela.getSelectedRow(), 5).toString());
+    
+        editarCamposDeTexto();
+        habilitarBotoes();  
+    }//GEN-LAST:event_tabelaMouseClicked
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        idDistribuidor = 0;
+        limparCamposDeTexto();
+        editarCamposDeTexto();
+        btnSalvar.setVisible(true);
+        btnCancelar.setVisible(true);
+        btnExcluir.setVisible(false);
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        if ((txtRazaoSocial.getText().length() == 0 && txtTelefoneContato.getText().length() == 0)) {
+            JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");
+          } else if (txtRazaoSocial.getText().length() == 0 && txtTelefoneContato.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo da Razão Social e Telefone!");
+        } else {
+            
+            if (idDistribuidor == 0) {
+                try {
+                    distribuidorServiceImpl.inserirDistribuidor(txtCNPJ.getText(), txtRazaoSocial.getText(), txtEndereco.getText(), txtNomeContato.getText(), txtTelefoneContato.getText());
+                    JOptionPane.showMessageDialog(null, "Novo registro salvo!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
+                } finally {
+                    limparCamposDeTexto();
+                }
+            } else {
+                try {
+                    distribuidorServiceImpl.alterarDistribuidor(idDistribuidor, txtCNPJ.getText(), txtRazaoSocial.getText(), txtEndereco.getText(), txtNomeContato.getText(), txtTelefoneContato.getText());
+                    JOptionPane.showMessageDialog(null, "Alteração realizada!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n Erro: " + ex);
+                }
+            }
+
+            retornarTodosDistribuidores();
+            limparCamposDeTexto();
+            desabilitarBotoes();
+            bloquearCamposDeTexto();
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
+            try {
+                distribuidorServiceImpl.retornarDistribuidor(idDistribuidor);
+                distribuidorServiceImpl.deletarDistribuidor(distribuidorServiceImpl.retornarDistribuidor(idDistribuidor));
+                JOptionPane.showMessageDialog(null, "Registro excluido!");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao excluir registro! \n \n ERRO: " + ex);
+            }
+        }
+        retornarTodosDistribuidores();
+        limparCamposDeTexto();
+        desabilitarBotoes();
+        bloquearCamposDeTexto();
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limparCamposDeTexto();
+        bloquearCamposDeTexto();
+        desabilitarBotoes();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    public void limparCamposDeTexto(){
+        txtCNPJ.setText("");
+        txtRazaoSocial.setText("");
+        txtEndereco.setText("");
+        txtNomeContato.setText("");
+        txtTelefoneContato.setText("");
+    }
+    
+    public void editarCamposDeTexto(){
+        txtRazaoSocial.setEnabled(true);
+        txtRazaoSocial.setBackground(new java.awt.Color(255, 255, 255));
+    }
+    
+    public void bloquearCamposDeTexto(){
+        txtRazaoSocial.setEnabled(false);
+    }
+    
+    public void habilitarBotoes(){
+        btnSalvar.setVisible(true);
+        btnExcluir.setVisible(true);
+        btnCancelar.setVisible(true);
+    }
+    
+    public void desabilitarBotoes(){
+        btnSalvar.setVisible(false);
+        btnExcluir.setVisible(false);
+        btnCancelar.setVisible(false);
+    }
+    
+    public void retornarTodosDistribuidores(){
+        ArrayList<Distribuidor> lista = new ArrayList<Distribuidor>();
+        try {
+            lista = (distribuidorServiceImpl.retornarDistribuidores());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao retornar Distribuidores! \n \n ERRO: " + ex);
+        }
+        carregarDadosDaTabela(lista);
+    }
+    
+    public void carregarDadosDaTabela(ArrayList<Distribuidor> lista){
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setRowCount(0);
+        try {
+
+            for (int i = 0; i < lista.size(); i++) {
+                modelo.addRow(new Object[]{
+                    lista.get(i).getId(),
+                    lista.get(i).getCnpj(),
+                    lista.get(i).getRazaoSocial(),
+                    lista.get(i).getEndereco(),
+                    lista.get(i).getPessoaContato(),
+                    lista.get(i).getFone()});
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao preencher a tabela! \n \n ERRO: " + ex);
+        }
+    }
+    
+    public static void main(String args[]) {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaCadastroDistribuidor().setVisible(true);
+            }
+        });
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
@@ -257,7 +428,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tabelaListaDistribuidor;
+    private javax.swing.JTable tabela;
     private javax.swing.JTextField txtCNPJ;
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtNomeContato;
