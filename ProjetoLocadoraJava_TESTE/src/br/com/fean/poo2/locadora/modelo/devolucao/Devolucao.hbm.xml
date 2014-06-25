@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2014 18:08:01 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class catalog="passatempo" name="br.com.fean.poo2.locadora.modelo.devolucao.Devolucao" table="devolucao">
+    <composite-id class="br.com.fean.poo2.locadora.modelo.devolucao.DevolucaoId" name="id">
+      <key-property name="id" type="int">
+        <column name="id"/>
+      </key-property>
+      <key-property name="locacaoMidia" type="int">
+        <column name="locacao_midia"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="br.com.fean.poo2.locadora.modelo.funcionario.Funcionario" fetch="select" name="funcionarios">
+      <column name="funcionario" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="br.com.fean.poo2.locadora.modelo.locacaomidia.LocacaoMidia" fetch="select" insert="false" name="locacaoMidia" update="false">
+      <column name="locacao_midia" not-null="true"/>
+    </many-to-one>
+    <property name="data2" type="date">
+      <column length="10" name="data_2"/>
+    </property>
+    <property name="hora" type="time">
+      <column length="8" name="hora"/>
+    </property>
+    <property name="diasAtraso" type="java.lang.Integer">
+      <column name="dias_atraso"/>
+    </property>
+    <property name="multa" type="java.lang.Double">
+      <column name="multa" precision="22" scale="0"/>
+    </property>
+    <property name="desconto" type="java.lang.Double">
+      <column name="desconto" precision="22" scale="0"/>
+    </property>
+    <property name="valor" type="java.lang.Double">
+      <column name="valor" precision="22" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

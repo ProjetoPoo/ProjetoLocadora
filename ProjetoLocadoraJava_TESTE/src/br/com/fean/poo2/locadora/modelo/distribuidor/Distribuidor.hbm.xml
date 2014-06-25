@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2014 18:08:01 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class catalog="passatempo" name="br.com.fean.poo2.locadora.modelo.distribuidor.Distribuidor" table="distribuidores">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="razaoSocial" type="string">
+      <column length="100" name="razao_social"/>
+    </property>
+    <property name="cnpj" type="string">
+      <column length="20" name="cnpj"/>
+    </property>
+    <property name="endereco" type="string">
+      <column length="200" name="endereco"/>
+    </property>
+    <property name="fone" type="string">
+      <column length="100" name="fone"/>
+    </property>
+    <property name="pessoaContato" type="string">
+      <column length="100" name="pessoa_contato"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="midiases" table="midias">
+      <key>
+        <column name="distribuidor" not-null="true"/>
+      </key>
+      <one-to-many class="br.com.fean.poo2.locadora.modelo.midia.Midia"/>
+    </set>
+  </class>
+</hibernate-mapping>
