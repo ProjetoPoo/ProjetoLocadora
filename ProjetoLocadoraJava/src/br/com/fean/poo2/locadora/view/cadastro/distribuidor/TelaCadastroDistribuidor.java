@@ -10,7 +10,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
 
     private int idDistribuidor = 0;
     DistribuidorServiceImpl distribuidorServiceImpl = new DistribuidorServiceImpl();
-   
+
     public TelaCadastroDistribuidor() {
         initComponents();
         retornarTodosDistribuidores();
@@ -108,7 +108,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                         .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -171,11 +171,11 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Cod", "CNPJ", "Razão Social", "Telefone", "Contato"
+                "Cod", "CNPJ", "Razão Social", "Endereço", "Contato", "Telefone"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -193,8 +193,8 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
             tabela.getColumnModel().getColumn(0).setMaxWidth(60);
             tabela.getColumnModel().getColumn(1).setMinWidth(120);
             tabela.getColumnModel().getColumn(1).setMaxWidth(120);
-            tabela.getColumnModel().getColumn(3).setMinWidth(100);
-            tabela.getColumnModel().getColumn(3).setMaxWidth(100);
+            tabela.getColumnModel().getColumn(5).setMinWidth(100);
+            tabela.getColumnModel().getColumn(5).setMaxWidth(100);
         }
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar"));
@@ -231,18 +231,19 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,9 +254,9 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 124, Short.MAX_VALUE)
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,9 +276,9 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         txtEndereco.setText(modelo.getValueAt(tabela.getSelectedRow(), 3).toString());
         txtNomeContato.setText(modelo.getValueAt(tabela.getSelectedRow(), 4).toString());
         txtTelefoneContato.setText(modelo.getValueAt(tabela.getSelectedRow(), 5).toString());
-    
+
         editarCamposDeTexto();
-        habilitarBotoes();  
+        habilitarBotoes();
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -292,10 +293,10 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if ((txtRazaoSocial.getText().length() == 0 && txtTelefoneContato.getText().length() == 0)) {
             JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");
-          } else if (txtRazaoSocial.getText().length() == 0 && txtTelefoneContato.getText().length() == 0) {
+        } else if (txtRazaoSocial.getText().length() == 0 && txtTelefoneContato.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Preencha o campo da Razão Social e Telefone!");
         } else {
-            
+
             if (idDistribuidor == 0) {
                 try {
                     distribuidorServiceImpl.inserirDistribuidor(txtCNPJ.getText(), txtRazaoSocial.getText(), txtEndereco.getText(), txtNomeContato.getText(), txtTelefoneContato.getText());
@@ -343,36 +344,44 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         desabilitarBotoes();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    public void limparCamposDeTexto(){
+    public void limparCamposDeTexto() {
         txtCNPJ.setText("");
         txtRazaoSocial.setText("");
         txtEndereco.setText("");
         txtNomeContato.setText("");
         txtTelefoneContato.setText("");
     }
+
+    public void editarCamposDeTexto() {
     
-    public void editarCamposDeTexto(){
+        txtCNPJ.setEnabled(true);
         txtRazaoSocial.setEnabled(true);
-        txtRazaoSocial.setBackground(new java.awt.Color(255, 255, 255));
+        txtEndereco.setEnabled(true);
+        txtNomeContato.setEnabled(true);
+        txtTelefoneContato.setEnabled(true);
     }
-    
-    public void bloquearCamposDeTexto(){
+
+    public void bloquearCamposDeTexto() {
+        txtCNPJ.setEnabled(false);
         txtRazaoSocial.setEnabled(false);
+        txtEndereco.setEnabled(false);
+        txtNomeContato.setEnabled(false);
+        txtTelefoneContato.setEnabled(false);
     }
-    
-    public void habilitarBotoes(){
+
+    public void habilitarBotoes() {
         btnSalvar.setVisible(true);
         btnExcluir.setVisible(true);
         btnCancelar.setVisible(true);
     }
-    
-    public void desabilitarBotoes(){
+
+    public void desabilitarBotoes() {
         btnSalvar.setVisible(false);
         btnExcluir.setVisible(false);
         btnCancelar.setVisible(false);
     }
-    
-    public void retornarTodosDistribuidores(){
+
+    public void retornarTodosDistribuidores() {
         ArrayList<Distribuidor> lista = new ArrayList<Distribuidor>();
         try {
             lista = (distribuidorServiceImpl.retornarDistribuidores());
@@ -381,8 +390,8 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         }
         carregarDadosDaTabela(lista);
     }
-    
-    public void carregarDadosDaTabela(ArrayList<Distribuidor> lista){
+
+    public void carregarDadosDaTabela(ArrayList<Distribuidor> lista) {
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
         modelo.setRowCount(0);
         try {
@@ -400,16 +409,9 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Erro ao preencher a tabela! \n \n ERRO: " + ex);
         }
     }
-    
-    public static void main(String args[]) {
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastroDistribuidor().setVisible(true);
-            }
-        });
-    }
-    
+   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
