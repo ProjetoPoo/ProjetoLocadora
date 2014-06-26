@@ -126,6 +126,14 @@ public class TelaListaCliente extends javax.swing.JFrame {
         cadastroCliente.setVisible(true);
     }//GEN-LAST:event_tabelaListaClienteMouseClicked
    
+    private void preencherTabela() {
+        
+        ArrayList<Socio> lista = new ArrayList<>();
+        
+        
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
