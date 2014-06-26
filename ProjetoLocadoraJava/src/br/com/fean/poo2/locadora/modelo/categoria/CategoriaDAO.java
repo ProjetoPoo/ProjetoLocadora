@@ -16,7 +16,7 @@ public class CategoriaDAO {
 
     private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
-    public void inserirCategorias(Categoria categoria) throws Exception {
+    public void inserirCategoria(Categoria categoria) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
 
         try {
@@ -31,7 +31,7 @@ public class CategoriaDAO {
         }
     }
 
-    public void alterarCategorias(Categoria categoria) throws Exception {
+    public void alterarCategoria(Categoria categoria) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
 
         try {
@@ -46,7 +46,7 @@ public class CategoriaDAO {
         }
     }
 
-    public void deletarCategorias(Categoria categoria) throws Exception {
+    public void deletarCategoria(Categoria categoria) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
 
         try {
@@ -61,7 +61,7 @@ public class CategoriaDAO {
         }
     }
 
-    public Categoria retornaCategorias(int id) throws Exception {
+    public Categoria retornaCategoria(int id) throws Exception {
 
         Categoria categoria = null;
         try {
@@ -75,7 +75,7 @@ public class CategoriaDAO {
         return categoria;
     }
 
-    public ArrayList<Categoria> retornaCategoriass() throws Exception {
+    public ArrayList<Categoria> retornaCategorias() throws Exception {
 
         ArrayList<Categoria> lista = new ArrayList<Categoria>();
         Query query = entityManager.createQuery("select x from Categoria x");

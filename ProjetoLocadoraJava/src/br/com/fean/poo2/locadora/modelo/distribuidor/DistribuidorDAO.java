@@ -10,52 +10,52 @@ import javax.persistence.Query;
 
 public class DistribuidorDAO {
     
-    private final EntityManager entityManager = EntityManagerUtil.getEntityManager();;
-    public EntityManager getEntityManager(){
-        return entityManager;
-    }
+   private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
+    
     
     public void inserirDistribuidor (Distribuidor distribuidor) throws Exception{
-        EntityTransaction tx = getEntityManager().getTransaction();
-        try{
+        EntityTransaction tx = entityManager.getTransaction();
+        
+        try {
             tx.begin();
-            getEntityManager().merge(distribuidor);
+            entityManager.merge(distribuidor);
             tx.commit();
-        }catch (Throwable t){
+        } catch (Throwable t) {
             t.printStackTrace();
             tx.rollback();
-        }finally{
+        } finally {
             close();
         }
     }
     
     public void alterarDistribuidor (Distribuidor distribuidor) throws Exception{
-        EntityTransaction tx = getEntityManager().getTransaction();
-        
-    try{
-        tx.begin();
-        getEntityManager().merge(distribuidor);
-        tx.commit();
-    }catch (Throwable t){
-        t.printStackTrace();
-        tx.rollback();
-    }finally{
-        close();
-    }    
+       EntityTransaction tx = entityManager.getTransaction();
+
+        try {
+            tx.begin();
+            entityManager.merge(distribuidor);
+            tx.commit();
+        } catch (Throwable t) {
+            t.printStackTrace();
+            tx.rollback();
+        } finally {
+            close();
+        }
     }
     
     public void deletarDistribuidor (Distribuidor distribuidor) throws Exception{
-        EntityTransaction tx = getEntityManager().getTransaction();
-    try{
-        tx.begin();
-        getEntityManager().remove(distribuidor);
-        tx.commit();
-    }catch (Throwable t){
-        t.printStackTrace();
-        tx.rollback();
-    }finally{
-        close();
-}
+       EntityTransaction tx = entityManager.getTransaction();
+
+        try {
+            tx.begin();
+            entityManager.remove(distribuidor);
+            tx.commit();
+        } catch (Throwable t) {
+            t.printStackTrace();
+            tx.rollback();
+        } finally {
+            close();
+        }
 }
 
     public Distribuidor retornarDistribuidor(Integer id) throws Exception{
@@ -72,6 +72,7 @@ public class DistribuidorDAO {
     }
     
     public ArrayList<Distribuidor> retornarDistribuidores() throws Exception{
+        
         ArrayList<Distribuidor> lista = new ArrayList<Distribuidor>();
         Query query = entityManager.createQuery("select x from Distribuidor x");
         lista = (ArrayList<Distribuidor>) query.getResultList();
