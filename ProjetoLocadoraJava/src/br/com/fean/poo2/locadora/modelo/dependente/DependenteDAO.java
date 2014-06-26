@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package br.com.fean.poo2.locadora.modelo.dependente;
 
 import br.com.fean.poo2.locadora.modelo.dependente.*;
@@ -6,36 +5,18 @@ import br.com.fean.poo2.locadora.modelo.dependente.*;
 import br.com.fean.poo2.locadora.util.EntityManagerUtil;
 import static br.com.fean.poo2.locadora.util.EntityManagerUtil.getEntityManager;
 import static com.mysql.jdbc.AbandonedConnectionCleanupThread.shutdown;
-=======
-
-package br.com.fean.poo2.locadora.modelo.dependente;
-
-import br.com.fean.poo2.locadora.util.EntityManagerUtil;
-import static br.com.fean.poo2.locadora.util.EntityManagerUtil.getEntityManager;
 import static com.sun.glass.ui.android.Activity.shutdown;
->>>>>>> origin/master
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-<<<<<<< HEAD
+import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author Jaime Campos
  */
-public class DependenteDAO {
-
-    private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
-
-    public void inserirDependente(Dependente dependente) throws Exception {
-        EntityTransaction tx = entityManager.getTransaction();
-
-        try {
-            tx.begin();
-            entityManager.merge(dependente);
-=======
-import javax.swing.JOptionPane;
 
 public class DependenteDAO {
     
@@ -47,7 +28,6 @@ public class DependenteDAO {
         try {
             tx.begin();
             entityManager.merge(Dependente);
->>>>>>> origin/master
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
@@ -56,17 +36,10 @@ public class DependenteDAO {
             close();
         }
     }
-<<<<<<< HEAD
 
-    public void alterarDependente(Dependente dependente) throws Exception {
-        EntityTransaction tx = entityManager.getTransaction();
-
-=======
-    
     //método para alterar dependente
     public void alterarDependente(Dependente dependente) throws Exception{
         EntityTransaction tx = entityManager.getTransaction();
->>>>>>> origin/master
         try {
             tx.begin();
             entityManager.merge(dependente);
@@ -74,25 +47,14 @@ public class DependenteDAO {
         } catch (Throwable t) {
             t.printStackTrace();
             tx.rollback();
-<<<<<<< HEAD
         } finally {
             close();
         }
     }
 
-    public void deletarDependente(Dependente dependente) throws Exception {
-        EntityTransaction tx = entityManager.getTransaction();
-
-=======
-        }finally {
-            close();
-        }
-    }
-    
     // método de deletar Dependentes
     public void deletarDependente(Dependente dependente) throws Exception{
         EntityTransaction tx = entityManager.getTransaction();
->>>>>>> origin/master
         try {
             tx.begin();
             entityManager.remove(dependente);
@@ -100,7 +62,6 @@ public class DependenteDAO {
         } catch (Throwable t) {
             t.printStackTrace();
             tx.rollback();
-<<<<<<< HEAD
         } finally {
             close();
         }
@@ -129,11 +90,10 @@ public class DependenteDAO {
     }
 
     private void close() throws InterruptedException {
-
-=======
-        }finally {
-            close();
-        } 
+        if (getEntityManager().isOpen()) {
+            getEntityManager().close();
+        }
+      //  shutdown();
     }
     
     // método para retornar dependentes pelo nome
@@ -185,16 +145,6 @@ public class DependenteDAO {
    }
     
     // método de fechhamento de conexão com o banco de dados
-    private void close() throws InterruptedException {
->>>>>>> origin/master
-        if (getEntityManager().isOpen()) {
-            getEntityManager().close();
-        }
-        shutdown();
-    }
-<<<<<<< HEAD
+
 
 }
-=======
-}
->>>>>>> origin/master

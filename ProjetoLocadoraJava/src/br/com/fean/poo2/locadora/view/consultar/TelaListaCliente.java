@@ -1,17 +1,12 @@
 package br.com.fean.poo2.locadora.view.consultar;
 
-<<<<<<< HEAD
 import br.com.fean.poo2.locadora.control.dependente.DependenteServiceImpl;
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.modelo.dependente.Dependente;
 import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
 import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
-=======
-import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.modelo.socio.SocioDAO;
-import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
->>>>>>> origin/master
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaListaCliente extends javax.swing.JFrame {
-    
+
     SocioDAO socioDao = new SocioDAO();
 
     private TelaLocacao refpai;
@@ -27,12 +22,13 @@ public class TelaListaCliente extends javax.swing.JFrame {
     public TelaListaCliente() throws Exception {
         initComponents();
         carregaClientes();
+        //        preencherTabela();
     }
 
     public TelaListaCliente(TelaLocacao framepai) throws Exception {
         initComponents();
-<<<<<<< HEAD
         carregaClientes();
+        //        preencherTabela();
         refpai = framepai;
     }
 
@@ -40,7 +36,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
         if (jComboBox1.getSelectedIndex() == 0) {
             ArrayList<Socio> listasocios = new ArrayList<Socio>();
             SocioServiceImpl socioImpl = new SocioServiceImpl();
-            listasocios = socioImpl.pesquisaSocioNome(jTextField1.getText());
+            listasocios = socioImpl.pesquisaSocioNome(tfPesquisa.getText());
 
             try {
                 DefaultTableModel modeloTable = new DefaultTableModel();
@@ -65,7 +61,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
         if (jComboBox1.getSelectedIndex() == 0) {
             ArrayList<Socio> listasocios = new ArrayList<Socio>();
             SocioServiceImpl socioImpl = new SocioServiceImpl();
-            listasocios = socioImpl.pesquisaSocioNome(jTextField1.getText());
+            listasocios = socioImpl.pesquisaSocioNome(tfPesquisa.getText());
 
             try {
                 DefaultTableModel modeloTable = new DefaultTableModel();
@@ -90,7 +86,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
         if (jComboBox1.getSelectedIndex() == 1) {
             ArrayList<Dependente> listadependentes = new ArrayList<Dependente>();
             DependenteServiceImpl dependenteImpl = new DependenteServiceImpl();
-            listadependentes = dependenteImpl.pesquisaDependenteNome(jTextField1.getText());
+            listadependentes = dependenteImpl.pesquisaDependenteNome(tfPesquisa.getText());
 
             try {
                 DefaultTableModel modeloTable = new DefaultTableModel();
@@ -110,7 +106,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
         if (jComboBox1.getSelectedIndex() == 3) {
             ArrayList<Socio> listasocios = new ArrayList<Socio>();
             SocioServiceImpl socioImpl = new SocioServiceImpl();
-            listasocios = socioImpl.pesquisaSocioCodigo(Integer.parseInt(jTextField1.getText()));
+            listasocios = socioImpl.pesquisaSocioCodigo(Integer.parseInt(tfPesquisa.getText()));
 
             try {
                 DefaultTableModel modeloTable = new DefaultTableModel();
@@ -159,9 +155,6 @@ public class TelaListaCliente extends javax.swing.JFrame {
                     + " erro: " + e);
         }
 
-=======
-        preencherTabela();
->>>>>>> origin/master
     }
 
     @SuppressWarnings("unchecked")
@@ -282,30 +275,20 @@ public class TelaListaCliente extends javax.swing.JFrame {
         refpai.setNomeCliente(valorNomeSelecionado);
         dispose();
     }//GEN-LAST:event_tabelaListaClienteMouseClicked
-   
-    private void preencherTabela(){
-        
+
+    private void preencherTabela() {
+
         ArrayList<Socio> lista = new ArrayList<>();
-        
+
         try {
             lista = socioDao.retornarTodosSocio();
         } catch (Exception ex) {
             Logger.getLogger(TelaListaCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         DefaultTableModel modelo = (DefaultTableModel) tabelaListaCliente.getModel();
         modelo.setRowCount(0);
 
-<<<<<<< HEAD
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            pesquisaFiltro();
-        } catch (Exception ex) {
-            Logger.getLogger(TelaListaCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-=======
         try {
 
             for (int i = 0; i < lista.size(); i++) {
@@ -316,9 +299,23 @@ public class TelaListaCliente extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro ao preencher tabela! \n \n ERRO: " + ex);
         }
-        
+
     }
->>>>>>> origin/master
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            pesquisaFiltro();
+        
+
+
+
+} catch (Exception ex) {
+            Logger.getLogger(TelaListaCliente.class  
+
+.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

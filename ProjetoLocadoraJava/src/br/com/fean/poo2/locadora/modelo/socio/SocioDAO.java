@@ -1,34 +1,21 @@
 package br.com.fean.poo2.locadora.modelo.socio;
 
-<<<<<<< HEAD
 import br.com.fean.poo2.locadora.modelo.socio.*;
 import br.com.fean.poo2.locadora.util.EntityManagerUtil;
 import static br.com.fean.poo2.locadora.util.EntityManagerUtil.getEntityManager;
 import static com.mysql.jdbc.AbandonedConnectionCleanupThread.shutdown;
-=======
-import br.com.fean.poo2.locadora.util.EntityManagerUtil;
-import static br.com.fean.poo2.locadora.util.EntityManagerUtil.getEntityManager;
 import static com.sun.glass.ui.android.Activity.shutdown;
->>>>>>> origin/master
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-<<<<<<< HEAD
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jaime Campos
  */
-public class SocioDAO {
 
-    private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
-
-    public void inserirSocio(Socio socio) throws Exception {
-        EntityTransaction tx = entityManager.getTransaction();
-
-=======
-import javax.swing.JOptionPane;
 
 public class SocioDAO {
     
@@ -37,7 +24,6 @@ public class SocioDAO {
     // método para inseir o sócio
     public void inserirSocio(Socio socio) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
->>>>>>> origin/master
         try {
             tx.begin();
             entityManager.merge(socio);
@@ -50,16 +36,10 @@ public class SocioDAO {
         }
     }
 
-<<<<<<< HEAD
-    public void alterarSocio(Socio socio) throws Exception {
-        EntityTransaction tx = entityManager.getTransaction();
-
-=======
     
     //método para alterar sócio
     public void alterarSocio(Socio socio) throws Exception{
         EntityTransaction tx = entityManager.getTransaction();
->>>>>>> origin/master
         try {
             tx.begin();
             entityManager.merge(socio);
@@ -67,25 +47,14 @@ public class SocioDAO {
         } catch (Throwable t) {
             t.printStackTrace();
             tx.rollback();
-<<<<<<< HEAD
         } finally {
             close();
         }
     }
 
-    public void deletarSocio(Socio socio) throws Exception {
-        EntityTransaction tx = entityManager.getTransaction();
-
-=======
-        }finally {
-            close();
-        }
-    }
-    
     // método de deletar socio
     public void deletarSocio(Socio socio) throws Exception{
         EntityTransaction tx = entityManager.getTransaction();
->>>>>>> origin/master
         try {
             tx.begin();
             entityManager.remove(socio);
@@ -97,7 +66,6 @@ public class SocioDAO {
             close();
         }
     }
-<<<<<<< HEAD
 
     public ArrayList<Socio> pesquisaSocioCodigo(int id) throws Exception {
         ArrayList<Socio> lista = new ArrayList<Socio>();
@@ -129,8 +97,11 @@ public ArrayList<Socio> pesquisaSocioCPF(String cpf) throws Exception {
     }
 
     private void close() throws InterruptedException {
-
-=======
+        if (getEntityManager().isOpen()) {
+            getEntityManager().close();
+        }
+       // shutdown();
+    }
     
     // método de retornar dados pelo cpf
     public Socio retornarSocio(int cpf) throws Exception{
@@ -183,16 +154,6 @@ public ArrayList<Socio> pesquisaSocioCPF(String cpf) throws Exception {
     
     
     // método de fechhamento de conexão com o banco de dados
-    private void close() throws InterruptedException {
->>>>>>> origin/master
-        if (getEntityManager().isOpen()) {
-            getEntityManager().close();
-        }
-        shutdown();
-    }
-<<<<<<< HEAD
+
 
 }
-=======
-}
->>>>>>> origin/master
