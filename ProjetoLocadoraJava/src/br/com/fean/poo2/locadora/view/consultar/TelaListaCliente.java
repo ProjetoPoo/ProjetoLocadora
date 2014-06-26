@@ -2,17 +2,21 @@
 package br.com.fean.poo2.locadora.view.consultar;
 
 import br.com.fean.poo2.locadora.modelo.socio.Socio;
+import br.com.fean.poo2.locadora.modelo.socio.SocioDAO;
 import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaListaCliente extends javax.swing.JFrame {
     
-
+    SocioDAO socioDao = new SocioDAO();
 
     public TelaListaCliente() {
         initComponents();
+        preencherTabela();
     }
 
     @SuppressWarnings("unchecked")
@@ -126,12 +130,29 @@ public class TelaListaCliente extends javax.swing.JFrame {
         cadastroCliente.setVisible(true);
     }//GEN-LAST:event_tabelaListaClienteMouseClicked
    
-    private void preencherTabela() {
+    private void preencherTabela(){
         
         ArrayList<Socio> lista = new ArrayList<>();
         
+        try {
+            lista = socioDao.retornarTodosSocio();
+        } catch (Exception ex) {
+            Logger.getLogger(TelaListaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        
+        DefaultTableModel modelo = (DefaultTableModel) tabelaListaCliente.getModel();
+        modelo.setRowCount(0);
+
+        try {
+
+            for (int i = 0; i < lista.size(); i++) {
+                modelo.addRow(new Object[]{
+                    lista.get(i).getId(),
+                    lista.get(i).getNome(),});
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao preencher tabela! \n \n ERRO: " + ex);
+        }
         
     }
 
