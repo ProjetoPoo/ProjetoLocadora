@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package br.com.fean.poo2.locadora.view.funcionario;
+package br.com.fean.poo2.locadora.view.cadastro.funcionario;
 
 /**
  *

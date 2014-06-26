@@ -2,9 +2,13 @@ package br.com.fean.poo2.locadora.view.cadastro.distribuidor;
 
 import br.com.fean.poo2.locadora.control.distribuidor.DistribuidorServiceImpl;
 import br.com.fean.poo2.locadora.modelo.distribuidor.Distribuidor;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 public class TelaCadastroDistribuidor extends javax.swing.JPanel {
 
@@ -16,6 +20,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         retornarTodosDistribuidores();
         desabilitarBotoes();
         bloquearCamposDeTexto();
+       
     }
 
     @SuppressWarnings("unchecked")
@@ -108,8 +113,8 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                        .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtEndereco))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -118,7 +123,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtRazaoSocial)))
+                        .addComponent(txtRazaoSocial, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -232,11 +237,13 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,18 +259,18 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 124, Short.MAX_VALUE)
+                        .addGap(0, 159, Short.MAX_VALUE)
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -299,7 +306,14 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
 
             if (idDistribuidor == 0) {
                 try {
-                    distribuidorServiceImpl.inserirDistribuidor(txtCNPJ.getText(), txtRazaoSocial.getText(), txtEndereco.getText(), txtNomeContato.getText(), txtTelefoneContato.getText());
+                    distribuidorServiceImpl.inserirDistribuidor(
+                            txtCNPJ.getText(),
+                            txtRazaoSocial.getText(),
+                            txtEndereco.getText(),
+                            txtNomeContato.getText(),
+                            txtTelefoneContato.getText()
+                    );
+
                     JOptionPane.showMessageDialog(null, "Novo registro salvo!");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
@@ -308,7 +322,15 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                 }
             } else {
                 try {
-                    distribuidorServiceImpl.alterarDistribuidor(idDistribuidor, txtCNPJ.getText(), txtRazaoSocial.getText(), txtEndereco.getText(), txtNomeContato.getText(), txtTelefoneContato.getText());
+                    distribuidorServiceImpl.alterarDistribuidor(
+                            idDistribuidor,
+                            txtCNPJ.getText(),
+                            txtRazaoSocial.getText(),
+                            txtEndereco.getText(),
+                            txtNomeContato.getText(),
+                            txtTelefoneContato.getText()
+                    );
+
                     JOptionPane.showMessageDialog(null, "Alteração realizada!");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n Erro: " + ex);
@@ -324,8 +346,9 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
+           
             try {
-                distribuidorServiceImpl.retornarDistribuidor(idDistribuidor);
+                
                 distribuidorServiceImpl.deletarDistribuidor(distribuidorServiceImpl.retornarDistribuidor(idDistribuidor));
                 JOptionPane.showMessageDialog(null, "Registro excluido!");
             } catch (Exception ex) {
@@ -353,7 +376,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
     }
 
     public void editarCamposDeTexto() {
-    
+
         txtCNPJ.setEnabled(true);
         txtRazaoSocial.setEnabled(true);
         txtEndereco.setEnabled(true);
@@ -410,7 +433,6 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         }
     }
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

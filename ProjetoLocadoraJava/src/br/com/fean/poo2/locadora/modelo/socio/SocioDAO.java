@@ -1,13 +1,20 @@
 package br.com.fean.poo2.locadora.modelo.socio;
 
+<<<<<<< HEAD
 import br.com.fean.poo2.locadora.modelo.socio.*;
 import br.com.fean.poo2.locadora.util.EntityManagerUtil;
 import static br.com.fean.poo2.locadora.util.EntityManagerUtil.getEntityManager;
 import static com.mysql.jdbc.AbandonedConnectionCleanupThread.shutdown;
+=======
+import br.com.fean.poo2.locadora.util.EntityManagerUtil;
+import static br.com.fean.poo2.locadora.util.EntityManagerUtil.getEntityManager;
+import static com.sun.glass.ui.android.Activity.shutdown;
+>>>>>>> origin/master
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+<<<<<<< HEAD
 
 /**
  *
@@ -20,6 +27,17 @@ public class SocioDAO {
     public void inserirSocio(Socio socio) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
 
+=======
+import javax.swing.JOptionPane;
+
+public class SocioDAO {
+    
+    private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
+    
+    // método para inseir o sócio
+    public void inserirSocio(Socio socio) throws Exception {
+        EntityTransaction tx = entityManager.getTransaction();
+>>>>>>> origin/master
         try {
             tx.begin();
             entityManager.merge(socio);
@@ -32,9 +50,16 @@ public class SocioDAO {
         }
     }
 
+<<<<<<< HEAD
     public void alterarSocio(Socio socio) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
 
+=======
+    
+    //método para alterar sócio
+    public void alterarSocio(Socio socio) throws Exception{
+        EntityTransaction tx = entityManager.getTransaction();
+>>>>>>> origin/master
         try {
             tx.begin();
             entityManager.merge(socio);
@@ -42,6 +67,7 @@ public class SocioDAO {
         } catch (Throwable t) {
             t.printStackTrace();
             tx.rollback();
+<<<<<<< HEAD
         } finally {
             close();
         }
@@ -50,6 +76,16 @@ public class SocioDAO {
     public void deletarSocio(Socio socio) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
 
+=======
+        }finally {
+            close();
+        }
+    }
+    
+    // método de deletar socio
+    public void deletarSocio(Socio socio) throws Exception{
+        EntityTransaction tx = entityManager.getTransaction();
+>>>>>>> origin/master
         try {
             tx.begin();
             entityManager.remove(socio);
@@ -61,6 +97,7 @@ public class SocioDAO {
             close();
         }
     }
+<<<<<<< HEAD
 
     public ArrayList<Socio> pesquisaSocioCodigo(int id) throws Exception {
         ArrayList<Socio> lista = new ArrayList<Socio>();
@@ -93,10 +130,69 @@ public ArrayList<Socio> pesquisaSocioCPF(String cpf) throws Exception {
 
     private void close() throws InterruptedException {
 
+=======
+    
+    // método de retornar dados pelo cpf
+    public Socio retornarSocio(int cpf) throws Exception{
+        Socio socio = null;
+        try {
+            socio = entityManager.find(Socio.class, cpf);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null,"ERRO ao Retornar Sócios Pelo CPF" +ex);
+        }
+        return socio; 
+    }
+    
+    // método para retornar socio pelo nome
+    public Socio retornarSocio(String nome) throws Exception{
+        Socio socio = null;
+        try {
+            socio = entityManager.find(Socio.class, nome);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null,"ERRO ao Retornar Sócios Pelo Nome" +ex);
+        }
+        return socio; 
+    }
+    
+    // método que retorna um array de todos os socio
+    public ArrayList<Socio> retornarTodosSocio() throws Exception{
+        ArrayList<Socio> lista = new ArrayList<Socio>();   
+        Query query = entityManager.createQuery("select x from socio x");
+        lista = (ArrayList<Socio>)query.getResultList();
+        return lista;
+    }
+    
+    // metodo que pesquisa socio pelo nome
+    public ArrayList<Socio> pesquisarSocioNome(String nome) throws Exception{
+        ArrayList<Socio> listaPesquisada = new ArrayList<Socio>();   
+        Query query = entityManager.createQuery("select x from socio x");
+        listaPesquisada = (ArrayList<Socio>)query.getResultList();
+        return listaPesquisada;
+    }
+    
+    // método que pesquisa sócio pelo cpf
+    public Socio pesquisarSocioCPF(String cpf) throws Exception{
+        Socio socio = null;
+        Query query = entityManager.createQuery("select x from socio x");
+        socio = entityManager.find(Socio.class, cpf);
+        return socio;
+   }
+    
+    
+    
+    // método de fechhamento de conexão com o banco de dados
+    private void close() throws InterruptedException {
+>>>>>>> origin/master
         if (getEntityManager().isOpen()) {
             getEntityManager().close();
         }
         shutdown();
     }
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> origin/master

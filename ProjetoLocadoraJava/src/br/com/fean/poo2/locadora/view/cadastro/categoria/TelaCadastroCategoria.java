@@ -245,10 +245,9 @@ public class TelaCadastroCategoria extends javax.swing.JPanel {
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
 
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
-            //JOptionPane.showMessageDialog(null, "ERRO: " + controle);
+          
             try {
-                ;
-                
+               
                 categoriaServiceImpl.deletarCategoria(categoriaServiceImpl.retornarCategoria(idControle));
 
                 JOptionPane.showMessageDialog(null, "Registro excluido!");
@@ -276,7 +275,7 @@ public class TelaCadastroCategoria extends javax.swing.JPanel {
         try {
             lista = (categoriaServiceImpl.retornarCategorias());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao retornar Cursos! \n \n ERRO: " + ex);
+            JOptionPane.showMessageDialog(null, "Erro ao retornar Categorias! \n \n ERRO: " + ex);
         }
         carregarDadosTabela(lista);
 

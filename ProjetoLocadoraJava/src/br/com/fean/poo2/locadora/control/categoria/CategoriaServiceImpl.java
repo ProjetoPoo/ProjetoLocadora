@@ -15,7 +15,7 @@ public class CategoriaServiceImpl implements CategoriaService {
         if (nome.length() > 3) {
             Categoria categoria = new Categoria();
             categoria.setNome(nome);
-            categoriaDAO.inserirCategorias(categoria);
+            categoriaDAO.inserirCategoria(categoria);
         }
     }
 
@@ -26,24 +26,24 @@ public class CategoriaServiceImpl implements CategoriaService {
         categoria.setId(id);
         categoria.setNome(nome);
         
-        categoriaDAO.alterarCategorias(categoria);
+        categoriaDAO.alterarCategoria(categoria);
     }
 
     @Override
     public void deletarCategoria(Categoria categoria) throws Exception {
         
-        categoriaDAO.deletarCategorias(categoria);
+        categoriaDAO.deletarCategoria(categoria);
     }
 
     @Override
     public Categoria retornarCategoria(int idCategorias) throws Exception {
-        return categoriaDAO.retornaCategorias(idCategorias);
+        return categoriaDAO.retornaCategoria(idCategorias);
     }
 
 
     @Override
     public ArrayList<Categoria> retornarCategorias() throws Exception {
-        return categoriaDAO.retornaCategoriass();
+        return categoriaDAO.retornaCategorias();
     }
 
 }

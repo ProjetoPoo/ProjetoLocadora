@@ -1,11 +1,17 @@
 package br.com.fean.poo2.locadora.view.consultar;
 
+<<<<<<< HEAD
 import br.com.fean.poo2.locadora.control.dependente.DependenteServiceImpl;
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.modelo.dependente.Dependente;
 import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
 import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
+=======
+import br.com.fean.poo2.locadora.modelo.socio.Socio;
+import br.com.fean.poo2.locadora.modelo.socio.SocioDAO;
+import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
+>>>>>>> origin/master
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +19,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaListaCliente extends javax.swing.JFrame {
+    
+    SocioDAO socioDao = new SocioDAO();
 
     private TelaLocacao refpai;
 
@@ -23,6 +31,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
 
     public TelaListaCliente(TelaLocacao framepai) throws Exception {
         initComponents();
+<<<<<<< HEAD
         carregaClientes();
         refpai = framepai;
     }
@@ -150,6 +159,9 @@ public class TelaListaCliente extends javax.swing.JFrame {
                     + " erro: " + e);
         }
 
+=======
+        preencherTabela();
+>>>>>>> origin/master
     }
 
     @SuppressWarnings("unchecked")
@@ -158,7 +170,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        tfPesquisa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaListaCliente = new javax.swing.JTable();
         sair = new javax.swing.JButton();
@@ -224,7 +236,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -244,7 +256,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -270,7 +282,21 @@ public class TelaListaCliente extends javax.swing.JFrame {
         refpai.setNomeCliente(valorNomeSelecionado);
         dispose();
     }//GEN-LAST:event_tabelaListaClienteMouseClicked
+   
+    private void preencherTabela(){
+        
+        ArrayList<Socio> lista = new ArrayList<>();
+        
+        try {
+            lista = socioDao.retornarTodosSocio();
+        } catch (Exception ex) {
+            Logger.getLogger(TelaListaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        DefaultTableModel modelo = (DefaultTableModel) tabelaListaCliente.getModel();
+        modelo.setRowCount(0);
 
+<<<<<<< HEAD
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             pesquisaFiltro();
@@ -279,14 +305,28 @@ public class TelaListaCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+=======
+        try {
+
+            for (int i = 0; i < lista.size(); i++) {
+                modelo.addRow(new Object[]{
+                    lista.get(i).getId(),
+                    lista.get(i).getNome(),});
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao preencher tabela! \n \n ERRO: " + ex);
+        }
+        
+    }
+>>>>>>> origin/master
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton sair;
     private javax.swing.JTable tabelaListaCliente;
+    private javax.swing.JTextField tfPesquisa;
     // End of variables declaration//GEN-END:variables
 }
