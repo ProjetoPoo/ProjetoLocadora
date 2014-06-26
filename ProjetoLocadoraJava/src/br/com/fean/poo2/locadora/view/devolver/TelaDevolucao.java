@@ -7,6 +7,8 @@
 package br.com.fean.poo2.locadora.view.devolver;
 
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -208,8 +210,14 @@ public class TelaDevolucao extends javax.swing.JPanel {
 
     private void codigoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoClienteMouseClicked
         // chama a tela de lista de clientes
-        TelaListaCliente listaCliente = new TelaListaCliente();
-        listaCliente.setVisible(true);
+        TelaListaCliente listaCliente;
+        try {
+            listaCliente = new TelaListaCliente();
+            listaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaDevolucao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_codigoClienteMouseClicked
 
 

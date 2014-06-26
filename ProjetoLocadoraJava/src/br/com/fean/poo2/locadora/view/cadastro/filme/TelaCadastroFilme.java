@@ -7,6 +7,8 @@
 package br.com.fean.poo2.locadora.view.cadastro.filme;
 
 import br.com.fean.poo2.locadora.view.consultar.TelaListaFilmes;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -223,8 +225,14 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
 
     private void pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarActionPerformed
         // pesquisar
-        TelaListaFilmes listaFilme = new TelaListaFilmes();
-        listaFilme.setVisible(true);
+        TelaListaFilmes listaFilme;
+        try {
+            listaFilme = new TelaListaFilmes();
+            listaFilme.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroFilme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_pesquisarActionPerformed
 
 

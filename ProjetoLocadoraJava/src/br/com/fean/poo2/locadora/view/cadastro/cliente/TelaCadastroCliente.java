@@ -9,6 +9,8 @@ import br.com.fean.poo2.locadora.view.consultar.TelaHistorico;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
 import br.com.fean.poo2.locadora.view.cadastro.dependente.TelaCadastroDependente;
 import java.awt.CardLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -422,8 +424,14 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // pesquisar
-        TelaListaCliente telaCliente = new TelaListaCliente();
-        telaCliente.setVisible(true);
+        TelaListaCliente telaCliente;
+        try {
+            telaCliente = new TelaListaCliente();
+            telaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void historicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoActionPerformed

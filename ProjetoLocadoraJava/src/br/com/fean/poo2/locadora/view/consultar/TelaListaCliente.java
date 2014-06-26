@@ -1,12 +1,155 @@
-
 package br.com.fean.poo2.locadora.view.consultar;
 
+import br.com.fean.poo2.locadora.control.dependente.DependenteServiceImpl;
+import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
+import br.com.fean.poo2.locadora.modelo.dependente.Dependente;
+import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
+import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaListaCliente extends javax.swing.JFrame {
 
-    public TelaListaCliente() {
+    private TelaLocacao refpai;
+
+    public TelaListaCliente() throws Exception {
         initComponents();
+        carregaClientes();
+    }
+
+    public TelaListaCliente(TelaLocacao framepai) throws Exception {
+        initComponents();
+        carregaClientes();
+        refpai = framepai;
+    }
+
+    public void pesquisaFiltro() throws Exception {
+        if (jComboBox1.getSelectedIndex() == 0) {
+            ArrayList<Socio> listasocios = new ArrayList<Socio>();
+            SocioServiceImpl socioImpl = new SocioServiceImpl();
+            listasocios = socioImpl.pesquisaSocioNome(jTextField1.getText());
+
+            try {
+                DefaultTableModel modeloTable = new DefaultTableModel();
+                modeloTable.addColumn("Codigo");
+                modeloTable.addColumn("Nome");
+                modeloTable.addColumn("Endereço");
+                modeloTable.addColumn("Fone Res");
+                modeloTable.addColumn("Local Trabalho");
+                modeloTable.addColumn("CPF");
+                for (Socio socio : listasocios) {
+                    modeloTable.addRow(new Object[]{socio.getId(),
+                        socio.getNome(), socio.getEndereco(),
+                        socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
+                }
+                tabelaListaCliente.setModel(modeloTable);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "leitura de dados "
+                        + "de socio com problema..."
+                        + " erro: " + e);
+            }
+        }
+        if (jComboBox1.getSelectedIndex() == 0) {
+            ArrayList<Socio> listasocios = new ArrayList<Socio>();
+            SocioServiceImpl socioImpl = new SocioServiceImpl();
+            listasocios = socioImpl.pesquisaSocioNome(jTextField1.getText());
+
+            try {
+                DefaultTableModel modeloTable = new DefaultTableModel();
+                modeloTable.addColumn("Codigo");
+                modeloTable.addColumn("Nome");
+                modeloTable.addColumn("Endereço");
+                modeloTable.addColumn("Fone Res");
+                modeloTable.addColumn("Local Trabalho");
+                modeloTable.addColumn("CPF");
+                for (Socio socio : listasocios) {
+                    modeloTable.addRow(new Object[]{socio.getId(),
+                        socio.getNome(), socio.getEndereco(),
+                        socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
+                }
+                tabelaListaCliente.setModel(modeloTable);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "leitura de dados "
+                        + "de socio com problema..."
+                        + " erro: " + e);
+            }
+        }
+        if (jComboBox1.getSelectedIndex() == 1) {
+            ArrayList<Dependente> listadependentes = new ArrayList<Dependente>();
+            DependenteServiceImpl dependenteImpl = new DependenteServiceImpl();
+            listadependentes = dependenteImpl.pesquisaDependenteNome(jTextField1.getText());
+
+            try {
+                DefaultTableModel modeloTable = new DefaultTableModel();
+                modeloTable.addColumn("Codigo");
+                modeloTable.addColumn("Nome Dependente");
+                for (Dependente dependente : listadependentes) {
+                    modeloTable.addRow(new Object[]{dependente.getId(),
+                        dependente.getNome()});
+                }
+                tabelaListaCliente.setModel(modeloTable);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "leitura de dados "
+                        + "de socio com problema..."
+                        + " erro: " + e);
+            }
+        }
+        if (jComboBox1.getSelectedIndex() == 3) {
+            ArrayList<Socio> listasocios = new ArrayList<Socio>();
+            SocioServiceImpl socioImpl = new SocioServiceImpl();
+            listasocios = socioImpl.pesquisaSocioCodigo(Integer.parseInt(jTextField1.getText()));
+
+            try {
+                DefaultTableModel modeloTable = new DefaultTableModel();
+                modeloTable.addColumn("Codigo");
+                modeloTable.addColumn("Nome");
+                modeloTable.addColumn("Endereço");
+                modeloTable.addColumn("Fone Res");
+                modeloTable.addColumn("Local Trabalho");
+                modeloTable.addColumn("CPF");
+                for (Socio socio : listasocios) {
+                    modeloTable.addRow(new Object[]{socio.getId(),
+                        socio.getNome(), socio.getEndereco(),
+                        socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
+                }
+                tabelaListaCliente.setModel(modeloTable);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "leitura de dados "
+                        + "de socio com problema..."
+                        + " erro: " + e);
+            }
+        }
+    }
+
+    public void carregaClientes() throws Exception {
+        ArrayList<Socio> listasocios = new ArrayList<Socio>();
+        SocioServiceImpl socioImpl = new SocioServiceImpl();
+        listasocios = socioImpl.retornarSocios();
+
+        try {
+            DefaultTableModel modeloTable = new DefaultTableModel();
+            modeloTable.addColumn("Codigo");
+            modeloTable.addColumn("Nome");
+            modeloTable.addColumn("Endereço");
+            modeloTable.addColumn("Fone Res");
+            modeloTable.addColumn("Local Trabalho");
+            modeloTable.addColumn("CPF");
+            for (Socio socio : listasocios) {
+                modeloTable.addRow(new Object[]{socio.getId(),
+                    socio.getNome(), socio.getEndereco(),
+                    socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
+            }
+            tabelaListaCliente.setModel(modeloTable);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "leitura de dados "
+                    + "de socio com problema..."
+                    + " erro: " + e);
+        }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -26,6 +169,11 @@ public class TelaListaCliente extends javax.swing.JFrame {
         jLabel1.setText("Lista de Clientes");
 
         jButton1.setText("Pesquisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         tabelaListaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,12 +263,22 @@ public class TelaListaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_sairActionPerformed
 
     private void tabelaListaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaListaClienteMouseClicked
-        // tabela de clientes
-        TelaCadastroCliente cadastroCliente = new TelaCadastroCliente();
-        cadastroCliente.setVisible(true);
+        Integer linhaSelecionada = tabelaListaCliente.getSelectedRow();
+        Integer valorCodigoSelecionado = (Integer) tabelaListaCliente.getValueAt(linhaSelecionada, 0);
+        String valorNomeSelecionado = (String) tabelaListaCliente.getValueAt(linhaSelecionada, 1);
+        refpai.setCodCliente(valorCodigoSelecionado);
+        refpai.setNomeCliente(valorNomeSelecionado);
+        dispose();
     }//GEN-LAST:event_tabelaListaClienteMouseClicked
 
-    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            pesquisaFiltro();
+        } catch (Exception ex) {
+            Logger.getLogger(TelaListaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

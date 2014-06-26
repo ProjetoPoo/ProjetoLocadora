@@ -1,15 +1,60 @@
-
 package br.com.fean.poo2.locadora.view.consultar;
 
+import br.com.fean.poo2.locadora.control.categoria.CategoriaServiceImpl;
+import br.com.fean.poo2.locadora.control.midia.MidiaServiceImpl;
+import br.com.fean.poo2.locadora.control.titulos.TituloServiceImpl;
+import br.com.fean.poo2.locadora.modelo.titulo.Titulo;
 import br.com.fean.poo2.locadora.view.cadastro.filme.TelaCadastroFilme;
+import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaListaFilmes extends javax.swing.JFrame {
 
-    public TelaListaFilmes() {
+    private TelaLocacao refpai;
+
+    public TelaListaFilmes() throws Exception {
         initComponents();
+        carregaClientes();
     }
 
+    public TelaListaFilmes(TelaLocacao framepai) throws Exception {
+        initComponents();
+        carregaClientes();
+        refpai = framepai;
+    }
     
+    public void carregaClientes() throws Exception {
+        ArrayList<Titulo> listatitulos = new ArrayList<Titulo>();
+        TituloServiceImpl tituloImpl = new TituloServiceImpl();
+        CategoriaServiceImpl categoriaImpl = new CategoriaServiceImpl();
+        listatitulos = tituloImpl.retornarTitulos();
+
+        try {
+            DefaultTableModel modeloTable = new DefaultTableModel();
+            modeloTable.addColumn("Codigo");
+            modeloTable.addColumn("Nome");
+            modeloTable.addColumn("Gênero");
+            modeloTable.addColumn("Classe");
+            modeloTable.addColumn("Valor");
+            modeloTable.addColumn("Estoque");
+            modeloTable.addColumn("Distribuidor");
+            for (Titulo titulo : listatitulos) {
+                modeloTable.addRow(new Object[]{titulo.getId(), titulo.getNome(),
+                    titulo.getCategorias().getNome(), titulo.getClasses().getNome(), titulo.getClasses().getValor()});
+            }
+            telaListaFilme.setModel(modeloTable);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "leitura de dados "
+                    + "de titulo com problema..."
+                    + " erro: " + e);
+        }
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -137,12 +182,48 @@ public class TelaListaFilmes extends javax.swing.JFrame {
     }//GEN-LAST:event_sairActionPerformed
 
     private void telaListaFilmeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telaListaFilmeMouseClicked
-        // tela lista folme
-        TelaCadastroFilme cadastroFilme = new TelaCadastroFilme();
-        cadastroFilme.setVisible(true);                
+        Integer linhaSelecionada = telaListaFilme.getSelectedRow();
+        Integer valorCodigoSelecionado = (Integer) telaListaFilme.getValueAt(linhaSelecionada, 0);
+        String valorNomeSelecionado = (String) telaListaFilme.getValueAt(linhaSelecionada, 1);
+        String valorClasseFilme = (String) telaListaFilme.getValueAt(linhaSelecionada, 3);
+        MidiaServiceImpl midiaservice = new MidiaServiceImpl();
+        Integer nrMidias = midiaservice.nrMidiasTituloDisponiveis(valorCodigoSelecionado);
+        if (!nrMidias.equals(0)) {
+        refpai.setCodFilme(valorCodigoSelecionado);
+        refpai.setNomeFilme(valorNomeSelecionado);
+        refpai.setquantidadeMidias(nrMidias);
+        refpai.setIdMidiaSelecionada(midiaservice.idMidiaLocacao(valorCodigoSelecionado));
+        Date data = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(data);
+        
+
+        if (valorClasseFilme.equals("Super-Lançamento")) {
+            cal.add(Calendar.DAY_OF_MONTH, 1);
+            refpai.setDataDevolucao(cal);
+        } else if (valorClasseFilme.equals("Lançamento")) {
+            cal.add(Calendar.DAY_OF_MONTH, 2);
+            refpai.setDataDevolucao(cal);
+        } else if (valorClasseFilme.equals("Ouro")) {
+            cal.add(Calendar.DAY_OF_MONTH, 3);
+            refpai.setDataDevolucao(cal);
+        } else if (valorClasseFilme.equals("Prata")) {
+            cal.add(Calendar.DAY_OF_MONTH, 5);
+            refpai.setDataDevolucao(cal);
+        } else if (valorClasseFilme.equals("Bronze")) {
+            cal.add(Calendar.DAY_OF_MONTH, 7);
+            refpai.setDataDevolucao(cal);
+        } else {
+            cal.add(Calendar.DAY_OF_MONTH, 7);
+            refpai.setDataDevolucao(cal);
+        }
+        dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Não possui midias disponiveis para locação deste Filme!");
+        }
     }//GEN-LAST:event_telaListaFilmeMouseClicked
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;

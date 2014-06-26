@@ -1,19 +1,51 @@
-
-
 package br.com.fean.poo2.locadora.view.locar;
 
-import br.com.fean.poo2.locadora.view.consultar.TelaHistorico;
-import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
-import br.com.fean.poo2.locadora.view.consultar.TelaListaFilmes;
-
+import br.com.fean.poo2.locadora.view.consultar.*;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TelaLocacao extends javax.swing.JPanel {
+
+    private Integer idmidiaselecionada;
 
     /**
      * Creates new form TelaLocacao1
      */
     public TelaLocacao() {
         initComponents();
+    }
+
+    public void setCodCliente(Integer codigo) {
+        codigoCliente.setText(Integer.toString(codigo));
+    }
+
+    public void setNomeCliente(String nome) {
+        jTextField1.setText(nome);
+    }
+
+    public void setCodFilme(Integer codigo) {
+        codigoFilme.setText(Integer.toString(codigo));
+    }
+
+    public void setNomeFilme(String nome) {
+        jTextField4.setText(nome);
+    }
+
+    public void setDataDevolucao(Calendar cal) {
+        jcDataDevolucao.setCalendar(cal);
+    }
+
+    public void setquantidadeMidias(Integer nromidia) {
+        jTextField5.setText(Integer.toString(nromidia));
+    }
+
+    public void setIdMidiaSelecionada(Integer idmidiaselecionada) {
+        this.idmidiaselecionada = idmidiaselecionada;
+    }
+
+    public Integer getIdMidiaSelecinada() {
+        return this.idmidiaselecionada;
     }
 
     /**
@@ -37,10 +69,10 @@ public class TelaLocacao extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
+        jcDataDevolucao = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaListaLocacao = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
@@ -114,17 +146,14 @@ public class TelaLocacao extends javax.swing.JPanel {
 
         jLabel7.setText("Data Devolução:");
 
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
-            }
-        });
-
         jButton2.setText("Incluir");
 
         jLabel8.setText("Estoque:");
 
         jTextField5.setEnabled(false);
+
+        jcDataDevolucao.setEnabled(false);
+        jcDataDevolucao.setName("jcDataDevolucao"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -141,17 +170,17 @@ public class TelaLocacao extends javax.swing.JPanel {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(codigoFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jcDataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(431, 431, 431)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -160,13 +189,14 @@ public class TelaLocacao extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(codigoFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(codigoFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7))
+                    .addComponent(jcDataDevolucao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
@@ -322,20 +352,26 @@ public class TelaLocacao extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void codigoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoClienteMouseClicked
-        // chama a tela de lista de clientes
-        TelaListaCliente listaCliente = new TelaListaCliente();
-        listaCliente.setVisible(true);
+        TelaListaCliente listaCliente;
+        try {
+            listaCliente = new TelaListaCliente(TelaLocacao.this);
+            listaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_codigoClienteMouseClicked
 
     private void codigoFilmeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoFilmeMouseClicked
         // chama a tela de lista de filmes
-        TelaListaFilmes telaFilme = new TelaListaFilmes();
-        telaFilme.setVisible(true);
-    }//GEN-LAST:event_codigoFilmeMouseClicked
+        TelaListaFilmes telaFilme;
+        try {
+            telaFilme = new TelaListaFilmes();
+            telaFilme.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    }//GEN-LAST:event_codigoFilmeMouseClicked
 
     private void históricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_históricoActionPerformed
         // histórico
@@ -354,7 +390,6 @@ public class TelaLocacao extends javax.swing.JPanel {
     private javax.swing.JTextField codigoFilme;
     private javax.swing.JButton histórico;
     private javax.swing.JButton jButton2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -375,6 +410,7 @@ public class TelaLocacao extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField9;
+    private com.toedter.calendar.JDateChooser jcDataDevolucao;
     private javax.swing.JButton sair;
     private javax.swing.JTable tabelaListaLocacao;
     // End of variables declaration//GEN-END:variables

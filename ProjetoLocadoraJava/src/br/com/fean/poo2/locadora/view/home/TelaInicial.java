@@ -16,6 +16,8 @@ import br.com.fean.poo2.locadora.view.resevar.TelaReserva;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -292,8 +294,14 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void consultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaClienteActionPerformed
         // tela de lista de cliente
-        TelaListaCliente listaCliente = new TelaListaCliente();
-        listaCliente.setVisible(true);
+        TelaListaCliente listaCliente;
+        try {
+            listaCliente = new TelaListaCliente();
+            listaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_consultaClienteActionPerformed
 
     private void consultaDependenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaDependenteActionPerformed
@@ -304,8 +312,14 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void consultaFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaFilmeActionPerformed
         // tela lista filme
-        TelaListaFilmes listaFilme = new TelaListaFilmes();
-        listaFilme.setVisible(true);
+        TelaListaFilmes listaFilme;
+        try {
+            listaFilme = new TelaListaFilmes();
+            listaFilme.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_consultaFilmeActionPerformed
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed

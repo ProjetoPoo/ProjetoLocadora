@@ -2,6 +2,8 @@
 package br.com.fean.poo2.locadora.view.cadastro.dependente;
 
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TelaCadastroDependente extends javax.swing.JFrame {
 
@@ -558,38 +560,74 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
 
     private void codigoClienteo01MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoClienteo01MouseClicked
         // chama a tela de lista de clientes
-        TelaListaCliente listaCliente = new TelaListaCliente();
-        listaCliente.setVisible(true);
+        TelaListaCliente listaCliente;
+        try {
+            listaCliente = new TelaListaCliente();
+            listaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroDependente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_codigoClienteo01MouseClicked
 
     private void nomeCliente01MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeCliente01MouseClicked
         // chama a tela de lista de clientes
-        TelaListaCliente listaCliente = new TelaListaCliente();
-        listaCliente.setVisible(true);
+        TelaListaCliente listaCliente;
+        try {
+            listaCliente = new TelaListaCliente();
+            listaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroDependente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_nomeCliente01MouseClicked
 
     private void codigoCliente02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoCliente02MouseClicked
        // chama a tela de lista de clientes
-        TelaListaCliente listaCliente = new TelaListaCliente();
-        listaCliente.setVisible(true);
+        TelaListaCliente listaCliente;
+        try {
+            listaCliente = new TelaListaCliente();
+            listaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroDependente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_codigoCliente02MouseClicked
 
     private void nomeCliente02MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeCliente02MouseClicked
         // chama a tela de lista de clientes
-        TelaListaCliente listaCliente = new TelaListaCliente();
-        listaCliente.setVisible(true);
+        TelaListaCliente listaCliente;
+        try {
+            listaCliente = new TelaListaCliente();
+            listaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroDependente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_nomeCliente02MouseClicked
 
     private void codigoCliente03MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoCliente03MouseClicked
         // chama a tela de lista de clientes
-        TelaListaCliente listaCliente = new TelaListaCliente();
-        listaCliente.setVisible(true);
+        TelaListaCliente listaCliente;
+        try {
+            listaCliente = new TelaListaCliente();
+            listaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroDependente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_codigoCliente03MouseClicked
 
     private void nomeCliente03MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeCliente03MouseClicked
         // chama a tela de lista de clientes
-        TelaListaCliente listaCliente = new TelaListaCliente();
-        listaCliente.setVisible(true);
+        TelaListaCliente listaCliente;
+        try {
+            listaCliente = new TelaListaCliente();
+            listaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroDependente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_nomeCliente03MouseClicked
 
     
