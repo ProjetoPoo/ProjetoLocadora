@@ -216,7 +216,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "CPF", "Dependente", "Código" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome Titular", "Nome Dependente", "CPF Titular", "Código Titular" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

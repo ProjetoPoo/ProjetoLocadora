@@ -4,7 +4,6 @@ import br.com.fean.poo2.locadora.modelo.socio.*;
 import br.com.fean.poo2.locadora.util.EntityManagerUtil;
 import static br.com.fean.poo2.locadora.util.EntityManagerUtil.getEntityManager;
 import static com.mysql.jdbc.AbandonedConnectionCleanupThread.shutdown;
-import static com.sun.glass.ui.android.Activity.shutdown;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -96,12 +95,7 @@ public ArrayList<Socio> pesquisaSocioCPF(String cpf) throws Exception {
         return lista;
     }
 
-    private void close() throws InterruptedException {
-        if (getEntityManager().isOpen()) {
-            getEntityManager().close();
-        }
-       // shutdown();
-    }
+ 
     
     // método de retornar dados pelo cpf
     public Socio retornarSocio(int cpf) throws Exception{
@@ -152,8 +146,13 @@ public ArrayList<Socio> pesquisaSocioCPF(String cpf) throws Exception {
    }
     
     
-    
-    // método de fechhamento de conexão com o banco de dados
+    private void close() throws InterruptedException {
+
+        if (getEntityManager().isOpen()) {
+            getEntityManager().close();
+        }
+        shutdown();
+    }    
 
 
 }
