@@ -18,7 +18,7 @@ public class DistribuidorDAO {
         
         try {
             tx.begin();
-            entityManager.merge(distribuidor);
+            entityManager.persist(distribuidor);
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();

@@ -25,7 +25,7 @@ public class SocioDAO {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.merge(socio);
+            entityManager.persist(socio);
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();

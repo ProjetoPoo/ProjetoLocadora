@@ -21,7 +21,7 @@ public class CategoriaDAO {
 
         try {
             tx.begin();
-            entityManager.merge(categoria);
+            entityManager.persist(categoria);
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();

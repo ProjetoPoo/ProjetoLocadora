@@ -27,7 +27,7 @@ public class DependenteDAO {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            entityManager.merge(Dependente);
+            entityManager.persist(Dependente);
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();

@@ -21,7 +21,7 @@ public class ClasseDAO {
 
         try {
             tx.begin();
-            entityManager.merge(classe);
+            entityManager.persist(classe);
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();

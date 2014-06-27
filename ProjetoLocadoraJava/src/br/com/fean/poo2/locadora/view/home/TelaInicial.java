@@ -9,7 +9,7 @@ import br.com.fean.poo2.locadora.view.cadastro.funcionario.TelaCadastroFuncionar
 import br.com.fean.poo2.locadora.view.cadastro.midia.TelaCadastroMidia;
 import br.com.fean.poo2.locadora.view.cadastro.tipomidia.TelaCadastroTipoMidia;
 import br.com.fean.poo2.locadora.view.cadastro.titulo.TelaCadastroTitulo;
-import br.com.fean.poo2.locadora.view.cadastro.usuario.TelaCadastroUsuario;
+
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaDependente;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaFilmes;
@@ -55,7 +55,6 @@ public class TelaInicial extends javax.swing.JFrame {
             painelCardLayout.add(new TelaReserva(), "telaReserva");
             painelCardLayout.add(new TelaLocacao(), "telaLocacao");
             painelCardLayout.add(new TelaDevolucao(), "telaDevolucao");
-            painelCardLayout.add(new TelaCadastroUsuario(), "telaCadastroUsuario");
             painelCardLayout.add(new TelaCadastroFilme(), "telaCadastroFilme");
             painelCardLayout.add(new TelaCadastroDistribuidor(), "telaCadastroDistribuidor");
             painelCardLayout.add(new TelaCadastroCliente(), "telaCadastroCliente");
@@ -91,7 +90,6 @@ public class TelaInicial extends javax.swing.JFrame {
         cliente = new javax.swing.JMenuItem();
         distribuidor = new javax.swing.JMenuItem();
         filmes = new javax.swing.JMenuItem();
-        usuario = new javax.swing.JMenuItem();
         tipoMidia = new javax.swing.JMenuItem();
         funcionario = new javax.swing.JMenuItem();
         classe = new javax.swing.JMenuItem();
@@ -178,14 +176,6 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         cadastros.add(filmes);
-
-        usuario.setText("Usuário");
-        usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioActionPerformed(evt);
-            }
-        });
-        cadastros.add(usuario);
 
         tipoMidia.setText("Tipos de midia");
         tipoMidia.addActionListener(new java.awt.event.ActionListener() {
@@ -334,7 +324,7 @@ public class TelaInicial extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_consultaClienteActionPerformed
 
     private void consultaDependenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaDependenteActionPerformed
@@ -352,13 +342,8 @@ public class TelaInicial extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_consultaFilmeActionPerformed
 
-    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
-        // cadastro de usuario
-        cardLayout.show(painelCardLayout, "telaCadastroUsuario");
-    }//GEN-LAST:event_usuarioActionPerformed
+    }//GEN-LAST:event_consultaFilmeActionPerformed
 
     private void categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaActionPerformed
 
@@ -392,7 +377,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_MidiaActionPerformed
 
     private void tituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloActionPerformed
-       cardLayout.show(painelCardLayout, "telaCadastroTitulo");
+        cardLayout.show(painelCardLayout, "telaCadastroTitulo");
     }//GEN-LAST:event_tituloActionPerformed
 //........................................................................................................................
 
@@ -425,6 +410,5 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu sobre;
     private javax.swing.JMenuItem tipoMidia;
     private javax.swing.JMenuItem titulo;
-    private javax.swing.JMenuItem usuario;
     // End of variables declaration//GEN-END:variables
 }

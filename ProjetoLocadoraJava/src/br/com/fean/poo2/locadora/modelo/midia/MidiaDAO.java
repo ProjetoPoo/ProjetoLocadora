@@ -23,7 +23,7 @@ public class MidiaDAO {
 
         try {
             tx.begin();
-            entityManager.merge(midia);
+            entityManager.persist(midia);
             tx.commit();
         } catch (Throwable t) {
             t.printStackTrace();
