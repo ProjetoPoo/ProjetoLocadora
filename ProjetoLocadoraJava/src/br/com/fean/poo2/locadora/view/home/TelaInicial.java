@@ -11,7 +11,7 @@ import br.com.fean.poo2.locadora.view.cadastro.tipomidia.TelaCadastroTipoMidia;
 import br.com.fean.poo2.locadora.view.cadastro.titulo.TelaCadastroTitulo;
 
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
-import br.com.fean.poo2.locadora.view.consultar.TelaListaDependente;
+
 import br.com.fean.poo2.locadora.view.consultar.TelaListaFilmes;
 import br.com.fean.poo2.locadora.view.devolver.TelaDevolucao;
 import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
@@ -98,7 +98,6 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu8 = new javax.swing.JMenu();
         consultarCadastros = new javax.swing.JMenu();
         consultaCliente = new javax.swing.JMenuItem();
-        consultaDependente = new javax.swing.JMenuItem();
         consultaFilme = new javax.swing.JMenuItem();
         sobre = new javax.swing.JMenu();
         sair = new javax.swing.JMenu();
@@ -230,14 +229,6 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         consultarCadastros.add(consultaCliente);
 
-        consultaDependente.setText("Dependente");
-        consultaDependente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaDependenteActionPerformed(evt);
-            }
-        });
-        consultarCadastros.add(consultaDependente);
-
         consultaFilme.setText("Filmes");
         consultaFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,12 +318,6 @@ public class TelaInicial extends javax.swing.JFrame {
 
     }//GEN-LAST:event_consultaClienteActionPerformed
 
-    private void consultaDependenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaDependenteActionPerformed
-        // tela lista de dependetes
-        TelaListaDependente listaDependente = new TelaListaDependente();
-        listaDependente.setVisible(true);
-    }//GEN-LAST:event_consultaDependenteActionPerformed
-
     private void consultaFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaFilmeActionPerformed
         // tela lista filme
         TelaListaFilmes listaFilme;
@@ -388,7 +373,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem classe;
     private javax.swing.JMenuItem cliente;
     private javax.swing.JMenuItem consultaCliente;
-    private javax.swing.JMenuItem consultaDependente;
     private javax.swing.JMenuItem consultaFilme;
     private javax.swing.JMenu consultarCadastros;
     private javax.swing.JMenu devolucao;
