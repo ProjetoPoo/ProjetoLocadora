@@ -7,6 +7,8 @@
 package br.com.fean.poo2.locadora.view.devolver;
 
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -33,11 +35,11 @@ public class TelaDevolucao extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        codigoCliente = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        tfCodCliente = new javax.swing.JTextField();
+        tfNomeCliente = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
@@ -53,14 +55,14 @@ public class TelaDevolucao extends javax.swing.JPanel {
 
         jLabel1.setText("Código:");
 
-        codigoCliente.setEnabled(false);
-        codigoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        tfCodCliente.setEnabled(false);
+        tfCodCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                codigoClienteMouseClicked(evt);
+                tfCodClienteMouseClicked(evt);
             }
         });
 
-        jTextField1.setEnabled(false);
+        tfNomeCliente.setEnabled(false);
 
         jLabel2.setText("Nome:");
 
@@ -72,11 +74,11 @@ public class TelaDevolucao extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(codigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfCodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1)
+                .addComponent(tfNomeCliente)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -84,13 +86,13 @@ public class TelaDevolucao extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(codigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -106,7 +108,7 @@ public class TelaDevolucao extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabela);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Saldo a Pagar"));
 
@@ -206,15 +208,22 @@ public class TelaDevolucao extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void codigoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoClienteMouseClicked
+    private void tfCodClienteMouseClicked(java.awt.event.MouseEvent evt) {                                          
         // chama a tela de lista de clientes
-        TelaListaCliente listaCliente = new TelaListaCliente();
-        listaCliente.setVisible(true);
-    }//GEN-LAST:event_codigoClienteMouseClicked
+
+        TelaListaCliente listaCliente;
+        try {
+            listaCliente = new TelaListaCliente();
+            listaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaDevolucao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }                                          
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField codigoCliente;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
@@ -225,10 +234,11 @@ public class TelaDevolucao extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTable tabela;
+    private javax.swing.JTextField tfCodCliente;
+    private javax.swing.JTextField tfNomeCliente;
     // End of variables declaration//GEN-END:variables
 }

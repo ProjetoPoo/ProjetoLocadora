@@ -1,21 +1,26 @@
 package br.com.fean.poo2.locadora.view.home;
 
 import br.com.fean.poo2.locadora.view.cadastro.categoria.TelaCadastroCategoria;
+import br.com.fean.poo2.locadora.view.cadastro.classe.TelaCadastroClasse;
 import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
 import br.com.fean.poo2.locadora.view.cadastro.distribuidor.TelaCadastroDistribuidor;
 import br.com.fean.poo2.locadora.view.cadastro.filme.TelaCadastroFilme;
+import br.com.fean.poo2.locadora.view.cadastro.funcionario.TelaCadastroFuncionario;
+import br.com.fean.poo2.locadora.view.cadastro.midia.TelaCadastroMidia;
 import br.com.fean.poo2.locadora.view.cadastro.tipomidia.TelaCadastroTipoMidia;
-import br.com.fean.poo2.locadora.view.cadastro.usuario.TelaCadastroUsuario;
+import br.com.fean.poo2.locadora.view.cadastro.titulo.TelaCadastroTitulo;
+
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
-import br.com.fean.poo2.locadora.view.consultar.TelaListaDependente;
+
 import br.com.fean.poo2.locadora.view.consultar.TelaListaFilmes;
 import br.com.fean.poo2.locadora.view.devolver.TelaDevolucao;
-import br.com.fean.poo2.locadora.view.funcionario.TelaCadastroFuncionario;
 import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
 import br.com.fean.poo2.locadora.view.resevar.TelaReserva;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -42,12 +47,14 @@ public class TelaInicial extends javax.swing.JFrame {
             painelCardLayout = new JPanel();
             painelCardLayout.setLayout(cardLayout);
 
+            painelCardLayout.add(new TelaCadastroTitulo(), "telaCadastroTitulo");
+            painelCardLayout.add(new TelaCadastroMidia(), "telaCadastroMidia");
+            painelCardLayout.add(new TelaCadastroClasse(), "telaCadastroClasse");
             painelCardLayout.add(new TelaCadastroFuncionario(), "telaCadastroFuncionario");
             painelCardLayout.add(new TelaCadastroTipoMidia(), "telaCadastroTipoMidia");
             painelCardLayout.add(new TelaReserva(), "telaReserva");
             painelCardLayout.add(new TelaLocacao(), "telaLocacao");
             painelCardLayout.add(new TelaDevolucao(), "telaDevolucao");
-            painelCardLayout.add(new TelaCadastroUsuario(), "telaCadastroUsuario");
             painelCardLayout.add(new TelaCadastroFilme(), "telaCadastroFilme");
             painelCardLayout.add(new TelaCadastroDistribuidor(), "telaCadastroDistribuidor");
             painelCardLayout.add(new TelaCadastroCliente(), "telaCadastroCliente");
@@ -83,13 +90,14 @@ public class TelaInicial extends javax.swing.JFrame {
         cliente = new javax.swing.JMenuItem();
         distribuidor = new javax.swing.JMenuItem();
         filmes = new javax.swing.JMenuItem();
-        usuario = new javax.swing.JMenuItem();
         tipoMidia = new javax.swing.JMenuItem();
         funcionario = new javax.swing.JMenuItem();
+        classe = new javax.swing.JMenuItem();
+        Midia = new javax.swing.JMenuItem();
+        titulo = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         consultarCadastros = new javax.swing.JMenu();
         consultaCliente = new javax.swing.JMenuItem();
-        consultaDependente = new javax.swing.JMenuItem();
         consultaFilme = new javax.swing.JMenuItem();
         sobre = new javax.swing.JMenu();
         sair = new javax.swing.JMenu();
@@ -168,14 +176,6 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         cadastros.add(filmes);
 
-        usuario.setText("Usuário");
-        usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioActionPerformed(evt);
-            }
-        });
-        cadastros.add(usuario);
-
         tipoMidia.setText("Tipos de midia");
         tipoMidia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,6 +192,30 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         cadastros.add(funcionario);
 
+        classe.setText("Classe");
+        classe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classeActionPerformed(evt);
+            }
+        });
+        cadastros.add(classe);
+
+        Midia.setText("Midia");
+        Midia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MidiaActionPerformed(evt);
+            }
+        });
+        cadastros.add(Midia);
+
+        titulo.setText("Titulo");
+        titulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tituloActionPerformed(evt);
+            }
+        });
+        cadastros.add(titulo);
+
         jMenuBar1.add(cadastros);
         jMenuBar1.add(jMenu8);
 
@@ -204,14 +228,6 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         consultarCadastros.add(consultaCliente);
-
-        consultaDependente.setText("Dependente");
-        consultaDependente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaDependenteActionPerformed(evt);
-            }
-        });
-        consultarCadastros.add(consultaDependente);
 
         consultaFilme.setText("Filmes");
         consultaFilme.addActionListener(new java.awt.event.ActionListener() {
@@ -245,14 +261,14 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGap(0, 579, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(836, 584));
+        setSize(new java.awt.Dimension(916, 639));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -292,26 +308,27 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void consultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaClienteActionPerformed
         // tela de lista de cliente
-        TelaListaCliente listaCliente = new TelaListaCliente();
-        listaCliente.setVisible(true);
-    }//GEN-LAST:event_consultaClienteActionPerformed
+        TelaListaCliente listaCliente;
+        try {
+            listaCliente = new TelaListaCliente();
+            listaCliente.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-    private void consultaDependenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaDependenteActionPerformed
-        // tela lista de dependetes
-        TelaListaDependente listaDependente = new TelaListaDependente();
-        listaDependente.setVisible(true);
-    }//GEN-LAST:event_consultaDependenteActionPerformed
+    }//GEN-LAST:event_consultaClienteActionPerformed
 
     private void consultaFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaFilmeActionPerformed
         // tela lista filme
-        TelaListaFilmes listaFilme = new TelaListaFilmes();
-        listaFilme.setVisible(true);
-    }//GEN-LAST:event_consultaFilmeActionPerformed
+        TelaListaFilmes listaFilme;
+        try {
+            listaFilme = new TelaListaFilmes();
+            listaFilme.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
-        // cadastro de usuario
-        cardLayout.show(painelCardLayout, "telaCadastroUsuario");
-    }//GEN-LAST:event_usuarioActionPerformed
+    }//GEN-LAST:event_consultaFilmeActionPerformed
 
     private void categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaActionPerformed
 
@@ -329,20 +346,33 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_sobreMouseClicked
 
     private void tipoMidiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoMidiaActionPerformed
-       cardLayout.show(painelCardLayout, "telaCadastroTipoMidia");
+        cardLayout.show(painelCardLayout, "telaCadastroTipoMidia");
     }//GEN-LAST:event_tipoMidiaActionPerformed
 
     private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
-       cardLayout.show(painelCardLayout, "telaCadastroFuncionario");
+        cardLayout.show(painelCardLayout, "telaCadastroFuncionario");
     }//GEN-LAST:event_funcionarioActionPerformed
+
+    private void classeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classeActionPerformed
+        cardLayout.show(painelCardLayout, "telaCadastroClasse");
+    }//GEN-LAST:event_classeActionPerformed
+
+    private void MidiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MidiaActionPerformed
+        cardLayout.show(painelCardLayout, "telaCadastroMidia");
+    }//GEN-LAST:event_MidiaActionPerformed
+
+    private void tituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloActionPerformed
+        cardLayout.show(painelCardLayout, "telaCadastroTitulo");
+    }//GEN-LAST:event_tituloActionPerformed
 //........................................................................................................................
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Midia;
     private javax.swing.JMenu cadastros;
     private javax.swing.JMenuItem categoria;
+    private javax.swing.JMenuItem classe;
     private javax.swing.JMenuItem cliente;
     private javax.swing.JMenuItem consultaCliente;
-    private javax.swing.JMenuItem consultaDependente;
     private javax.swing.JMenuItem consultaFilme;
     private javax.swing.JMenu consultarCadastros;
     private javax.swing.JMenu devolucao;
@@ -363,6 +393,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu sair;
     private javax.swing.JMenu sobre;
     private javax.swing.JMenuItem tipoMidia;
-    private javax.swing.JMenuItem usuario;
+    private javax.swing.JMenuItem titulo;
     // End of variables declaration//GEN-END:variables
 }

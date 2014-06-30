@@ -4,18 +4,18 @@
  * and open the template in the editor.
  */
 
-package br.com.fean.poo2.locadora.view.funcionario;
+package br.com.fean.poo2.locadora.view.cadastro.classe;
 
 /**
  *
- * @author Linali
+ * @author Jaime Campos
  */
-public class TelaCadastroFuncionario extends javax.swing.JPanel {
+public class TelaCadastroClasse extends javax.swing.JPanel {
 
     /**
-     * Creates new form TelaCadastroFuncionario
+     * Creates new form TelaCadastroClasse
      */
-    public TelaCadastroFuncionario() {
+    public TelaCadastroClasse() {
         initComponents();
     }
 
@@ -32,11 +32,11 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

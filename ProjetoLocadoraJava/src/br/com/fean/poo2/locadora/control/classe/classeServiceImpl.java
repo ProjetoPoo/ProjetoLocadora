@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.com.fean.poo2.locadora.control.classe;
 
 import br.com.fean.poo2.locadora.modelo.classe.Classe;
@@ -12,24 +11,25 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Linali
+ * @author Filipe
  */
-public class classeServiceImpl {
-     ClasseDAO classeDAO = new ClasseDAO();
+public class classeServiceImpl implements classeService {
+
+    ClasseDAO classeDAO = new ClasseDAO();
 
     /**
      *
      * @param classe
      * @throws Exception
      */
-    public void inserirClasse(Classe classe) throws Exception{
-        if (classe.getNome().length()>3){
+    public void inserirClasse(Classe classe) throws Exception {
+        if (classe.getNome().length() > 3) {
             classeDAO.inserirClasse(classe);
         }
     }
 
     public void alterarClasse(Classe classe) throws Exception {
-            classeDAO.alterarClasse(classe);
+        classeDAO.alterarClasse(classe);
     }
 
     public void deletarClasse(Classe classe) throws Exception {
@@ -39,16 +39,9 @@ public class classeServiceImpl {
     public Classe retornarClasse(int id) throws Exception {
         return classeDAO.retornarClasse(id);
     }
-     
-    public Classe retornarClasse(String nome) throws Exception {
-        return classeDAO.retornarClasse(nome);
-    }
 
-   
-    public ArrayList<Classe> retornarClasses() throws Exception  {
+    public ArrayList<Classe> retornarClasses() throws Exception {
         return classeDAO.retornarClasses();
     }
-    
-}
 
-    
+}

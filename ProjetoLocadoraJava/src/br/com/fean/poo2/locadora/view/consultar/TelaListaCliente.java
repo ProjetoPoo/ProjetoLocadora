@@ -1,12 +1,160 @@
-
 package br.com.fean.poo2.locadora.view.consultar;
 
+import br.com.fean.poo2.locadora.control.dependente.DependenteServiceImpl;
+import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
+import br.com.fean.poo2.locadora.modelo.dependente.Dependente;
+import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
+import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
+import br.com.fean.poo2.locadora.modelo.socio.SocioDAO;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaListaCliente extends javax.swing.JFrame {
 
-    public TelaListaCliente() {
+    SocioDAO socioDao = new SocioDAO();
+
+    private TelaLocacao refpai;
+
+    public TelaListaCliente() throws Exception {
         initComponents();
+        carregaClientes();
+        //        preencherTabela();
+    }
+
+    public TelaListaCliente(TelaLocacao framepai) throws Exception {
+        initComponents();
+        carregaClientes();
+        //        preencherTabela();
+        refpai = framepai;
+    }
+
+    public void pesquisaFiltro() throws Exception {
+        if (jComboBox1.getSelectedIndex() == 0) {
+            ArrayList<Socio> listasocios = new ArrayList<Socio>();
+            SocioServiceImpl socioImpl = new SocioServiceImpl();
+            listasocios = socioImpl.pesquisaSocioNome(tfPesquisa.getText());
+
+            try {
+                DefaultTableModel modeloTable = new DefaultTableModel();
+                modeloTable.addColumn("Codigo");
+                modeloTable.addColumn("Nome");
+                modeloTable.addColumn("Endereço");
+                modeloTable.addColumn("Fone Res");
+                modeloTable.addColumn("Local Trabalho");
+                modeloTable.addColumn("CPF");
+                for (Socio socio : listasocios) {
+                    modeloTable.addRow(new Object[]{socio.getId(),
+                        socio.getNome(), socio.getEndereco(),
+                        socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
+                }
+                tabelaListaCliente.setModel(modeloTable);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "leitura de dados "
+                        + "de socio com problema..."
+                        + " erro: " + e);
+            }
+        }
+        if (jComboBox1.getSelectedIndex() == 0) {
+            ArrayList<Socio> listasocios = new ArrayList<Socio>();
+            SocioServiceImpl socioImpl = new SocioServiceImpl();
+            listasocios = socioImpl.pesquisaSocioNome(tfPesquisa.getText());
+
+            try {
+                DefaultTableModel modeloTable = new DefaultTableModel();
+                modeloTable.addColumn("Codigo");
+                modeloTable.addColumn("Nome");
+                modeloTable.addColumn("Endereço");
+                modeloTable.addColumn("Fone Res");
+                modeloTable.addColumn("Local Trabalho");
+                modeloTable.addColumn("CPF");
+                for (Socio socio : listasocios) {
+                    modeloTable.addRow(new Object[]{socio.getId(),
+                        socio.getNome(), socio.getEndereco(),
+                        socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
+                }
+                tabelaListaCliente.setModel(modeloTable);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "leitura de dados "
+                        + "de socio com problema..."
+                        + " erro: " + e);
+            }
+        }
+        if (jComboBox1.getSelectedIndex() == 1) {
+            ArrayList<Dependente> listadependentes = new ArrayList<Dependente>();
+            DependenteServiceImpl dependenteImpl = new DependenteServiceImpl();
+            listadependentes = dependenteImpl.pesquisaDependenteNome(tfPesquisa.getText());
+
+            try {
+                DefaultTableModel modeloTable = new DefaultTableModel();
+                modeloTable.addColumn("Codigo");
+                modeloTable.addColumn("Nome Dependente");
+                for (Dependente dependente : listadependentes) {
+                    modeloTable.addRow(new Object[]{dependente.getId(),
+                        dependente.getNome()});
+                }
+                tabelaListaCliente.setModel(modeloTable);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "leitura de dados "
+                        + "de socio com problema..."
+                        + " erro: " + e);
+            }
+        }
+        if (jComboBox1.getSelectedIndex() == 3) {
+            ArrayList<Socio> listasocios = new ArrayList<Socio>();
+            SocioServiceImpl socioImpl = new SocioServiceImpl();
+            listasocios = socioImpl.pesquisaSocioCodigo(Integer.parseInt(tfPesquisa.getText()));
+
+            try {
+                DefaultTableModel modeloTable = new DefaultTableModel();
+                modeloTable.addColumn("Codigo");
+                modeloTable.addColumn("Nome");
+                modeloTable.addColumn("Endereço");
+                modeloTable.addColumn("Fone Res");
+                modeloTable.addColumn("Local Trabalho");
+                modeloTable.addColumn("CPF");
+                for (Socio socio : listasocios) {
+                    modeloTable.addRow(new Object[]{socio.getId(),
+                        socio.getNome(), socio.getEndereco(),
+                        socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
+                }
+                tabelaListaCliente.setModel(modeloTable);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "leitura de dados "
+                        + "de socio com problema..."
+                        + " erro: " + e);
+            }
+        }
+    }
+
+    public void carregaClientes() throws Exception {
+        ArrayList<Socio> listasocios = new ArrayList<Socio>();
+        SocioServiceImpl socioImpl = new SocioServiceImpl();
+        listasocios = socioImpl.retornarSocios();
+
+        try {
+            DefaultTableModel modeloTable = new DefaultTableModel();
+            modeloTable.addColumn("Codigo");
+            modeloTable.addColumn("Nome");
+            modeloTable.addColumn("Endereço");
+            modeloTable.addColumn("Fone Res");
+            modeloTable.addColumn("Local Trabalho");
+            modeloTable.addColumn("CPF");
+            for (Socio socio : listasocios) {
+                modeloTable.addRow(new Object[]{socio.getId(),
+                    socio.getNome(), socio.getEndereco(),
+                    socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
+            }
+            tabelaListaCliente.setModel(modeloTable);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "leitura de dados "
+                    + "de socio com problema..."
+                    + " erro: " + e);
+        }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -15,7 +163,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        tfPesquisa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaListaCliente = new javax.swing.JTable();
         sair = new javax.swing.JButton();
@@ -26,6 +174,11 @@ public class TelaListaCliente extends javax.swing.JFrame {
         jLabel1.setText("Lista de Clientes");
 
         jButton1.setText("Pesquisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         tabelaListaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -63,7 +216,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome", "CPF", "Dependente", "Código" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome Titular", "Nome Dependente", "CPF Titular", "Código Titular" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,7 +229,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -96,7 +249,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -115,20 +268,62 @@ public class TelaListaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_sairActionPerformed
 
     private void tabelaListaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaListaClienteMouseClicked
-        // tabela de clientes
-        TelaCadastroCliente cadastroCliente = new TelaCadastroCliente();
-        cadastroCliente.setVisible(true);
+        Integer linhaSelecionada = tabelaListaCliente.getSelectedRow();
+        Integer valorCodigoSelecionado = (Integer) tabelaListaCliente.getValueAt(linhaSelecionada, 0);
+        String valorNomeSelecionado = (String) tabelaListaCliente.getValueAt(linhaSelecionada, 1);
+        refpai.setCodCliente(valorCodigoSelecionado);
+        refpai.setNomeCliente(valorNomeSelecionado);
+        dispose();
     }//GEN-LAST:event_tabelaListaClienteMouseClicked
 
-    
+    private void preencherTabela() {
+
+        ArrayList<Socio> lista = new ArrayList<>();
+
+        try {
+            lista = socioDao.retornarTodosSocio();
+        } catch (Exception ex) {
+            Logger.getLogger(TelaListaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        DefaultTableModel modelo = (DefaultTableModel) tabelaListaCliente.getModel();
+        modelo.setRowCount(0);
+
+        try {
+
+            for (int i = 0; i < lista.size(); i++) {
+                modelo.addRow(new Object[]{
+                    lista.get(i).getId(),
+                    lista.get(i).getNome(),});
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao preencher tabela! \n \n ERRO: " + ex);
+        }
+
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            pesquisaFiltro();
+        
+
+
+
+} catch (Exception ex) {
+            Logger.getLogger(TelaListaCliente.class  
+
+.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton sair;
     private javax.swing.JTable tabelaListaCliente;
+    private javax.swing.JTextField tfPesquisa;
     // End of variables declaration//GEN-END:variables
 }
