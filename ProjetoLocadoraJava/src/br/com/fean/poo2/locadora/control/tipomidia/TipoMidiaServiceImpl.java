@@ -22,36 +22,37 @@ public class TipoMidiaServiceImpl implements TipoMidiaService {
     @Override
     public void inserirTipoMidia(TipoMidia tipomidia) throws Exception {
         if (tipomidia.getNome().length() > 2) {
-            
             tipomidiaDAO.inserirTipoMidia(tipomidia);
         }
-        
-        
     }
 
     @Override
     public void alterarTipoMidia(TipoMidia tipomidia) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //TipoMidia tipomidia2 = new TipoMidia();
+        //tipomidia2.setId(tipomidia.getId());
+        //tipomidia2.setNome(tipomidia.getNome());
+        tipomidiaDAO.alterarTipoMidia(tipomidia);
+        
     }
 
     @Override
     public void deletarTipoMidia(TipoMidia tipomidia) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        tipomidiaDAO.deletarCurso(tipomidia);
     }
 
     @Override
     public TipoMidia retornarTipoMidia(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return tipomidiaDAO.retornarTipoMidia(id);
     }
 
     @Override
     public TipoMidia retornarTipoMidia(String nome) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return tipomidiaDAO.retornarTipoMidia(nome);
     }
 
     @Override
     public ArrayList<TipoMidia> retornarTipoMidia() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return tipomidiaDAO.retornarTipoMidias();
     }
     
     
