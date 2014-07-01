@@ -1,1 +1,0 @@
-alter table locacao_midia add column dt_prev_devolucao date;
