@@ -1,11 +1,10 @@
 package br.com.fean.poo2.locadora.modelo.locacaomidia;
-// Generated 19/06/2014 18:08:01 by Hibernate Tools 3.6.0
+// Generated 01/07/2014 09:45:20 by Hibernate Tools 3.6.0
 
 
-
-
-import br.com.fean.poo2.locadora.modelo.midia.Midia;
 import br.com.fean.poo2.locadora.modelo.locacao.Locacao;
+import br.com.fean.poo2.locadora.modelo.midia.Midia;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,6 +18,7 @@ public class LocacaoMidia  implements java.io.Serializable {
      private Locacao locacao;
      private Midia midias;
      private Boolean pago;
+     private Date dtPrevDevolucao;
      private Set devolucaos = new HashSet(0);
 
     public LocacaoMidia() {
@@ -29,10 +29,12 @@ public class LocacaoMidia  implements java.io.Serializable {
         this.locacao = locacao;
         this.midias = midias;
     }
-    public LocacaoMidia(Locacao locacao, Midia midias, Boolean pago, Set devolucaos) {
+    
+    public LocacaoMidia(Locacao locacao, Midia midias, Boolean pago, Date dtPrevDevolucao, Set devolucaos) {
        this.locacao = locacao;
        this.midias = midias;
        this.pago = pago;
+       this.dtPrevDevolucao = dtPrevDevolucao;
        this.devolucaos = devolucaos;
     }
    
@@ -63,6 +65,13 @@ public class LocacaoMidia  implements java.io.Serializable {
     
     public void setPago(Boolean pago) {
         this.pago = pago;
+    }
+    public Date getDtPrevDevolucao() {
+        return this.dtPrevDevolucao;
+    }
+    
+    public void setDtPrevDevolucao(Date dtPrevDevolucao) {
+        this.dtPrevDevolucao = dtPrevDevolucao;
     }
     public Set getDevolucaos() {
         return this.devolucaos;

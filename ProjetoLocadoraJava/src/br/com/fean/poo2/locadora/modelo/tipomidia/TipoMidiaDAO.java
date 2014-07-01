@@ -87,7 +87,7 @@ public class TipoMidiaDAO {
     
     public ArrayList<TipoMidia> retornarTipoMidias() throws Exception {
         ArrayList<TipoMidia> lista = new ArrayList<TipoMidia>();
-        Query query = entityManager.createQuery("select x from tipo_midias x");
+        Query query = entityManager.createQuery("select x from TipoMidia x");
         lista = (ArrayList<TipoMidia>) query.getResultList();
         return lista;
     }
