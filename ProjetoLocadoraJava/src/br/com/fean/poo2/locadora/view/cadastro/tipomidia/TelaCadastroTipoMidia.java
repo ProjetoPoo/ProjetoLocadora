@@ -1,11 +1,83 @@
 package br.com.fean.poo2.locadora.view.cadastro.tipomidia;
 
-public class TelaCadastroTipoMidia extends javax.swing.JPanel {
+import br.com.fean.poo2.locadora.control.categoria.CategoriaServiceImpl;
+import br.com.fean.poo2.locadora.control.tipomidia.TipoMidiaServiceImpl;
+import br.com.fean.poo2.locadora.modelo.tipomidia.TipoMidia;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
+public class TelaCadastroTipoMidia extends javax.swing.JPanel {
+    
+    private int idControle = 0;
+    TipoMidiaServiceImpl tipomidiaserviceimpl = new TipoMidiaServiceImpl();
+    
+    
     public TelaCadastroTipoMidia() {
         initComponents();
+        retornarTodosTipoMidia();
+        desabilitarBotoes();
+        bloquearCamposTexto();
 
     }
+    
+    public void retornarTodosTipoMidia() {
+
+        ArrayList<TipoMidia> lista = new ArrayList<TipoMidia>();
+        try {
+            lista = (tipomidiaserviceimpl.retornarTipoMidia());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao retornar tipos de mídia! \n \n ERRO: " + ex);
+        }
+        carregarDadosTabela(lista);
+    }
+    public void carregarDadosTabela(ArrayList<TipoMidia> lista) {
+
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setRowCount(0);
+
+        try {
+
+            for (int i = 0; i < lista.size(); i++) {
+                modelo.addRow(new Object[]{
+                    lista.get(i).getId(),
+                    lista.get(i).getNome(),});
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao preencher tabela! \n \n ERRO: " + ex);
+        }
+    }
+    
+    public void desabilitarBotoes() {
+        btnCancelar.setVisible(false);
+        btnExcluir.setVisible(false);
+        btnSalvar.setVisible(false);
+    }
+
+    public void bloquearCamposTexto() {
+        txtNome.setEnabled(false);
+    }
+    
+    public void editarCamposTexto() {
+        txtNome.setEnabled(true);
+
+        txtNome.setBackground(new java.awt.Color(255, 255, 255));
+
+    }
+
+    public void habilitarBotoes() {
+        btnCancelar.setVisible(true);
+        btnExcluir.setVisible(true);
+        btnSalvar.setVisible(true);
+    }
+    
+    public void limparCamposTexto() {
+        txtCodigo.setText("");
+        txtNome.setText("");
+
+    }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -60,6 +132,11 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
                 btnNovoMouseClicked(evt);
             }
         });
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.setToolTipText("Salvar");
@@ -74,6 +151,11 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
         btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnExcluirMouseClicked(evt);
+            }
+        });
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -181,7 +263,16 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
 
+        idControle = Integer.parseInt(modelo.getValueAt(tabela.getSelectedRow(), 0).toString());
+
+        txtCodigo.setText(modelo.getValueAt(tabela.getSelectedRow(), 0).toString());
+
+        txtNome.setText(modelo.getValueAt(tabela.getSelectedRow(), 1).toString());
+
+        editarCamposTexto();
+        habilitarBotoes();
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void btnNovoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseClicked
@@ -198,8 +289,35 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
     }//GEN-LAST:event_btnExcluirMouseClicked
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
+        limparCamposTexto();
+        bloquearCamposTexto();
+        desabilitarBotoes();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        idControle = 0;
+        limparCamposTexto();
+        editarCamposTexto();
+        btnSalvar.setVisible(true);
+        btnCancelar.setVisible(true);
+        btnExcluir.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
+            //JOptionPane.showMessageDialog(null, "ERRO: " + controle);
+            try {
+                tipomidiaserviceimpl.deletarTipoMidia(tipomidiaserviceimpl.retornarTipoMidia(idControle));
+                JOptionPane.showMessageDialog(null, "Registro excluido!");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao excluir registro! \n \n ERRO: " + ex);
+            }
+        }
+        retornarTodosTipoMidia();
+        limparCamposTexto();
+        desabilitarBotoes();
+        bloquearCamposTexto();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
