@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public interface classeService {
 
-    public void inserirClasse(Classe classe) throws Exception;
+    public void inserirClasse(Integer id, String nome, Double valor, Integer diasdevolucao) throws Exception;
 
-    public void alterarClasse(Classe classe) throws Exception;
+    public void alterarClasse(Integer id, String nome, Double valor, Integer diasdevolucao) throws Exception;
 
     public void deletarClasse(Classe classe) throws Exception;
 

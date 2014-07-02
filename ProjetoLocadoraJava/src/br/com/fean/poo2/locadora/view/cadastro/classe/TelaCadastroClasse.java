@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.com.fean.poo2.locadora.view.cadastro.classe;
+
+import br.com.fean.poo2.locadora.control.classe.classeServiceImpl;
+import br.com.fean.poo2.locadora.modelo.classe.Classe;
 
 /**
  *
@@ -28,19 +30,225 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelClasse = new javax.swing.JPanel();
+        nome = new javax.swing.JLabel();
+        nome1 = new javax.swing.JLabel();
+        txtValorOuro = new javax.swing.JTextField();
+        nome2 = new javax.swing.JLabel();
+        cmbDiasOuro = new javax.swing.JComboBox();
+        nome3 = new javax.swing.JLabel();
+        txtValorPrata = new javax.swing.JTextField();
+        cmbDiasPrata = new javax.swing.JComboBox();
+        nome4 = new javax.swing.JLabel();
+        txtValorBronze = new javax.swing.JTextField();
+        cmbDiasBronze = new javax.swing.JComboBox();
+        btnNovo = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+
+        jPanelClasse.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro Classe"));
+
+        nome.setText("Ouro");
+
+        nome1.setText("Valor");
+
+        nome2.setText("Dias devolução");
+
+        cmbDiasOuro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07" }));
+
+        nome3.setText("Prata");
+
+        cmbDiasPrata.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07" }));
+
+        nome4.setText("Bronze");
+
+        cmbDiasBronze.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07" }));
+
+        javax.swing.GroupLayout jPanelClasseLayout = new javax.swing.GroupLayout(jPanelClasse);
+        jPanelClasse.setLayout(jPanelClasseLayout);
+        jPanelClasseLayout.setHorizontalGroup(
+            jPanelClasseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClasseLayout.createSequentialGroup()
+                .addGroup(jPanelClasseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelClasseLayout.createSequentialGroup()
+                        .addGroup(jPanelClasseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelClasseLayout.createSequentialGroup()
+                                .addGap(236, 236, 236)
+                                .addComponent(nome1))
+                            .addGroup(jPanelClasseLayout.createSequentialGroup()
+                                .addGap(143, 143, 143)
+                                .addComponent(nome)
+                                .addGap(60, 60, 60)
+                                .addComponent(txtValorOuro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanelClasseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbDiasOuro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nome2)))
+                    .addGroup(jPanelClasseLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanelClasseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanelClasseLayout.createSequentialGroup()
+                                .addComponent(nome4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtValorBronze, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addComponent(cmbDiasBronze, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelClasseLayout.createSequentialGroup()
+                                .addComponent(nome3)
+                                .addGap(60, 60, 60)
+                                .addComponent(txtValorPrata, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addComponent(cmbDiasPrata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(35, 35, 35)))
+                .addContainerGap(127, Short.MAX_VALUE))
+        );
+        jPanelClasseLayout.setVerticalGroup(
+            jPanelClasseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelClasseLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelClasseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nome1)
+                    .addComponent(nome2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelClasseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nome)
+                    .addComponent(txtValorOuro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbDiasOuro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelClasseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nome3)
+                    .addComponent(txtValorPrata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbDiasPrata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelClasseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nome4)
+                    .addComponent(txtValorBronze, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbDiasBronze, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnDeletar.setText("Deletar");
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanelClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(btnNovo)
+                        .addGap(3, 3, 3)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(btnDeletar)
+                        .addGap(13, 13, 13)
+                        .addComponent(btnCancelar)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jPanelClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNovo)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnDeletar)
+                    .addComponent(btnCancelar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanelClasse.getAccessibleContext().setAccessibleName("Cadastro Classe");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        classeServiceImpl classeSI = new classeServiceImpl();
+        /*try {
+
+            classeSI.inserirClasse(null, txtNome.getText(), new Double(txtValorOuro.getText()), new Integer(cmbDiasOuro.getSelectedItem().toString()));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }*/
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        classeServiceImpl classeSI = new classeServiceImpl();
+        try {
+
+            classeSI.alterarClasse(0, "Ouro", new Double(txtValorOuro.getText()), new Integer(cmbDiasOuro.getSelectedItem().toString()));
+            classeSI.alterarClasse(1, "Prata", new Double(txtValorOuro.getText()), new Integer(cmbDiasOuro.getSelectedItem().toString()));
+            classeSI.alterarClasse(2, "Bronze", new Double(txtValorOuro.getText()), new Integer(cmbDiasOuro.getSelectedItem().toString()));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        classeServiceImpl classeSI = new classeServiceImpl();
+        /* try {
+
+           Classe c = new Classe();
+            c.setId(new Integer(txtCodigo.getText()));
+
+            classeSI.deletarClasse(c);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }*/
+    }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox cmbDiasBronze;
+    private javax.swing.JComboBox cmbDiasOuro;
+    private javax.swing.JComboBox cmbDiasPrata;
+    private javax.swing.JPanel jPanelClasse;
+    private javax.swing.JLabel nome;
+    private javax.swing.JLabel nome1;
+    private javax.swing.JLabel nome2;
+    private javax.swing.JLabel nome3;
+    private javax.swing.JLabel nome4;
+    private javax.swing.JTextField txtValorBronze;
+    private javax.swing.JTextField txtValorOuro;
+    private javax.swing.JTextField txtValorPrata;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,9 +1,12 @@
 package br.com.fean.poo2.locadora.control.midia;
 
 import br.com.fean.poo2.locadora.control.midia.*;
-import br.com.fean.poo2.locadora.control.midia.*;
+import br.com.fean.poo2.locadora.modelo.distribuidor.Distribuidor;
 import br.com.fean.poo2.locadora.modelo.midia.*;
+import br.com.fean.poo2.locadora.modelo.tipomidia.TipoMidia;
+import br.com.fean.poo2.locadora.modelo.titulo.Titulo;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,24 +14,36 @@ public class MidiaServiceImpl implements MidiaService {
 
     MidiaDAO midiaDAO = new MidiaDAO();
 
-/*    @Override
-    public void inserirMidia(Midia midia) {
-        if (midia.getNome().length() > 3) {
-            try {
-                midiaDAO.inserirMidia(midia);
-            } catch (Exception ex) {
-                Logger.getLogger(MidiaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    @Override
+    public void inserirMidia(Integer id, Titulo titulos, TipoMidia tipoMidias, Distribuidor distribuidores, Integer situacao, Date dataaquisicao, String nrserie) throws Exception {
+        if (titulos.getNome().length() > 3) {
+            Midia midia = new Midia();
+            midia.setId(id);
+            midia.setTitulos(titulos);
+            midia.setTipoMidias(tipoMidias);
+            midia.setDistribuidores(distribuidores);
+            midia.setSituacao(situacao);
+            midia.setDataaquisicao(dataaquisicao);
+            midia.setNrserie(nrserie);
+
+            midiaDAO.inserirMidia(midia);
+
         }
     }
-*/
-    @Override
-    public void alterarMidia(Midia midia) {
-        try {
-            midiaDAO.alterarMidia(midia);
-        } catch (Exception ex) {
-            Logger.getLogger(MidiaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+    public void alterarMidia(Integer id, Titulo titulos, TipoMidia tipoMidias, Distribuidor distribuidores, Integer situacao, Date dataaquisicao, String nrserie) throws Exception {
+
+        Midia midia = new Midia();
+        midia.setId(id);
+        midia.setTitulos(titulos);
+        midia.setTipoMidias(tipoMidias);
+        midia.setDistribuidores(distribuidores);
+        midia.setSituacao(situacao);
+        midia.setDataaquisicao(dataaquisicao);
+        midia.setNrserie(nrserie);
+
+        midiaDAO.alterarMidia(midia);
+
     }
 
     @Override
@@ -50,7 +65,7 @@ public class MidiaServiceImpl implements MidiaService {
         }
         return midias;
     }
-    
+
     @Override
     public Integer nrMidiasTituloDisponiveis(Integer codtitulo) {
         ArrayList<Midia> midias = new ArrayList<Midia>();
@@ -63,10 +78,10 @@ public class MidiaServiceImpl implements MidiaService {
         for (Midia midia : midias) {
             contador++;
         }
-        
+
         return contador;
     }
-    
+
     public Integer idMidiaLocacao(Integer codtitulo) {
         ArrayList<Midia> midias = new ArrayList<Midia>();
         Integer contador = new Integer(0);
@@ -79,7 +94,7 @@ public class MidiaServiceImpl implements MidiaService {
         for (Midia midia : midias) {
             contador = midia.getId();
         }
-        
+
         return contador;
     }
 
@@ -93,7 +108,7 @@ public class MidiaServiceImpl implements MidiaService {
         }
         return midias;
     }
-    
+
     @Override
     public Midia retornaMidia(Integer idmidia) {
         ArrayList<Midia> midias = new ArrayList<Midia>();

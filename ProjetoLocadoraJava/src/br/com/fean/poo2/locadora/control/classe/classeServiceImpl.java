@@ -22,13 +22,27 @@ public class classeServiceImpl implements classeService {
      * @param classe
      * @throws Exception
      */
-    public void inserirClasse(Classe classe) throws Exception {
-        if (classe.getNome().length() > 3) {
+    public void inserirClasse(Integer id, String nome, Double valor, Integer diasdevolucao) throws Exception {
+        if (nome.length() > 3) {
+
+            Classe classe = new Classe();
+            classe.setId(id);
+            classe.setNome(nome);
+            classe.setValor(valor);
+            classe.setDiasdevolucao(diasdevolucao);
+
             classeDAO.inserirClasse(classe);
         }
     }
 
-    public void alterarClasse(Classe classe) throws Exception {
+    public void alterarClasse(Integer id, String nome, Double valor, Integer diasdevolucao) throws Exception {
+        
+        Classe classe = new Classe();
+        classe.setId(id);
+        classe.setNome(nome);
+        classe.setValor(valor);
+        classe.setDiasdevolucao(diasdevolucao);
+        
         classeDAO.alterarClasse(classe);
     }
 
