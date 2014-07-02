@@ -4,7 +4,11 @@ import br.com.fean.poo2.locadora.control.midia.MidiaServiceImpl;
 import br.com.fean.poo2.locadora.modelo.locacaomidia.LocacaoMidia;
 import br.com.fean.poo2.locadora.modelo.midia.Midia;
 import br.com.fean.poo2.locadora.view.consultar.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -13,9 +17,55 @@ import javax.swing.table.DefaultTableModel;
 public class TelaLocacao extends javax.swing.JPanel {
 
     private Integer idmidiaselecionada;
+    private ArrayList<LocacaoMidia> locacaofilmes = new ArrayList<LocacaoMidia>();
 
     public TelaLocacao() {
         initComponents();
+        carregaListaLocacao();
+    }
+
+    public void carregaListaLocacao() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date datalocacao = new Date();
+        Double valorfilme = 0.0;
+        Double totalapagar = 0.0;
+        try {
+            DefaultTableModel modeloTable = new DefaultTableModel();
+            modeloTable.addColumn("Codigo");
+            modeloTable.addColumn("Titulo");
+            modeloTable.addColumn("Data Locação");
+            modeloTable.addColumn("Data Devolução");
+            modeloTable.addColumn("Valor");
+            
+            for (LocacaoMidia locacaoMidia : locacaofilmes) {
+            if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Super-Lançamento")) {
+                valorfilme = 7.00;
+            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Lançamento")) {
+                valorfilme = 5.00;
+            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Ouro")) {
+                valorfilme = 4.00;
+            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Prata")) {
+                valorfilme = 3.00;
+            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Bronze")) {
+                valorfilme = 2.00;
+            } else {
+                valorfilme = 7.00;
+            }
+            totalapagar = totalapagar + valorfilme;
+            modeloTable.addRow(new Object[]{
+                locacaoMidia.getMidias().getTitulos().getId(),
+                locacaoMidia.getMidias().getTitulos().getNome(),
+                dateFormat.format(datalocacao),
+                dateFormat.format(locacaoMidia.getDtPrevDevolucao()),
+                valorfilme});
+            }
+            tabelaListaLocacao.setModel(modeloTable);
+            jTextField3.setText(String.valueOf(totalapagar));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "leitura de dados "
+                    + "de locação com problema..."
+                    + " erro: ");
+        }
     }
 
     public void setCodCliente(Integer codigo) {
@@ -153,7 +203,6 @@ public class TelaLocacao extends javax.swing.JPanel {
 
         jTextField5.setEnabled(false);
 
-        jcDataDevolucao.setEnabled(false);
         jcDataDevolucao.setName("jcDataDevolucao"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -377,24 +426,9 @@ public class TelaLocacao extends javax.swing.JPanel {
         LocacaoMidia locacaomidia = new LocacaoMidia();
         locacaomidia.setMidias(midia);
         locacaomidia.setPago(false);
-        System.out.println(midia.getId());
-        System.out.println(idmidiaselecionada);
-        
-        try {
-            DefaultTableModel modeloTable = new DefaultTableModel();
-            modeloTable.addColumn("Codigo");
-            modeloTable.addColumn("Titulo");
-            modeloTable.addColumn("Data Locação");
-            modeloTable.addColumn("Data Devolução");
-            modeloTable.addColumn("Valor");
-            modeloTable.addRow(new Object[]{
-            codigoFilme.getText(), jTextField4.getText()});
-            tabelaListaLocacao.setModel(modeloTable);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "leitura de dados "
-                    + "de locação com problema..."
-                    + " erro: ");
-        }
+        locacaomidia.setDtPrevDevolucao(jcDataDevolucao.getDate());
+        locacaofilmes.add(locacaomidia);
+        carregaListaLocacao();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
