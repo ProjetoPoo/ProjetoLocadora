@@ -36,6 +36,11 @@ public class SocioServiceImpl implements SocioService {
     public Socio retornarSocio(int cpf) throws Exception {
         return socioDAO.retornarSocio(cpf);
     }
+    
+    @Override
+    public Socio retornarSocioId(int id) throws Exception {
+        return socioDAO.retornarSocio(id);
+    }
 
     @Override
     public Socio retornarSocio(String nome) throws Exception {

@@ -19,7 +19,7 @@ public interface SocioService {
     public ArrayList<Socio> retornarSocios(); 
     
 
-    
+    public Socio retornarSocioId(int id) throws Exception;
     // retorna dados pelo CPF
     public Socio retornarSocio(int cpf) throws Exception;
     // retorna dados pelo NOME

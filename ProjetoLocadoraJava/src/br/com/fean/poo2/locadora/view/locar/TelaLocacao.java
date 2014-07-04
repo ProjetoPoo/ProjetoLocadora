@@ -1,8 +1,13 @@
 package br.com.fean.poo2.locadora.view.locar;
 
+import br.com.fean.poo2.locadora.control.funcionario.funcionarioServiceImpl;
 import br.com.fean.poo2.locadora.control.midia.MidiaServiceImpl;
+import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
+import br.com.fean.poo2.locadora.modelo.funcionario.Funcionario;
+import br.com.fean.poo2.locadora.modelo.locacao.Locacao;
 import br.com.fean.poo2.locadora.modelo.locacaomidia.LocacaoMidia;
 import br.com.fean.poo2.locadora.modelo.midia.Midia;
+import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.view.consultar.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -18,6 +23,7 @@ public class TelaLocacao extends javax.swing.JPanel {
 
     private Integer idmidiaselecionada;
     private ArrayList<LocacaoMidia> locacaofilmes = new ArrayList<LocacaoMidia>();
+    private Locacao locacao = new Locacao();
 
     public TelaLocacao() {
         initComponents();
@@ -416,7 +422,22 @@ public class TelaLocacao extends javax.swing.JPanel {
     }//GEN-LAST:event_codigoFilmeMouseClicked
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // botão salvar
+        Date data = new Date();
+        Funcionario funcionario = new Funcionario();
+        Socio socio = new Socio();
+        SocioServiceImpl socioimpl = new SocioServiceImpl();
+        funcionarioServiceImpl funcimpl = new funcionarioServiceImpl();
+        try {
+            funcionario = funcimpl.retornarFuncionario(1);
+            socio = socioimpl.retornarSocioId(Integer.valueOf(codigoCliente.getText()));
+            locacao.setFuncionarios(funcionario);
+            locacao.setDtLocacao(data);
+            locacao.setSocios(socio);
+            locacao.setValortotal(Double.valueOf(jTextField3.getText()));
+        } catch (Exception ex) {
+            Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
