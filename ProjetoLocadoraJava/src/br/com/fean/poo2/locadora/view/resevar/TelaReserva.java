@@ -7,12 +7,16 @@
 package br.com.fean.poo2.locadora.view.resevar;
 
 import br.com.fean.poo2.locadora.view.consultar.TelaListaFilmes;
+import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Jaime Campos
  */
 public class TelaReserva extends javax.swing.JPanel {
+    private Integer idmidiaselecionada;
 
 
     public TelaReserva() {
@@ -280,13 +284,12 @@ public class TelaReserva extends javax.swing.JPanel {
         jTextField4.setText(null);
         jTextField5.setText(null);
         jcDataDevolucao.setCalendar(null);
- /*       idmidiaselecionada = 0;
         try {
-            telaFilme = new TelaListaFilmes(TelaLocacao.this);
+            telaFilme = new TelaListaFilmes(TelaReserva.this);
             telaFilme.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
-        } */
+        } 
     }//GEN-LAST:event_codigoFilmeMouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
