@@ -170,8 +170,6 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu8">
-        </Menu>
         <Menu class="javax.swing.JMenu" name="consultarCadastros">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar"/>
