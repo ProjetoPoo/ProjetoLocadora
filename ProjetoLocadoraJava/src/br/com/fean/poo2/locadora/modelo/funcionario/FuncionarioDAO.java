@@ -92,6 +92,7 @@ EntityTransaction tx = entityManager.getTransaction();
             return funcionario;  
 
    }
+   
    public ArrayList<Funcionario> retornarFuncionarios() throws Exception{
     ArrayList<Funcionario> lista = new ArrayList<Funcionario>();   
     Query query = entityManager.createQuery("select x from Funcionario x");

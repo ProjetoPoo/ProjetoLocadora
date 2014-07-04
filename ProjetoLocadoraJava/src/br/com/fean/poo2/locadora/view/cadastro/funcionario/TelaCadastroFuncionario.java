@@ -6,17 +6,35 @@
 
 package br.com.fean.poo2.locadora.view.cadastro.funcionario;
 
+
+import br.com.fean.poo2.locadora.modelo.funcionario.Funcionario;
+import br.com.fean.poo2.locadora.modelo.funcionario.FuncionarioDAO;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import br.com.fean.poo2.locadora.control.funcionario.FuncionarioServiceImpl;
+import br.com.fean.poo2.locadora.control.funcionario.FuncionarioService;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author DanielaKlinkowski
  */
 public class TelaCadastroFuncionario extends javax.swing.JPanel {
+     int idFuncionarioSelecionado = 0;
+    FuncionarioServiceImpl funcionarioServiceImpl = new FuncionarioServiceImpl();
 
     /**
      * Creates new form TelaCadastroFuncionario1
      */
     public TelaCadastroFuncionario() {
+        
+    
         initComponents();
+        carregarDadosTabela();
+        carregarDadosDaTebela();
+        
     }
 
     /**
@@ -39,102 +57,63 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
         txtSenha = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         nome1 = new javax.swing.JLabel();
-        txtNome1 = new javax.swing.JTextField();
-        bPesquisar = new javax.swing.JButton();
+        txtPesquisaNome = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        tabela = new javax.swing.JTable();
+        btnNovo = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro Funcionário"));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         codigo.setText("Código:");
+        jPanel1.add(codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 30, -1, -1));
 
         txtCodigo.setEnabled(false);
+        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 27, 82, -1));
 
         nome.setText("Nome:");
+        jPanel1.add(nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 30, -1, -1));
+        jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 27, 401, -1));
 
         usuario.setText("Usuário:");
+        jPanel1.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 64, -1, -1));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 61, 170, -1));
 
         senha.setText("Senha:");
+        jPanel1.add(senha, new org.netbeans.lib.awtextra.AbsoluteConstraints(234, 64, -1, -1));
+        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 61, 100, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(codigo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nome)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNome))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(usuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(senha)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(207, 207, 207)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigo)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nome)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usuario)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(senha)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 600, 100));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar"));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nome1.setText("Nome:");
+        jPanel2.add(nome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 31, -1, -1));
+        jPanel2.add(txtPesquisaNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 28, 443, -1));
 
-        bPesquisar.setText("Pesquisar");
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPesquisarMouseClicked(evt);
+            }
+        });
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 27, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nome1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bPesquisar)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome1)
-                    .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bPesquisar))
-                .addContainerGap())
-        );
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 116, 600, 70));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -150,75 +129,225 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabela);
 
-        jButton2.setText("Novo");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 595, 134));
 
-        jButton3.setText("Salvar");
+        btnNovo.setText("Novo");
+        btnNovo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNovoMouseClicked(evt);
+            }
+        });
+        add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 335, -1, -1));
 
-        jButton4.setText("Deletar");
+        btnSalvar.setText("Salvar");
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+        add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 335, 72, -1));
 
-        jButton1.setText("Cancelar");
+        btnDeletar.setText("Deletar");
+        btnDeletar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeletarMouseClicked(evt);
+            }
+        });
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
+        add(btnDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 335, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        btnCancelar.setText("Cancelar");
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 335, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPesquisarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarMouseClicked
+
+    private void btnNovoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseClicked
+        // TODO add your handling code here:
+         txtNome.setText("");
+        txtUsuario.setText("");
+        txtSenha.setText("");
+        idFuncionarioSelecionado=0;
+    }//GEN-LAST:event_btnNovoMouseClicked
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
+        try {
+            lista = funcionarioServiceImpl.pesquisarFuncionarios(txtPesquisaNome.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        carregarDadosTabela(lista);
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        idFuncionarioSelecionado=
+Integer.parseInt(modelo.getValueAt(tabela.getSelectedRow(), 0).toString());
+
+txtNome.setText(modelo.getValueAt(tabela.getSelectedRow(), 1).toString());
+
+    }//GEN-LAST:event_tabelaMouseClicked
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        // TODO add your handling code here:
+   
+    }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        Funcionario funcionario=new Funcionario(
+              idFuncionarioSelecionado,
+             txtNome.getText(),
+               txtUsuario.getText(),
+                txtSenha.getText()); 
+             
+        
+  if (idFuncionarioSelecionado==0){
+     
+ try {
+     funcionarioServiceImpl.inserirFuncionario(funcionario);
+      JOptionPane.showMessageDialog(null,"inserção"
+             + " realizada com sucesso");
+ }      
+catch (Exception e) {
+    JOptionPane.showMessageDialog(null,"inserção"
+             + " NÃO realizada ocorreu o erro: "+e);
+}finally{
+     txtNome.setText("");
+     txtUsuario.setText("");
+     txtSenha.setText("");
+ }
+     }  else {
+         try {
+ funcionarioServiceImpl.alterarFuncionario(funcionario);
+
+     JOptionPane.showMessageDialog(null,"alteração"
+             + " realizada com sucesso");
+ }      
+catch (Exception e) {
+    JOptionPane.showMessageDialog(null,"alteração"
+             + " NÃO realizada ocorreu o erro: "+e);
+}
+    }                                      
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnDeletarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletarMouseClicked
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog( null, "Deseja realmente apagar a linha selecionada?" )==0){ 
+try{
+        Funcionario funcionario = 
+                funcionarioServiceImpl.retornarFuncionario(idFuncionarioSelecionado);
+        funcionarioServiceImpl.deletarFuncionario(funcionario);
+          carregarDadosDaTabela();  
+        } catch (Exception ex) {
+            
+        }
+        }
+    }//GEN-LAST:event_btnDeletarMouseClicked
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog( null, "Deseja realmente apagar a linha selecionada?" )==0){ 
+try{
+        Funcionario funcionario = 
+                funcionarioServiceImpl.retornarFuncionario(idFuncionarioSelecionado);
+        funcionarioServiceImpl.deletarFuncionario(funcionario);
+          carregarDadosDaTabela();  
+        } catch (Exception ex) {
+        }
+        }
+ 
+    }//GEN-LAST:event_btnDeletarActionPerformed
+    
+        
+     public void carregarDadosTabela(ArrayList<Funcionario> lista){
+DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+ modelo.setRowCount( 0 );        
+        try {
+            
+ for (int i=0;i<lista.size();i++){
+     System.out.println("lista");
+     System.out.println("funcionario nom "+lista.get(i).getNome());
+     
+    modelo.addRow(new Object[]{
+        lista.get(i).getId(),
+       
+        lista.get(i).getNome()
+    
+    
+    });  
+}
+ }      
+catch (Exception e) {
+    JOptionPane.showMessageDialog(null,"leitura de dados "
+            + "de funcionario com problema..."
+             + " erro: "+e);
+
+    }
+     }
+          public void carregarDadosDaTabela(){
+DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+ modelo.setRowCount( 0 );        
+        try {
+            ArrayList<Funcionario> lista = 
+           funcionarioServiceImpl.retornarFuncionarios();
+ for (int i=0;i<lista.size();i++){
+    modelo.addRow(new Object[]{
+        lista.get(i).getId(),
+        lista.get(i).getNome()});  
+}
+ }      
+catch (Exception e) {
+    JOptionPane.showMessageDialog(null,"leitura de dados "
+            + "de funcionario com problema..."
+             + " erro: "+e);
+}
+ }      
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bPesquisar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel codigo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel nome;
     private javax.swing.JLabel nome1;
     private javax.swing.JLabel senha;
+    private javax.swing.JTable tabela;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtNome1;
+    private javax.swing.JTextField txtPesquisaNome;
     private javax.swing.JTextField txtSenha;
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
+
+    
+
 }
