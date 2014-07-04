@@ -27,8 +27,7 @@ public class Titulo  implements java.io.Serializable {
         this.classes = classes;
     }
 
-    public Titulo(Integer id, Categoria categorias, Classe classes, String nome, Midia midia, Distribuidor distribuidor) {
-        this.id = id;
+    public Titulo(Categoria categorias, Classe classes, String nome, Midia midia, Distribuidor distribuidor) {
         this.categorias = categorias;
         this.classes = classes;
         this.nome = nome;

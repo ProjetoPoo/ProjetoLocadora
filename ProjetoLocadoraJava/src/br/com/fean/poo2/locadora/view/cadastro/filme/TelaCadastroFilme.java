@@ -1,7 +1,9 @@
 package br.com.fean.poo2.locadora.view.cadastro.filme;
 
+import br.com.fean.poo2.locadora.control.categoria.CategoriaServiceImpl;
 import br.com.fean.poo2.locadora.control.tipomidia.TipoMidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.titulos.TituloServiceImpl;
+import br.com.fean.poo2.locadora.modelo.categoria.Categoria;
 import br.com.fean.poo2.locadora.modelo.midia.Midia;
 import br.com.fean.poo2.locadora.modelo.tipomidia.TipoMidia;
 import br.com.fean.poo2.locadora.modelo.titulo.Titulo;
@@ -341,11 +343,17 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Midia midia = new Midia();
+        Categoria categoria = new Categoria();
         TipoMidia tipomidia = new TipoMidia();
+        CategoriaServiceImpl categoriaimpl = new CategoriaServiceImpl();
         TipoMidiaServiceImpl tipomidiaimpl = new TipoMidiaServiceImpl();
         String tipomidianome = (String) cbMidia.getSelectedItem();
+        
+        
+        JOptionPane.showMessageDialog(btnNovo, tipomidia.getNome());
         try {
             tipomidia = tipomidiaimpl.retornarTipoMidia(tipomidianome);
+            midia.setTipoMidias(tipomidia);
         } catch (Exception ex) {
             Logger.getLogger(TelaCadastroFilme.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -355,15 +363,12 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
             if (idTitulo == 0) {
                 try {
                     tituloServiceImpl.inserirTitulo(
-                            txtTitulo.getText(),
-                            cbMidia.getSelectedItem(),
-                            cbGenero.getSelectedItem(),
-                            txtNumeroSerie.getText(),
-                            cbClasse.getSelectedItem(),
-                            txtEstoque.getText(),
-                            txtValor.getText(),
-                            txtDataAquisicao.getText(),
-                            cbDistribuidor.getSelectedItem());
+                        categoria,
+                        classes,
+                        txttitulo.gettext,
+                        midia,
+                        distribuidor
+                    );
 
                     JOptionPane.showMessageDialog(null, "Novo registro salvo!");
 
