@@ -6,7 +6,7 @@ import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
 import br.com.fean.poo2.locadora.view.cadastro.distribuidor.TelaCadastroDistribuidor;
 import br.com.fean.poo2.locadora.view.cadastro.filme.TelaCadastroFilme;
 import br.com.fean.poo2.locadora.view.cadastro.funcionario.TelaCadastroFuncionario;
-import br.com.fean.poo2.locadora.view.cadastro.midia.TelaCadastroMidia;
+import br.com.fean.poo2.locadora.view.cadastro.midia.TelaMidia;
 import br.com.fean.poo2.locadora.view.cadastro.tipomidia.TelaCadastroTipoMidia;
 import br.com.fean.poo2.locadora.view.cadastro.titulo.TelaCadastroTitulo;
 
@@ -48,7 +48,7 @@ public class TelaInicial extends javax.swing.JFrame {
             painelCardLayout.setLayout(cardLayout);
 
             painelCardLayout.add(new TelaCadastroTitulo(), "telaCadastroTitulo");
-            painelCardLayout.add(new TelaCadastroMidia(), "telaCadastroMidia");
+            painelCardLayout.add(new TelaMidia(), "telaCadastroMidia");
             painelCardLayout.add(new TelaCadastroClasse(), "telaCadastroClasse");
             painelCardLayout.add(new TelaCadastroFuncionario(), "telaCadastroFuncionario");
             painelCardLayout.add(new TelaCadastroTipoMidia(), "telaCadastroTipoMidia");
