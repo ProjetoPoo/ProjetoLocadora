@@ -1,4 +1,4 @@
-package br.com.fean.poo2.locadora.view.home;
+package br.com.fean.poo2.locadora.view.telaprincipal;
 
 import br.com.fean.poo2.locadora.view.cadastro.categoria.TelaCadastroCategoria;
 import br.com.fean.poo2.locadora.view.cadastro.classe.TelaCadastroClasse;
@@ -6,12 +6,10 @@ import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
 import br.com.fean.poo2.locadora.view.cadastro.distribuidor.TelaCadastroDistribuidor;
 import br.com.fean.poo2.locadora.view.cadastro.filme.TelaCadastroFilme;
 import br.com.fean.poo2.locadora.view.cadastro.funcionario.TelaCadastroFuncionario;
-import br.com.fean.poo2.locadora.view.cadastro.midia.TelaMidia;
+import br.com.fean.poo2.locadora.view.cadastro.midia.TelaCadastroMidia;
 import br.com.fean.poo2.locadora.view.cadastro.tipomidia.TelaCadastroTipoMidia;
 import br.com.fean.poo2.locadora.view.cadastro.titulo.TelaCadastroTitulo;
-
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
-
 import br.com.fean.poo2.locadora.view.consultar.TelaListaFilmes;
 import br.com.fean.poo2.locadora.view.devolver.TelaDevolucao;
 import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
@@ -24,13 +22,13 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class TelaInicial extends javax.swing.JFrame {
+public class TelaPrincipal extends javax.swing.JFrame {
 
     private CardLayout cardLayout;
 
     private JPanel painelCardLayout;
 
-    public TelaInicial() {
+    public TelaPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
         init();
@@ -47,18 +45,20 @@ public class TelaInicial extends javax.swing.JFrame {
             painelCardLayout = new JPanel();
             painelCardLayout.setLayout(cardLayout);
 
-            painelCardLayout.add(new TelaCadastroTitulo(), "telaCadastroTitulo");
-            //painelCardLayout.add(new TelaMidia(), "telaCadastroMidia");
-            painelCardLayout.add(new TelaCadastroClasse(), "telaCadastroClasse");
-            painelCardLayout.add(new TelaCadastroFuncionario(), "telaCadastroFuncionario");
+            painelCardLayout.add(new TelaCadastroCategoria(), "telaCadastroCategoria");
+            painelCardLayout.add(new TelaCadastroCliente(), "telaCadastroCliente");
+            painelCardLayout.add(new TelaCadastroDistribuidor(), "telaCadastroDistribuidor");
+            painelCardLayout.add(new TelaCadastroFilme(), "telaCadastroFilme");
             painelCardLayout.add(new TelaCadastroTipoMidia(), "telaCadastroTipoMidia");
+            painelCardLayout.add(new TelaCadastroFuncionario(), "telaCadastroFuncionario");
+            painelCardLayout.add(new TelaCadastroClasse(), "telaCadastroClasse");
+            painelCardLayout.add(new TelaCadastroMidia(), "telaCadastroMidia");
+            painelCardLayout.add(new TelaCadastroTitulo(), "telaCadastroTitulo");
+
             painelCardLayout.add(new TelaReserva(), "telaReserva");
             painelCardLayout.add(new TelaLocacao(), "telaLocacao");
             painelCardLayout.add(new TelaDevolucao(), "telaDevolucao");
-            painelCardLayout.add(new TelaCadastroFilme(), "telaCadastroFilme");
-            painelCardLayout.add(new TelaCadastroDistribuidor(), "telaCadastroDistribuidor");
-            painelCardLayout.add(new TelaCadastroCliente(), "telaCadastroCliente");
-            painelCardLayout.add(new TelaCadastroCategoria(), "telaCadastroCategoria");
+
             painelCardLayout.add(new JPanel(), "principal");
             cardLayout.show(painelCardLayout, "principal");
             painelCardLayout.setBackground(Color.GREEN);
@@ -116,6 +116,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenu7.setText("jMenu7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Video Locadora Passa Tempo");
 
         locacao.setText("Locação");
         locacao.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -219,7 +220,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         consultarCadastros.setText("Consultar");
 
-        consultaCliente.setText("Cliente");
+        consultaCliente.setText("Clientes");
         consultaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultaClienteActionPerformed(evt);
@@ -311,7 +312,7 @@ public class TelaInicial extends javax.swing.JFrame {
             listaCliente = new TelaListaCliente();
             listaCliente.setVisible(true);
         } catch (Exception ex) {
-            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_consultaClienteActionPerformed
@@ -323,7 +324,7 @@ public class TelaInicial extends javax.swing.JFrame {
             listaFilme = new TelaListaFilmes();
             listaFilme.setVisible(true);
         } catch (Exception ex) {
-            Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_consultaFilmeActionPerformed

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author Linali
  */
-public class funcionarioServiceImpl {
+public class FuncionarioServiceImpl {
      FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
     /**
@@ -47,6 +47,10 @@ public class funcionarioServiceImpl {
    
     public ArrayList<Funcionario> retornarFuncionarios() throws Exception  {
         return funcionarioDAO.retornarFuncionarios();
+    }
+    public ArrayList<Funcionario> pesquisarFuncionarios(String nome) throws Exception  {
+        //return alunoDAO.pesquisarFuncionarios(nome);
+        return new ArrayList<Funcionario>();
     }
     
 }

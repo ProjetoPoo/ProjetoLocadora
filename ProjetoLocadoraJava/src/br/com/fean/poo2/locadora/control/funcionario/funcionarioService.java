@@ -13,12 +13,13 @@ import java.util.ArrayList;
  *
  * @author Linali
  */
-public interface funcionarioService {
+public interface FuncionarioService {
     public void inserirFuncionario(Funcionario funcionario)  throws Exception;
     public void alterarFuncionario(Funcionario funcionario) throws Exception;
     public void deletarFuncionario(Funcionario funcionario) throws Exception;
     public Funcionario retornarFuncionario(int id) throws Exception;
     public Funcionario retornarFuncionario(String nome) throws Exception;
-    public ArrayList<Funcionario> retornarFuncionarios() throws Exception;  
+    public ArrayList<Funcionario> retornarFuncionarios() throws Exception;
+    public ArrayList<Funcionario> perquisarFuncionario() throws Exception;
     
 }
