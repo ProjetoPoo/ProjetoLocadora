@@ -72,7 +72,7 @@ public class TituloDAO {
 
         public ArrayList<Titulo> retornarTitulos() throws Exception{
              ArrayList<Titulo> lista = new ArrayList<Titulo>();
-            Query query = entityManager.createQuery("select x from Titulo x");
+            Query query = entityManager.createQuery("select * from Titulo");
             lista = (ArrayList<Titulo>) query.getResultList();
             return lista;
         }

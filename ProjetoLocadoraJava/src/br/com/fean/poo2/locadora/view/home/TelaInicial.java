@@ -95,7 +95,6 @@ public class TelaInicial extends javax.swing.JFrame {
         classe = new javax.swing.JMenuItem();
         Midia = new javax.swing.JMenuItem();
         titulo = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
         consultarCadastros = new javax.swing.JMenu();
         consultaCliente = new javax.swing.JMenuItem();
         consultaFilme = new javax.swing.JMenuItem();
@@ -217,7 +216,6 @@ public class TelaInicial extends javax.swing.JFrame {
         cadastros.add(titulo);
 
         jMenuBar1.add(cadastros);
-        jMenuBar1.add(jMenu8);
 
         consultarCadastros.setText("Consultar");
 
@@ -386,7 +384,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu locacao;
     private javax.swing.JMenu reserva;

@@ -14,10 +14,16 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public interface TipoMidiaService {
-    public void inserirTipoMidia(TipoMidia tipomidia) throws Exception;
-    public void alterarTipoMidia(TipoMidia tipomidia) throws Exception;
+    
+    public void inserirTipoMidia(String nome) throws Exception;
+    
+    public void alterarTipoMidia(Integer id, String nome) throws Exception;
+    
     public void deletarTipoMidia(TipoMidia tipomidia) throws Exception;
+    
     public TipoMidia retornarTipoMidia(int id) throws Exception;
+    
     public TipoMidia retornarTipoMidia(String nome) throws Exception;
+    
     public ArrayList<TipoMidia> retornarTipoMidia() throws Exception;
 }

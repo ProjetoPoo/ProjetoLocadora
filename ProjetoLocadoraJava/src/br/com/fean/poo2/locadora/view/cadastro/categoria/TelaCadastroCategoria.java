@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 public class TelaCadastroCategoria extends javax.swing.JPanel {
 
     private int idControle = 0;
+    
     CategoriaServiceImpl categoriaServiceImpl = new CategoriaServiceImpl();
 
 

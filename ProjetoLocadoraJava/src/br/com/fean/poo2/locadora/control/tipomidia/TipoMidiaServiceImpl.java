@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.com.fean.poo2.locadora.control.tipomidia;
 
 import br.com.fean.poo2.locadora.modelo.tipomidia.TipoMidia;
@@ -15,24 +14,28 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public class TipoMidiaServiceImpl implements TipoMidiaService {
-    
+
     TipoMidiaDAO tipomidiaDAO = new TipoMidiaDAO();
-    
 
     @Override
-    public void inserirTipoMidia(TipoMidia tipomidia) throws Exception {
-        if (tipomidia.getNome().length() > 2) {
+    public void inserirTipoMidia(String nome) throws Exception {
+        if (nome.length() >= 3) {
+            TipoMidia tipomidia = new TipoMidia();
+            tipomidia.setNome(nome);
             tipomidiaDAO.inserirTipoMidia(tipomidia);
         }
+
     }
 
     @Override
-    public void alterarTipoMidia(TipoMidia tipomidia) throws Exception {
-        //TipoMidia tipomidia2 = new TipoMidia();
-        //tipomidia2.setId(tipomidia.getId());
-        //tipomidia2.setNome(tipomidia.getNome());
+    public void alterarTipoMidia(Integer id, String nome) throws Exception {
+
+        TipoMidia tipomidia = new TipoMidia();
+        tipomidia.setId(tipomidia.getId());
+        tipomidia.setNome(tipomidia.getNome());
+
         tipomidiaDAO.alterarTipoMidia(tipomidia);
-        
+
     }
 
     @Override
@@ -54,6 +57,5 @@ public class TipoMidiaServiceImpl implements TipoMidiaService {
     public ArrayList<TipoMidia> retornarTipoMidia() throws Exception {
         return tipomidiaDAO.retornarTipoMidias();
     }
-    
-    
+
 }
