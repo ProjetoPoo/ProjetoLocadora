@@ -6,6 +6,7 @@ import br.com.fean.poo2.locadora.control.titulos.TituloServiceImpl;
 import br.com.fean.poo2.locadora.modelo.titulo.Titulo;
 import br.com.fean.poo2.locadora.view.cadastro.filme.TelaCadastroFilme;
 import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
+import br.com.fean.poo2.locadora.view.resevar.TelaReserva;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class TelaListaFilmes extends javax.swing.JFrame {
 
     private TelaLocacao refpai;
+    private TelaReserva refpaireserva;
 
     public TelaListaFilmes() throws Exception {
         initComponents();
@@ -25,6 +27,12 @@ public class TelaListaFilmes extends javax.swing.JFrame {
         initComponents();
         carregaClientes();
         refpai = framepai;
+    }
+    
+    public TelaListaFilmes(TelaReserva framepai) throws Exception {
+        initComponents();
+        carregaClientes();
+        refpaireserva = framepai;
     }
     
     public void carregaClientes() throws Exception {
