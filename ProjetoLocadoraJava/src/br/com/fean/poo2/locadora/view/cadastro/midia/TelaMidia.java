@@ -6,6 +6,8 @@
 
 package br.com.fean.poo2.locadora.view.cadastro.midia;
 
+import br.com.fean.poo2.locadora.control.classe.classeServiceImpl;
+
 /**
  *
  * @author DanielaKlinkowski
@@ -182,14 +184,14 @@ public class TelaMidia extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         classeServiceImpl classeSI = new classeServiceImpl();
-        try {
+    /*    try {
 
             classeSI.alterarClasse(0, "Ouro", new Double(txtValorOuro.getText()), new Integer(cmbDiasOuro.getSelectedItem().toString()));
             classeSI.alterarClasse(1, "Prata", new Double(txtValorOuro.getText()), new Integer(cmbDiasOuro.getSelectedItem().toString()));
             classeSI.alterarClasse(2, "Bronze", new Double(txtValorOuro.getText()), new Integer(cmbDiasOuro.getSelectedItem().toString()));
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
+        } */
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed

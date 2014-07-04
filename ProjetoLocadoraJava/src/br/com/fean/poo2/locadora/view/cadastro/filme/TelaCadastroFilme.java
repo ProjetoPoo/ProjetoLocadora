@@ -1,6 +1,9 @@
 package br.com.fean.poo2.locadora.view.cadastro.filme;
 
+import br.com.fean.poo2.locadora.control.tipomidia.TipoMidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.titulos.TituloServiceImpl;
+import br.com.fean.poo2.locadora.modelo.midia.Midia;
+import br.com.fean.poo2.locadora.modelo.tipomidia.TipoMidia;
 import br.com.fean.poo2.locadora.modelo.titulo.Titulo;
 import br.com.fean.poo2.locadora.util.EntityManagerUtil;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaFilmes;
@@ -11,10 +14,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaCadastroFilme extends javax.swing.JPanel {
-        private int idTitulo = 0;
-        TituloServiceImpl tituloServiceImpl =  new TituloServiceImpl();
-    
-        public TelaCadastroFilme() {
+
+    private int idTitulo = 0;
+    TituloServiceImpl tituloServiceImpl = new TituloServiceImpl();
+
+    public TelaCadastroFilme() {
         initComponents();
         retornarTitulos();
         desabilitarBotoes();
@@ -323,7 +327,7 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(TelaCadastroFilme.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -336,13 +340,21 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-         if ((txtTitulo.getText().length() == 0 && txtNumeroSerie.getText().length()==0 )) {
+        Midia midia = new Midia();
+        TipoMidia tipomidia = new TipoMidia();
+        TipoMidiaServiceImpl tipomidiaimpl = new TipoMidiaServiceImpl();
+        String tipomidianome = (String) cbMidia.getSelectedItem();
+        try {
+            tipomidia = tipomidiaimpl.retornarTipoMidia(tipomidianome);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroFilme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   /*     if ((txtTitulo.getText().length() == 0 && txtNumeroSerie.getText().length() == 0)) {
             JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");
         } else {
             if (idTitulo == 0) {
                 try {
                     tituloServiceImpl.inserirTitulo(
-                            txtCodigo.setText(Integer.parseInt(idTitulo)),
                             txtTitulo.getText(),
                             cbMidia.getSelectedItem(),
                             cbGenero.getSelectedItem(),
@@ -354,7 +366,7 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
                             cbDistribuidor.getSelectedItem());
 
                     JOptionPane.showMessageDialog(null, "Novo registro salvo!");
-                    
+
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
                 } finally {
@@ -371,7 +383,7 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
                             cbDistribuidor.getSelectedItem());
 
                     JOptionPane.showMessageDialog(null, "Alteração realizada!");
-                    
+
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n Erro: " + ex);
                 }
@@ -381,14 +393,14 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
             limparCamposDeTexto();
             desabilitarBotoes();
             bloquearCamposDeTexto();
-        }
+        }*/
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
-           
+
             try {
-                
+
                 tituloServiceImpl.deletarTitulo(tituloServiceImpl.retornarTitulo(idTitulo));
                 JOptionPane.showMessageDialog(null, "Registro excluido!");
             } catch (Exception ex) {
@@ -419,7 +431,7 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
         txtValor.setText(modelo.getValueAt(tabela.getSelectedRow(), 7).toString());
         txtDataAquisicao.setText(modelo.getValueAt(tabela.getSelectedRow(), 8).toString());
         cbDistribuidor.setSelectedItem(modelo.getValueAt(tabela.getSelectedRow(), 9).toString());
-        
+
         editarCamposDeTexto();
         habilitarBotoes();
     }//GEN-LAST:event_tabelaMouseClicked
@@ -437,7 +449,7 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
         txtNumeroSerie.setEnabled(true);
         txtValor.setEnabled(true);
         txtDataAquisicao.setEnabled(true);
-        
+
     }
 
     public void bloquearCamposDeTexto() {
@@ -458,18 +470,16 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
         btnExcluir.setVisible(false);
         btnCancelar.setVisible(false);
     }
-    
-    
-     public void FillComboDistribuidores(){
-           EntityManagerUtil entityManager = new EntityManagerUtil();
-           cbDistribuidor.addItem(entityManager.getEntityManager().createQuery("select razaoSocial from disciplina"));
-}
 
-     
+    public void FillComboDistribuidores() {
+        EntityManagerUtil entityManager = new EntityManagerUtil();
+//        cbDistribuidor.addItem(entityManager.getEntityManager().createQuery("select razaoSocial from disciplina"));
+    }
+
     public void retornarTitulos() {
         ArrayList<Titulo> lista = new ArrayList<Titulo>();
         try {
-            lista = (tituloServiceImpl.retornarTitulos());
+//            lista = (tituloServiceImpl.retornarTitulos());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Erro ao retornar Titulos! \n \n ERRO: " + ex);
         }
@@ -498,8 +508,8 @@ public class TelaCadastroFilme extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Erro ao preencher a tabela! \n \n ERRO: " + ex);
         }
     }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;

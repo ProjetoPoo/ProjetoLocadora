@@ -8,7 +8,7 @@ import br.com.fean.poo2.locadora.modelo.titulo.Titulo;
 import java.util.ArrayList;
 
 public interface TituloService {
-    public void inserirTitulo (Integer codgo, String nome, Midia midia, Categoria genero, Midia nSerie, Classe classe, Midia estoque, Classe valor, Midia dataAquisicao, Distribuidor distribuidor)throws Exception; 
+    public void inserirTitulo (String nome, Midia midia, Categoria genero, Midia nSerie, Classe classe, Midia estoque, Classe valor, Midia dataAquisicao, Distribuidor distribuidor)throws Exception; 
     public void alterarTitulo (Integer codigo, String nome, Midia nSerie, Classe classe, Classe valor, Distribuidor distribuidor)throws Exception; 
     public void deletarTitulo (Titulo titulo)throws Exception; 
     public Titulo retornarTitulo (Integer id)throws Exception;

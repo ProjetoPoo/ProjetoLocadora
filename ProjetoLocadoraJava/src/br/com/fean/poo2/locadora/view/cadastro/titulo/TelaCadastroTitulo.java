@@ -6,6 +6,8 @@
 
 package br.com.fean.poo2.locadora.view.cadastro.titulo;
 
+import br.com.fean.poo2.locadora.control.classe.classeServiceImpl;
+
 /**
  *
  * @author Jaime Campos
@@ -122,12 +124,11 @@ public class TelaCadastroTitulo extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(bomboBoxClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtDataAquisicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBoxMidia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(midia))))
+                        .addComponent(jLabel2)
+                        .addComponent(txtDataAquisicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboBoxMidia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(midia))
+                    .addComponent(bomboBoxClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(distribuidor)
@@ -245,14 +246,14 @@ public class TelaCadastroTitulo extends javax.swing.JPanel {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         classeServiceImpl classeSI = new classeServiceImpl();
-        try {
+ /*       try {
 
             classeSI.alterarClasse(0, "Ouro", new Double(txtValorOuro.getText()), new Integer(cmbDiasOuro.getSelectedItem().toString()));
             classeSI.alterarClasse(1, "Prata", new Double(txtValorOuro.getText()), new Integer(cmbDiasOuro.getSelectedItem().toString()));
             classeSI.alterarClasse(2, "Bronze", new Double(txtValorOuro.getText()), new Integer(cmbDiasOuro.getSelectedItem().toString()));
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
+        }*/
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed

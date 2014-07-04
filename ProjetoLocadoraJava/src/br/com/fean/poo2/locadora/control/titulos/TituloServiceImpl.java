@@ -12,10 +12,9 @@ public class TituloServiceImpl implements TituloService {
     TituloDAO tituloDAO = new TituloDAO();
     
     @Override
-    public void inserirTitulo(Integer codigo, String nome, Midia midia, Categoria genero, Midia nSerie, Classe classe, Midia estoque, Classe valor, Midia dataAquisicao, Distribuidor distribuidor) throws Exception {
+    public void inserirTitulo(String nome, Midia midia, Categoria genero, Midia nSerie, Classe classe, Midia estoque, Classe valor, Midia dataAquisicao, Distribuidor distribuidor) throws Exception {
         if (nome.length() > 3) {
              Titulo titulo = new Titulo();
-             titulo.setId(codigo);
              titulo.setNome(nome);
              titulo.setMidia(midia);
              titulo.setCategorias(genero);

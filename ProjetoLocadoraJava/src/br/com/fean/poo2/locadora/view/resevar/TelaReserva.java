@@ -6,15 +6,15 @@
 
 package br.com.fean.poo2.locadora.view.resevar;
 
+import br.com.fean.poo2.locadora.view.consultar.TelaListaFilmes;
+
 /**
  *
  * @author Jaime Campos
  */
 public class TelaReserva extends javax.swing.JPanel {
 
-    /**
-     * Creates new form resreva
-     */
+
     public TelaReserva() {
         initComponents();
     }
@@ -280,17 +280,17 @@ public class TelaReserva extends javax.swing.JPanel {
         jTextField4.setText(null);
         jTextField5.setText(null);
         jcDataDevolucao.setCalendar(null);
-        idmidiaselecionada = 0;
+ /*       idmidiaselecionada = 0;
         try {
             telaFilme = new TelaListaFilmes(TelaLocacao.this);
             telaFilme.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } */
     }//GEN-LAST:event_codigoFilmeMouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Midia midia = new Midia();
+  /*      Midia midia = new Midia();
         MidiaServiceImpl midiaservice = new MidiaServiceImpl();
         midia = midiaservice.retornaMidia(idmidiaselecionada);
         LocacaoMidia locacaomidia = new LocacaoMidia();
@@ -313,7 +313,7 @@ public class TelaReserva extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "leitura de dados "
                 + "de locação com problema..."
                 + " erro: ");
-        }
+        } */
     }//GEN-LAST:event_jButton5ActionPerformed
 
 

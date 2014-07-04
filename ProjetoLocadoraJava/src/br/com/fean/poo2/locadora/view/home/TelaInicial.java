@@ -48,7 +48,7 @@ public class TelaInicial extends javax.swing.JFrame {
             painelCardLayout.setLayout(cardLayout);
 
             painelCardLayout.add(new TelaCadastroTitulo(), "telaCadastroTitulo");
-            painelCardLayout.add(new TelaMidia(), "telaCadastroMidia");
+            //painelCardLayout.add(new TelaMidia(), "telaCadastroMidia");
             painelCardLayout.add(new TelaCadastroClasse(), "telaCadastroClasse");
             painelCardLayout.add(new TelaCadastroFuncionario(), "telaCadastroFuncionario");
             painelCardLayout.add(new TelaCadastroTipoMidia(), "telaCadastroTipoMidia");
