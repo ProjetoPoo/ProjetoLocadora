@@ -8,11 +8,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaCadastroTipoMidia extends javax.swing.JPanel {
-    
+
     private int idControle = 0;
     TipoMidiaServiceImpl tipomidiaserviceimpl = new TipoMidiaServiceImpl();
-    
-    
+
     public TelaCadastroTipoMidia() {
         initComponents();
         retornarTodosTipoMidia();
@@ -20,7 +19,7 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
         bloquearCamposTexto();
 
     }
-    
+
     public void retornarTodosTipoMidia() {
 
         ArrayList<TipoMidia> lista = new ArrayList<TipoMidia>();
@@ -31,6 +30,7 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
         }
         carregarDadosTabela(lista);
     }
+
     public void carregarDadosTabela(ArrayList<TipoMidia> lista) {
 
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
@@ -47,7 +47,7 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Erro ao preencher tabela! \n \n ERRO: " + ex);
         }
     }
-    
+
     public void desabilitarBotoes() {
         btnCancelar.setVisible(false);
         btnExcluir.setVisible(false);
@@ -57,10 +57,9 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
     public void bloquearCamposTexto() {
         txtNome.setEnabled(false);
     }
-    
+
     public void editarCamposTexto() {
         txtNome.setEnabled(true);
-
         txtNome.setBackground(new java.awt.Color(255, 255, 255));
 
     }
@@ -70,14 +69,12 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
         btnExcluir.setVisible(true);
         btnSalvar.setVisible(true);
     }
-    
+
     public void limparCamposTexto() {
         txtCodigo.setText("");
         txtNome.setText("");
 
     }
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -132,11 +129,6 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
                 btnNovoMouseClicked(evt);
             }
         });
-        btnNovo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoActionPerformed(evt);
-            }
-        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.setToolTipText("Salvar");
@@ -151,11 +143,6 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
         btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnExcluirMouseClicked(evt);
-            }
-        });
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -212,15 +199,15 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -276,15 +263,60 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void btnNovoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoMouseClicked
-
+        idControle = 0;
+        limparCamposTexto();
+        editarCamposTexto();
+        btnSalvar.setVisible(true);
+        btnCancelar.setVisible(true);
+        btnExcluir.setVisible(false);
     }//GEN-LAST:event_btnNovoMouseClicked
 
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        if ((txtNome.getText().length() == 0)) {
+            JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");
+        } else if (txtNome.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo de nome!");
+        } else {
+            if (idControle == 0) {
+                try {
+                    tipomidiaserviceimpl.inserirTipoMidia(txtNome.getText());
+                    JOptionPane.showMessageDialog(null, "Novo registro salvo!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
+                } finally {
+                    limparCamposTexto();
+                }
+            } else {
+                try {
+                    tipomidiaserviceimpl.alterarTipoMidia(idControle, txtNome.getText());
+                    JOptionPane.showMessageDialog(null, "Alteração realizada!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n Erro: " + ex);
+                }
+            }
 
+            retornarTodosTipoMidia();
+            limparCamposTexto();
+            desabilitarBotoes();
+            bloquearCamposTexto();
+        }
     }//GEN-LAST:event_btnSalvarMouseClicked
 
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
 
+            try {
+                tipomidiaserviceimpl.deletarTipoMidia(tipomidiaserviceimpl.retornarTipoMidia(idControle));
+                JOptionPane.showMessageDialog(null, "Registro excluido!");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao excluir registro! \n \n ERRO: " + ex);
+            }
+        }
+        
+        retornarTodosTipoMidia();
+        limparCamposTexto();
+        desabilitarBotoes();
+        bloquearCamposTexto();
 
     }//GEN-LAST:event_btnExcluirMouseClicked
 
@@ -293,31 +325,6 @@ public class TelaCadastroTipoMidia extends javax.swing.JPanel {
         bloquearCamposTexto();
         desabilitarBotoes();
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        idControle = 0;
-        limparCamposTexto();
-        editarCamposTexto();
-        btnSalvar.setVisible(true);
-        btnCancelar.setVisible(true);
-        btnExcluir.setVisible(false);        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNovoActionPerformed
-
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
-            //JOptionPane.showMessageDialog(null, "ERRO: " + controle);
-            try {
-                tipomidiaserviceimpl.deletarTipoMidia(tipomidiaserviceimpl.retornarTipoMidia(idControle));
-                JOptionPane.showMessageDialog(null, "Registro excluido!");
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao excluir registro! \n \n ERRO: " + ex);
-            }
-        }
-        retornarTodosTipoMidia();
-        limparCamposTexto();
-        desabilitarBotoes();
-        bloquearCamposTexto();        // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
