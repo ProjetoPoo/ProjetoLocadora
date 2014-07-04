@@ -1,6 +1,6 @@
 package br.com.fean.poo2.locadora.view.locar;
 
-import br.com.fean.poo2.locadora.control.funcionario.funcionarioServiceImpl;
+import br.com.fean.poo2.locadora.control.funcionario.*;
 import br.com.fean.poo2.locadora.control.midia.MidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.modelo.funcionario.Funcionario;
@@ -426,7 +426,7 @@ public class TelaLocacao extends javax.swing.JPanel {
         Funcionario funcionario = new Funcionario();
         Socio socio = new Socio();
         SocioServiceImpl socioimpl = new SocioServiceImpl();
-        funcionarioServiceImpl funcimpl = new funcionarioServiceImpl();
+        FuncionarioServiceImpl funcimpl = new FuncionarioServiceImpl();
         try {
             funcionario = funcimpl.retornarFuncionario(1);
             socio = socioimpl.retornarSocioId(Integer.valueOf(codigoCliente.getText()));

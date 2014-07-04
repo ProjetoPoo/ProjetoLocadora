@@ -32,8 +32,8 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
         
     
         initComponents();
-        carregarDadosTabela();
-        carregarDadosDaTebela();
+//        carregarDadosTabela();
+//        carregarDadosDaTebela();
         
     }
 
@@ -216,8 +216,8 @@ txtNome.setText(modelo.getValueAt(tabela.getSelectedRow(), 1).toString());
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        Funcionario funcionario=new Funcionario(
-              idFuncionarioSelecionado,
+  //      Funcionario funcionario=new Funcionario(
+     /*         idFuncionarioSelecionado,
              txtNome.getText(),
                txtUsuario.getText(),
                 txtSenha.getText()); 
@@ -249,7 +249,7 @@ catch (Exception e) {
     JOptionPane.showMessageDialog(null,"alteração"
              + " NÃO realizada ocorreu o erro: "+e);
 }
-    }                                      
+    }        */                              
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletarMouseClicked
