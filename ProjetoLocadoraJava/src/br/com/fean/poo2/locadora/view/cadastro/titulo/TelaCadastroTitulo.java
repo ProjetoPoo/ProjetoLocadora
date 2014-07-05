@@ -66,7 +66,7 @@ public class TelaCadastroTitulo extends javax.swing.JPanel {
         btnPesquisar = new javax.swing.JButton();
         nPesquisaTitulo = new javax.swing.JLabel();
         txtTituloPesquisa = new javax.swing.JTextField();
-        cbCodigo = new javax.swing.JComboBox();
+        cbPesquisa = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
 
@@ -232,7 +232,7 @@ public class TelaCadastroTitulo extends javax.swing.JPanel {
 
         nPesquisaTitulo.setText("Título");
 
-        cbCodigo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Código", "Título" }));
+        cbPesquisa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Código", "Título" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -240,7 +240,7 @@ public class TelaCadastroTitulo extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nPesquisaTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -257,7 +257,7 @@ public class TelaCadastroTitulo extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(nPesquisaTitulo)
                         .addComponent(txtTituloPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cbCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnPesquisar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -327,15 +327,13 @@ public class TelaCadastroTitulo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // pesquisar
-        TelaListaFilmes listaFilme;
+    
         try {
-            listaFilme = new TelaListaFilmes();
-            listaFilme.setVisible(true);
+            ComboBoxPesquisaTitulo();
         } catch (Exception ex) {
-            Logger.getLogger(TelaCadastroTitulo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaListaFilmes.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -431,6 +429,25 @@ public class TelaCadastroTitulo extends javax.swing.JPanel {
         habilitarBotoes();
     }//GEN-LAST:event_tabelaMouseClicked
 
+     public void ComboBoxPesquisaTitulo() throws Exception {
+
+        if (cbPesquisa.getSelectedIndex() == 0) {
+            ArrayList<Titulo> listaTitulo = new ArrayList<Titulo>();
+            TituloServiceImpl tituloServiceImpl = new TituloServiceImpl();
+            listaTitulo = tituloServiceImpl.pesquisarCodigoTitulo(txtTituloPesquisa.getText());
+
+            carregarDadosDaTabela(listaTitulo);
+        }
+        if (cbPesquisa.getSelectedIndex() == 1) {
+            ArrayList<Titulo> listaTitulo = new ArrayList<Titulo>();
+           TituloServiceImpl tituloServiceImpl = new TituloServiceImpl();
+            listaTitulo = tituloServiceImpl.pesquisarTituloFilme(txtTituloPesquisa.getText());
+
+            carregarDadosDaTabela(listaTitulo);
+
+        }
+    }
+    
     public void limparCamposDeTexto() {
         txtTitulo.setText("");
         txtNumeroSerie.setText("");
@@ -514,10 +531,10 @@ public class TelaCadastroTitulo extends javax.swing.JPanel {
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox cbClasse;
-    private javax.swing.JComboBox cbCodigo;
     private javax.swing.JComboBox cbDistribuidor;
     private javax.swing.JComboBox cbGenero;
     private javax.swing.JComboBox cbMidia;
+    private javax.swing.JComboBox cbPesquisa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

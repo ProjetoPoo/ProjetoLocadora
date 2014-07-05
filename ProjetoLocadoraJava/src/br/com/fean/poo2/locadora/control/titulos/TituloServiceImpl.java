@@ -55,4 +55,14 @@ public class TituloServiceImpl implements TituloService {
         return tituloDAO.retornarTitulos();
     }
     
+    @Override
+    public ArrayList<Titulo> pesquisarCodigoTitulo(String id) throws Exception {
+        return tituloDAO.pesquisarCodigoTitulo(id);
+    }
+
+    @Override
+    public ArrayList<Titulo> pesquisarTituloFilme(String nome) throws Exception {
+        return tituloDAO.pesquisarTituloFilme(nome);
+    }
+    
 }

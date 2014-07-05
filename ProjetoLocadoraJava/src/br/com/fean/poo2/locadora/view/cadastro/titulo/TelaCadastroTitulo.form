@@ -342,7 +342,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="cbCodigo" min="-2" pref="133" max="-2" attributes="0"/>
+                  <Component id="cbPesquisa" min="-2" pref="133" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="nPesquisaTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -361,7 +361,7 @@
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="nPesquisaTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtTituloPesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbPesquisa" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="btnPesquisar" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -386,7 +386,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtTituloPesquisa">
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbCodigo">
+        <Component class="javax.swing.JComboBox" name="cbPesquisa">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
