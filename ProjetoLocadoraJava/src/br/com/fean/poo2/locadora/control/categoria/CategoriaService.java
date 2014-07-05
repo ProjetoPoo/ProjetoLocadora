@@ -5,20 +5,15 @@ import java.util.ArrayList;
 
 public interface CategoriaService {
 
-    /**
-     * NOTAS:
-     *
-     * Nesta classe será criado a interface dos serviços de categoria.
-     *
-     */
-    public void inserirCategoria(String nome) throws Exception;//Inserir
 
-    public void alterarCategoria(Integer id, String nome) throws Exception;//Alterar
+    public void inserirCategoria(String nome) throws Exception;
 
-    public void deletarCategoria(Categoria categoria) throws Exception;//Apagar
+    public void alterarCategoria(Integer id, String nome) throws Exception;
 
-    public Categoria retornarCategoria(int idCategoria) throws Exception;//Retorna o categoria com o id passado
+    public void deletarCategoria(Categoria categoria) throws Exception;
 
-    public ArrayList<Categoria> retornarCategorias() throws Exception;//Retorna todo os categoria cadastrados  
-
+    public Categoria retornarCategoria(int idCategoria) throws Exception;
+    
+    public ArrayList<Categoria> retornarCategorias() throws Exception;
+    
 }

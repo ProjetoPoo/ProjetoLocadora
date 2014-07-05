@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.fean.poo2.locadora.modelo.tipomidia;
 
 import br.com.fean.poo2.locadora.util.EntityManagerUtil;
@@ -68,7 +62,7 @@ public class TipoMidiaDAO {
         try {
             tipomidia = entityManager.find(TipoMidia.class, id);
         } catch (Exception e) {
-            // TODO: handle exception
+        
             e.printStackTrace();
         }
         return tipomidia;
@@ -79,7 +73,7 @@ public class TipoMidiaDAO {
         try {
             tipomidia = entityManager.find(TipoMidia.class, nome);
         } catch (Exception e) {
-            // TODO: handle exception
+           
             e.printStackTrace();
         }
         return tipomidia;

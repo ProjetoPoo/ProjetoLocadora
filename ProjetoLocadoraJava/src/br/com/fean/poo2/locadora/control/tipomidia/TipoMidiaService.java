@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.com.fean.poo2.locadora.control.tipomidia;
 
 import br.com.fean.poo2.locadora.modelo.tipomidia.TipoMidia;
@@ -11,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Usuario
+ * @author Romulo
  */
 public interface TipoMidiaService {
     

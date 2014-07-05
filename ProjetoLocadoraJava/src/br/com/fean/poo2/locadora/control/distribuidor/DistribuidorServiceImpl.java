@@ -18,7 +18,7 @@ public class DistribuidorServiceImpl implements DistribuidorService {
             distribuidor.setEndereco(endereco);
             distribuidor.setPessoaContato(pessoaContato);
             distribuidor.setFone(fone);
-            
+
             distribuidorDAO.inserirDistribuidor(distribuidor);
         }
     }
@@ -32,7 +32,7 @@ public class DistribuidorServiceImpl implements DistribuidorService {
         distribuidor.setEndereco(endereco);
         distribuidor.setPessoaContato(pessoaContato);
         distribuidor.setFone(fone);
-        
+
         distribuidorDAO.alterarDistribuidor(distribuidor);
     }
 
@@ -49,6 +49,16 @@ public class DistribuidorServiceImpl implements DistribuidorService {
     @Override
     public ArrayList<Distribuidor> retornarDistribuidores() throws Exception {
         return distribuidorDAO.retornarDistribuidores();
+    }
+
+    @Override
+    public ArrayList<Distribuidor> pesquisaDistribuidorRazaoSocial(String razaoSocial) throws Exception {
+        return distribuidorDAO.pesquisaDistribuidorNome(razaoSocial);
+    }
+
+    @Override
+    public ArrayList<Distribuidor> pesquisaDistribuidorCNPJ(String cnpj) throws Exception {
+        return distribuidorDAO.pesquisaDistribuidorCNPJ(cnpj);
     }
 
 }
