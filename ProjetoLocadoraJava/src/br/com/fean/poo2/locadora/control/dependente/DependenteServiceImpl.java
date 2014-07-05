@@ -4,6 +4,7 @@ import br.com.fean.poo2.locadora.control.dependente.*;
 import br.com.fean.poo2.locadora.control.dependente.*;
 import br.com.fean.poo2.locadora.modelo.dependente.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,17 +13,22 @@ public class DependenteServiceImpl implements DependenteService {
     DependenteDAO dependenteDAO = new DependenteDAO();
 
     @Override
-    public void inserirDependente(String nome) throws Exception {
-        Dependente dependente = new Dependente();
-        dependente.setNome(nome);        
-        dependenteDAO.inserirDependente(dependente);   
+    public void inserirDependente(String nome, Integer sexo, Date datanascimento) throws Exception {
+        if(nome.length() > 3){ 
+           Dependente dependente = new Dependente();
+            dependente.setNome(nome);
+            dependente.setSexo(sexo);
+            dependente.setDatanascimento(datanascimento);
+            dependenteDAO.inserirDependente(dependente);  
+        }
     }
 
     @Override
-    public void alterarDependente(Integer id, String nome) throws Exception {
-        Dependente dependente = new Dependente();
-        dependente.setId(id);
-        dependente.setNome(nome);  
+    public void alterarDependente(String nome, Integer sexo, Date datanascimento) throws Exception {
+        Dependente dependente = new Dependente();        
+        dependente.setNome(nome); 
+        dependente.setSexo(sexo);
+        dependente.setDatanascimento(datanascimento);
         dependenteDAO.alterarDependente(dependente); 
     }
 

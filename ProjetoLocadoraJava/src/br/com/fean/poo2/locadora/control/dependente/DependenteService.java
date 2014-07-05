@@ -5,12 +5,13 @@ import br.com.fean.poo2.locadora.control.dependente.*;
 import br.com.fean.poo2.locadora.modelo.dependente.*;
 import br.com.fean.poo2.locadora.modelo.dependente.Dependente;
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface DependenteService {
     
-    public void inserirDependente(String nome) throws Exception;
+    public void inserirDependente(String nome, Integer sexo, Date datanascimento) throws Exception;
     // alterar
-    public void alterarDependente(Integer id, String nome) throws Exception;
+    public void alterarDependente(String nome, Integer sexo, Date datanascimento) throws Exception;
     // deletar
     public void deletarDependente(Dependente dependente) throws Exception;
     // retorna pelo nome

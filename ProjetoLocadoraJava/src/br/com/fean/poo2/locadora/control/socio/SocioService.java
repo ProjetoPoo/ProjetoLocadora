@@ -4,22 +4,25 @@ import br.com.fean.poo2.locadora.control.socio.*;
 import br.com.fean.poo2.locadora.modelo.socio.*;
 import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public interface SocioService {
     
-    public void inserirSocio(String nome) throws Exception;
-    // alterar
-    public void alterarSocio(Integer id, String nome) throws Exception;
-    // deletar 
+    public void inserirSocio(String nome, Integer sexo, String cpf, Date datanascimento, String foneRes, String endereco, String localTrabalho, String foneCom) throws Exception;    
+    public void alterarSocio(String nome, Integer sexo, String cpf, Date datanascimento, String foneRes, String endereco, String localTrabalho, String foneCom) throws Exception;    
     public void deletarSocio(Socio socio) throws Exception; 
     public ArrayList<Socio> pesquisaSocioNome (String nome);
     public ArrayList<Socio> pesquisaSocioCPF (String cpf);
     public ArrayList<Socio> pesquisaSocioCodigo (Integer codigo);
-    public ArrayList<Socio> retornarSocios(); 
+
+    public ArrayList<Socio> retornarSocios();    
+
+    //public ArrayList<Socio> retornarSocios(); 
     
 
     public Socio retornarSocioId(int id) throws Exception;
+
     // retorna dados pelo CPF
     public Socio retornarSocio(int cpf) throws Exception;
     // retorna dados pelo NOME

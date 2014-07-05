@@ -2,23 +2,30 @@
 package br.com.fean.poo2.locadora.view.cadastro.cliente;
 
 
+import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
 
 import java.awt.CardLayout;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
 public class TelaCadastroCliente extends javax.swing.JPanel {
 
     private CardLayout cardLayout;
-
     private JPanel painelCardLayout;
+    
+    private int idCliente = 0;
+    
+    SocioServiceImpl socioServiceImpl = new SocioServiceImpl();
 
     public TelaCadastroCliente() {
         initComponents();
-
+        desabilitarBotoes();
+        bloquearCamposDeTexto();
     }
 
     
@@ -38,7 +45,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         foneComercial = new javax.swing.JLabel();
         txtTelefoneComercial = new javax.swing.JTextField();
         foneResidencial = new javax.swing.JLabel();
-        txtFoneResidencial = new javax.swing.JTextField();
+        txtTelefoneResidencial = new javax.swing.JTextField();
         txtEmpresa = new javax.swing.JTextField();
         codigo = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
@@ -48,11 +55,11 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         txtEndereco = new javax.swing.JTextArea();
         contato = new javax.swing.JLabel();
         txtContato = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        bCancelar = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro Cliente"));
 
@@ -130,7 +137,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(foneResidencial)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtFoneResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtTelefoneResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -151,7 +158,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                     .addComponent(dataNascimento)
                     .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(foneResidencial)
-                    .addComponent(txtFoneResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTelefoneResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,18 +174,38 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton4.setText("Novo");
-
-        jButton3.setText("Salvar");
-
-        jButton2.setText("Deletar");
-
-        bCancelar.setText("Cancelar");
-
-        jButton5.setText("Pesquisar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnNovoActionPerformed(evt);
+            }
+        });
+
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnDeletar.setText("Deletar");
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
             }
         });
 
@@ -193,19 +220,19 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(btnDeletar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bCancelar)
+                        .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {bCancelar, jButton2, jButton3, jButton4});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelar, btnDeletar, btnNovo, btnSalvar});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,16 +241,16 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton5)
-                    .addComponent(bCancelar))
+                    .addComponent(btnNovo)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnDeletar)
+                    .addComponent(btnPesquisar)
+                    .addComponent(btnCancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // pesquisar
         TelaListaCliente telaCliente;
         try {
@@ -233,11 +260,160 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
             Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        // botao novo
+        idCliente = 0;        
+        btnSalvar.setVisible(true);
+        btnCancelar.setVisible(true);
+        btnDeletar.setVisible(false);        
+        limparCamposDeTexto();
+        editarCamposDeTexto();
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // botão salvar
+        
+        if ((txtNome.getText().length() == 0) && (txtSexo.getText().length() == 0) && (txtCPF.getText().length() == 0 && (txtTelefoneResidencial.getText().length() == 0))) {
+            JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");
+        } else if (txtEmpresa.getText().length() == 0 && txtTelefoneComercial.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Preencha os Campos Empresa e Telefone Comercial!");
+        } else {
+
+            if (idCliente == 0) {
+                try {
+                    socioServiceImpl.inserirSocio(
+                            txtNome.getText(),
+                            Integer.parseInt(txtSexo.getText()),
+                            txtCPF.getText(),
+                            Date.valueOf(txtDataNascimento.getText()),
+                            txtTelefoneResidencial.getText(),                            
+                            txtEndereco.getText(),
+                            txtEmpresa.getText(),
+                            txtTelefoneComercial.getText()
+                    );
+
+                    JOptionPane.showMessageDialog(null, "Novo registro salvo!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
+                } finally {
+                    limparCamposDeTexto();
+                }
+            } else {
+                try {
+                    socioServiceImpl.alterarSocio(
+                            txtNome.getText(),
+                            Integer.parseInt(txtSexo.getText()),
+                            txtCPF.getText(),
+                            Date.valueOf(txtDataNascimento.getText()),
+                            txtTelefoneResidencial.getText(),                            
+                            txtEndereco.getText(),
+                            txtEmpresa.getText(),
+                            txtTelefoneComercial.getText()
+                    );
+
+                    JOptionPane.showMessageDialog(null, "Alteração realizada!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao Alterar registro! \n \n Erro: " + ex);
+                }
+            }
+        }
+           
+            limparCamposDeTexto();
+            desabilitarBotoes();
+            bloquearCamposDeTexto();
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        // botão deletar
+        if (JOptionPane.showConfirmDialog(null, "Deseja Apagar Linha Selecionada?") == 0) {           
+            try {                
+                socioServiceImpl.deletarSocio(socioServiceImpl.retornarSocioId(idCliente));
+                JOptionPane.showMessageDialog(null, "Registro Excluido com Sucesso!");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao Excluir Registro! \n \n ERRO: " + ex);
+            }
+        }
+        
+        limparCamposDeTexto();
+        desabilitarBotoes();
+        bloquearCamposDeTexto();
+    }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // botão cancelar
+        limparCamposDeTexto();
+        bloquearCamposDeTexto();
+        desabilitarBotoes();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    
+    
+    
+    
+    // método limpar campos
+    public void limparCamposDeTexto() {
+        txtNome.setText("");
+        txtSexo.setText("");
+        txtCPF.setText("");
+        txtDataNascimento.setText("");
+        txtTelefoneResidencial.setText("");        
+        txtEndereco.setText("");
+        txtEmpresa.setText("");
+        txtTelefoneComercial.setText("");
+    }
+    // método editar campos
+    public void editarCamposDeTexto() {
+        txtNome.setEnabled(true);
+        txtSexo.setEnabled(true);
+        txtCPF.setEnabled(true);
+        txtDataNascimento.setEnabled(true);
+        txtTelefoneResidencial.setEnabled(true);
+        txtEndereco.setEnabled(true);
+        txtEmpresa.setEnabled(true);
+        txtTelefoneComercial.setEnabled(true);
+    }
+    // método bloquear campos de texto
+    public void bloquearCamposDeTexto() {
+        txtNome.setEnabled(false);
+        txtSexo.setEnabled(false);
+        txtCPF.setEnabled(false);
+        txtDataNascimento.setEnabled(false);
+        txtTelefoneResidencial.setEnabled(false);
+        txtEndereco.setEnabled(false);
+        txtEmpresa.setEnabled(false);
+        txtTelefoneComercial.setEnabled(false);
+    }
+    // habilitar botões
+    public void habilitarBotoes() {
+        btnSalvar.setVisible(true);
+        btnDeletar.setVisible(true);
+        btnCancelar.setVisible(true);
+    }
+    // desabilitar botões
+    public void desabilitarBotoes() {
+        btnSalvar.setVisible(false);
+        btnDeletar.setVisible(false);
+        btnCancelar.setVisible(false);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bCancelar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel codigo;
     private javax.swing.JLabel contato;
     private javax.swing.JLabel cpf;
@@ -246,10 +422,6 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private javax.swing.JLabel endereco;
     private javax.swing.JLabel foneComercial;
     private javax.swing.JLabel foneResidencial;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nome;
@@ -260,10 +432,10 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField txtDataNascimento;
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JTextArea txtEndereco;
-    private javax.swing.JTextField txtFoneResidencial;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtSexo;
     private javax.swing.JTextField txtTelefoneComercial;
+    private javax.swing.JTextField txtTelefoneResidencial;
     // End of variables declaration//GEN-END:variables
 
 }
