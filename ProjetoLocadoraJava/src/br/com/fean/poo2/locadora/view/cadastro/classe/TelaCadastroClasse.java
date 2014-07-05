@@ -7,7 +7,6 @@ package br.com.fean.poo2.locadora.view.cadastro.classe;
 
 import br.com.fean.poo2.locadora.control.classe.ClasseServiceImpl;
 import br.com.fean.poo2.locadora.modelo.classe.Classe;
-import br.com.fean.poo2.locadora.modelo.distribuidor.Distribuidor;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -27,6 +26,9 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
     public TelaCadastroClasse() {
         initComponents();
         classeServiceImpl = new ClasseServiceImpl();
+        editarCamposTexto(false);
+        habilitarBotoes(false);
+        retornarTodasClasses();
     }
 
     /**
@@ -178,10 +180,24 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         editarCamposTexto(true);
         habilitarBotoes(true);
+        limparCampos();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
 
+            try {
+
+                classeServiceImpl.deletarClasse(classeServiceImpl.retornarClasse(Integer.parseInt(txtClasseCod.getText().toString())));
+                JOptionPane.showMessageDialog(null, "Registro excluido!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao excluir registro! \n \n ERRO: " + e);
+            }
+        }
+        retornarTodasClasses();
+        limparCampos();
+        habilitarBotoes(false);
+        editarCamposTexto(false);
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -203,8 +219,6 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "Novo registro salvo!");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
-                } finally {
-                    limparCampos();
                 }
             } else {
                 try {
@@ -221,13 +235,12 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
             }
 
             retornarTodasClasses();
-            limparCampos();
-            editarCamposTexto(false);
-            habilitarBotoes(false);
+
         }
 
         editarCamposTexto(false);
         habilitarBotoes(false);
+        limparCampos();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
@@ -282,9 +295,8 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
     }
 
     private void habilitarBotoes(boolean habilitar) {
-        btnNovo.setVisible(habilitar);
-        btnSalvar.setVisible(habilitar);
-        btnDeletar.setVisible(habilitar);
+        btnSalvar.setEnabled(habilitar);
+        btnDeletar.setEnabled(habilitar);
     }
 
     private boolean isDouble(String valor) {
