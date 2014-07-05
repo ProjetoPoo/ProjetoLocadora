@@ -22,5 +22,4 @@ public interface FuncionarioService {
     public ArrayList<Funcionario> pesquisarFuncionarioNome(String nome) throws Exception;
 
     public ArrayList<Funcionario> retornarFuncionarios() throws Exception;
-
 }
