@@ -54,7 +54,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         txtEndereco = new javax.swing.JTextArea();
         contato = new javax.swing.JLabel();
         txtContato = new javax.swing.JTextField();
-        txtDataNascimento = new com.toedter.calendar.JDateChooser();
+        txtDataNascimento = new javax.swing.JTextField();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
@@ -132,8 +132,8 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(dataNascimento)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(foneResidencial)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -152,13 +152,12 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                     .addComponent(sexo)
                     .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cpf)
-                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(dataNascimento)
-                        .addComponent(foneResidencial)
-                        .addComponent(txtTelefoneResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cpf)
+                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dataNascimento)
+                    .addComponent(foneResidencial)
+                    .addComponent(txtTelefoneResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,7 +283,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
 
             if (idCliente == 0) {
                 try {
-                    socioServiceImpl.inserirSocio(
+                       socioServiceImpl.inserirSocio(
                             txtNome.getText(),
                             Integer.parseInt(txtSexo.getText()),
                             txtCPF.getText(),
@@ -296,6 +295,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                     );
 
                     JOptionPane.showMessageDialog(null, "Novo registro salvo!");
+                            
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
                 } finally {
@@ -303,6 +303,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                 }
             } else {
                 try {
+                    
                     socioServiceImpl.alterarSocio(
                             txtNome.getText(),
                             Integer.parseInt(txtSexo.getText()),
@@ -315,6 +316,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                     );
 
                     JOptionPane.showMessageDialog(null, "Alteração realizada!");
+                            
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao Alterar registro! \n \n Erro: " + ex);
                 }
@@ -430,7 +432,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtContato;
-    private com.toedter.calendar.JDateChooser txtDataNascimento;
+    private javax.swing.JTextField txtDataNascimento;
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JTextArea txtEndereco;
     private javax.swing.JTextField txtNome;

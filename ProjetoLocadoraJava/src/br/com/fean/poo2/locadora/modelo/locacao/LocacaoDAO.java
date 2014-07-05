@@ -88,24 +88,6 @@ public class LocacaoDAO {
         return lista;
     }
 
- 
-
-
-    // método que retorna um array de todos os locacao
-    public ArrayList<Locacao> retornarTodosLocacao() throws Exception {
-        ArrayList<Locacao> lista = new ArrayList<Locacao>();
-        Query query = entityManager.createQuery("select x from locacao x");
-        lista = (ArrayList<Locacao>) query.getResultList();
-        return lista;
-    }
-
-    // metodo que pesquisa locacao pelo nome
-    public ArrayList<Locacao> pesquisarLocacaoNome(String nome) throws Exception {
-        ArrayList<Locacao> listaPesquisada = new ArrayList<Locacao>();
-        Query query = entityManager.createQuery("select x from locacao x");
-        listaPesquisada = (ArrayList<Locacao>) query.getResultList();
-        return listaPesquisada;
-    }
 
 
     private void close() throws InterruptedException {
