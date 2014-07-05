@@ -1,5 +1,6 @@
 package br.com.fean.poo2.locadora.view.locar;
 
+
 import br.com.fean.poo2.locadora.control.funcionario.*;
 import br.com.fean.poo2.locadora.control.midia.MidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
