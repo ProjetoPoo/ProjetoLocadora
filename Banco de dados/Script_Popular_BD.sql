@@ -19,8 +19,9 @@ insert into titulos values (3,2,3,'Titulo 03');
 insert into titulos values (4,2,2,'Titulo 04');
 insert into titulos values (5,1,1,'Titulo 05');
 insert into funcionarios values (1,'Funcionario 01', '1111-1111', 'User 01','1234');
-insert into locacao (id,funcionario,socio,data_2,hora,valortotal) values (1,1,1,24/06/2014,'12:36:36',10.00);
-insert into locacao (funcionario,socio,dt_locacao,hora,valortotal) values (1,1,24/06/2014,'12:36:36',10.00);
+insert into locacao (id,funcionario,socio,dt_locacao,valortotal) values (1,1,1,24/06/2014,10.00);
+
+insert into locacao (funcionario,socio,dt_locacao,valortotal) values (1,1,24/06/2014,10.00);
 insert into tipo_midias values (1,'DVD');
 insert into tipo_midias values (2,'CD');
 insert into distribuidores values (1,'Distribuidor 01', '11111111','Rua 01', '1111-1111', 'Joelma');

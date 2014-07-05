@@ -73,21 +73,21 @@ public class DistribuidorDAO {
     public ArrayList<Distribuidor> retornarDistribuidores() throws Exception {
 
         ArrayList<Distribuidor> lista = new ArrayList<Distribuidor>();
-        Query query = entityManager.createQuery("select x from distribuidores x");
+        Query query = entityManager.createQuery("select x from Distribuidor x");
         lista = (ArrayList<Distribuidor>) query.getResultList();
         return lista;
     }
 
     public ArrayList<Distribuidor> pesquisaDistribuidorNome(String razaoSocial) throws Exception {
         ArrayList<Distribuidor> lista = new ArrayList<Distribuidor>();
-        Query query = entityManager.createQuery("select x from distribuidores x where razao_social like '%" + razaoSocial + "%'");
+        Query query = entityManager.createQuery("select x from Distribuidor x where razaoSocial like '%" + razaoSocial + "%'");
         lista = (ArrayList<Distribuidor>) query.getResultList();
         return lista;
     }
     
     public ArrayList<Distribuidor> pesquisaDistribuidorCNPJ(String cnpj) throws Exception {
         ArrayList<Distribuidor> lista = new ArrayList<Distribuidor>();
-        Query query = entityManager.createQuery("select x from distribuidores x where cnpj like '%" + cnpj + "%'");
+        Query query = entityManager.createQuery("select x from Distribuidor x where cnpj like '%" + cnpj + "%'");
         lista = (ArrayList<Distribuidor>) query.getResultList();
         return lista;
     }

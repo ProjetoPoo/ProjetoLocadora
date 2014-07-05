@@ -4,7 +4,6 @@ import br.com.fean.poo2.locadora.control.categoria.CategoriaServiceImpl;
 import br.com.fean.poo2.locadora.control.midia.MidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.titulos.TituloServiceImpl;
 import br.com.fean.poo2.locadora.modelo.titulo.Titulo;
-import br.com.fean.poo2.locadora.view.cadastro.filme.TelaCadastroFilme;
 import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
 import br.com.fean.poo2.locadora.view.resevar.TelaReserva;
 import java.util.ArrayList;

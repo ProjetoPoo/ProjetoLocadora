@@ -73,21 +73,21 @@ public class TituloDAO {
 
         public ArrayList<Titulo> retornarTitulos() throws Exception{
             ArrayList<Titulo> lista = new ArrayList<Titulo>();
-            Query query = entityManager.createQuery("select x from titulos x");
+            Query query = entityManager.createQuery("select x from Titulo x");
             lista = (ArrayList<Titulo>) query.getResultList();
             return lista;
         }
         
         public ArrayList<Titulo> pesquisarCodigoTitulo(String id) throws Exception {
         ArrayList<Titulo> lista = new ArrayList<Titulo>();
-        Query query = entityManager.createQuery("select x from titulos x where id like '%" + id + "%'");
+        Query query = entityManager.createQuery("select x from Titulo x where id like '%" + id + "%'");
         lista = (ArrayList<Titulo>) query.getResultList();
         return lista;
         }
     
         public ArrayList<Titulo> pesquisarTituloFilme(String nome) throws Exception{
         ArrayList<Titulo> lista = new ArrayList<Titulo>();
-        Query query = entityManager.createQuery("select x from titulos x where nome like '%" + nome + "%'");
+        Query query = entityManager.createQuery("select x from Titulo x where nome like '%" + nome + "%'");
         lista = (ArrayList<Titulo>) query.getResultList();
         return lista;
         }

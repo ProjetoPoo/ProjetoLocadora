@@ -4,7 +4,6 @@ import br.com.fean.poo2.locadora.view.cadastro.categoria.TelaCadastroCategoria;
 import br.com.fean.poo2.locadora.view.cadastro.classe.TelaCadastroClasse;
 import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
 import br.com.fean.poo2.locadora.view.cadastro.distribuidor.TelaCadastroDistribuidor;
-import br.com.fean.poo2.locadora.view.cadastro.filme.TelaCadastroFilme;
 import br.com.fean.poo2.locadora.view.cadastro.funcionario.TelaCadastroFuncionario;
 import br.com.fean.poo2.locadora.view.cadastro.midia.TelaCadastroMidia;
 import br.com.fean.poo2.locadora.view.cadastro.tipomidia.TelaCadastroTipoMidia;
@@ -48,7 +47,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             painelCardLayout.add(new TelaCadastroCategoria(), "telaCadastroCategoria");
             painelCardLayout.add(new TelaCadastroCliente(), "telaCadastroCliente");
             painelCardLayout.add(new TelaCadastroDistribuidor(), "telaCadastroDistribuidor");
-            painelCardLayout.add(new TelaCadastroFilme(), "telaCadastroFilme");
             painelCardLayout.add(new TelaCadastroTipoMidia(), "telaCadastroTipoMidia");
             painelCardLayout.add(new TelaCadastroFuncionario(), "telaCadastroFuncionario");
             painelCardLayout.add(new TelaCadastroClasse(), "telaCadastroClasse");
@@ -89,7 +87,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         categoria = new javax.swing.JMenuItem();
         cliente = new javax.swing.JMenuItem();
         distribuidor = new javax.swing.JMenuItem();
-        filmes = new javax.swing.JMenuItem();
         tipoMidia = new javax.swing.JMenuItem();
         funcionario = new javax.swing.JMenuItem();
         classe = new javax.swing.JMenuItem();
@@ -167,14 +164,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         cadastros.add(distribuidor);
-
-        filmes.setText("Filmes");
-        filmes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filmesActionPerformed(evt);
-            }
-        });
-        cadastros.add(filmes);
 
         tipoMidia.setText("Tipos de midia");
         tipoMidia.addActionListener(new java.awt.event.ActionListener() {
@@ -293,12 +282,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cardLayout.show(painelCardLayout, "telaCadastroCliente");
     }//GEN-LAST:event_clienteActionPerformed
 
-    private void filmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filmesActionPerformed
-        // TODO add your handling code here:
-        cardLayout.show(painelCardLayout, "telaCadastroFilme");
-
-    }//GEN-LAST:event_filmesActionPerformed
-
     private void distribuidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distribuidorActionPerformed
         // tela de cadastro de distribuidor
         cardLayout.show(painelCardLayout, "telaCadastroDistribuidor");
@@ -376,7 +359,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu consultarCadastros;
     private javax.swing.JMenu devolucao;
     private javax.swing.JMenuItem distribuidor;
-    private javax.swing.JMenuItem filmes;
     private javax.swing.JMenuItem funcionario;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
