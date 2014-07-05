@@ -1,7 +1,7 @@
 package br.com.fean.poo2.locadora.view.cadastro.titulo;
 
 import br.com.fean.poo2.locadora.control.categoria.CategoriaServiceImpl;
-import br.com.fean.poo2.locadora.control.classe.classeServiceImpl;
+import br.com.fean.poo2.locadora.control.classe.ClasseServiceImpl;
 import br.com.fean.poo2.locadora.control.distribuidor.DistribuidorServiceImpl;
 import br.com.fean.poo2.locadora.control.midia.MidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.tipomidia.TipoMidiaServiceImpl;
@@ -355,7 +355,7 @@ public class TelaCadastroTitulo extends javax.swing.JPanel {
         CategoriaServiceImpl categoriaServiceImpl = new CategoriaServiceImpl();
         String categoriaNome = (String) cbGenero.getSelectedItem();
         Classe classe = new Classe();
-        classeServiceImpl classeServiceImpl = new classeServiceImpl();
+        ClasseServiceImpl ClasseServiceImpl = new ClasseServiceImpl();
         String classeNome = (String) cbClasse.getSelectedItem();
         Distribuidor distribuidor = new Distribuidor();
         DistribuidorServiceImpl distribuidorServiceImpl = new DistribuidorServiceImpl();
@@ -371,7 +371,7 @@ public class TelaCadastroTitulo extends javax.swing.JPanel {
             categoria = categoriaServiceImpl.retornarCategoriaNome(categoriaNome);
             categoria.setNome(categoriaNome);
             titulo.getMidia().setNrserie(txtNumeroSerie.getText());
-            classe = classeServiceImpl.retornarClasseNome(classeNome);
+            classe = ClasseServiceImpl.retornarClasseNome(classeNome);
             classe.setNome(classeNome);
             titulo.getClasses().setValor(Double.valueOf(txtValor.getText()));
             titulo.getMidia().setDataaquisicao(txtDataAquisicao.getDate());

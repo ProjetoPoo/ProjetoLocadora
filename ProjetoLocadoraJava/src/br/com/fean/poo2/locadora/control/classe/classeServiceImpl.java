@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author Filipe
  */
-public class classeServiceImpl implements classeService {
+public class ClasseServiceImpl implements ClasseService {
 
     ClasseDAO classeDAO = new ClasseDAO();
 
@@ -22,27 +22,27 @@ public class classeServiceImpl implements classeService {
      * @param classe
      * @throws Exception
      */
-    public void inserirClasse(Integer id, String nome, Double valor, Integer diasdevolucao) throws Exception {
-        if (nome.length() > 3) {
+    public void inserirClasse(String nome, Double valor, Integer diasdevolucao) throws Exception {
+        
 
             Classe classe = new Classe();
-            classe.setId(id);
+
             classe.setNome(nome);
             classe.setValor(valor);
             classe.setDiasdevolucao(diasdevolucao);
 
             classeDAO.inserirClasse(classe);
-        }
+        
     }
 
     public void alterarClasse(Integer id, String nome, Double valor, Integer diasdevolucao) throws Exception {
-        
+
         Classe classe = new Classe();
         classe.setId(id);
         classe.setNome(nome);
         classe.setValor(valor);
         classe.setDiasdevolucao(diasdevolucao);
-        
+
         classeDAO.alterarClasse(classe);
     }
 

@@ -3,9 +3,9 @@ package br.com.fean.poo2.locadora.control.classe;
 import br.com.fean.poo2.locadora.modelo.classe.Classe;
 import java.util.ArrayList;
 
-public interface classeService {
+public interface ClasseService {
 
-    public void inserirClasse(Integer id, String nome, Double valor, Integer diasdevolucao) throws Exception;
+    public void inserirClasse(String nome, Double valor, Integer diasdevolucao) throws Exception;
 
     public void alterarClasse(Integer id, String nome, Double valor, Integer diasdevolucao) throws Exception;
 

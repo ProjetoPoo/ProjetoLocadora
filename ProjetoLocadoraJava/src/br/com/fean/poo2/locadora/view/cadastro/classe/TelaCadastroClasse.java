@@ -5,20 +5,28 @@
  */
 package br.com.fean.poo2.locadora.view.cadastro.classe;
 
-import br.com.fean.poo2.locadora.control.classe.classeServiceImpl;
+import br.com.fean.poo2.locadora.control.classe.ClasseServiceImpl;
 import br.com.fean.poo2.locadora.modelo.classe.Classe;
+import br.com.fean.poo2.locadora.modelo.distribuidor.Distribuidor;
+import java.util.ArrayList;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Jaime Campos
+ * @author Filipe
  */
 public class TelaCadastroClasse extends javax.swing.JPanel {
+
+    ClasseServiceImpl classeServiceImpl;
 
     /**
      * Creates new form TelaCadastroClasse
      */
     public TelaCadastroClasse() {
         initComponents();
+        classeServiceImpl = new ClasseServiceImpl();
     }
 
     /**
@@ -30,19 +38,296 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnNovo = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
+        jPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtClasseCod = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        cmbClasseDiasDev = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
+        txtValor = new javax.swing.JTextField();
+        txtNomeClasse = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
+        btnSalvar = new javax.swing.JButton();
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Classes"));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 72, -1));
+
+        btnDeletar.setText("Deletar");
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, -1));
+
+        jPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel3.setText("Código:");
+
+        txtClasseCod.setEnabled(false);
+
+        jLabel4.setText("Nome:");
+
+        jLabel5.setText("Valor:");
+
+        cmbClasseDiasDev.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", " " }));
+
+        jLabel6.setText("Dias devolução");
+
+        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(txtClasseCod, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNomeClasse, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmbClasseDiasDev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+        jPanelLayout.setVerticalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(cmbClasseDiasDev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txtNomeClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(txtClasseCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 640, 50));
+
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nome", "Valor", "Dias Devolução"
+            }
+        ));
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabela);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 640, 230));
+
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 72, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 517, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 251, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        editarCamposTexto(true);
+        habilitarBotoes(true);
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+
+    }//GEN-LAST:event_btnDeletarActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+
+        if ((txtNomeClasse.getText().length() == 0 && txtValor.getText().length() == 0)) {
+            JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");
+        } else if (isDouble(txtValor.getText()) == false) {
+            JOptionPane.showMessageDialog(null, "Campo Valor contem dados invalidos");
+
+        } else {
+
+            if (txtClasseCod.getText().length() == 0) {
+                try {
+                    classeServiceImpl.inserirClasse(
+                            txtNomeClasse.getText(),
+                            Double.parseDouble(txtValor.getText()),
+                            Integer.parseInt(cmbClasseDiasDev.getSelectedItem().toString()));
+
+                    JOptionPane.showMessageDialog(null, "Novo registro salvo!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
+                } finally {
+                    limparCampos();
+                }
+            } else {
+                try {
+                    classeServiceImpl.alterarClasse(
+                            Integer.parseInt(txtClasseCod.getText()),
+                            txtNomeClasse.getText(),
+                            Double.parseDouble(txtValor.getText()),
+                            Integer.parseInt(cmbClasseDiasDev.getSelectedItem().toString()));
+
+                    JOptionPane.showMessageDialog(null, "Alteração realizada!");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n Erro: " + e);
+                }
+            }
+
+            retornarTodasClasses();
+            limparCampos();
+            editarCamposTexto(false);
+            habilitarBotoes(false);
+        }
+
+        editarCamposTexto(false);
+        habilitarBotoes(false);
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+
+        txtClasseCod.setText(modelo.getValueAt(tabela.getSelectedRow(), 0).toString());
+
+        txtNomeClasse.setText(modelo.getValueAt(tabela.getSelectedRow(), 1).toString());
+
+        txtValor.setText(modelo.getValueAt(tabela.getSelectedRow(), 2).toString());
+
+        setSelectedValue(cmbClasseDiasDev, modelo.getValueAt(tabela.getSelectedRow(), 3).toString());
+
+        editarCamposTexto(true);
+        habilitarBotoes(true);
+    }//GEN-LAST:event_tabelaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox cmbClasseDiasDev;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabela;
+    private javax.swing.JTextField txtClasseCod;
+    private javax.swing.JTextField txtNomeClasse;
+    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
+
+    private void setSelectedValue(JComboBox comboBox, String value) {
+        String item = "";
+        for (int i = 0; i < comboBox.getItemCount(); i++) {
+            item = comboBox.getItemAt(i).toString();
+            if (item.equals(value)) {
+                comboBox.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+
+    private void editarCamposTexto(boolean editar) {
+        txtNomeClasse.setEnabled(editar);
+        txtValor.setEnabled(editar);
+        cmbClasseDiasDev.setEnabled(editar);
+    }
+
+    private void habilitarBotoes(boolean habilitar) {
+        btnNovo.setVisible(habilitar);
+        btnSalvar.setVisible(habilitar);
+        btnDeletar.setVisible(habilitar);
+    }
+
+    private boolean isDouble(String valor) {
+        boolean resultado = false;
+        try {
+            Double.parseDouble(valor);
+            resultado = true;
+        } finally {
+            return resultado;
+        }
+    }
+
+    private void limparCampos() {
+        txtNomeClasse.setText("");
+        txtValor.setText("");
+        txtClasseCod.setText("");
+        cmbClasseDiasDev.setSelectedIndex(0);
+    }
+
+    private void retornarTodasClasses() {
+        ArrayList<Classe> lista = new ArrayList<Classe>();
+        try {
+            lista = (classeServiceImpl.retornarClasses());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao retornar Distribuidores! \n \n ERRO: " + ex);
+        }
+        carregarDadosDaTabela(lista);
+    }
+
+    private void carregarDadosDaTabela(ArrayList<Classe> lista) {
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setRowCount(0);
+        try {
+
+            for (int i = 0; i < lista.size(); i++) {
+                modelo.addRow(new Object[]{
+                    lista.get(i).getId(),
+                    lista.get(i).getNome(),
+                    lista.get(i).getValor(),
+                    lista.get(i).getDiasdevolucao()});
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao preencher a tabela! \n \n ERRO: " + ex);
+        }
+    }
 }
