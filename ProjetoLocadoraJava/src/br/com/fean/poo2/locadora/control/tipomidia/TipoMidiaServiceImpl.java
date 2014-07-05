@@ -19,12 +19,9 @@ public class TipoMidiaServiceImpl implements TipoMidiaService {
 
     @Override
     public void inserirTipoMidia(String nome) throws Exception {
-        if (nome.length() >= 3) {
             TipoMidia tipomidia = new TipoMidia();
             tipomidia.setNome(nome);
             tipomidiaDAO.inserirTipoMidia(tipomidia);
-        }
-
     }
 
     @Override
