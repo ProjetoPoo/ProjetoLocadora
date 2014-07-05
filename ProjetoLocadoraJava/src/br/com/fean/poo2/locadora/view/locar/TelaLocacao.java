@@ -2,6 +2,7 @@ package br.com.fean.poo2.locadora.view.locar;
 
 
 import br.com.fean.poo2.locadora.control.funcionario.FuncionarioServiceImpl;
+import br.com.fean.poo2.locadora.control.locacao.LocacaoServiceImpl;
 import br.com.fean.poo2.locadora.control.midia.MidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.modelo.funcionario.Funcionario;
@@ -428,6 +429,7 @@ public class TelaLocacao extends javax.swing.JPanel {
         Socio socio = new Socio();
         SocioServiceImpl socioimpl = new SocioServiceImpl();
         FuncionarioServiceImpl funcimpl = new FuncionarioServiceImpl();
+        LocacaoServiceImpl locacaoimpl = new LocacaoServiceImpl();
         try {
             funcionario = funcimpl.retornarFuncionario(1);
             socio = socioimpl.retornarSocioId(Integer.valueOf(codigoCliente.getText()));
@@ -435,6 +437,12 @@ public class TelaLocacao extends javax.swing.JPanel {
             locacao.setDtLocacao(data);
             locacao.setSocios(socio);
             locacao.setValortotal(Double.valueOf(jTextField3.getText()));
+            locacaoimpl.inserirLocacao(locacao);
+            
+            for (LocacaoMidia locacaoMidia : locacaofilmes) {
+                
+            }
+            
         } catch (Exception ex) {
             Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
         }

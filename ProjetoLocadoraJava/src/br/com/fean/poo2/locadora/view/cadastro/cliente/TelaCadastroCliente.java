@@ -39,7 +39,6 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         cpf = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
         dataNascimento = new javax.swing.JLabel();
-        txtDataNascimento = new javax.swing.JFormattedTextField();
         endereco = new javax.swing.JLabel();
         sexo = new javax.swing.JLabel();
         foneComercial = new javax.swing.JLabel();
@@ -55,6 +54,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         txtEndereco = new javax.swing.JTextArea();
         contato = new javax.swing.JLabel();
         txtContato = new javax.swing.JTextField();
+        txtDataNascimento = new com.toedter.calendar.JDateChooser();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
@@ -133,8 +133,8 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(dataNascimento)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
                                     .addComponent(foneResidencial)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(txtTelefoneResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))))
@@ -152,13 +152,14 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                     .addComponent(sexo)
                     .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cpf)
-                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dataNascimento)
-                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(foneResidencial)
-                    .addComponent(txtTelefoneResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cpf)
+                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dataNascimento)
+                        .addComponent(foneResidencial)
+                        .addComponent(txtTelefoneResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -429,7 +430,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtContato;
-    private javax.swing.JFormattedTextField txtDataNascimento;
+    private com.toedter.calendar.JDateChooser txtDataNascimento;
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JTextArea txtEndereco;
     private javax.swing.JTextField txtNome;

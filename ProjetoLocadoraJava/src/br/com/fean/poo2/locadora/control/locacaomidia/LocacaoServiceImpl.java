@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package br.com.fean.poo2.locadora.control.locacao;
+package br.com.fean.poo2.locadora.control.locacaomidia;
 
+import br.com.fean.poo2.locadora.control.locacao.*;
 import br.com.fean.poo2.locadora.modelo.dependente.Dependente;
 import br.com.fean.poo2.locadora.modelo.funcionario.Funcionario;
 import br.com.fean.poo2.locadora.modelo.locacao.Locacao;
