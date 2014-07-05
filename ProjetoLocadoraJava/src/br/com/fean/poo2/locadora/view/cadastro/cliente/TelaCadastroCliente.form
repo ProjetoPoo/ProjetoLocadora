@@ -113,8 +113,8 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="dataNascimento" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtDataNascimento" min="-2" pref="124" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtDataNascimento" min="-2" pref="110" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="foneResidencial" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="txtTelefoneResidencial" min="-2" pref="119" max="-2" attributes="0"/>
@@ -140,13 +140,15 @@
                       <Component id="txtSexo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cpf" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtDataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="foneResidencial" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTelefoneResidencial" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="dataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="foneResidencial" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTelefoneResidencial" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="txtDataNascimento" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -186,8 +188,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Data Nascimento:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtDataNascimento">
         </Component>
         <Component class="javax.swing.JLabel" name="endereco">
           <Properties>
@@ -253,6 +253,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtContato">
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="txtDataNascimento">
         </Component>
       </SubComponents>
     </Container>
