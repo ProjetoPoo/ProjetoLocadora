@@ -112,7 +112,7 @@ public class SocioServiceImpl implements SocioService {
 
     @Override
     public ArrayList<Socio> retornarSocios() {
-        ArrayList<Socio> socios = new ArrayList<Socio>();
+        ArrayList<Socio> socios = null;// = new ArrayList<Socio>();
         try {
             socios = socioDAO.retornaSocios();
         } catch (Exception ex) {

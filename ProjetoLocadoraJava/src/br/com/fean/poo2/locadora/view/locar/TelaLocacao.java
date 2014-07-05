@@ -400,7 +400,7 @@ public class TelaLocacao extends javax.swing.JPanel {
     private void codigoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoClienteMouseClicked
         TelaListaCliente listaCliente;
         try {
-            listaCliente = new TelaListaCliente(TelaLocacao.this);
+            listaCliente = new TelaListaCliente(TelaLocacao.this); 
             listaCliente.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);

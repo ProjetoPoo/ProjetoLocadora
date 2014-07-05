@@ -13,23 +13,24 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class TelaListaCliente extends javax.swing.JFrame {
+public class TelaListaClienteDevolucao extends javax.swing.JFrame {
 
     SocioDAO socioDao = new SocioDAO();
 
     private TelaLocacao refpai;
+    private TelaDevolucao reffilho;
 
-    public TelaListaCliente() throws Exception {
+    public TelaListaClienteDevolucao() throws Exception {
         initComponents();
         carregaClientes();
         //        preencherTabela();
     }
 
-    public TelaListaCliente(TelaLocacao framepai) throws Exception {
+    public TelaListaClienteDevolucao(TelaDevolucao framepai) throws Exception {
         initComponents();
         carregaClientes();
         //        preencherTabela();
-        refpai = framepai;
+        reffilho = framepai;
     }
 
     public void pesquisaFiltro() throws Exception {
@@ -269,10 +270,9 @@ public class TelaListaCliente extends javax.swing.JFrame {
     private void tabelaListaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaListaClienteMouseClicked
         Integer linhaSelecionada = tabelaListaCliente.getSelectedRow();
         Integer valorCodigoSelecionado = (Integer) tabelaListaCliente.getValueAt(linhaSelecionada, 0);
-
-        refpai.setCodCliente(valorCodigoSelecionado);
+        reffilho.setCodCliente(valorCodigoSelecionado);
         String valorNomeSelecionado = (String) tabelaListaCliente.getValueAt(linhaSelecionada, 1);
-        refpai.setNomeCliente(valorNomeSelecionado);
+        reffilho.setNomeCliente(valorNomeSelecionado);
         dispose();
     }//GEN-LAST:event_tabelaListaClienteMouseClicked
 
@@ -283,7 +283,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
         try {
             lista = socioDao.retornarTodosSocio();
         } catch (Exception ex) {
-            Logger.getLogger(TelaListaCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaListaClienteDevolucao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         DefaultTableModel modelo = (DefaultTableModel) tabelaListaCliente.getModel();
@@ -307,7 +307,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
             pesquisaFiltro();
 
         } catch (Exception ex) {
-            Logger.getLogger(TelaListaCliente.class
+            Logger.getLogger(TelaListaClienteDevolucao.class
                     .getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed

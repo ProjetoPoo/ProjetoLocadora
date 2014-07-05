@@ -6,21 +6,85 @@
 
 package br.com.fean.poo2.locadora.view.devolver;
 
+import br.com.fean.poo2.locadora.modelo.locacaomidia.LocacaoMidia;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
+import br.com.fean.poo2.locadora.view.consultar.TelaListaClienteDevolucao;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Jaime Campos
  */
 public class TelaDevolucao extends javax.swing.JPanel {
+    
+    private ArrayList<LocacaoMidia> locacaofilmes = null;
 
     /**
      * Creates new form TelaDevolucao1
      */
     public TelaDevolucao() {
         initComponents();
+        //carregaListaLocacao();
+    }
+    
+    public void carregaListaLocacao() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date datalocacao = new Date();
+        Double valorfilme = 0.0;
+        Double totalapagar = 0.0;
+        try {
+            DefaultTableModel modeloTable = new DefaultTableModel();
+            modeloTable.addColumn("Codigo");
+            modeloTable.addColumn("Titulo");
+            modeloTable.addColumn("Data Locação");
+            modeloTable.addColumn("Data Devolução");
+            modeloTable.addColumn("Valor");
+            
+                             
+            for (LocacaoMidia locacaoMidia : locacaofilmes) {
+            if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Super-Lançamento")) {
+                valorfilme = 7.00;
+            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Lançamento")) {
+                valorfilme = 5.00;
+            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Ouro")) {
+                valorfilme = 4.00;
+            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Prata")) {
+                valorfilme = 3.00;
+            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Bronze")) {
+                valorfilme = 2.00;
+            } else {
+                valorfilme = 7.00;
+            } 
+            totalapagar = totalapagar + valorfilme;
+            modeloTable.addRow(new Object[]{
+                locacaoMidia.getMidias().getTitulos().getId(),
+                locacaoMidia.getMidias().getTitulos().getNome(),
+                dateFormat.format(datalocacao),
+                dateFormat.format(locacaoMidia.getDtPrevDevolucao()),
+                valorfilme});
+            }
+            tabela.setModel(modeloTable);
+            //jTextField3.setText(String.valueOf(totalapagar));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "leitura de dados "
+                    + "de locação com problema...aqui"
+                    + " erro: " + e);
+        }
+    }
+    
+    public void setCodCliente(Integer codigo) {
+        tfCodCliente.setText(Integer.toString(codigo));
+    }
+
+    public void setNomeCliente(String nome) {
+        tfNomeCliente.setText(nome);
     }
 
     /**
@@ -208,18 +272,18 @@ public class TelaDevolucao extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfCodClienteMouseClicked(java.awt.event.MouseEvent evt) {                                          
+    private void tfCodClienteMouseClicked(java.awt.event.MouseEvent evt) {
         // chama a tela de lista de clientes
 
-        TelaListaCliente listaCliente;
+        TelaListaClienteDevolucao listaCliente;
         try {
-            listaCliente = new TelaListaCliente();
+            listaCliente = new TelaListaClienteDevolucao(TelaDevolucao.this);
             listaCliente.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(TelaDevolucao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }                                          
+
+    }                          
 
 
 
