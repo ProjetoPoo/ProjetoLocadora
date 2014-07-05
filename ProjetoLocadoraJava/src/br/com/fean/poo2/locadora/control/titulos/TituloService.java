@@ -13,4 +13,7 @@ public interface TituloService {
     public void deletarTitulo (Titulo titulo)throws Exception; 
     public Titulo retornarTitulo (Integer id)throws Exception;
     public ArrayList<Titulo> retornarTitulos()throws Exception; 
+    public ArrayList<Titulo> pesquisarCodigoTitulo(String id) throws Exception;
+    public ArrayList<Titulo> pesquisarTituloFilme(String nome) throws Exception;
+
 }
