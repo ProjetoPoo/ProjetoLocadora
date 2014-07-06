@@ -89,17 +89,7 @@ public class LocacaoDAO {
         return lista;
     }
 
-    public Locacao pesquisaLocacaoCliente(Socio socio) throws Exception {
-        Locacao locacao = null;
-        try {
-            locacao = entityManager.find(Locacao.class, socio);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "ERRO ao Retornar o Sócio" + ex);
-        }
-        return locacao;
-    }
-
+    
     private void close() throws InterruptedException {
 
         if (getEntityManager().isOpen()) {

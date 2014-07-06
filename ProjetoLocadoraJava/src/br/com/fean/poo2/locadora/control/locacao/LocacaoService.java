@@ -27,8 +27,6 @@ public interface LocacaoService {
 
     public Locacao retornarLocacao(Integer id) throws Exception;//Retorna o categoria com o id passado
 
-    public Locacao retornarLocacao(Socio socio) throws Exception;//Retorna o categoria com o socio passado
-    
     public ArrayList<Locacao> retornarLocacao() throws Exception;//Retorna todo os registros  
     
     
