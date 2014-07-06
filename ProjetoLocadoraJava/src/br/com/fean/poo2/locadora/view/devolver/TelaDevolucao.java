@@ -29,16 +29,14 @@ public class TelaDevolucao extends javax.swing.JPanel {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Double valorfilme = 0.0;
         Double totalapagar = 0.0;
-        DefaultTableModel modeloTable = new DefaultTableModel();
-        modeloTable.addColumn("Codigo");
-        modeloTable.addColumn("Titulo");
-        modeloTable.addColumn("Data Locação");
-        modeloTable.addColumn("Data Devolução");
-        modeloTable.addColumn("Valor");
+//        DefaultTableModel modeloTable = new DefaultTableModel();
+//        modeloTable.addColumn("Codigo");
+//        modeloTable.addColumn("Titulo");
+//        modeloTable.addColumn("Data Locação");
+//        modeloTable.addColumn("Data Devolução");
+ //       modeloTable.addColumn("Valor");
         try {
-<<<<<<< HEAD
             locacaofilmes = locacaoMidiaServiceImpl.retornarLocacao(socio);
-=======
             DefaultTableModel modeloTable = new DefaultTableModel();
             modeloTable.addColumn("Código");
             modeloTable.addColumn("Título");
@@ -46,8 +44,6 @@ public class TelaDevolucao extends javax.swing.JPanel {
             modeloTable.addColumn("Data de devolução");
             modeloTable.addColumn("Valor");
             
-                             
->>>>>>> origin/master
             for (LocacaoMidia locacaoMidia : locacaofilmes) {
             if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Super-Lançamento")) {
                 valorfilme = 7.00;
@@ -79,10 +75,8 @@ public class TelaDevolucao extends javax.swing.JPanel {
     }
     
     public void setCodCliente(Integer codigo) {
-<<<<<<< HEAD
         Integer id = codigo;
-        tfCodCliente.setText(Integer.toString(codigo));
-        
+        txtCodigoCliente.setText(Integer.toString(codigo));
         Socio socio;
         try {
             socio = socioServiceImpl.retornarSocioId(id);
@@ -90,10 +84,6 @@ public class TelaDevolucao extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(TelaDevolucao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-=======
-        txtCodigoCliente.setText(Integer.toString(codigo));
->>>>>>> origin/master
     }
 
     public void setNomeCliente(String nome) {
@@ -290,13 +280,8 @@ public class TelaDevolucao extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(TelaDevolucao.class.getName()).log(Level.SEVERE, null, ex);
         }
-<<<<<<< HEAD
         
-    }                          
-=======
     }//GEN-LAST:event_txtCodigoClienteMouseClicked
-
->>>>>>> origin/master
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
