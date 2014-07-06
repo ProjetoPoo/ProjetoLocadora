@@ -1,6 +1,5 @@
 package br.com.fean.poo2.locadora.view.locar;
 
-
 import br.com.fean.poo2.locadora.control.funcionario.FuncionarioServiceImpl;
 import br.com.fean.poo2.locadora.control.locacao.LocacaoServiceImpl;
 import br.com.fean.poo2.locadora.control.midia.MidiaServiceImpl;
@@ -39,10 +38,10 @@ public class TelaLocacao extends javax.swing.JPanel {
         Double totalapagar = 0.0;
         try {
             DefaultTableModel modeloTable = new DefaultTableModel();
-            modeloTable.addColumn("Codigo");
-            modeloTable.addColumn("Titulo");
-            modeloTable.addColumn("Data Locação");
-            modeloTable.addColumn("Data Devolução");
+            modeloTable.addColumn("Código");
+            modeloTable.addColumn("Título");
+            modeloTable.addColumn("Data de locação");
+            modeloTable.addColumn("Data de devolução");
             modeloTable.addColumn("Valor");
             
             for (LocacaoMidia locacaoMidia : locacaofilmes) {
@@ -67,37 +66,35 @@ public class TelaLocacao extends javax.swing.JPanel {
                 dateFormat.format(locacaoMidia.getDtPrevDevolucao()),
                 valorfilme});
             }
-            tabelaListaLocacao.setModel(modeloTable);
-            jTextField3.setText(String.valueOf(totalapagar));
+            tabela.setModel(modeloTable);
+            txtTotalPagar.setText(String.valueOf(totalapagar));
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "leitura de dados "
-                    + "de locação com problema..."
-                    + " erro: ");
+            JOptionPane.showMessageDialog(null, "Erro na leitura dos dados de locação! \n \n  ERRO: " + e);
         }
     }
 
     public void setCodCliente(Integer codigo) {
-        codigoCliente.setText(Integer.toString(codigo));
+        txtCodigoCliente.setText(Integer.toString(codigo));
     }
 
     public void setNomeCliente(String nome) {
-        jTextField1.setText(nome);
+        txtNomeCliente.setText(nome);
     }
 
     public void setCodFilme(Integer codigo) {
-        codigoFilme.setText(Integer.toString(codigo));
+        txtCodigoFilme.setText(Integer.toString(codigo));
     }
 
     public void setNomeFilme(String nome) {
-        jTextField4.setText(nome);
+        txtTituloFilme.setText(nome);
     }
 
     public void setDataDevolucao(Calendar cal) {
-        jcDataDevolucao.setCalendar(cal);
+        txtDataDevolucao.setCalendar(cal);
     }
 
     public void setquantidadeMidias(Integer nromidia) {
-        jTextField5.setText(Integer.toString(nromidia));
+        txtEstoque.setText(Integer.toString(nromidia));
     }
 
     public void setIdMidiaSelecionada(Integer idmidiaselecionada) {
@@ -112,165 +109,165 @@ public class TelaLocacao extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        codigoCliente = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        codigoFilme = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jcDataDevolucao = new com.toedter.calendar.JDateChooser();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaListaLocacao = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        painelLocacao = new javax.swing.JPanel();
+        painelCliente = new javax.swing.JPanel();
+        nCodigoCliente = new javax.swing.JLabel();
+        txtCodigoCliente = new javax.swing.JTextField();
+        txtNomeCliente = new javax.swing.JTextField();
+        nNomeCliente = new javax.swing.JLabel();
+        painelFilme = new javax.swing.JPanel();
+        nCodigoFilme = new javax.swing.JLabel();
+        txtCodigoFilme = new javax.swing.JTextField();
+        nTituloFilme = new javax.swing.JLabel();
+        txtTituloFilme = new javax.swing.JTextField();
+        nDataDevolucao = new javax.swing.JLabel();
+        btnIncluir = new javax.swing.JButton();
+        nEstoque = new javax.swing.JLabel();
+        txtEstoque = new javax.swing.JTextField();
+        txtDataDevolucao = new com.toedter.calendar.JDateChooser();
+        painelDeRolagem = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
+        painelSaldoPagar = new javax.swing.JPanel();
+        nSaldo = new javax.swing.JLabel();
+        txtSaldo = new javax.swing.JTextField();
+        nTotalPagar = new javax.swing.JLabel();
+        txtTotalPagar = new javax.swing.JTextField();
+        nMulta = new javax.swing.JLabel();
+        txtMulta = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
-        sair = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Locação"));
+        painelLocacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Locação"));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
+        painelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cliente"));
 
-        jLabel1.setText("Código:");
+        nCodigoCliente.setText("Código:");
 
-        codigoCliente.setEnabled(false);
-        codigoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtCodigoCliente.setEnabled(false);
+        txtCodigoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                codigoClienteMouseClicked(evt);
+                txtCodigoClienteMouseClicked(evt);
             }
         });
 
-        jTextField1.setEnabled(false);
+        txtNomeCliente.setEnabled(false);
 
-        jLabel2.setText("Nome:");
+        nNomeCliente.setText("Nome:");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelClienteLayout = new javax.swing.GroupLayout(painelCliente);
+        painelCliente.setLayout(painelClienteLayout);
+        painelClienteLayout.setHorizontalGroup(
+            painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(nCodigoCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(codigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(nNomeCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1)
+                .addComponent(txtNomeCliente)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(codigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        painelClienteLayout.setVerticalGroup(
+            painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelClienteLayout.createSequentialGroup()
+                .addGroup(painelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nCodigoCliente)
+                    .addComponent(txtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nNomeCliente)
+                    .addComponent(txtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Filme"));
+        painelFilme.setBorder(javax.swing.BorderFactory.createTitledBorder("Filme"));
 
-        jLabel4.setText("Código:");
+        nCodigoFilme.setText("Código:");
 
-        codigoFilme.setEnabled(false);
-        codigoFilme.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtCodigoFilme.setEnabled(false);
+        txtCodigoFilme.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                codigoFilmeMouseClicked(evt);
+                txtCodigoFilmeMouseClicked(evt);
             }
         });
 
-        jLabel5.setText("Título:");
+        nTituloFilme.setText("Título:");
 
-        jTextField4.setEnabled(false);
+        txtTituloFilme.setEnabled(false);
 
-        jLabel7.setText("Data Devolução:");
+        nDataDevolucao.setText("Data de Devolução:");
 
-        jButton2.setText("Incluir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnIncluir.setText("Incluir");
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnIncluirActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Estoque:");
+        nEstoque.setText("Estoque:");
 
-        jTextField5.setEnabled(false);
+        txtEstoque.setEnabled(false);
 
-        jcDataDevolucao.setName("jcDataDevolucao"); // NOI18N
+        txtDataDevolucao.setName("txtDataDevolucao"); // NOI18N
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelFilmeLayout = new javax.swing.GroupLayout(painelFilme);
+        painelFilme.setLayout(painelFilmeLayout);
+        painelFilmeLayout.setHorizontalGroup(
+            painelFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFilmeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                .addGroup(painelFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(painelFilmeLayout.createSequentialGroup()
+                        .addComponent(nEstoque)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(txtEstoque))
+                    .addGroup(painelFilmeLayout.createSequentialGroup()
+                        .addComponent(nCodigoFilme)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(codigoFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(txtCodigoFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(painelFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(painelFilmeLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)
+                        .addComponent(nTituloFilme)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
+                        .addComponent(txtTituloFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addComponent(nDataDevolucao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jcDataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(txtDataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelFilmeLayout.createSequentialGroup()
                         .addGap(431, 431, 431)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        painelFilmeLayout.setVerticalGroup(
+            painelFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelFilmeLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(codigoFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7))
-                    .addComponent(jcDataDevolucao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(painelFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nCodigoFilme)
+                        .addComponent(txtCodigoFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nTituloFilme)
+                        .addComponent(txtTituloFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nDataDevolucao))
+                    .addComponent(txtDataDevolucao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(painelFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnIncluir)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFilmeLayout.createSequentialGroup()
+                        .addGroup(painelFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nEstoque)
+                            .addComponent(txtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
 
-        tabelaListaLocacao.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Título", "Data Locação", "Data Devolução", "Valor"
+                "Código", "Título", "Data de locação", "Data de devolução", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -281,54 +278,54 @@ public class TelaLocacao extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tabelaListaLocacao);
+        painelDeRolagem.setViewportView(tabela);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Saldo a Pagar"));
+        painelSaldoPagar.setBorder(javax.swing.BorderFactory.createTitledBorder("Saldo a Pagar"));
 
-        jLabel3.setText("Saldo:");
+        nSaldo.setText("Saldo:");
 
-        jTextField2.setEnabled(false);
+        txtSaldo.setEnabled(false);
 
-        jLabel6.setText("Total a Pagar:");
+        nTotalPagar.setText("Total a Pagar:");
 
-        jTextField3.setEnabled(false);
+        txtTotalPagar.setEnabled(false);
 
-        jLabel12.setText("Multa:");
+        nMulta.setText("Multa:");
 
-        jTextField9.setEnabled(false);
+        txtMulta.setEnabled(false);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelSaldoPagarLayout = new javax.swing.GroupLayout(painelSaldoPagar);
+        painelSaldoPagar.setLayout(painelSaldoPagarLayout);
+        painelSaldoPagarLayout.setHorizontalGroup(
+            painelSaldoPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelSaldoPagarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(nSaldo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12)
+                .addComponent(nMulta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addComponent(nTotalPagar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        painelSaldoPagarLayout.setVerticalGroup(
+            painelSaldoPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelSaldoPagarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel12)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(painelSaldoPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelSaldoPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nTotalPagar)
+                        .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelSaldoPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nSaldo)
+                        .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nMulta)
+                        .addComponent(txtMulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -339,43 +336,43 @@ public class TelaLocacao extends javax.swing.JPanel {
             }
         });
 
-        sair.setText("Sair");
+        btnSair.setText("Sair");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelLocacaoLayout = new javax.swing.GroupLayout(painelLocacao);
+        painelLocacao.setLayout(painelLocacaoLayout);
+        painelLocacaoLayout.setHorizontalGroup(
+            painelLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelLocacaoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelFilme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelDeRolagem)
+                    .addGroup(painelLocacaoLayout.createSequentialGroup()
+                        .addComponent(painelSaldoPagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(105, 105, 105)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(painelLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                            .addComponent(sair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        painelLocacaoLayout.setVerticalGroup(
+            painelLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelLocacaoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelDeRolagem, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(painelLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelLocacaoLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(btnSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sair))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSair))
+                    .addComponent(painelSaldoPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -385,19 +382,19 @@ public class TelaLocacao extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(painelLocacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void codigoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoClienteMouseClicked
+    private void txtCodigoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodigoClienteMouseClicked
         TelaListaCliente listaCliente;
         try {
             listaCliente = new TelaListaCliente(TelaLocacao.this); 
@@ -405,14 +402,14 @@ public class TelaLocacao extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_codigoClienteMouseClicked
+    }//GEN-LAST:event_txtCodigoClienteMouseClicked
 
-    private void codigoFilmeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_codigoFilmeMouseClicked
+    private void txtCodigoFilmeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodigoFilmeMouseClicked
         TelaListaFilmes telaFilme;
-        codigoFilme.setText(null);
-        jTextField4.setText(null);
-        jTextField5.setText(null);
-        jcDataDevolucao.setCalendar(null);
+        txtCodigoFilme.setText(null);
+        txtTituloFilme.setText(null);
+        txtEstoque.setText(null);
+        txtDataDevolucao.setCalendar(null);
         idmidiaselecionada = 0;
         try {
             telaFilme = new TelaListaFilmes(TelaLocacao.this);
@@ -421,7 +418,7 @@ public class TelaLocacao extends javax.swing.JPanel {
             Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_codigoFilmeMouseClicked
+    }//GEN-LAST:event_txtCodigoFilmeMouseClicked
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Date data = new Date();
@@ -432,11 +429,11 @@ public class TelaLocacao extends javax.swing.JPanel {
         LocacaoServiceImpl locacaoimpl = new LocacaoServiceImpl();
         try {
             funcionario = funcimpl.retornarFuncionario(1);
-            socio = socioimpl.retornarSocioId(Integer.valueOf(codigoCliente.getText()));
+            socio = socioimpl.retornarSocioId(Integer.valueOf(txtCodigoCliente.getText()));
             locacao.setFuncionarios(funcionario);
             locacao.setDtLocacao(data);
             locacao.setSocios(socio);
-            locacao.setValortotal(Double.valueOf(jTextField3.getText()));
+            locacao.setValortotal(Double.valueOf(txtTotalPagar.getText()));
             locacaoimpl.inserirLocacao(locacao);
             
             for (LocacaoMidia locacaoMidia : locacaofilmes) {
@@ -449,46 +446,46 @@ public class TelaLocacao extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
         Midia midia = new Midia();
         MidiaServiceImpl midiaservice = new MidiaServiceImpl();
         midia = midiaservice.retornaMidia(idmidiaselecionada);
         LocacaoMidia locacaomidia = new LocacaoMidia();
         locacaomidia.setMidias(midia);
         locacaomidia.setPago(false);
-        locacaomidia.setDtPrevDevolucao(jcDataDevolucao.getDate());
+        locacaomidia.setDtPrevDevolucao(txtDataDevolucao.getDate());
         locacaofilmes.add(locacaomidia);
         carregaListaLocacao();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnIncluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIncluir;
+    private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JTextField codigoCliente;
-    private javax.swing.JTextField codigoFilme;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField9;
-    private com.toedter.calendar.JDateChooser jcDataDevolucao;
-    private javax.swing.JButton sair;
-    private javax.swing.JTable tabelaListaLocacao;
+    private javax.swing.JLabel nCodigoCliente;
+    private javax.swing.JLabel nCodigoFilme;
+    private javax.swing.JLabel nDataDevolucao;
+    private javax.swing.JLabel nEstoque;
+    private javax.swing.JLabel nMulta;
+    private javax.swing.JLabel nNomeCliente;
+    private javax.swing.JLabel nSaldo;
+    private javax.swing.JLabel nTituloFilme;
+    private javax.swing.JLabel nTotalPagar;
+    private javax.swing.JPanel painelCliente;
+    private javax.swing.JScrollPane painelDeRolagem;
+    private javax.swing.JPanel painelFilme;
+    private javax.swing.JPanel painelLocacao;
+    private javax.swing.JPanel painelSaldoPagar;
+    private javax.swing.JTable tabela;
+    private javax.swing.JTextField txtCodigoCliente;
+    private javax.swing.JTextField txtCodigoFilme;
+    private com.toedter.calendar.JDateChooser txtDataDevolucao;
+    private javax.swing.JTextField txtEstoque;
+    private javax.swing.JTextField txtMulta;
+    private javax.swing.JTextField txtNomeCliente;
+    private javax.swing.JTextField txtSaldo;
+    private javax.swing.JTextField txtTituloFilme;
+    private javax.swing.JTextField txtTotalPagar;
     // End of variables declaration//GEN-END:variables
 }

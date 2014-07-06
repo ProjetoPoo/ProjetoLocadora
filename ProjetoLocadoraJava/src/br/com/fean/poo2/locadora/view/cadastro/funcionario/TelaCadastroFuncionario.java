@@ -25,97 +25,99 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        painelCadastroFuncionario = new javax.swing.JPanel();
+        nCodigo = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        nNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        nUsuario = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        nSenha = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
-        txtFone = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        nTelefone = new javax.swing.JLabel();
+        txtTelefone = new javax.swing.JTextField();
+        painelPesquisar = new javax.swing.JPanel();
+        nPesquisaNome = new javax.swing.JLabel();
         txtPesquisar = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        painelDeRolagem = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
+        btnDeletar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Funcionário"));
+        painelCadastroFuncionario.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Funcionário"));
 
-        jLabel1.setText("Código:");
+        nCodigo.setText("Código:");
 
         txtCodigo.setEnabled(false);
 
-        jLabel2.setText("Nome:");
+        nNome.setText("Nome:");
 
-        jLabel3.setText("Usuário:");
+        nUsuario.setText("Usuário:");
 
-        jLabel4.setText("Senha:");
+        nSenha.setText("Senha:");
 
-        jLabel5.setText("Fone:");
+        nTelefone.setText("Telefone:");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelCadastroFuncionarioLayout = new javax.swing.GroupLayout(painelCadastroFuncionario);
+        painelCadastroFuncionario.setLayout(painelCadastroFuncionarioLayout);
+        painelCadastroFuncionarioLayout.setHorizontalGroup(
+            painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCadastroFuncionarioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelCadastroFuncionarioLayout.createSequentialGroup()
+                        .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelCadastroFuncionarioLayout.createSequentialGroup()
+                                .addComponent(nNome)
+                                .addGap(27, 27, 27)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(nTelefone))
+                            .addGroup(painelCadastroFuncionarioLayout.createSequentialGroup()
+                                .addComponent(nCodigo)
+                                .addGap(21, 21, 21)
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(painelCadastroFuncionarioLayout.createSequentialGroup()
+                        .addComponent(nUsuario)
                         .addGap(18, 18, 18)
                         .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
+                        .addComponent(nSenha)
                         .addGap(18, 18, 18)
-                        .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(27, 27, 27)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtFone))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(21, 21, 21)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTelefone, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        painelCadastroFuncionarioLayout.setVerticalGroup(
+            painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCadastroFuncionarioLayout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nCodigo)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nTelefone)
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                .addGroup(painelCadastroFuncionarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nUsuario)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
+                    .addComponent(nSenha)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar"));
+        painelPesquisar.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar"));
 
-        jLabel6.setText("Nome:");
+        nPesquisaNome.setText("Nome:");
 
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,23 +126,23 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelPesquisarLayout = new javax.swing.GroupLayout(painelPesquisar);
+        painelPesquisar.setLayout(painelPesquisarLayout);
+        painelPesquisarLayout.setHorizontalGroup(
+            painelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelPesquisarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addComponent(nPesquisaNome)
                 .addGap(21, 21, 21)
                 .addComponent(txtPesquisar)
                 .addGap(18, 18, 18)
                 .addComponent(btnPesquisar)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel6)
+        painelPesquisarLayout.setVerticalGroup(
+            painelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(nPesquisaNome)
                 .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnPesquisar))
         );
@@ -166,7 +168,7 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
                 tabelaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabela);
+        painelDeRolagem.setViewportView(tabela);
         if (tabela.getColumnModel().getColumnCount() > 0) {
             tabela.getColumnModel().getColumn(0).setMinWidth(100);
             tabela.getColumnModel().getColumn(0).setMaxWidth(100);
@@ -186,10 +188,10 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
             }
         });
 
-        btnExcluir.setText("Excluir");
-        btnExcluir.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnDeletar.setText("Deletar");
+        btnDeletar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExcluirMouseClicked(evt);
+                btnDeletarMouseClicked(evt);
             }
         });
 
@@ -207,15 +209,15 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                    .addComponent(painelCadastroFuncionario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -224,15 +226,15 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelCadastroFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSalvar)
-                    .addComponent(btnExcluir)
+                    .addComponent(btnDeletar)
                     .addComponent(btnCancelar)
                     .addComponent(btnNovo))
                 .addGap(7, 7, 7))
@@ -245,31 +247,31 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
         editarCamposTexto();
         btnSalvar.setEnabled(true);
         btnCancelar.setEnabled(true);
-        btnExcluir.setEnabled(false);
+        btnDeletar.setEnabled(false);
     }//GEN-LAST:event_btnNovoMouseClicked
 
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
-        if ((txtNome.getText().length() == 0 && txtFone.getText().length() == 0 && txtUsuario.getText().length() == 0 && txtSenha.getText().length() <= 5)) {
-            JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");
+        if ((txtNome.getText().length() == 0 && txtTelefone.getText().length() == 0 && txtUsuario.getText().length() == 0 && txtSenha.getText().length() <= 5)) {
+            JOptionPane.showMessageDialog(null, "Campos obrigatórios!");
         } else if (txtNome.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Preencha o campo de nome!");
-        } else if (txtFone.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Preencha o campo de fone!");
+        } else if (txtTelefone.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo de telefone!");
         } else if (txtUsuario.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Preencha o campo de usuario!");
+            JOptionPane.showMessageDialog(null, "Preencha o campo de usuário!");
         } else if (txtSenha.getText().length() <= 5) {
-            JOptionPane.showMessageDialog(null, "A senha deve ter mais de 6 caracteres!");
+            JOptionPane.showMessageDialog(null, "A senha deve possuir mais de 6 caracteres!");
         } else {
 
             if (idFuncionarioSelecionado == 0) {
                 try {
                     funcionarioServiceImpl.inserirFuncionario(
                             txtNome.getText(),
-                            txtFone.getText(),
+                            txtTelefone.getText(),
                             txtUsuario.getText(),
                             txtSenha.getText());
 
-                    JOptionPane.showMessageDialog(null, "Novo registro salvo!");
+                    JOptionPane.showMessageDialog(null, "Novo registro salvo com sucesso!");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
                 } finally {
@@ -282,15 +284,15 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
                     funcionarioServiceImpl.alterarFuncionario(
                             idFuncionarioSelecionado,
                             txtNome.getText(),
-                            txtFone.getText(),
+                            txtTelefone.getText(),
                             txtUsuario.getText(),
                             txtSenha.getText());
 
-                    JOptionPane.showMessageDialog(null, "Alteração realizada!");
+                    JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!" );
 
                 } catch (Exception ex) {
 
-                    JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n Erro: " + ex);
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n ERRO: " + ex);
                 }
             }
 
@@ -301,15 +303,15 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSalvarMouseClicked
 
-    private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
+    private void btnDeletarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletarMouseClicked
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
 
             try {
                 funcionarioServiceImpl.deletarFuncionario(funcionarioServiceImpl.retornarFuncionario(idFuncionarioSelecionado));
 
-                JOptionPane.showMessageDialog(null, "Registro excluido!");
+                JOptionPane.showMessageDialog(null, "Registro deletado com sucesso!");
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao excluir registro! \n \n ERRO: " + ex);
+                JOptionPane.showMessageDialog(null, "Erro ao deletar registro! \n \n ERRO: " + ex);
             }
             
         }
@@ -317,7 +319,7 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
         limparCamposTexto();
         desabilitarBotoes();
         bloquearCamposTexto();
-    }//GEN-LAST:event_btnExcluirMouseClicked
+    }//GEN-LAST:event_btnDeletarMouseClicked
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
         limparCamposTexto();
@@ -335,7 +337,7 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
 
             txtCodigo.setText(funcionario.getId().toString());
             txtNome.setText(funcionario.getNome().toString());
-            txtFone.setText(funcionario.getFone().toString());
+            txtTelefone.setText(funcionario.getFone().toString());
             txtUsuario.setText(funcionario.getUsuario().toString());
             txtSenha.setText(funcionario.getSenha().toString());
 
@@ -361,7 +363,7 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
                 lista = funcionarioServiceImpl.pesquisarFuncionarioNome(txtPesquisar.getText());
             } catch (Exception ex) {
 
-                JOptionPane.showMessageDialog(null, "Erro ao pequisar registros! \n \n ERRO: " + ex);
+                JOptionPane.showMessageDialog(null, "Erro ao pesquisar! \n \n ERRO: " + ex);
             }
 
             carregarDadosTabela(lista);
@@ -374,7 +376,7 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
         try {
             lista = (funcionarioServiceImpl.retornarFuncionarios());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao retornar Funcionarios! \n \n ERRO: " + ex);
+            JOptionPane.showMessageDialog(null, "Erro ao retornar Funcionários! \n \n ERRO: " + ex);
         }
         carregarDadosTabela(lista);
 
@@ -395,7 +397,7 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
                 });
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao preencher tabela! \n \n ERRO: " + ex);
+            JOptionPane.showMessageDialog(null, "Erro ao preencher a tabela! \n \n ERRO: "  + ex);
         }
     }
 
@@ -403,7 +405,7 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
 
         txtCodigo.setText("");
         txtNome.setText("");
-        txtFone.setText("");
+        txtTelefone.setText("");
         txtSenha.setText("");
         txtUsuario.setText("");
     }
@@ -411,7 +413,7 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
     public void editarCamposTexto() {
 
         txtNome.setEnabled(true);
-        txtFone.setEnabled(true);
+        txtTelefone.setEnabled(true);
         txtSenha.setEnabled(true);
         txtUsuario.setEnabled(true);
 
@@ -419,44 +421,44 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
 
     public void bloquearCamposTexto() {
         txtNome.setEnabled(false);
-        txtFone.setEnabled(false);
+        txtTelefone.setEnabled(false);
         txtSenha.setEnabled(false);
         txtUsuario.setEnabled(false);
     }
 
     public void habilitarBotoes() {
         btnCancelar.setEnabled(true);
-        btnExcluir.setEnabled(true);
+        btnDeletar.setEnabled(true);
         btnSalvar.setEnabled(true);
     }
 
     public void desabilitarBotoes() {
         btnCancelar.setEnabled(false);
-        btnExcluir.setEnabled(false);
+        btnDeletar.setEnabled(false);
         btnSalvar.setEnabled(false);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel nCodigo;
+    private javax.swing.JLabel nNome;
+    private javax.swing.JLabel nPesquisaNome;
+    private javax.swing.JLabel nSenha;
+    private javax.swing.JLabel nTelefone;
+    private javax.swing.JLabel nUsuario;
+    private javax.swing.JPanel painelCadastroFuncionario;
+    private javax.swing.JScrollPane painelDeRolagem;
+    private javax.swing.JPanel painelPesquisar;
     private javax.swing.JTable tabela;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtFone;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPesquisar;
     private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JTextField txtTelefone;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

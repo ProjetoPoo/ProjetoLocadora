@@ -27,27 +27,27 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
     private void initComponents() {
 
         btnCancelar = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        painelCadastroDistribuidor = new javax.swing.JPanel();
+        nCNPJ = new javax.swing.JLabel();
         txtCNPJ = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        nRazaoSocial = new javax.swing.JLabel();
         txtRazaoSocial = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        nEndereco = new javax.swing.JLabel();
         txtEndereco = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        painelContato = new javax.swing.JPanel();
+        nNomeContato = new javax.swing.JLabel();
         txtNomeContato = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        nTelefoneContato = new javax.swing.JLabel();
         txtTelefoneContato = new javax.swing.JTextField();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        btnDeletar = new javax.swing.JButton();
+        painelDeRolagem = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
+        painelPesquisar = new javax.swing.JPanel();
+        cbPequisaDistribuidor = new javax.swing.JComboBox();
         txtPesquisar = new javax.swing.JTextField();
-        bPesquisar = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1200, 600));
 
@@ -60,89 +60,89 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro Distribuidor"));
+        painelCadastroDistribuidor.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Distribuidor"));
 
-        jLabel1.setText("CNPJ:");
+        nCNPJ.setText("CNPJ:");
 
-        jLabel2.setText("Razão Social:");
+        nRazaoSocial.setText("Razão Social:");
 
-        jLabel5.setText("Endereço:");
+        nEndereco.setText("Endereço:");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Contato"));
+        painelContato.setBorder(javax.swing.BorderFactory.createTitledBorder("Contato"));
 
-        jLabel4.setText("Nome:");
+        nNomeContato.setText("Nome:");
 
-        jLabel3.setText("Telefone:");
+        nTelefoneContato.setText("Telefone:");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelContatoLayout = new javax.swing.GroupLayout(painelContato);
+        painelContato.setLayout(painelContatoLayout);
+        painelContatoLayout.setHorizontalGroup(
+            painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelContatoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(nNomeContato)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNomeContato, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(nTelefoneContato)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTelefoneContato, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(140, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        painelContatoLayout.setVerticalGroup(
+            painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelContatoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtTelefoneContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
+                        .addComponent(nTelefoneContato))
+                    .addGroup(painelContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nNomeContato)
                         .addComponent(txtNomeContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelCadastroDistribuidorLayout = new javax.swing.GroupLayout(painelCadastroDistribuidor);
+        painelCadastroDistribuidor.setLayout(painelCadastroDistribuidorLayout);
+        painelCadastroDistribuidorLayout.setHorizontalGroup(
+            painelCadastroDistribuidorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCadastroDistribuidorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                .addGroup(painelCadastroDistribuidorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelContato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(painelCadastroDistribuidorLayout.createSequentialGroup()
+                        .addGroup(painelCadastroDistribuidorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(painelCadastroDistribuidorLayout.createSequentialGroup()
+                                .addComponent(nEndereco)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtEndereco))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                            .addGroup(painelCadastroDistribuidorLayout.createSequentialGroup()
+                                .addComponent(nCNPJ)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
+                                .addComponent(nRazaoSocial)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        painelCadastroDistribuidorLayout.setVerticalGroup(
+            painelCadastroDistribuidorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCadastroDistribuidorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                .addGroup(painelCadastroDistribuidorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nCNPJ)
                     .addComponent(txtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
+                    .addComponent(nRazaoSocial)
                     .addComponent(txtRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                .addGroup(painelCadastroDistribuidorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nEndereco)
                     .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -164,12 +164,12 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
             }
         });
 
-        btnExcluir.setText("Deletar");
-        btnExcluir.setMaximumSize(new java.awt.Dimension(52, 52));
-        btnExcluir.setMinimumSize(new java.awt.Dimension(32, 32));
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btnDeletar.setText("Deletar");
+        btnDeletar.setMaximumSize(new java.awt.Dimension(52, 52));
+        btnDeletar.setMinimumSize(new java.awt.Dimension(32, 32));
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
+                btnDeletarActionPerformed(evt);
             }
         });
 
@@ -178,7 +178,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Cod", "CNPJ", "Razão Social", "Endereço", "Contato", "Telefone"
+                "Código", "CNPJ", "Razão social", "Endereço", "Contato", "Telefone"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -194,7 +194,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                 tabelaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabela);
+        painelDeRolagem.setViewportView(tabela);
         if (tabela.getColumnModel().getColumnCount() > 0) {
             tabela.getColumnModel().getColumn(0).setMinWidth(60);
             tabela.getColumnModel().getColumn(0).setMaxWidth(60);
@@ -204,38 +204,38 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
             tabela.getColumnModel().getColumn(5).setMaxWidth(100);
         }
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar"));
+        painelPesquisar.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar"));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Razão Social", "CNPJ" }));
+        cbPequisaDistribuidor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Razão Social", "CNPJ" }));
 
-        bPesquisar.setText("Pesquisar");
-        bPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bPesquisarActionPerformed(evt);
+                btnPesquisarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelPesquisarLayout = new javax.swing.GroupLayout(painelPesquisar);
+        painelPesquisar.setLayout(painelPesquisarLayout);
+        painelPesquisarLayout.setHorizontalGroup(
+            painelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelPesquisarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbPequisaDistribuidor, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPesquisar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        painelPesquisarLayout.setVerticalGroup(
+            painelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelPesquisarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelPesquisarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbPequisaDistribuidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bPesquisar))
+                    .addComponent(btnPesquisar))
                 .addContainerGap())
         );
 
@@ -251,29 +251,29 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE))
+                    .addComponent(painelPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelCadastroDistribuidor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelCadastroDistribuidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                .addComponent(painelDeRolagem, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -298,14 +298,14 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         editarCamposDeTexto();
         btnSalvar.setEnabled(true);
         btnCancelar.setEnabled(true);
-        btnExcluir.setEnabled(false);
+        btnDeletar.setEnabled(false);
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if ((txtRazaoSocial.getText().length() == 0 && txtTelefoneContato.getText().length() == 0)) {
-            JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");
+            JOptionPane.showMessageDialog(null, "Campos obrigatórios!");
         } else if (txtRazaoSocial.getText().length() == 0 && txtTelefoneContato.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Preencha o campo da Razão Social e Telefone!");
+            JOptionPane.showMessageDialog(null, "Preencha o campo da razão social e telefone!");
         } else {
 
             if (idDistribuidor == 0) {
@@ -318,7 +318,7 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                             txtTelefoneContato.getText()
                     );
 
-                    JOptionPane.showMessageDialog(null, "Novo registro salvo!");
+                    JOptionPane.showMessageDialog(null, "Novo registro salvo com sucesso!");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
                 } finally {
@@ -335,9 +335,9 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
                             txtTelefoneContato.getText()
                     );
 
-                    JOptionPane.showMessageDialog(null, "Alteração realizada!");
+                    JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!");
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n Erro: " + ex);
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n ERRO: " + ex);
                 }
             }
 
@@ -348,22 +348,22 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
 
             try {
 
                 distribuidorServiceImpl.deletarDistribuidor(distribuidorServiceImpl.retornarDistribuidor(idDistribuidor));
-                JOptionPane.showMessageDialog(null, "Registro excluido!");
+                JOptionPane.showMessageDialog(null, "Registro deletado com sucesso!");
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao excluir registro! \n \n ERRO: " + ex);
+                JOptionPane.showMessageDialog(null, "Erro ao deletar registro! \n \n ERRO: " + ex);
             }
         }
         retornarTodosDistribuidores();
         limparCamposDeTexto();
         desabilitarBotoes();
         bloquearCamposDeTexto();
-    }//GEN-LAST:event_btnExcluirActionPerformed
+    }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         limparCamposDeTexto();
@@ -371,24 +371,24 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         desabilitarBotoes();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void bPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPesquisarActionPerformed
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         try {
             pesquisaFiltroCombo();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Pesquisar! \n \n ERRO: " + ex);
+            JOptionPane.showMessageDialog(null, "Erro ao pesquisar! \n \n ERRO: " + ex);
         }
-    }//GEN-LAST:event_bPesquisarActionPerformed
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     public void pesquisaFiltroCombo() throws Exception {
 
-        if (jComboBox1.getSelectedIndex() == 0) {
+        if (cbPequisaDistribuidor.getSelectedIndex() == 0) {
             ArrayList<Distribuidor> listaDist = new ArrayList<Distribuidor>();
             DistribuidorServiceImpl distribuidorImpl = new DistribuidorServiceImpl();
             listaDist = distribuidorImpl.pesquisaDistribuidorRazaoSocial(txtPesquisar.getText());
 
             carregarDadosDaTabela(listaDist);
         }
-        if (jComboBox1.getSelectedIndex() == 1) {
+        if (cbPequisaDistribuidor.getSelectedIndex() == 1) {
             ArrayList<Distribuidor> listaDist = new ArrayList<Distribuidor>();
             DistribuidorServiceImpl distribuidorImpl = new DistribuidorServiceImpl();
             listaDist = distribuidorImpl.pesquisaDistribuidorCNPJ(txtPesquisar.getText());
@@ -426,13 +426,13 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
 
     public void habilitarBotoes() {
         btnSalvar.setEnabled(true);
-        btnExcluir.setEnabled(true);
+        btnDeletar.setEnabled(true);
         btnCancelar.setEnabled(true);
     }
 
     public void desabilitarBotoes() {
         btnSalvar.setEnabled(false);
-        btnExcluir.setEnabled(false);
+        btnDeletar.setEnabled(false);
         btnCancelar.setEnabled(false);
     }
 
@@ -465,23 +465,22 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         }
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bPesquisar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox cbPequisaDistribuidor;
+    private javax.swing.JLabel nCNPJ;
+    private javax.swing.JLabel nEndereco;
+    private javax.swing.JLabel nNomeContato;
+    private javax.swing.JLabel nRazaoSocial;
+    private javax.swing.JLabel nTelefoneContato;
+    private javax.swing.JPanel painelCadastroDistribuidor;
+    private javax.swing.JPanel painelContato;
+    private javax.swing.JScrollPane painelDeRolagem;
+    private javax.swing.JPanel painelPesquisar;
     private javax.swing.JTable tabela;
     private javax.swing.JTextField txtCNPJ;
     private javax.swing.JTextField txtEndereco;

@@ -79,24 +79,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        locacao = new javax.swing.JMenu();
-        devolucao = new javax.swing.JMenu();
-        reserva = new javax.swing.JMenu();
-        cadastros = new javax.swing.JMenu();
-        categoria = new javax.swing.JMenuItem();
-        cliente = new javax.swing.JMenuItem();
-        distribuidor = new javax.swing.JMenuItem();
-        tipoMidia = new javax.swing.JMenuItem();
-        funcionario = new javax.swing.JMenuItem();
-        classe = new javax.swing.JMenuItem();
-        Midia = new javax.swing.JMenuItem();
-        titulo = new javax.swing.JMenuItem();
-        consultarCadastros = new javax.swing.JMenu();
-        consultaCliente = new javax.swing.JMenuItem();
-        consultaFilme = new javax.swing.JMenuItem();
-        sobre = new javax.swing.JMenu();
-        sair = new javax.swing.JMenu();
+        menuAcoes = new javax.swing.JMenuBar();
+        mLocacao = new javax.swing.JMenu();
+        mDevolucao = new javax.swing.JMenu();
+        mReserva = new javax.swing.JMenu();
+        mCadastro = new javax.swing.JMenu();
+        miCategoria = new javax.swing.JMenuItem();
+        miCliente = new javax.swing.JMenuItem();
+        miDistribuidor = new javax.swing.JMenuItem();
+        miTiposMidia = new javax.swing.JMenuItem();
+        miFuncionario = new javax.swing.JMenuItem();
+        miClasse = new javax.swing.JMenuItem();
+        miMidia = new javax.swing.JMenuItem();
+        miTitulo = new javax.swing.JMenuItem();
+        mConsultar = new javax.swing.JMenu();
+        miConsultarClientes = new javax.swing.JMenuItem();
+        miConsultarFilmes = new javax.swing.JMenuItem();
+        mSobre = new javax.swing.JMenu();
+        mSair = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
 
@@ -115,135 +115,135 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Video Locadora Passa Tempo");
 
-        locacao.setText("Locação");
-        locacao.addMouseListener(new java.awt.event.MouseAdapter() {
+        mLocacao.setText("Locação");
+        mLocacao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                locacaoMouseClicked(evt);
+                mLocacaoMouseClicked(evt);
             }
         });
-        jMenuBar1.add(locacao);
+        menuAcoes.add(mLocacao);
 
-        devolucao.setText("Devolução");
-        devolucao.addMouseListener(new java.awt.event.MouseAdapter() {
+        mDevolucao.setText("Devolução");
+        mDevolucao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                devolucaoMouseClicked(evt);
+                mDevolucaoMouseClicked(evt);
             }
         });
-        jMenuBar1.add(devolucao);
+        menuAcoes.add(mDevolucao);
 
-        reserva.setText("Reserva");
-        reserva.addMouseListener(new java.awt.event.MouseAdapter() {
+        mReserva.setText("Reserva");
+        mReserva.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                reservaMouseClicked(evt);
+                mReservaMouseClicked(evt);
             }
         });
-        jMenuBar1.add(reserva);
+        menuAcoes.add(mReserva);
 
-        cadastros.setText("Cadastro");
+        mCadastro.setText("Cadastro");
 
-        categoria.setText("Categoria");
-        categoria.addActionListener(new java.awt.event.ActionListener() {
+        miCategoria.setText("Categoria");
+        miCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoriaActionPerformed(evt);
+                miCategoriaActionPerformed(evt);
             }
         });
-        cadastros.add(categoria);
+        mCadastro.add(miCategoria);
 
-        cliente.setText("Cliente");
-        cliente.addActionListener(new java.awt.event.ActionListener() {
+        miCliente.setText("Cliente");
+        miCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clienteActionPerformed(evt);
+                miClienteActionPerformed(evt);
             }
         });
-        cadastros.add(cliente);
+        mCadastro.add(miCliente);
 
-        distribuidor.setText("Distribuidor");
-        distribuidor.addActionListener(new java.awt.event.ActionListener() {
+        miDistribuidor.setText("Distribuidor");
+        miDistribuidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                distribuidorActionPerformed(evt);
+                miDistribuidorActionPerformed(evt);
             }
         });
-        cadastros.add(distribuidor);
+        mCadastro.add(miDistribuidor);
 
-        tipoMidia.setText("Tipos de midia");
-        tipoMidia.addActionListener(new java.awt.event.ActionListener() {
+        miTiposMidia.setText("Tipos de mídia");
+        miTiposMidia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoMidiaActionPerformed(evt);
+                miTiposMidiaActionPerformed(evt);
             }
         });
-        cadastros.add(tipoMidia);
+        mCadastro.add(miTiposMidia);
 
-        funcionario.setText("Funcionário");
-        funcionario.addActionListener(new java.awt.event.ActionListener() {
+        miFuncionario.setText("Funcionário");
+        miFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                funcionarioActionPerformed(evt);
+                miFuncionarioActionPerformed(evt);
             }
         });
-        cadastros.add(funcionario);
+        mCadastro.add(miFuncionario);
 
-        classe.setText("Classe");
-        classe.addActionListener(new java.awt.event.ActionListener() {
+        miClasse.setText("Classe");
+        miClasse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                classeActionPerformed(evt);
+                miClasseActionPerformed(evt);
             }
         });
-        cadastros.add(classe);
+        mCadastro.add(miClasse);
 
-        Midia.setText("Midia");
-        Midia.addActionListener(new java.awt.event.ActionListener() {
+        miMidia.setText("Mídia");
+        miMidia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MidiaActionPerformed(evt);
+                miMidiaActionPerformed(evt);
             }
         });
-        cadastros.add(Midia);
+        mCadastro.add(miMidia);
 
-        titulo.setText("Titulo");
-        titulo.addActionListener(new java.awt.event.ActionListener() {
+        miTitulo.setText("Título");
+        miTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tituloActionPerformed(evt);
+                miTituloActionPerformed(evt);
             }
         });
-        cadastros.add(titulo);
+        mCadastro.add(miTitulo);
 
-        jMenuBar1.add(cadastros);
+        menuAcoes.add(mCadastro);
 
-        consultarCadastros.setText("Consultar");
+        mConsultar.setText("Consultar");
 
-        consultaCliente.setText("Clientes");
-        consultaCliente.addActionListener(new java.awt.event.ActionListener() {
+        miConsultarClientes.setText("Clientes");
+        miConsultarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaClienteActionPerformed(evt);
+                miConsultarClientesActionPerformed(evt);
             }
         });
-        consultarCadastros.add(consultaCliente);
+        mConsultar.add(miConsultarClientes);
 
-        consultaFilme.setText("Filmes");
-        consultaFilme.addActionListener(new java.awt.event.ActionListener() {
+        miConsultarFilmes.setText("Filmes");
+        miConsultarFilmes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultaFilmeActionPerformed(evt);
+                miConsultarFilmesActionPerformed(evt);
             }
         });
-        consultarCadastros.add(consultaFilme);
+        mConsultar.add(miConsultarFilmes);
 
-        jMenuBar1.add(consultarCadastros);
+        menuAcoes.add(mConsultar);
 
-        sobre.setText("Sobre");
-        sobre.addMouseListener(new java.awt.event.MouseAdapter() {
+        mSobre.setText("Sobre");
+        mSobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sobreMouseClicked(evt);
+                mSobreMouseClicked(evt);
             }
         });
-        jMenuBar1.add(sobre);
+        menuAcoes.add(mSobre);
 
-        sair.setText("Sair");
-        sair.addMouseListener(new java.awt.event.MouseAdapter() {
+        mSair.setText("Sair");
+        mSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sairMouseClicked(evt);
+                mSairMouseClicked(evt);
             }
         });
-        jMenuBar1.add(sair);
+        menuAcoes.add(mSair);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuAcoes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -260,35 +260,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sairMouseClicked
+    private void mSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mSairMouseClicked
         //sair
         System.exit(0);
-    }//GEN-LAST:event_sairMouseClicked
+    }//GEN-LAST:event_mSairMouseClicked
 
-    private void locacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_locacaoMouseClicked
+    private void mLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mLocacaoMouseClicked
         // locação
         cardLayout.show(painelCardLayout, "telaLocacao");
-    }//GEN-LAST:event_locacaoMouseClicked
+    }//GEN-LAST:event_mLocacaoMouseClicked
 
-    private void devolucaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_devolucaoMouseClicked
+    private void mDevolucaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mDevolucaoMouseClicked
         // devolução
         cardLayout.show(painelCardLayout, "telaDevolucao");
 
-    }//GEN-LAST:event_devolucaoMouseClicked
+    }//GEN-LAST:event_mDevolucaoMouseClicked
 
 // cadastros ........................................................................................................    
-    private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
+    private void miClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miClienteActionPerformed
         // TODO add your handling code here:
         cardLayout.show(painelCardLayout, "telaCadastroCliente");
-    }//GEN-LAST:event_clienteActionPerformed
+    }//GEN-LAST:event_miClienteActionPerformed
 
-    private void distribuidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distribuidorActionPerformed
+    private void miDistribuidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDistribuidorActionPerformed
         // tela de cadastro de distribuidor
         cardLayout.show(painelCardLayout, "telaCadastroDistribuidor");
 
-    }//GEN-LAST:event_distribuidorActionPerformed
+    }//GEN-LAST:event_miDistribuidorActionPerformed
 
-    private void consultaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaClienteActionPerformed
+    private void miConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultarClientesActionPerformed
         // tela de lista de cliente
         TelaListaCliente listaCliente;
         try {
@@ -298,9 +298,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_consultaClienteActionPerformed
+    }//GEN-LAST:event_miConsultarClientesActionPerformed
 
-    private void consultaFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaFilmeActionPerformed
+    private void miConsultarFilmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultarFilmesActionPerformed
         // tela lista filme
         TelaListaFilmes listaFilme;
         try {
@@ -310,56 +310,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_consultaFilmeActionPerformed
+    }//GEN-LAST:event_miConsultarFilmesActionPerformed
 
-    private void categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaActionPerformed
+    private void miCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCategoriaActionPerformed
 
         cardLayout.show(painelCardLayout, "telaCadastroCategoria");
-    }//GEN-LAST:event_categoriaActionPerformed
+    }//GEN-LAST:event_miCategoriaActionPerformed
 
-    private void reservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reservaMouseClicked
+    private void mReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mReservaMouseClicked
         cardLayout.show(painelCardLayout, "telaReserva");
-    }//GEN-LAST:event_reservaMouseClicked
+    }//GEN-LAST:event_mReservaMouseClicked
 
-    private void sobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sobreMouseClicked
+    private void mSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mSobreMouseClicked
         // Sobre
         JOptionPane.showMessageDialog(null, "FEAN - Faculdades Energia de Administração e Negocio \n\n"
                 + "Sistema desenvolvido pela equipe 2.", "Sobre", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_sobreMouseClicked
+    }//GEN-LAST:event_mSobreMouseClicked
 
-    private void tipoMidiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoMidiaActionPerformed
+    private void miTiposMidiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTiposMidiaActionPerformed
         cardLayout.show(painelCardLayout, "telaCadastroTipoMidia");
-    }//GEN-LAST:event_tipoMidiaActionPerformed
+    }//GEN-LAST:event_miTiposMidiaActionPerformed
 
-    private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
+    private void miFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miFuncionarioActionPerformed
         cardLayout.show(painelCardLayout, "telaCadastroFuncionario");
-    }//GEN-LAST:event_funcionarioActionPerformed
+    }//GEN-LAST:event_miFuncionarioActionPerformed
 
-    private void classeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classeActionPerformed
+    private void miClasseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miClasseActionPerformed
         cardLayout.show(painelCardLayout, "telaCadastroClasse");
-    }//GEN-LAST:event_classeActionPerformed
+    }//GEN-LAST:event_miClasseActionPerformed
 
-    private void MidiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MidiaActionPerformed
+    private void miMidiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMidiaActionPerformed
         cardLayout.show(painelCardLayout, "telaCadastroMidia");
-    }//GEN-LAST:event_MidiaActionPerformed
+    }//GEN-LAST:event_miMidiaActionPerformed
 
-    private void tituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloActionPerformed
+    private void miTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTituloActionPerformed
         cardLayout.show(painelCardLayout, "telaCadastroTitulo");
-    }//GEN-LAST:event_tituloActionPerformed
+    }//GEN-LAST:event_miTituloActionPerformed
 //........................................................................................................................
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Midia;
-    private javax.swing.JMenu cadastros;
-    private javax.swing.JMenuItem categoria;
-    private javax.swing.JMenuItem classe;
-    private javax.swing.JMenuItem cliente;
-    private javax.swing.JMenuItem consultaCliente;
-    private javax.swing.JMenuItem consultaFilme;
-    private javax.swing.JMenu consultarCadastros;
-    private javax.swing.JMenu devolucao;
-    private javax.swing.JMenuItem distribuidor;
-    private javax.swing.JMenuItem funcionario;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -367,12 +356,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu locacao;
-    private javax.swing.JMenu reserva;
-    private javax.swing.JMenu sair;
-    private javax.swing.JMenu sobre;
-    private javax.swing.JMenuItem tipoMidia;
-    private javax.swing.JMenuItem titulo;
+    private javax.swing.JMenu mCadastro;
+    private javax.swing.JMenu mConsultar;
+    private javax.swing.JMenu mDevolucao;
+    private javax.swing.JMenu mLocacao;
+    private javax.swing.JMenu mReserva;
+    private javax.swing.JMenu mSair;
+    private javax.swing.JMenu mSobre;
+    private javax.swing.JMenuBar menuAcoes;
+    private javax.swing.JMenuItem miCategoria;
+    private javax.swing.JMenuItem miClasse;
+    private javax.swing.JMenuItem miCliente;
+    private javax.swing.JMenuItem miConsultarClientes;
+    private javax.swing.JMenuItem miConsultarFilmes;
+    private javax.swing.JMenuItem miDistribuidor;
+    private javax.swing.JMenuItem miFuncionario;
+    private javax.swing.JMenuItem miMidia;
+    private javax.swing.JMenuItem miTiposMidia;
+    private javax.swing.JMenuItem miTitulo;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,99 +34,91 @@ public class TelaListaClienteDevolucao extends javax.swing.JFrame {
     }
 
     public void pesquisaFiltro() throws Exception {
-        if (jComboBox1.getSelectedIndex() == 0) {
+        if (cbPesquisaClientes.getSelectedIndex() == 0) {
             ArrayList<Socio> listasocios; // = new ArrayList<Socio>();
             SocioServiceImpl socioImpl = new SocioServiceImpl();
-            listasocios = socioImpl.pesquisaSocioNome(tfPesquisa.getText());
+            listasocios = socioImpl.pesquisaSocioNome(txtPesquisaCliente.getText());
 
             try {
                 DefaultTableModel modeloTable = new DefaultTableModel();
-                modeloTable.addColumn("Codigo");
+                modeloTable.addColumn("Código");
                 modeloTable.addColumn("Nome");
                 modeloTable.addColumn("Endereço");
-                modeloTable.addColumn("Fone Res");
-                modeloTable.addColumn("Local Trabalho");
+                modeloTable.addColumn("Telefone residencial");
+                modeloTable.addColumn("Local de trabalho");
                 modeloTable.addColumn("CPF");
                 for (Socio socio : listasocios) {
                     modeloTable.addRow(new Object[]{socio.getId(),
                         socio.getNome(), socio.getEndereco(),
                         socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
                 }
-                tabelaListaCliente.setModel(modeloTable);
+                tabela.setModel(modeloTable);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "leitura de dados "
-                        + "de socio com problema..."
-                        + " erro: " + e);
+                JOptionPane.showMessageDialog(null, "Erro na leitura dos dados do sócio! \n \n  ERRO: " + e);
             }
         }
-        if (jComboBox1.getSelectedIndex() == 0) {
+        if (cbPesquisaClientes.getSelectedIndex() == 0) {
             ArrayList<Socio> listasocios; // = new ArrayList<Socio>();
             SocioServiceImpl socioImpl = new SocioServiceImpl();
-            listasocios = socioImpl.pesquisaSocioNome(tfPesquisa.getText());
+            listasocios = socioImpl.pesquisaSocioNome(txtPesquisaCliente.getText());
 
             try {
                 DefaultTableModel modeloTable = new DefaultTableModel();
-                modeloTable.addColumn("Codigo");
+                modeloTable.addColumn("Código");
                 modeloTable.addColumn("Nome");
                 modeloTable.addColumn("Endereço");
-                modeloTable.addColumn("Fone Res");
-                modeloTable.addColumn("Local Trabalho");
+                modeloTable.addColumn("Telefone residencial");
+                modeloTable.addColumn("Local de trabalho");
                 modeloTable.addColumn("CPF");
                 for (Socio socio : listasocios) {
                     modeloTable.addRow(new Object[]{socio.getId(),
                         socio.getNome(), socio.getEndereco(),
                         socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
                 }
-                tabelaListaCliente.setModel(modeloTable);
+                tabela.setModel(modeloTable);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "leitura de dados "
-                        + "de socio com problema..."
-                        + " erro: " + e);
+                JOptionPane.showMessageDialog(null, "Erro na leitura dos dados do sócio! \n \n  ERRO: " + e);
             }
         }
-        if (jComboBox1.getSelectedIndex() == 1) {
+        if (cbPesquisaClientes.getSelectedIndex() == 1) {
             ArrayList<Dependente> listadependentes; // = new ArrayList<Dependente>();
             DependenteServiceImpl dependenteImpl = new DependenteServiceImpl();
-            listadependentes = dependenteImpl.pesquisaDependenteNome(tfPesquisa.getText());
+            listadependentes = dependenteImpl.pesquisaDependenteNome(txtPesquisaCliente.getText());
 
             try {
                 DefaultTableModel modeloTable = new DefaultTableModel();
-                modeloTable.addColumn("Codigo");
-                modeloTable.addColumn("Nome Dependente");
+                modeloTable.addColumn("Código");
+                modeloTable.addColumn("Nome do dependente");
                 for (Dependente dependente : listadependentes) {
                     modeloTable.addRow(new Object[]{dependente.getId(),
                         dependente.getNome()});
                 }
-                tabelaListaCliente.setModel(modeloTable);
+                tabela.setModel(modeloTable);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "leitura de dados "
-                        + "de socio com problema..."
-                        + " erro: " + e);
+                JOptionPane.showMessageDialog(null, "Erro na leitura dos dados do sócio! \n \n  ERRO: " + e);
             }
         }
-        if (jComboBox1.getSelectedIndex() == 3) {
+        if (cbPesquisaClientes.getSelectedIndex() == 3) {
             ArrayList<Socio> listasocios; // = new ArrayList<Socio>();
             SocioServiceImpl socioImpl = new SocioServiceImpl();
-            listasocios = socioImpl.pesquisaSocioCodigo(Integer.parseInt(tfPesquisa.getText()));
+            listasocios = socioImpl.pesquisaSocioCodigo(Integer.parseInt(txtPesquisaCliente.getText()));
 
             try {
                 DefaultTableModel modeloTable = new DefaultTableModel();
-                modeloTable.addColumn("Codigo");
+                modeloTable.addColumn("Código");
                 modeloTable.addColumn("Nome");
                 modeloTable.addColumn("Endereço");
-                modeloTable.addColumn("Fone Res");
-                modeloTable.addColumn("Local Trabalho");
+                modeloTable.addColumn("Telefone residencial");
+                modeloTable.addColumn("Local de trabalho");
                 modeloTable.addColumn("CPF");
                 for (Socio socio : listasocios) {
                     modeloTable.addRow(new Object[]{socio.getId(),
                         socio.getNome(), socio.getEndereco(),
                         socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
                 }
-                tabelaListaCliente.setModel(modeloTable);
+                tabela.setModel(modeloTable);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "leitura de dados "
-                        + "de socio com problema..."
-                        + " erro: " + e);
+                JOptionPane.showMessageDialog(null, "Erro na leitura dos dados do sócio! \n \n  ERRO: " + e);
             }
         }
     }
@@ -138,22 +130,20 @@ public class TelaListaClienteDevolucao extends javax.swing.JFrame {
 
         try {
             DefaultTableModel modeloTable = new DefaultTableModel();
-            modeloTable.addColumn("Codigo");
+            modeloTable.addColumn("Código");
             modeloTable.addColumn("Nome");
             modeloTable.addColumn("Endereço");
-            modeloTable.addColumn("Fone Res");
-            modeloTable.addColumn("Local Trabalho");
+            modeloTable.addColumn("Telefone residencial");
+            modeloTable.addColumn("Local de trabalho");
             modeloTable.addColumn("CPF");
             for (Socio socio : listasocios) {
                 modeloTable.addRow(new Object[]{socio.getId(),
                     socio.getNome(), socio.getEndereco(),
                     socio.getFoneRes(), socio.getLocalTrabalho(), socio.getCpf()});
             }
-            tabelaListaCliente.setModel(modeloTable);
+            tabela.setModel(modeloTable);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "leitura de dados "
-                    + "de socio com problema..."
-                    + " erro: " + e);
+            JOptionPane.showMessageDialog(null, "Erro na leitura dos dados do sócio! \n \n  ERRO: " + e);
         }
 
     }
@@ -162,17 +152,17 @@ public class TelaListaClienteDevolucao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        nListaClientes = new javax.swing.JLabel();
         btnPesquisar = new javax.swing.JButton();
-        tfPesquisa = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaListaCliente = new javax.swing.JTable();
-        sair = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
+        txtPesquisaCliente = new javax.swing.JTextField();
+        painelDeRolagem = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
+        btnSair = new javax.swing.JButton();
+        cbPesquisaClientes = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Lista de Clientes");
+        nListaClientes.setText("Lista de Clientes");
 
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +171,7 @@ public class TelaListaClienteDevolucao extends javax.swing.JFrame {
             }
         });
 
-        tabelaListaCliente.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -197,27 +187,27 @@ public class TelaListaClienteDevolucao extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tabelaListaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaListaClienteMouseClicked(evt);
+                tabelaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabelaListaCliente);
-        if (tabelaListaCliente.getColumnModel().getColumnCount() > 0) {
-            tabelaListaCliente.getColumnModel().getColumn(0).setMinWidth(60);
-            tabelaListaCliente.getColumnModel().getColumn(0).setMaxWidth(60);
-            tabelaListaCliente.getColumnModel().getColumn(2).setMinWidth(120);
-            tabelaListaCliente.getColumnModel().getColumn(2).setMaxWidth(120);
+        painelDeRolagem.setViewportView(tabela);
+        if (tabela.getColumnModel().getColumnCount() > 0) {
+            tabela.getColumnModel().getColumn(0).setMinWidth(60);
+            tabela.getColumnModel().getColumn(0).setMaxWidth(60);
+            tabela.getColumnModel().getColumn(2).setMinWidth(120);
+            tabela.getColumnModel().getColumn(2).setMaxWidth(120);
         }
 
-        sair.setText("Sair");
-        sair.addActionListener(new java.awt.event.ActionListener() {
+        btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairActionPerformed(evt);
+                btnSairActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome Titular", "Nome Dependente", "CPF Titular", "Código Titular" }));
+        cbPesquisaClientes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nome Titular", "Nome Dependente", "CPF Titular", "Código Titular" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -226,36 +216,36 @@ public class TelaListaClienteDevolucao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(painelDeRolagem)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbPesquisaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPesquisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(nListaClientes)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(sair, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(nListaClientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPesquisar)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tfPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPesquisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbPesquisaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelDeRolagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(sair)
+                .addComponent(btnSair)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -263,18 +253,18 @@ public class TelaListaClienteDevolucao extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
-    }//GEN-LAST:event_sairActionPerformed
+    }//GEN-LAST:event_btnSairActionPerformed
 
-    private void tabelaListaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaListaClienteMouseClicked
-        Integer linhaSelecionada = tabelaListaCliente.getSelectedRow();
-        Integer valorCodigoSelecionado = (Integer) tabelaListaCliente.getValueAt(linhaSelecionada, 0);
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        Integer linhaSelecionada = tabela.getSelectedRow();
+        Integer valorCodigoSelecionado = (Integer) tabela.getValueAt(linhaSelecionada, 0);
         reffilho.setCodCliente(valorCodigoSelecionado);
-        String valorNomeSelecionado = (String) tabelaListaCliente.getValueAt(linhaSelecionada, 1);
+        String valorNomeSelecionado = (String) tabela.getValueAt(linhaSelecionada, 1);
         reffilho.setNomeCliente(valorNomeSelecionado);
         dispose();
-    }//GEN-LAST:event_tabelaListaClienteMouseClicked
+    }//GEN-LAST:event_tabelaMouseClicked
 
     private void preencherTabela() {
 
@@ -286,7 +276,7 @@ public class TelaListaClienteDevolucao extends javax.swing.JFrame {
             Logger.getLogger(TelaListaClienteDevolucao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        DefaultTableModel modelo = (DefaultTableModel) tabelaListaCliente.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
         modelo.setRowCount(0);
 
         try {
@@ -297,7 +287,7 @@ public class TelaListaClienteDevolucao extends javax.swing.JFrame {
                     lista.get(i).getNome(),});
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao preencher tabela! \n \n ERRO: " + ex);
+            JOptionPane.showMessageDialog(null, "Erro ao preencher a tabela! \n \n ERRO: " + ex);
         }
 
     }
@@ -314,11 +304,11 @@ public class TelaListaClienteDevolucao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPesquisar;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton sair;
-    private javax.swing.JTable tabelaListaCliente;
-    private javax.swing.JTextField tfPesquisa;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JComboBox cbPesquisaClientes;
+    private javax.swing.JLabel nListaClientes;
+    private javax.swing.JScrollPane painelDeRolagem;
+    private javax.swing.JTable tabela;
+    private javax.swing.JTextField txtPesquisaCliente;
     // End of variables declaration//GEN-END:variables
 }
