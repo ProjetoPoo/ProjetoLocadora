@@ -62,7 +62,6 @@ public class TipoMidiaDAO {
         try {
             tipomidia = entityManager.find(TipoMidia.class, id);
         } catch (Exception e) {
-        
             e.printStackTrace();
         }
         return tipomidia;
@@ -73,7 +72,6 @@ public class TipoMidiaDAO {
         try {
             tipomidia = entityManager.find(TipoMidia.class, nome);
         } catch (Exception e) {
-           
             e.printStackTrace();
         }
         return tipomidia;
@@ -85,9 +83,16 @@ public class TipoMidiaDAO {
         lista = (ArrayList<TipoMidia>) query.getResultList();
         return lista;
     }
-    
+/*    
+    public ArrayList<TipoMidia> retornarMidiasDoTipoMidias(TipoMidia tipoMidia) throws Exception {
+        ArrayList<Midia> lista = new ArrayList<Midia>();
+        Query query = entityManager.createQuery("from Midias m where m.tipoMidia = :tp");
+        query.setParameter("tp", tipoMidia);
+        lista = (ArrayList<TipoMidia>) query.getResultList();
+        return lista;
+    }
+*/    
     private void close() throws InterruptedException {
-
         if (getEntityManager().isOpen()) {
             getEntityManager().close();
         }
