@@ -6,7 +6,10 @@
 
 package br.com.fean.poo2.locadora.view.devolver;
 
+import br.com.fean.poo2.locadora.control.locacaomidia.LocacaoMidiaServiceImpl;
+import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.modelo.locacaomidia.LocacaoMidia;
+import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaClienteDevolucao;
 import java.text.DateFormat;
@@ -25,29 +28,28 @@ import javax.swing.table.DefaultTableModel;
 public class TelaDevolucao extends javax.swing.JPanel {
     
     private ArrayList<LocacaoMidia> locacaofilmes = null;
+    LocacaoMidiaServiceImpl locacaoMidiaServiceImpl = new LocacaoMidiaServiceImpl();
+    SocioServiceImpl socioServiceImpl = new SocioServiceImpl();
 
     /**
      * Creates new form TelaDevolucao1
      */
     public TelaDevolucao() {
         initComponents();
-        //carregaListaLocacao();
     }
     
-    public void carregaListaLocacao() {
+    public void carregaListaLocacao(Socio socio) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date datalocacao = new Date();
         Double valorfilme = 0.0;
         Double totalapagar = 0.0;
+        DefaultTableModel modeloTable = new DefaultTableModel();
+        modeloTable.addColumn("Codigo");
+        modeloTable.addColumn("Titulo");
+        modeloTable.addColumn("Data Locação");
+        modeloTable.addColumn("Data Devolução");
+        modeloTable.addColumn("Valor");
         try {
-            DefaultTableModel modeloTable = new DefaultTableModel();
-            modeloTable.addColumn("Codigo");
-            modeloTable.addColumn("Titulo");
-            modeloTable.addColumn("Data Locação");
-            modeloTable.addColumn("Data Devolução");
-            modeloTable.addColumn("Valor");
-            
-                             
+            locacaofilmes = locacaoMidiaServiceImpl.retornarLocacao(socio);
             for (LocacaoMidia locacaoMidia : locacaofilmes) {
             if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Super-Lançamento")) {
                 valorfilme = 7.00;
@@ -66,7 +68,8 @@ public class TelaDevolucao extends javax.swing.JPanel {
             modeloTable.addRow(new Object[]{
                 locacaoMidia.getMidias().getTitulos().getId(),
                 locacaoMidia.getMidias().getTitulos().getNome(),
-                dateFormat.format(datalocacao),
+                //locacaoMidia.getLocacao().getDtLocacao(),
+                dateFormat.format(locacaoMidia.getLocacao().getDtLocacao()),
                 dateFormat.format(locacaoMidia.getDtPrevDevolucao()),
                 valorfilme});
             }
@@ -80,7 +83,17 @@ public class TelaDevolucao extends javax.swing.JPanel {
     }
     
     public void setCodCliente(Integer codigo) {
+        Integer id = codigo;
         tfCodCliente.setText(Integer.toString(codigo));
+        
+        Socio socio;
+        try {
+            socio = socioServiceImpl.retornarSocioId(id);
+            carregaListaLocacao(socio);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaDevolucao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     public void setNomeCliente(String nome) {
@@ -282,10 +295,8 @@ public class TelaDevolucao extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(TelaDevolucao.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }                          
-
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;

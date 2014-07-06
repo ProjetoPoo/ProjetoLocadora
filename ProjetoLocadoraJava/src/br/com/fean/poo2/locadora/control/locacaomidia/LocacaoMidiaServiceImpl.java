@@ -36,9 +36,9 @@ public class LocacaoMidiaServiceImpl implements LocacaoMidiaService{
 
     @Override
     public ArrayList<LocacaoMidia> retornarLocacao(Socio socio) throws Exception {
-        
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<LocacaoMidia> lista;
+        lista = locacaoMidiaDao.retornaLocacaos(socio);
+        return lista;
     }
     
 }

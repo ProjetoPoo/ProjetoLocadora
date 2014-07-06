@@ -23,8 +23,10 @@ public class LocacaoMidiaDAO {
     public ArrayList<LocacaoMidia> retornaLocacaos(Socio socio) throws Exception {
         
         ArrayList<LocacaoMidia> lista = new ArrayList<LocacaoMidia>();
-        Query query = entityManager.createQuery("select x from Locacao x where x.locacao.getSocio(:socio)");
-        query.setParameter("socio", socio);
+        String comando = "select lm from LocacaoMidia lm left join fetch lm.locacao as loc "
+                + "where loc.socios.id = :socio";
+        Query query = entityManager.createQuery(comando, LocacaoMidia.class);
+        query.setParameter("socio", socio.getId());
         lista = (ArrayList<LocacaoMidia>) query.getResultList();
         
         return lista;
