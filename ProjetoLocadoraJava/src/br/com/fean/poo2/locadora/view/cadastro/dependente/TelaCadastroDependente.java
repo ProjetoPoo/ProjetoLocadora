@@ -314,7 +314,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
         try {
             // botão pesquisar sócio
             TelaListaCliente listaCliente = new TelaListaCliente();
-            listaCliente.setVisible(true);
+            listaCliente.setEnabled(true);
         } catch (Exception ex) {
             Logger.getLogger(TelaCadastroDependente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -345,7 +345,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // botão salvar
+      /*  // botão salvar
         
         if ((txtNome.getText().length() == 0) && (txtSexo.getText().length() == 0)) {
             JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");        
@@ -383,14 +383,15 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
             limparCamposDeTexto();
             desabilitarBotoes();
             bloquearCamposDeTexto();
+              */
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // botão novo
         idDependente = 0;        
-        btnSalvar.setVisible(true);
-        btnCancelar.setVisible(true);
-        btnDeletar.setVisible(false);        
+        btnSalvar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnDeletar.setEnabled(false);        
         limparCamposDeTexto();
         editarCamposDeTexto();
     }//GEN-LAST:event_btnNovoActionPerformed
@@ -406,9 +407,9 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
 
     private void comboSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSexoActionPerformed
         // combo sexo
-        if(comboSexo.lenth){
+       // if(comboSexo.lenth){
             
-        }
+      //  }
     }//GEN-LAST:event_comboSexoActionPerformed
 
     
@@ -420,34 +421,34 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
     public void limparCamposDeTexto() {
         // dependente 01
         txtNome.setText("");
-        txtSexo.setText("");       
-        txtDataNascimento.setText("");        
+      //  txtSexo.setText("");       
+      //  txtDataNascimento.setText("");        
     }
     // método editar campos
     public void editarCamposDeTexto() {
         // dependente 01
         txtNome.setEnabled(true);
-        txtSexo.setEnabled(true);        
-        txtDataNascimento.setEnabled(true);             
+      //  txtSexo.setEnabled(true);        
+       // txtDataNascimento.setEnabled(true);             
     }
     // método bloquear campos de texto
     public void bloquearCamposDeTexto() {
         // dependente 01
         txtNome.setEnabled(false);
-        txtSexo.setEnabled(false);
-        txtDataNascimento.setEnabled(false);        
+       // txtSexo.setEnabled(false);
+       // txtDataNascimento.setEnabled(false);        
     }
     // habilitar botões
     public void habilitarBotoes() {
-        btnSalvar.setVisible(true);
-        btnDeletar.setVisible(true);
-        btnCancelar.setVisible(true);
+        btnSalvar.setEnabled(true);
+        btnDeletar.setEnabled(true);
+        btnCancelar.setEnabled(true);
     }
     // desabilitar botões
     public void desabilitarBotoes() {
-        btnSalvar.setVisible(false);
-        btnDeletar.setVisible(false);
-        btnCancelar.setVisible(false);
+        btnSalvar.setEnabled(false);
+        btnDeletar.setEnabled(false);
+        btnCancelar.setEnabled(false);
     }
     
     

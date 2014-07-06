@@ -296,9 +296,9 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
         idDistribuidor = 0;
         limparCamposDeTexto();
         editarCamposDeTexto();
-        btnSalvar.setVisible(true);
-        btnCancelar.setVisible(true);
-        btnExcluir.setVisible(false);
+        btnSalvar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnExcluir.setEnabled(false);
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -425,15 +425,15 @@ public class TelaCadastroDistribuidor extends javax.swing.JPanel {
     }
 
     public void habilitarBotoes() {
-        btnSalvar.setVisible(true);
-        btnExcluir.setVisible(true);
-        btnCancelar.setVisible(true);
+        btnSalvar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        btnCancelar.setEnabled(true);
     }
 
     public void desabilitarBotoes() {
-        btnSalvar.setVisible(false);
-        btnExcluir.setVisible(false);
-        btnCancelar.setVisible(false);
+        btnSalvar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        btnCancelar.setEnabled(false);
     }
 
     public void retornarTodosDistribuidores() {

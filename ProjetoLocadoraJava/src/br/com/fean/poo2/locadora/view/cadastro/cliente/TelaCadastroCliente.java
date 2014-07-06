@@ -265,7 +265,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         TelaListaCliente telaCliente;
         try {
             telaCliente = new TelaListaCliente();
-            telaCliente.setVisible(true);
+            telaCliente.setEnabled(true);
         } catch (Exception ex) {
             Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -275,15 +275,15 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // botao novo
         idCliente = 0;        
-        btnSalvar.setVisible(true);
-        btnCancelar.setVisible(true);
-        btnDeletar.setVisible(false);        
+        btnSalvar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnDeletar.setEnabled(false);        
         limparCamposDeTexto();
         editarCamposDeTexto();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // botão salvar
+      /*  // botão salvar
         Date data = new Date();
         if ((txtNome.getText().length() == 0) && (txtSexo.getText().length() == 0) && (txtCPF.getText().length() == 0 && (txtTelefoneResidencial.getText().length() == 0))) {
             JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");
@@ -336,6 +336,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
             limparCamposDeTexto();
             desabilitarBotoes();
             bloquearCamposDeTexto();
+              */
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
@@ -364,7 +365,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private void btnDependenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDependenteActionPerformed
         // tela dependete
         TelaCadastroDependente telaDependete = new TelaCadastroDependente();
-        telaDependete.setVisible(true);
+        telaDependete.setEnabled(true);
     }//GEN-LAST:event_btnDependenteActionPerformed
 
     private void comboSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSexoActionPerformed
@@ -419,15 +420,15 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     }
     // habilitar botões
     public void habilitarBotoes() {
-        btnSalvar.setVisible(true);
-        btnDeletar.setVisible(true);
-        btnCancelar.setVisible(true);
+        btnSalvar.setEnabled(true);
+        btnDeletar.setEnabled(true);
+        btnCancelar.setEnabled(true);
     }
     // desabilitar botões
     public void desabilitarBotoes() {
-        btnSalvar.setVisible(false);
-        btnDeletar.setVisible(false);
-        btnCancelar.setVisible(false);
+        btnSalvar.setEnabled(false);
+        btnDeletar.setEnabled(false);
+        btnCancelar.setEnabled(false);
     }
     
     

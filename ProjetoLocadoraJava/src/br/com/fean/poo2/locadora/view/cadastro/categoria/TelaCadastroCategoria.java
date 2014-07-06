@@ -212,9 +212,9 @@ public class TelaCadastroCategoria extends javax.swing.JPanel {
         idControle = 0;
         limparCamposTexto();
         editarCamposTexto();
-        btnSalvar.setVisible(true);
-        btnCancelar.setVisible(true);
-        btnExcluir.setVisible(false);
+        btnSalvar.setEnabled(true);
+        btnCancelar.setEnabled(true);
+        btnExcluir.setEnabled(false);
     }//GEN-LAST:event_btnNovoMouseClicked
 
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
@@ -323,15 +323,15 @@ public class TelaCadastroCategoria extends javax.swing.JPanel {
     }
 
     public void habilitarBotoes() {
-        btnCancelar.setVisible(true);
-        btnExcluir.setVisible(true);
-        btnSalvar.setVisible(true);
+        btnCancelar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        btnSalvar.setEnabled(true);
     }
 
     public void desabilitarBotoes() {
-        btnCancelar.setVisible(false);
-        btnExcluir.setVisible(false);
-        btnSalvar.setVisible(false);
+        btnCancelar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        btnSalvar.setEnabled(false);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
