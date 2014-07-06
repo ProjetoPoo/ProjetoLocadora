@@ -31,6 +31,20 @@ public class TelaLocacao extends javax.swing.JPanel {
         initComponents();
         carregaListaLocacao();
     }
+    
+    public void zerarLocacaoFilmes() {
+        ArrayList<LocacaoMidia> locacaofilmeszerar = new ArrayList<LocacaoMidia>();
+        Locacao locacaozerar = new Locacao();
+        locacao = locacaozerar;
+        locacaofilmes = locacaofilmeszerar;        
+        txtCodigoCliente.setText("");
+        txtNomeCliente.setText("");
+        txtCodigoFilme.setText("");
+        txtTituloFilme.setText("");
+        txtDataDevolucao.cleanup();
+        txtEstoque.setText("");
+        carregaListaLocacao();
+    }
 
     public void carregaListaLocacao() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -312,6 +326,11 @@ public class TelaLocacao extends javax.swing.JPanel {
         });
 
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelLocacaoLayout = new javax.swing.GroupLayout(painelLocacao);
         painelLocacao.setLayout(painelLocacaoLayout);
@@ -324,7 +343,6 @@ public class TelaLocacao extends javax.swing.JPanel {
                     .addComponent(painelFilme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(painelDeRolagem)
                     .addGroup(painelLocacaoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(painelSaldoPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(painelLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -399,11 +417,13 @@ public class TelaLocacao extends javax.swing.JPanel {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Date data = new Date();
         Funcionario funcionario = new Funcionario();
+        Midia midia = new Midia();
         Socio socio = new Socio();
         SocioServiceImpl socioimpl = new SocioServiceImpl();
         FuncionarioServiceImpl funcimpl = new FuncionarioServiceImpl();
         LocacaoServiceImpl locacaoimpl = new LocacaoServiceImpl();
         LocacaoMidiaServiceImpl locacaomidiaimpl = new LocacaoMidiaServiceImpl();
+        MidiaServiceImpl midiaimpl = new MidiaServiceImpl();
         try {
             funcionario = funcimpl.retornarFuncionario(1);
             socio = socioimpl.retornarSocioId(Integer.valueOf(txtCodigoCliente.getText()));
@@ -414,8 +434,12 @@ public class TelaLocacao extends javax.swing.JPanel {
             locacaoimpl.inserirLocacao(locacao);
             for (LocacaoMidia locacaoMidia : locacaofilmes) {
                 locacaoMidia.setLocacao(locacao);
-                locacaomidiaimpl.inserirLocacaoMidia(locacaoMidia);              
+                locacaomidiaimpl.inserirLocacaoMidia(locacaoMidia);
+                midia = locacaoMidia.getMidias();
+                midia.setSituacao(1);
+                midiaimpl.alterarSituacaoMidia(midia);
             }
+            zerarLocacaoFilmes();
         } catch (Exception ex) {
             Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -432,6 +456,10 @@ public class TelaLocacao extends javax.swing.JPanel {
         locacaofilmes.add(locacaomidia);
         carregaListaLocacao();
     }//GEN-LAST:event_btnIncluirActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        zerarLocacaoFilmes();
+    }//GEN-LAST:event_btnSairActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
