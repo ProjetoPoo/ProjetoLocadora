@@ -38,6 +38,7 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
         painelDeRolagem = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         btnSalvar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         painelCadastroClasses.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Classes"));
         painelCadastroClasses.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -48,7 +49,7 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
                 btnNovoActionPerformed(evt);
             }
         });
-        painelCadastroClasses.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 72, -1));
+        painelCadastroClasses.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 72, -1));
 
         btnDeletar.setText("Deletar");
         btnDeletar.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +57,7 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
                 btnDeletarActionPerformed(evt);
             }
         });
-        painelCadastroClasses.add(btnDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, -1));
+        painelCadastroClasses.add(btnDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, -1, -1));
 
         painelCodigoeNome.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -84,7 +85,7 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(nNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(nValor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -93,7 +94,7 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
                 .addComponent(nDiasDevolucao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbDiasDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         painelCodigoeNomeLayout.setVerticalGroup(
             painelCodigoeNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +113,7 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
                     .addGroup(painelCodigoeNomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(nCodigo)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         painelCadastroClasses.add(painelCodigoeNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 640, 50));
@@ -124,7 +125,15 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
             new String [] {
                 "ID", "Nome", "Valor", "Dias Devolução"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tabela.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabelaMouseClicked(evt);
@@ -132,7 +141,7 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
         });
         painelDeRolagem.setViewportView(tabela);
 
-        painelCadastroClasses.add(painelDeRolagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 640, 230));
+        painelCadastroClasses.add(painelDeRolagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 640, 300));
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +149,15 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
                 btnSalvarActionPerformed(evt);
             }
         });
-        painelCadastroClasses.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 72, -1));
+        painelCadastroClasses.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 72, -1));
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        painelCadastroClasses.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -148,14 +165,14 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelCadastroClasses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(painelCadastroClasses, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painelCadastroClasses, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                .addComponent(painelCadastroClasses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -241,6 +258,12 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
         habilitarBotoes(true);
     }//GEN-LAST:event_tabelaMouseClicked
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limparCampos();
+        editarCamposTexto(false);
+        habilitarBotoes(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     private void setSelectedValue(JComboBox comboBox, String value) {
         String item = "";
         for (int i = 0; i < comboBox.getItemCount(); i++) {
@@ -261,6 +284,7 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
     private void habilitarBotoes(boolean habilitar) {
         btnSalvar.setEnabled(habilitar);
         btnDeletar.setEnabled(habilitar);
+        btnCancelar.setEnabled(habilitar);
     }
 
     private boolean isDouble(String valor) {
@@ -308,6 +332,7 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;

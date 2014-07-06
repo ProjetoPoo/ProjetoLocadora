@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -16,11 +17,12 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
 
     private CardLayout cardLayout;
     private JPanel painelCardLayout;
-    
+
     private int idCliente = 0;
-    
+    private int sexo;
+
     SocioServiceImpl socioServiceImpl = new SocioServiceImpl();
-    
+
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date dataNascimento = new Date();
 
@@ -29,7 +31,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         desabilitarBotoes();
         bloquearCamposDeTexto();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -265,43 +267,43 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // botao novo
-        idCliente = 0;        
+        idCliente = 0;
         btnSalvar.setEnabled(true);
         btnCancelar.setEnabled(true);
-        btnDeletar.setEnabled(false);        
+        btnDeletar.setEnabled(false);
         limparCamposDeTexto();
         editarCamposDeTexto();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-      /*  // botão salvar
+        // botão salvar
         Date data = new Date();
-        if ((txtNome.getText().length() == 0) && (txtSexo.getText().length() == 0) && (txtCPF.getText().length() == 0 && (txtTelefoneResidencial.getText().length() == 0))) {
+        if ((txtNome.getText().length() == 0) && (txtCPF.getText().length() == 0 && (txtTelefoneResidencial.getText().length() == 0))) {
             JOptionPane.showMessageDialog(null, "Campos obrigatórios!");
-        } else if (txtEmpresa.getText().length() == 0 && txtTelefoneComercial.getText().length() == 0) {
+        } else if (txtEmpresa.getText().length() == 0 && txtTelefoneEmpresa.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Preencha os campos empresa e telefone comercial!");
         } else {
 
             if (idCliente == 0) {
                 try {
-                       socioServiceImpl.inserirSocio(
+                    socioServiceImpl.inserirSocio(
                             txtNome.getText(),
-                            Integer.parseInt(txtSexo.getText()),
+                            sexo,
                             txtCPF.getText(),
                             txtDataNascimento.getDate(),
-                            txtTelefoneResidencial.getText(),                            
+                            txtTelefoneResidencial.getText(),
                             txtEndereco.getText(),
                             txtEmpresa.getText(),
-                            txtTelefoneComercial.getText()
+                            txtTelefoneEmpresa.getText()
                     );
 
                     JOptionPane.showMessageDialog(null, "Novo registro salvo com sucesso!");
-                            
+
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
                 } finally {
@@ -309,43 +311,43 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                 }
             } else {
                 try {
-                    
+
                     socioServiceImpl.alterarSocio(
                             txtNome.getText(),
-                            Integer.parseInt(txtSexo.getText()),
+                            sexo,
                             txtCPF.getText(),
                             txtDataNascimento.getDate(),
-                            txtTelefoneResidencial.getText(),                            
+                            txtTelefoneResidencial.getText(),
                             txtEndereco.getText(),
                             txtEmpresa.getText(),
-                            txtTelefoneComercial.getText()
+                            txtTelefoneEmpresa.getText()
                     );
 
                     JOptionPane.showMessageDialog(null, "Alteração realizada com suceso!");
-                            
+
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n ERRO: " + ex);
                 }
             }
         }
-           
-            limparCamposDeTexto();
-            desabilitarBotoes();
-            bloquearCamposDeTexto();
-              */
+
+        limparCamposDeTexto();
+        desabilitarBotoes();
+        bloquearCamposDeTexto();
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         // botão deletar
-        if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {           
-            try {                
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
+            try {
                 socioServiceImpl.deletarSocio(socioServiceImpl.retornarSocioId(idCliente));
                 JOptionPane.showMessageDialog(null, "Registro deletado com sucesso!");
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao deletar registro! \n \n ERRO: " + ex);
             }
         }
-        
+
         limparCamposDeTexto();
         desabilitarBotoes();
         bloquearCamposDeTexto();
@@ -366,32 +368,29 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
 
     private void cbSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSexoActionPerformed
         // combo sexo
-        if(cbSexo.getSelectedIndex() == 0){
-            SocioServiceImpl socioServiceImp = new SocioServiceImpl();
-            
-            
-            
-            //DistribuidorServiceImpl distribuidorImpl = new DistribuidorServiceImpl();
-            //listaDist = distribuidorImpl.pesquisaDistribuidorRazaoSocial(txtPesquisar.getText());
-            
+        if (cbSexo.getSelectedIndex() == 0) {
+            sexo = 0;//Feminino
+        } else {
+            sexo = 1;//Masculino
         }
     }//GEN-LAST:event_cbSexoActionPerformed
-    
+
     // método limpar campos
     public void limparCamposDeTexto() {
         txtNome.setText("");
-        //txtSexo.setText("");
+        cbSexo.setSelectedIndex(0);
         txtCPF.setText("");
         txtDataNascimento.setDate(dataNascimento);
-        txtTelefoneResidencial.setText("");        
+        txtTelefoneResidencial.setText("");
         txtEndereco.setText("");
         txtEmpresa.setText("");
         txtTelefoneEmpresa.setText("");
     }
+
     // método editar campos
     public void editarCamposDeTexto() {
         txtNome.setEnabled(true);
-        //txtSexo.setEnabled(true);
+        cbSexo.setEnabled(true);
         txtCPF.setEnabled(true);
         txtDataNascimento.setEnabled(true);
         txtTelefoneResidencial.setEnabled(true);
@@ -399,10 +398,11 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         txtEmpresa.setEnabled(true);
         txtTelefoneEmpresa.setEnabled(true);
     }
+
     // método bloquear campos de texto
     public void bloquearCamposDeTexto() {
         txtNome.setEnabled(false);
-        //txtSexo.setEnabled(false);
+        cbSexo.setEnabled(false);
         txtCPF.setEnabled(false);
         txtDataNascimento.setEnabled(false);
         txtTelefoneResidencial.setEnabled(false);
@@ -410,12 +410,14 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         txtEmpresa.setEnabled(false);
         txtTelefoneEmpresa.setEnabled(false);
     }
+
     // habilitar botões
     public void habilitarBotoes() {
         btnSalvar.setEnabled(true);
         btnDeletar.setEnabled(true);
         btnCancelar.setEnabled(true);
     }
+
     // desabilitar botões
     public void desabilitarBotoes() {
         btnSalvar.setEnabled(false);
