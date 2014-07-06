@@ -1,4 +1,3 @@
-
 package br.com.fean.poo2.locadora.view.cadastro.dependente;
 
 import br.com.fean.poo2.locadora.control.dependente.DependenteServiceImpl;
@@ -25,23 +24,23 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        codigoSocio = new javax.swing.JLabel();
+        painelCadastrarDependente = new javax.swing.JPanel();
+        painelSocio = new javax.swing.JPanel();
+        nCodigoSocio = new javax.swing.JLabel();
         txtCodigoSocio = new javax.swing.JTextField();
-        nomeSocio = new javax.swing.JLabel();
+        nNomeSocio = new javax.swing.JLabel();
         txtNomeSocio = new javax.swing.JTextField();
-        bPesquisarSocio = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        codigoDependente01 = new javax.swing.JLabel();
+        btnPesquisar = new javax.swing.JButton();
+        painelDependente = new javax.swing.JPanel();
+        nCodigoDependente = new javax.swing.JLabel();
         txtCodigoDependente = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        nNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        comboSexo = new javax.swing.JComboBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        nSexo = new javax.swing.JLabel();
+        nDataNascimento = new javax.swing.JLabel();
+        txtDataNascimento = new com.toedter.calendar.JDateChooser();
+        cbSexo = new javax.swing.JComboBox();
+        painelDeRolagem = new javax.swing.JScrollPane();
         tabelaDependete = new javax.swing.JTable();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
@@ -64,115 +63,115 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastrar Dependente"));
+        painelCadastrarDependente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Dependente"));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Sócio"));
+        painelSocio.setBorder(javax.swing.BorderFactory.createTitledBorder("Sócio"));
 
-        codigoSocio.setText("Código:");
+        nCodigoSocio.setText("Código:");
 
         txtCodigoSocio.setEnabled(false);
 
-        nomeSocio.setText("Nome:");
+        nNomeSocio.setText("Nome:");
 
         txtNomeSocio.setEnabled(false);
 
-        bPesquisarSocio.setText("Pesquisar");
-        bPesquisarSocio.addActionListener(new java.awt.event.ActionListener() {
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bPesquisarSocioActionPerformed(evt);
+                btnPesquisarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelSocioLayout = new javax.swing.GroupLayout(painelSocio);
+        painelSocio.setLayout(painelSocioLayout);
+        painelSocioLayout.setHorizontalGroup(
+            painelSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelSocioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(codigoSocio)
+                .addComponent(nCodigoSocio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCodigoSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeSocio)
+                .addComponent(nNomeSocio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNomeSocio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bPesquisarSocio)
+                .addComponent(btnPesquisar)
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        painelSocioLayout.setVerticalGroup(
+            painelSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelSocioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigoSocio)
+                .addGroup(painelSocioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nCodigoSocio)
                     .addComponent(txtCodigoSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nomeSocio)
+                    .addComponent(nNomeSocio)
                     .addComponent(txtNomeSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bPesquisarSocio))
+                    .addComponent(btnPesquisar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Dependente 01"));
+        painelDependente.setBorder(javax.swing.BorderFactory.createTitledBorder("Dependente 01"));
 
-        codigoDependente01.setText("Código:");
+        nCodigoDependente.setText("Código:");
 
         txtCodigoDependente.setEnabled(false);
 
-        jLabel9.setText("Nome:");
+        nNome.setText("Nome:");
 
-        jLabel11.setText("Sexo:");
+        nSexo.setText("Sexo:");
 
-        jLabel13.setText("Data Nascimento:");
+        nDataNascimento.setText("Data de Nascimento:");
 
-        comboSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fenimino", "Masculino" }));
-        comboSexo.addActionListener(new java.awt.event.ActionListener() {
+        cbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fenimino", "Masculino" }));
+        cbSexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboSexoActionPerformed(evt);
+                cbSexoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelDependenteLayout = new javax.swing.GroupLayout(painelDependente);
+        painelDependente.setLayout(painelDependenteLayout);
+        painelDependenteLayout.setHorizontalGroup(
+            painelDependenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelDependenteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(codigoDependente01)
+                .addGroup(painelDependenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelDependenteLayout.createSequentialGroup()
+                        .addComponent(nCodigoDependente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCodigoDependente, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9)
+                        .addComponent(nNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11)
+                        .addComponent(nSexo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboSexo, 0, 113, Short.MAX_VALUE)
+                        .addComponent(cbSexo, 0, 113, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
+                    .addGroup(painelDependenteLayout.createSequentialGroup()
+                        .addComponent(nDataNascimento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        painelDependenteLayout.setVerticalGroup(
+            painelDependenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelDependenteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                .addGroup(painelDependenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(codigoDependente01)
+                    .addComponent(nCodigoDependente)
                     .addComponent(txtCodigoDependente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nSexo)
+                    .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(painelDependenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nDataNascimento)
+                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -181,7 +180,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código Sócio", "Código", "Nome", "Sexo", "Data Nascimento"
+                "Código do sócio", "Código", "Nome", "Sexo", "Data de nascimento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -197,7 +196,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
                 tabelaDependeteMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabelaDependete);
+        painelDeRolagem.setViewportView(tabelaDependete);
         if (tabelaDependete.getColumnModel().getColumnCount() > 0) {
             tabelaDependete.getColumnModel().getColumn(0).setMinWidth(80);
             tabelaDependete.getColumnModel().getColumn(0).setMaxWidth(80);
@@ -209,27 +208,29 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
             tabelaDependete.getColumnModel().getColumn(4).setMaxWidth(120);
         }
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelCadastrarDependenteLayout = new javax.swing.GroupLayout(painelCadastrarDependente);
+        painelCadastrarDependente.setLayout(painelCadastrarDependenteLayout);
+        painelCadastrarDependenteLayout.setHorizontalGroup(
+            painelCadastrarDependenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCadastrarDependenteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(painelCadastrarDependenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelDeRolagem)
+                    .addGroup(painelCadastrarDependenteLayout.createSequentialGroup()
+                        .addGroup(painelCadastrarDependenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(painelDependente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(painelSocio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        painelCadastrarDependenteLayout.setVerticalGroup(
+            painelCadastrarDependenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCadastrarDependenteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelDependente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelDeRolagem, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -275,7 +276,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(painelCadastrarDependente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -295,7 +296,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelCadastrarDependente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
@@ -310,7 +311,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bPesquisarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPesquisarSocioActionPerformed
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         try {
             // botão pesquisar sócio
             TelaListaCliente listaCliente = new TelaListaCliente();
@@ -319,7 +320,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
             Logger.getLogger(TelaCadastroDependente.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_bPesquisarSocioActionPerformed
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // botão cancelar
@@ -330,12 +331,12 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         // botão deletar
-        if (JOptionPane.showConfirmDialog(null, "Deseja Apagar Linha Selecionada?") == 0) {           
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {           
             try {                
                 dependenteServiceImpl.deletarDependente(dependenteServiceImpl.retornarDependente(idDependente));
-                JOptionPane.showMessageDialog(null, "Registro Excluido com Sucesso!");
+                JOptionPane.showMessageDialog(null, "Registro deletado com sucesso!");
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao Excluir Registro! \n \n ERRO: " + ex);
+                JOptionPane.showMessageDialog(null, "Erro ao deletar registro! \n \n ERRO: " + ex);
             }
         }
         
@@ -348,7 +349,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
       /*  // botão salvar
         
         if ((txtNome.getText().length() == 0) && (txtSexo.getText().length() == 0)) {
-            JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");        
+            JOptionPane.showMessageDialog(null, "Campos obrigatórios!");        
         } else {
 
             if (idDependente == 0) {
@@ -359,7 +360,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
                             Date.valueOf(txtDataNascimento.getText())
                     );
 
-                    JOptionPane.showMessageDialog(null, "Novo Registro Salvo Com Sucesso!");
+                    JOptionPane.showMessageDialog(null, "Novo registro salvo com sucesso!");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
                 } finally {
@@ -373,9 +374,9 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
                             Date.valueOf(txtDataNascimento.getText())                           
                     );
 
-                    JOptionPane.showMessageDialog(null, "Alteração Realizada Com Sucesso!");
+                    JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!");
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Erro ao Alterar registro! \n \n Erro: " + ex);
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n ERRO: " + ex);
                 }
             }
         }
@@ -405,17 +406,12 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
-    private void comboSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSexoActionPerformed
+    private void cbSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSexoActionPerformed
         // combo sexo
        // if(comboSexo.lenth){
             
       //  }
-    }//GEN-LAST:event_comboSexoActionPerformed
-
-    
-    
-    
-    
+    }//GEN-LAST:event_cbSexoActionPerformed
     
     // método limpar campos
     public void limparCamposDeTexto() {
@@ -451,33 +447,29 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
         btnCancelar.setEnabled(false);
     }
     
-    
-    
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bPesquisarSocio;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JLabel codigoDependente01;
-    private javax.swing.JLabel codigoSocio;
-    private javax.swing.JComboBox comboSexo;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JComboBox cbSexo;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel nomeSocio;
+    private javax.swing.JLabel nCodigoDependente;
+    private javax.swing.JLabel nCodigoSocio;
+    private javax.swing.JLabel nDataNascimento;
+    private javax.swing.JLabel nNome;
+    private javax.swing.JLabel nNomeSocio;
+    private javax.swing.JLabel nSexo;
+    private javax.swing.JPanel painelCadastrarDependente;
+    private javax.swing.JScrollPane painelDeRolagem;
+    private javax.swing.JPanel painelDependente;
+    private javax.swing.JPanel painelSocio;
     private javax.swing.JTable tabelaDependete;
     private javax.swing.JTextField txtCodigoDependente;
     private javax.swing.JTextField txtCodigoSocio;
+    private com.toedter.calendar.JDateChooser txtDataNascimento;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNomeSocio;
     // End of variables declaration//GEN-END:variables

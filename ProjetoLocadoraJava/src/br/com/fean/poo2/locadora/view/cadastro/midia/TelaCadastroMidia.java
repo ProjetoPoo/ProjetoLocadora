@@ -1,11 +1,7 @@
 package br.com.fean.poo2.locadora.view.cadastro.midia;
 
-
 public class TelaCadastroMidia extends javax.swing.JPanel {
 
-    /**
-     * Creates new form TelaCadastroMidia
-     */
     public TelaCadastroMidia() {
         initComponents();
     }
@@ -15,13 +11,13 @@ public class TelaCadastroMidia extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        painelCadastroMidia = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Midias"));
+        painelCadastroMidia.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Mídias"));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -51,11 +47,11 @@ public class TelaCadastroMidia extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelCadastroMidiaLayout = new javax.swing.GroupLayout(painelCadastroMidia);
+        painelCadastroMidia.setLayout(painelCadastroMidiaLayout);
+        painelCadastroMidiaLayout.setHorizontalGroup(
+            painelCadastroMidiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCadastroMidiaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnNovo)
                 .addGap(18, 18, 18)
@@ -67,13 +63,13 @@ public class TelaCadastroMidia extends javax.swing.JPanel {
                 .addContainerGap(204, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelar, btnDeletar, btnNovo, btnSalvar});
+        painelCadastroMidiaLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelar, btnDeletar, btnNovo, btnSalvar});
 
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        painelCadastroMidiaLayout.setVerticalGroup(
+            painelCadastroMidiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastroMidiaLayout.createSequentialGroup()
                 .addContainerGap(421, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelCadastroMidiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(btnSalvar)
                     .addComponent(btnDeletar)
@@ -87,14 +83,14 @@ public class TelaCadastroMidia extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(painelCadastroMidia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(painelCadastroMidia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -109,18 +105,42 @@ public class TelaCadastroMidia extends javax.swing.JPanel {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
       
+        /* Para manter a uniformidade entre as mensagens utilizar:
+        
+        "Novo registro salvo com sucesso!"
+        "Erro ao salvar registro!\n \n ERRO: "
+
+        "Alteração realizada com sucesso!"     
+        "Erro ao alterar registro! \n \n ERRO: "
+        
+        */
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
        
+        /* Para manter a uniformidade entre as mensagens utilizar:
+        
+        "Deseja realmente apagar a linha selecionada?"
+        "Registro deletado com sucesso!"
+        "Erro ao deletar registro! \n \n ERRO: "
+        
+        */
+        
     }//GEN-LAST:event_btnDeletarActionPerformed
 
-
+    /* Na mensagem de erro da tabela utilizar:
+    
+    "Erro ao preencher a tabela! \n \n ERRO: "
+    
+    */
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDeletar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel painelCadastroMidia;
     // End of variables declaration//GEN-END:variables
 }

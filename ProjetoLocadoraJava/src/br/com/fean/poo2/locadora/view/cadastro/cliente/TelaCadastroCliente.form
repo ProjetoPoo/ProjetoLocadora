@@ -19,7 +19,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="painelCadastroCliente" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="btnNovo" min="-2" pref="86" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -42,7 +42,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+              <Component id="painelCadastroCliente" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnNovo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -58,11 +58,11 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel2">
+    <Container class="javax.swing.JPanel" name="painelCadastroCliente">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Cadastro Cliente"/>
+            <TitledBorder title="Cadastro de Cliente"/>
           </Border>
         </Property>
       </Properties>
@@ -74,44 +74,44 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="empresa" min="-2" max="-2" attributes="0"/>
+                          <Component id="nEmpresa" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="txtEmpresa" min="-2" pref="382" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="foneComercial" min="-2" max="-2" attributes="0"/>
+                          <Component id="nTelefoneEmpresa" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtTelefoneComercial" min="-2" pref="102" max="-2" attributes="0"/>
+                          <Component id="txtTelefoneEmpresa" min="-2" pref="102" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="codigo" min="-2" max="-2" attributes="0"/>
+                          <Component id="nCodigo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtCodigo" min="-2" pref="64" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="nome" min="-2" max="-2" attributes="0"/>
+                          <Component id="nNome" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtNome" min="-2" pref="301" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="sexo" min="-2" max="-2" attributes="0"/>
+                          <Component id="nSexo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="comboSexo" max="32767" attributes="0"/>
+                          <Component id="cbSexo" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="cpf" min="-2" max="-2" attributes="0"/>
+                          <Component id="nCPF" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtCPF" min="-2" pref="124" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="nDataNascimento" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtDataNascimento" min="-2" pref="124" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="foneResidencial" min="-2" max="-2" attributes="0"/>
+                          <Component id="nTelefoneResidencial" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtTelefoneResidencial" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="endereco" min="-2" max="-2" attributes="0"/>
+                          <Component id="nEndereco" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          <Component id="painelDeRolagem" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -123,35 +123,35 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="nome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nNome" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="codigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sexo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboSexo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nSexo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbSexo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nCPF" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="foneResidencial" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nTelefoneResidencial" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtTelefoneResidencial" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nDataNascimento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="txtDataNascimento" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="endereco" min="-2" max="-2" attributes="0"/>
+                      <Component id="painelDeRolagem" min="-2" pref="55" max="-2" attributes="0"/>
+                      <Component id="nEndereco" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="foneComercial" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtTelefoneComercial" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nTelefoneEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTelefoneEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="empresa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -159,38 +159,38 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="nome">
+        <Component class="javax.swing.JLabel" name="nNome">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNome">
         </Component>
-        <Component class="javax.swing.JLabel" name="cpf">
+        <Component class="javax.swing.JLabel" name="nCPF">
           <Properties>
             <Property name="text" type="java.lang.String" value="CPF:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCPF">
         </Component>
-        <Component class="javax.swing.JLabel" name="endereco">
+        <Component class="javax.swing.JLabel" name="nEndereco">
           <Properties>
             <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="sexo">
+        <Component class="javax.swing.JLabel" name="nSexo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sexo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="foneComercial">
+        <Component class="javax.swing.JLabel" name="nTelefoneEmpresa">
           <Properties>
             <Property name="text" type="java.lang.String" value="Telefone:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTelefoneComercial">
+        <Component class="javax.swing.JTextField" name="txtTelefoneEmpresa">
         </Component>
-        <Component class="javax.swing.JLabel" name="foneResidencial">
+        <Component class="javax.swing.JLabel" name="nTelefoneResidencial">
           <Properties>
             <Property name="text" type="java.lang.String" value="Telefone Residencial:"/>
           </Properties>
@@ -199,7 +199,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmpresa">
         </Component>
-        <Component class="javax.swing.JLabel" name="codigo">
+        <Component class="javax.swing.JLabel" name="nCodigo">
           <Properties>
             <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
           </Properties>
@@ -209,12 +209,12 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="empresa">
+        <Component class="javax.swing.JLabel" name="nEmpresa">
           <Properties>
             <Property name="text" type="java.lang.String" value="Empresa:"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Container class="javax.swing.JScrollPane" name="painelDeRolagem">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -231,12 +231,12 @@
         </Container>
         <Component class="com.toedter.calendar.JDateChooser" name="txtDataNascimento">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="nDataNascimento">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Data Nascimento:"/>
+            <Property name="text" type="java.lang.String" value="Data de Nascimento:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboSexo">
+        <Component class="javax.swing.JComboBox" name="cbSexo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
@@ -246,7 +246,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboSexoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbSexoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -293,7 +293,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnDependente">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dependete"/>
+        <Property name="text" type="java.lang.String" value="Dependente"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDependenteActionPerformed"/>

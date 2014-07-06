@@ -1,6 +1,4 @@
-
 package br.com.fean.poo2.locadora.view.cadastro.cliente;
-
 
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.view.cadastro.dependente.TelaCadastroDependente;
@@ -11,19 +9,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 
 public class TelaCadastroCliente extends javax.swing.JPanel {
 
     private CardLayout cardLayout;
     private JPanel painelCardLayout;
-    
+
     private int idCliente = 0;
-    
+    private int sexo;
+
     SocioServiceImpl socioServiceImpl = new SocioServiceImpl();
-    
+
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date dataNascimento = new Date();
 
@@ -33,31 +32,30 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         bloquearCamposDeTexto();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        nome = new javax.swing.JLabel();
+        painelCadastroCliente = new javax.swing.JPanel();
+        nNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        cpf = new javax.swing.JLabel();
+        nCPF = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
-        endereco = new javax.swing.JLabel();
-        sexo = new javax.swing.JLabel();
-        foneComercial = new javax.swing.JLabel();
-        txtTelefoneComercial = new javax.swing.JTextField();
-        foneResidencial = new javax.swing.JLabel();
+        nEndereco = new javax.swing.JLabel();
+        nSexo = new javax.swing.JLabel();
+        nTelefoneEmpresa = new javax.swing.JLabel();
+        txtTelefoneEmpresa = new javax.swing.JTextField();
+        nTelefoneResidencial = new javax.swing.JLabel();
         txtTelefoneResidencial = new javax.swing.JTextField();
         txtEmpresa = new javax.swing.JTextField();
-        codigo = new javax.swing.JLabel();
+        nCodigo = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
-        empresa = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        nEmpresa = new javax.swing.JLabel();
+        painelDeRolagem = new javax.swing.JScrollPane();
         txtEndereco = new javax.swing.JTextArea();
         txtDataNascimento = new com.toedter.calendar.JDateChooser();
-        jLabel1 = new javax.swing.JLabel();
-        comboSexo = new javax.swing.JComboBox();
+        nDataNascimento = new javax.swing.JLabel();
+        cbSexo = new javax.swing.JComboBox();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
@@ -65,114 +63,114 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         btnPesquisar = new javax.swing.JButton();
         btnDependente = new javax.swing.JButton();
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro Cliente"));
+        painelCadastroCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Cliente"));
 
-        nome.setText("Nome:");
+        nNome.setText("Nome:");
 
-        cpf.setText("CPF:");
+        nCPF.setText("CPF:");
 
-        endereco.setText("Endereço:");
+        nEndereco.setText("Endereço:");
 
-        sexo.setText("Sexo:");
+        nSexo.setText("Sexo:");
 
-        foneComercial.setText("Telefone:");
+        nTelefoneEmpresa.setText("Telefone:");
 
-        foneResidencial.setText("Telefone Residencial:");
+        nTelefoneResidencial.setText("Telefone Residencial:");
 
-        codigo.setText("Código:");
+        nCodigo.setText("Código:");
 
         txtCodigo.setEnabled(false);
 
-        empresa.setText("Empresa:");
+        nEmpresa.setText("Empresa:");
 
         txtEndereco.setColumns(20);
         txtEndereco.setRows(5);
-        jScrollPane1.setViewportView(txtEndereco);
+        painelDeRolagem.setViewportView(txtEndereco);
 
-        jLabel1.setText("Data Nascimento:");
+        nDataNascimento.setText("Data de Nascimento:");
 
-        comboSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Feminino", "Masculino" }));
-        comboSexo.addActionListener(new java.awt.event.ActionListener() {
+        cbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Feminino", "Masculino" }));
+        cbSexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboSexoActionPerformed(evt);
+                cbSexoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelCadastroClienteLayout = new javax.swing.GroupLayout(painelCadastroCliente);
+        painelCadastroCliente.setLayout(painelCadastroClienteLayout);
+        painelCadastroClienteLayout.setHorizontalGroup(
+            painelCadastroClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCadastroClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(empresa)
+                .addGroup(painelCadastroClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastroClienteLayout.createSequentialGroup()
+                        .addComponent(nEmpresa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(foneComercial)
+                        .addComponent(nTelefoneEmpresa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTelefoneComercial, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(codigo)
+                        .addComponent(txtTelefoneEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelCadastroClienteLayout.createSequentialGroup()
+                        .addComponent(nCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nome)
+                        .addComponent(nNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sexo)
+                        .addComponent(nSexo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cpf)
+                        .addComponent(cbSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(painelCadastroClienteLayout.createSequentialGroup()
+                        .addComponent(nCPF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
+                        .addComponent(nDataNascimento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(foneResidencial)
+                        .addComponent(nTelefoneResidencial)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTelefoneResidencial))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(endereco)
+                    .addGroup(painelCadastroClienteLayout.createSequentialGroup()
+                        .addComponent(nEndereco)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1)))
+                        .addComponent(painelDeRolagem)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        painelCadastroClienteLayout.setVerticalGroup(
+            painelCadastroClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCadastroClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome)
+                .addGroup(painelCadastroClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(codigo)
+                    .addComponent(nCodigo)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sexo)
-                    .addComponent(comboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nSexo)
+                    .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cpf)
+                .addGroup(painelCadastroClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(painelCadastroClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nCPF)
                         .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(foneResidencial)
+                        .addComponent(nTelefoneResidencial)
                         .addComponent(txtTelefoneResidencial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
+                        .addComponent(nDataNascimento))
                     .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(endereco))
+                .addGroup(painelCadastroClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelDeRolagem, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nEndereco))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(foneComercial)
-                    .addComponent(txtTelefoneComercial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(painelCadastroClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nTelefoneEmpresa)
+                    .addComponent(txtTelefoneEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(empresa))
+                    .addComponent(nEmpresa))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -211,7 +209,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
             }
         });
 
-        btnDependente.setText("Dependete");
+        btnDependente.setText("Dependente");
         btnDependente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDependenteActionPerformed(evt);
@@ -225,7 +223,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(painelCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -247,7 +245,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
@@ -269,43 +267,43 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // botao novo
-        idCliente = 0;        
+        idCliente = 0;
         btnSalvar.setEnabled(true);
         btnCancelar.setEnabled(true);
-        btnDeletar.setEnabled(false);        
+        btnDeletar.setEnabled(false);
         limparCamposDeTexto();
         editarCamposDeTexto();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-      /*  // botão salvar
+        // botão salvar
         Date data = new Date();
-        if ((txtNome.getText().length() == 0) && (txtSexo.getText().length() == 0) && (txtCPF.getText().length() == 0 && (txtTelefoneResidencial.getText().length() == 0))) {
-            JOptionPane.showMessageDialog(null, "Campos Obrigatórios!");
-        } else if (txtEmpresa.getText().length() == 0 && txtTelefoneComercial.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Preencha os Campos Empresa e Telefone Comercial!");
+        if ((txtNome.getText().length() == 0) && (txtCPF.getText().length() == 0 && (txtTelefoneResidencial.getText().length() == 0))) {
+            JOptionPane.showMessageDialog(null, "Campos obrigatórios!");
+        } else if (txtEmpresa.getText().length() == 0 && txtTelefoneEmpresa.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Preencha os campos empresa e telefone comercial!");
         } else {
 
             if (idCliente == 0) {
                 try {
-                       socioServiceImpl.inserirSocio(
+                    socioServiceImpl.inserirSocio(
                             txtNome.getText(),
-                            Integer.parseInt(txtSexo.getText()),
+                            sexo,
                             txtCPF.getText(),
                             txtDataNascimento.getDate(),
-                            txtTelefoneResidencial.getText(),                            
+                            txtTelefoneResidencial.getText(),
                             txtEndereco.getText(),
                             txtEmpresa.getText(),
-                            txtTelefoneComercial.getText()
+                            txtTelefoneEmpresa.getText()
                     );
 
-                    JOptionPane.showMessageDialog(null, "Novo registro salvo!");
-                            
+                    JOptionPane.showMessageDialog(null, "Novo registro salvo com sucesso!");
+
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
                 } finally {
@@ -313,43 +311,43 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                 }
             } else {
                 try {
-                    
+
                     socioServiceImpl.alterarSocio(
                             txtNome.getText(),
-                            Integer.parseInt(txtSexo.getText()),
+                            sexo,
                             txtCPF.getText(),
                             txtDataNascimento.getDate(),
-                            txtTelefoneResidencial.getText(),                            
+                            txtTelefoneResidencial.getText(),
                             txtEndereco.getText(),
                             txtEmpresa.getText(),
-                            txtTelefoneComercial.getText()
+                            txtTelefoneEmpresa.getText()
                     );
 
-                    JOptionPane.showMessageDialog(null, "Alteração realizada!");
-                            
+                    JOptionPane.showMessageDialog(null, "Alteração realizada com suceso!");
+
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Erro ao Alterar registro! \n \n Erro: " + ex);
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n ERRO: " + ex);
                 }
             }
         }
-           
-            limparCamposDeTexto();
-            desabilitarBotoes();
-            bloquearCamposDeTexto();
-              */
+
+        limparCamposDeTexto();
+        desabilitarBotoes();
+        bloquearCamposDeTexto();
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         // botão deletar
-        if (JOptionPane.showConfirmDialog(null, "Deseja Apagar Linha Selecionada?") == 0) {           
-            try {                
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
+            try {
                 socioServiceImpl.deletarSocio(socioServiceImpl.retornarSocioId(idCliente));
-                JOptionPane.showMessageDialog(null, "Registro Excluido com Sucesso!");
+                JOptionPane.showMessageDialog(null, "Registro deletado com sucesso!");
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao Excluir Registro! \n \n ERRO: " + ex);
+                JOptionPane.showMessageDialog(null, "Erro ao deletar registro! \n \n ERRO: " + ex);
             }
         }
-        
+
         limparCamposDeTexto();
         desabilitarBotoes();
         bloquearCamposDeTexto();
@@ -368,78 +366,64 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         telaDependete.setEnabled(true);
     }//GEN-LAST:event_btnDependenteActionPerformed
 
-    private void comboSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSexoActionPerformed
+    private void cbSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSexoActionPerformed
         // combo sexo
-        if(comboSexo.getSelectedIndex() == 0){
-            SocioServiceImpl socioServiceImp = new SocioServiceImpl();
-            
-            
-            
-            //DistribuidorServiceImpl distribuidorImpl = new DistribuidorServiceImpl();
-            //listaDist = distribuidorImpl.pesquisaDistribuidorRazaoSocial(txtPesquisar.getText());
-            
+        if (cbSexo.getSelectedIndex() == 0) {
+            sexo = 0;//Feminino
+        } else {
+            sexo = 1;//Masculino
         }
-    }//GEN-LAST:event_comboSexoActionPerformed
+    }//GEN-LAST:event_cbSexoActionPerformed
 
-    
-    
-    
-    
     // método limpar campos
     public void limparCamposDeTexto() {
         txtNome.setText("");
-        //txtSexo.setText("");
+        cbSexo.setSelectedIndex(0);
         txtCPF.setText("");
         txtDataNascimento.setDate(dataNascimento);
-        txtTelefoneResidencial.setText("");        
+        txtTelefoneResidencial.setText("");
         txtEndereco.setText("");
         txtEmpresa.setText("");
-        txtTelefoneComercial.setText("");
+        txtTelefoneEmpresa.setText("");
     }
+
     // método editar campos
     public void editarCamposDeTexto() {
         txtNome.setEnabled(true);
-        //txtSexo.setEnabled(true);
+        cbSexo.setEnabled(true);
         txtCPF.setEnabled(true);
         txtDataNascimento.setEnabled(true);
         txtTelefoneResidencial.setEnabled(true);
         txtEndereco.setEnabled(true);
         txtEmpresa.setEnabled(true);
-        txtTelefoneComercial.setEnabled(true);
+        txtTelefoneEmpresa.setEnabled(true);
     }
+
     // método bloquear campos de texto
     public void bloquearCamposDeTexto() {
         txtNome.setEnabled(false);
-        //txtSexo.setEnabled(false);
+        cbSexo.setEnabled(false);
         txtCPF.setEnabled(false);
         txtDataNascimento.setEnabled(false);
         txtTelefoneResidencial.setEnabled(false);
         txtEndereco.setEnabled(false);
         txtEmpresa.setEnabled(false);
-        txtTelefoneComercial.setEnabled(false);
+        txtTelefoneEmpresa.setEnabled(false);
     }
+
     // habilitar botões
     public void habilitarBotoes() {
         btnSalvar.setEnabled(true);
         btnDeletar.setEnabled(true);
         btnCancelar.setEnabled(true);
     }
+
     // desabilitar botões
     public void desabilitarBotoes() {
         btnSalvar.setEnabled(false);
         btnDeletar.setEnabled(false);
         btnCancelar.setEnabled(false);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -448,25 +432,25 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JLabel codigo;
-    private javax.swing.JComboBox comboSexo;
-    private javax.swing.JLabel cpf;
-    private javax.swing.JLabel empresa;
-    private javax.swing.JLabel endereco;
-    private javax.swing.JLabel foneComercial;
-    private javax.swing.JLabel foneResidencial;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel nome;
-    private javax.swing.JLabel sexo;
+    private javax.swing.JComboBox cbSexo;
+    private javax.swing.JLabel nCPF;
+    private javax.swing.JLabel nCodigo;
+    private javax.swing.JLabel nDataNascimento;
+    private javax.swing.JLabel nEmpresa;
+    private javax.swing.JLabel nEndereco;
+    private javax.swing.JLabel nNome;
+    private javax.swing.JLabel nSexo;
+    private javax.swing.JLabel nTelefoneEmpresa;
+    private javax.swing.JLabel nTelefoneResidencial;
+    private javax.swing.JPanel painelCadastroCliente;
+    private javax.swing.JScrollPane painelDeRolagem;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCodigo;
     private com.toedter.calendar.JDateChooser txtDataNascimento;
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JTextArea txtEndereco;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtTelefoneComercial;
+    private javax.swing.JTextField txtTelefoneEmpresa;
     private javax.swing.JTextField txtTelefoneResidencial;
     // End of variables declaration//GEN-END:variables
 
