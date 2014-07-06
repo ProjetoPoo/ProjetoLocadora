@@ -47,13 +47,4 @@ public class LocacaoServiceImpl implements LocacaoService{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public Locacao retornarLocacao(Socio socio) throws Exception{
-        
-        Locacao locacao;
-        
-        locacao = locacaoDAO.pesquisaLocacaoCliente(socio);
-        
-        return locacao;
-    }
-    
 }
