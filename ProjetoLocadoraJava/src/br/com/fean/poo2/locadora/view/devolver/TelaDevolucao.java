@@ -4,12 +4,10 @@ import br.com.fean.poo2.locadora.control.locacaomidia.LocacaoMidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.modelo.locacaomidia.LocacaoMidia;
 import br.com.fean.poo2.locadora.modelo.socio.Socio;
-import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaClienteDevolucao;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,47 +26,47 @@ public class TelaDevolucao extends javax.swing.JPanel {
     public void carregaListaLocacao(Socio socio) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Double valorfilme = 0.0;
+        String pago = null;
         Double totalapagar = 0.0;
-//        DefaultTableModel modeloTable = new DefaultTableModel();
-//        modeloTable.addColumn("Codigo");
-//        modeloTable.addColumn("Titulo");
-//        modeloTable.addColumn("Data Locação");
-//        modeloTable.addColumn("Data Devolução");
- //       modeloTable.addColumn("Valor");
+        DefaultTableModel modeloTable = new DefaultTableModel();
+        modeloTable.addColumn("Codigo");
+        modeloTable.addColumn("Titulo");
+        modeloTable.addColumn("Data Locação");
+        modeloTable.addColumn("Data Devolução");
+        modeloTable.addColumn("Valor");
+        modeloTable.addColumn("Pago");
         try {
             locacaofilmes = locacaoMidiaServiceImpl.retornarLocacao(socio);
-            DefaultTableModel modeloTable = new DefaultTableModel();
-            modeloTable.addColumn("Código");
-            modeloTable.addColumn("Título");
-            modeloTable.addColumn("Data de locação");
-            modeloTable.addColumn("Data de devolução");
-            modeloTable.addColumn("Valor");
-            
+           
             for (LocacaoMidia locacaoMidia : locacaofilmes) {
-            if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Super-Lançamento")) {
-                valorfilme = 7.00;
-            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Lançamento")) {
-                valorfilme = 5.00;
-            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Ouro")) {
-                valorfilme = 4.00;
-            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Prata")) {
-                valorfilme = 3.00;
-            } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Bronze")) {
-                valorfilme = 2.00;
-            } else {
-                valorfilme = 7.00;
-            } 
-            totalapagar = totalapagar + valorfilme;
-            modeloTable.addRow(new Object[]{
-                locacaoMidia.getMidias().getTitulos().getId(),
-                locacaoMidia.getMidias().getTitulos().getNome(),
-                //locacaoMidia.getLocacao().getDtLocacao(),
-                dateFormat.format(locacaoMidia.getLocacao().getDtLocacao()),
-                dateFormat.format(locacaoMidia.getDtPrevDevolucao()),
-                valorfilme});
+                if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Super-Lançamento")) {
+                    valorfilme = 7.00;
+                } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Lançamento")) {
+                    valorfilme = 5.00;
+                } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Ouro")) {
+                    valorfilme = 4.00;
+                } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Prata")) {
+                    valorfilme = 3.00;
+                } else if (locacaoMidia.getMidias().getTitulos().getClasses().getNome().equals("Bronze")) {
+                    valorfilme = 2.00;
+                } else {
+                    valorfilme = 7.00;
+                }
+                if (locacaoMidia.getPago() == null) {
+                    pago = "N";
+                } else {
+                    pago = "S";
+                };
+                totalapagar = totalapagar + valorfilme;
+                modeloTable.addRow(new Object[]{
+                    locacaoMidia.getMidias().getTitulos().getId(),
+                    locacaoMidia.getMidias().getTitulos().getNome(),
+                    dateFormat.format(locacaoMidia.getLocacao().getDtLocacao()),
+                    dateFormat.format(locacaoMidia.getDtPrevDevolucao()),
+                    valorfilme,
+                    pago});
             }
             tabela.setModel(modeloTable);
-            //jTextField3.setText(String.valueOf(totalapagar));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro na leitura dos dados de locação! \n \n  ERRO: " + e);
         }
@@ -159,11 +157,11 @@ public class TelaDevolucao extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Código", "Título", "Data de locação", "Data de devolução", "Valor"
+                "Código", "Título", "Data de locação", "Data de devolução", "Valor", "Pago"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false
+                false, true, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
