@@ -2,6 +2,7 @@ package br.com.fean.poo2.locadora.view.locar;
 
 import br.com.fean.poo2.locadora.control.funcionario.FuncionarioServiceImpl;
 import br.com.fean.poo2.locadora.control.locacao.LocacaoServiceImpl;
+import br.com.fean.poo2.locadora.control.locacaomidia.LocacaoMidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.midia.MidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.modelo.funcionario.Funcionario;
@@ -128,12 +129,8 @@ public class TelaLocacao extends javax.swing.JPanel {
         painelDeRolagem = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         painelSaldoPagar = new javax.swing.JPanel();
-        nSaldo = new javax.swing.JLabel();
-        txtSaldo = new javax.swing.JTextField();
         nTotalPagar = new javax.swing.JLabel();
         txtTotalPagar = new javax.swing.JTextField();
-        nMulta = new javax.swing.JLabel();
-        txtMulta = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
 
@@ -282,17 +279,9 @@ public class TelaLocacao extends javax.swing.JPanel {
 
         painelSaldoPagar.setBorder(javax.swing.BorderFactory.createTitledBorder("Saldo a Pagar"));
 
-        nSaldo.setText("Saldo:");
-
-        txtSaldo.setEnabled(false);
-
         nTotalPagar.setText("Total a Pagar:");
 
         txtTotalPagar.setEnabled(false);
-
-        nMulta.setText("Multa:");
-
-        txtMulta.setEnabled(false);
 
         javax.swing.GroupLayout painelSaldoPagarLayout = new javax.swing.GroupLayout(painelSaldoPagar);
         painelSaldoPagar.setLayout(painelSaldoPagarLayout);
@@ -300,32 +289,18 @@ public class TelaLocacao extends javax.swing.JPanel {
             painelSaldoPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSaldoPagarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nSaldo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nMulta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMulta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nTotalPagar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         painelSaldoPagarLayout.setVerticalGroup(
             painelSaldoPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelSaldoPagarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(painelSaldoPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelSaldoPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(nTotalPagar)
-                        .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelSaldoPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(nSaldo)
-                        .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nMulta)
-                        .addComponent(txtMulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(painelSaldoPagarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nTotalPagar)
+                    .addComponent(txtTotalPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -349,8 +324,9 @@ public class TelaLocacao extends javax.swing.JPanel {
                     .addComponent(painelFilme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(painelDeRolagem)
                     .addGroup(painelLocacaoLayout.createSequentialGroup()
-                        .addComponent(painelSaldoPagar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(105, 105, 105)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(painelSaldoPagar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(painelLocacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                             .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -427,6 +403,7 @@ public class TelaLocacao extends javax.swing.JPanel {
         SocioServiceImpl socioimpl = new SocioServiceImpl();
         FuncionarioServiceImpl funcimpl = new FuncionarioServiceImpl();
         LocacaoServiceImpl locacaoimpl = new LocacaoServiceImpl();
+        LocacaoMidiaServiceImpl locacaomidiaimpl = new LocacaoMidiaServiceImpl();
         try {
             funcionario = funcimpl.retornarFuncionario(1);
             socio = socioimpl.retornarSocioId(Integer.valueOf(txtCodigoCliente.getText()));
@@ -435,15 +412,13 @@ public class TelaLocacao extends javax.swing.JPanel {
             locacao.setSocios(socio);
             locacao.setValortotal(Double.valueOf(txtTotalPagar.getText()));
             locacaoimpl.inserirLocacao(locacao);
-            
             for (LocacaoMidia locacaoMidia : locacaofilmes) {
-                
+                locacaoMidia.setLocacao(locacao);
+                locacaomidiaimpl.inserirLocacaoMidia(locacaoMidia);              
             }
-            
         } catch (Exception ex) {
             Logger.getLogger(TelaLocacao.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
@@ -467,9 +442,7 @@ public class TelaLocacao extends javax.swing.JPanel {
     private javax.swing.JLabel nCodigoFilme;
     private javax.swing.JLabel nDataDevolucao;
     private javax.swing.JLabel nEstoque;
-    private javax.swing.JLabel nMulta;
     private javax.swing.JLabel nNomeCliente;
-    private javax.swing.JLabel nSaldo;
     private javax.swing.JLabel nTituloFilme;
     private javax.swing.JLabel nTotalPagar;
     private javax.swing.JPanel painelCliente;
@@ -482,9 +455,7 @@ public class TelaLocacao extends javax.swing.JPanel {
     private javax.swing.JTextField txtCodigoFilme;
     private com.toedter.calendar.JDateChooser txtDataDevolucao;
     private javax.swing.JTextField txtEstoque;
-    private javax.swing.JTextField txtMulta;
     private javax.swing.JTextField txtNomeCliente;
-    private javax.swing.JTextField txtSaldo;
     private javax.swing.JTextField txtTituloFilme;
     private javax.swing.JTextField txtTotalPagar;
     // End of variables declaration//GEN-END:variables

@@ -36,7 +36,7 @@ public class TelaDevolucao extends javax.swing.JPanel {
 //        modeloTable.addColumn("Data Devolução");
  //       modeloTable.addColumn("Valor");
         try {
-            locacaofilmes = locacaoMidiaServiceImpl.retornarLocacao(socio);
+          //  locacaofilmes = locacaoMidiaServiceImpl.retornarLocacao(socio);
             DefaultTableModel modeloTable = new DefaultTableModel();
             modeloTable.addColumn("Código");
             modeloTable.addColumn("Título");
