@@ -53,8 +53,8 @@
                       <Component id="painelFilme" alignment="0" max="32767" attributes="0"/>
                       <Component id="painelDeRolagem" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="painelSaldoPagar" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                          <Component id="painelSaldoPagar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="btnSalvar" pref="97" max="32767" attributes="0"/>
                               <Component id="btnSair" max="32767" attributes="0"/>
@@ -352,18 +352,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nSaldo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtSaldo" min="-2" pref="92" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="nMulta" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtMulta" min="-2" pref="85" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="nTotalPagar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtTotalPagar" min="-2" pref="87" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="txtTotalPagar" min="-2" pref="121" max="-2" attributes="0"/>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -371,17 +363,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="nTotalPagar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtTotalPagar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="nSaldo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtSaldo" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="nMulta" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtMulta" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nTotalPagar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTotalPagar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="20" max="32767" attributes="0"/>
                   </Group>
@@ -389,32 +373,12 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="nSaldo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Saldo:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtSaldo">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="nTotalPagar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Total a Pagar:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTotalPagar">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="nMulta">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Multa:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMulta">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
@@ -433,6 +397,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Sair"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

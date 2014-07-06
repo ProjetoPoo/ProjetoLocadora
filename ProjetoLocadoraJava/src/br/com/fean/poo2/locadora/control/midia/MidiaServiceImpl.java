@@ -55,6 +55,10 @@ public class MidiaServiceImpl implements MidiaService {
         }
     }
 
+    public void alterarSituacaoMidia (Midia midia) throws Exception {
+        midiaDAO.alterarMidia(midia);
+    }
+    
     @Override
     public ArrayList<Midia> pesquisaMidiaCodigo(Integer codigo) {
         ArrayList<Midia> midias = new ArrayList<Midia>();

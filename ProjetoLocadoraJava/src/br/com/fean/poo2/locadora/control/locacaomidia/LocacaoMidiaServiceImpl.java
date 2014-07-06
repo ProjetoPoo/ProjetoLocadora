@@ -20,25 +20,27 @@ public class LocacaoMidiaServiceImpl implements LocacaoMidiaService{
     LocacaoMidiaDAO locacaoMidiaDao = new LocacaoMidiaDAO();
 
     @Override
-    public void inserirLocacao() throws Exception {
+    public void inserirLocacaoMidia(LocacaoMidia locacaomidia) throws Exception {
+        locacaoMidiaDao.inserirLocacaoMidia(locacaomidia);
+    }
+
+    @Override
+    public void alterarLocacaoMidia() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void alterarLocacao() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deletarLocacao() throws Exception {
+    public void deletarLocacaoMidia() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public ArrayList<LocacaoMidia> retornarLocacao(Socio socio) throws Exception {
+        
         ArrayList<LocacaoMidia> lista;
         lista = locacaoMidiaDao.retornaLocacaos(socio);
         return lista;
+        
     }
     
 }

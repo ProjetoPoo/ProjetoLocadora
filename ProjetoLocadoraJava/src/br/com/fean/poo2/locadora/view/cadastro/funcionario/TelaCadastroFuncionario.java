@@ -344,10 +344,7 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(TelaCadastroFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        //txtCodigo.setText(modelo.getValueAt(tabela.getSelectedRow(), 0).toString());
-        //txtNome.setText(modelo.getValueAt(tabela.getSelectedRow(), 1).toString());
-        //txtUsuario.setText(modelo.getValueAt(tabela.getSelectedRow(), 2).toString());
+        
         editarCamposTexto();
         habilitarBotoes();
     }//GEN-LAST:event_tabelaMouseClicked

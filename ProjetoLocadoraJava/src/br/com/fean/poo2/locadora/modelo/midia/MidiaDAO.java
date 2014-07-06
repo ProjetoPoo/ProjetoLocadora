@@ -79,7 +79,7 @@ public class MidiaDAO {
     
     public ArrayList<Midia> midiasPorTitulo(int codtitulo) throws Exception {
         ArrayList<Midia> lista = new ArrayList<Midia>();
-        Query query = entityManager.createQuery("select x from Midia x where titulo like '%"+codtitulo+"%'");
+        Query query = entityManager.createQuery("select x from Midia x where titulo like '%"+codtitulo+"%' and situacao = 0");
         lista = (ArrayList<Midia>) query.getResultList();
         return lista;
     }

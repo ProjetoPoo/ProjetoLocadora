@@ -8,8 +8,11 @@ package br.com.fean.poo2.locadora.modelo.locacaomidia;
 
 import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.util.EntityManagerUtil;
+import static br.com.fean.poo2.locadora.util.EntityManagerUtil.getEntityManager;
+import static com.mysql.jdbc.AbandonedConnectionCleanupThread.shutdown;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 /**
@@ -19,6 +22,20 @@ import javax.persistence.Query;
 public class LocacaoMidiaDAO {
     
     private final EntityManager entityManager = EntityManagerUtil.getEntityManager();
+    
+    public void inserirLocacaoMidia(LocacaoMidia locacaomidia) throws Exception {
+        EntityTransaction tx = entityManager.getTransaction();
+        try {
+            tx.begin();
+            entityManager.persist(locacaomidia);
+            tx.commit();
+        } catch (Throwable t) {
+            t.printStackTrace();
+            tx.rollback();
+        } finally {
+            close();
+        }
+    }
     
     public ArrayList<LocacaoMidia> retornaLocacaos(Socio socio) throws Exception {
         
@@ -30,6 +47,14 @@ public class LocacaoMidiaDAO {
         lista = (ArrayList<LocacaoMidia>) query.getResultList();
         
         return lista;
+    }
+    
+    private void close() throws InterruptedException {
+
+        if (getEntityManager().isOpen()) {
+            getEntityManager().close();
+        }
+        shutdown();
     }
 
     

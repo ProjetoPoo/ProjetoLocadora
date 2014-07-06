@@ -14,6 +14,7 @@ public interface MidiaService {
     public void inserirMidia (Integer id, Titulo titulos, TipoMidia tipoMidias, Distribuidor distribuidores, Integer situacao, Date dataaquisicao, String nrserie)throws Exception; 
     public void alterarMidia (Integer id, Titulo titulos, TipoMidia tipoMidias, Distribuidor distribuidores, Integer situacao, Date dataaquisicao, String nrserie)throws Exception; 
     public void deletarMidia (Midia midia); 
+    public void alterarSituacaoMidia (Midia midia)throws Exception; 
     public ArrayList<Midia> pesquisaMidiaCodigo (Integer codigo);
     public Integer nrMidiasTituloDisponiveis(Integer codtitulo);
     public ArrayList<Midia> retornarMidias(); 

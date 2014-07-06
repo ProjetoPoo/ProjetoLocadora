@@ -16,12 +16,11 @@ import java.util.ArrayList;
  */
 public interface LocacaoMidiaService {
     
-    public void inserirLocacao() throws Exception;//Inserir
+    public void inserirLocacaoMidia(LocacaoMidia locacaomidia) throws Exception;//Inserir
 
-    public void alterarLocacao() throws Exception;//Alterar
+    public void alterarLocacaoMidia() throws Exception;//Alterar
 
-    public void deletarLocacao() throws Exception;//Apagar
+    public void deletarLocacaoMidia() throws Exception;//Apagar
 
-    public ArrayList<LocacaoMidia> retornarLocacao(Socio socio) throws Exception;//Retorna todo os registros  
-    
+    public ArrayList<LocacaoMidia> retornarLocacao(Socio socio) throws Exception;
 }

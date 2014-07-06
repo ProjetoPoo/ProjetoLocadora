@@ -73,6 +73,13 @@ public class TituloDAO {
         lista = (ArrayList<Titulo>) query.getResultList();
         return lista;
     }
+    
+    public ArrayList<Titulo> retornarTitulosDisponiveis() throws Exception {
+        ArrayList<Titulo> lista = new ArrayList<Titulo>();
+        Query query = entityManager.createQuery("select x from Titulo x where ");
+        lista = (ArrayList<Titulo>) query.getResultList();
+        return lista;
+    }
 
     public ArrayList<Titulo> pesquisarTituloFilme(String nome) throws Exception {
         ArrayList<Titulo> lista = new ArrayList<Titulo>();
