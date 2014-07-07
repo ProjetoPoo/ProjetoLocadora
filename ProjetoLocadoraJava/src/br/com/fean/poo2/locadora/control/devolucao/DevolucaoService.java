@@ -24,7 +24,7 @@ public interface DevolucaoService {
      * Nesta classe será criado a interface dos serviços de categoria.
      *
      */
-    public void inserirDevolucao(Funcionario funcionarios, LocacaoMidia locacaoMidia, Date data2, Date hora, Integer diasAtraso, Double multa, Double desconto, Double valor) throws Exception;//Inserir
+    public void inserirDevolucao(Devolucao devolucao) throws Exception;//Inserir
 
     public void alterarDevolucao(Integer id, Funcionario funcionarios, LocacaoMidia locacaoMidia, Date data2, Date hora, Integer diasAtraso, Double multa, Double desconto, Double valor) throws Exception;//Alterar
 

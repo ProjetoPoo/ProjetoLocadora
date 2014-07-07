@@ -1,9 +1,11 @@
 package br.com.fean.poo2.locadora.view.devolver;
 
 import br.com.fean.poo2.locadora.control.devolucao.DevolucaoServiceImpl;
+import br.com.fean.poo2.locadora.control.funcionario.FuncionarioServiceImpl;
 import br.com.fean.poo2.locadora.control.locacaomidia.LocacaoMidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.modelo.devolucao.Devolucao;
+import br.com.fean.poo2.locadora.modelo.funcionario.Funcionario;
 import br.com.fean.poo2.locadora.modelo.locacaomidia.LocacaoMidia;
 import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaClienteDevolucao;
@@ -23,6 +25,7 @@ public class TelaDevolucao extends javax.swing.JPanel {
     LocacaoMidiaServiceImpl locacaoMidiaServiceImpl = new LocacaoMidiaServiceImpl();
     DevolucaoServiceImpl devolucaoServiceImpl = new DevolucaoServiceImpl();
     SocioServiceImpl socioServiceImpl = new SocioServiceImpl();
+    FuncionarioServiceImpl funcimpl = new FuncionarioServiceImpl();
 
     public TelaDevolucao() {
         initComponents();
@@ -230,6 +233,11 @@ public class TelaDevolucao extends javax.swing.JPanel {
         );
 
         btnFinalizar.setText("Finalizar");
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelDevolucaoLayout = new javax.swing.GroupLayout(painelDevolucao);
         painelDevolucao.setLayout(painelDevolucaoLayout);
@@ -301,12 +309,27 @@ public class TelaDevolucao extends javax.swing.JPanel {
             txtSaldo.setText(String.valueOf(devolucao.getValor()));
             txtTotalPagar.setText(String.valueOf(devolucao.getMulta()+devolucao.getValor()));
             
-            
         } catch (Exception ex) {
             Logger.getLogger(TelaDevolucao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_tabelaMouseClicked
+
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
+        Integer linhaSelecionada = tabela.getSelectedRow();
+        Integer valorCodigoSelecionado = (Integer) tabela.getValueAt(linhaSelecionada, 0);
+        
+        try {
+            Devolucao devolucao = devolucaoServiceImpl.calcularPagamento(valorCodigoSelecionado);
+            
+            devolucaoServiceImpl.inserirDevolucao(devolucao);
+            
+        } catch (Exception ex) {
+            Logger.getLogger(TelaDevolucao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
+    }//GEN-LAST:event_btnFinalizarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;

@@ -7,7 +7,10 @@
 package br.com.fean.poo2.locadora.modelo.devolucao;
 
 import br.com.fean.poo2.locadora.util.EntityManagerUtil;
+import static br.com.fean.poo2.locadora.util.EntityManagerUtil.getEntityManager;
+import static com.mysql.jdbc.AbandonedConnectionCleanupThread.shutdown;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,6 +33,28 @@ public class DevolucaoDAO {
         }
         
         return devolucao;
+    }
+    
+    public void inserirDevolucao(Devolucao devolucao) throws Exception {
+        EntityTransaction tx = entityManager.getTransaction();
+        try {
+            tx.begin();
+            entityManager.persist(devolucao);
+            tx.commit();
+        } catch (Throwable t) {
+            t.printStackTrace();
+            tx.rollback();
+        } finally {
+            close();
+        }
+    }
+    
+    private void close() throws InterruptedException {
+
+        if (getEntityManager().isOpen()) {
+            getEntityManager().close();
+        }
+        shutdown();
     }
     
 }

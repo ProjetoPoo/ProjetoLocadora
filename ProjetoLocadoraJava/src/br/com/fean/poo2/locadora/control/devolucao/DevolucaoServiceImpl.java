@@ -27,8 +27,10 @@ public class DevolucaoServiceImpl implements DevolucaoService{
     LocacaoMidiaServiceImpl locacaoMidiaServiceImpl = new LocacaoMidiaServiceImpl();
 
     @Override
-    public void inserirDevolucao(Funcionario funcionarios, LocacaoMidia locacaoMidia, Date data2, Date hora, Integer diasAtraso, Double multa, Double desconto, Double valor) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void inserirDevolucao(Devolucao devolucao) throws Exception {
+                
+        devolucaoDao.inserirDevolucao(devolucao);
+        
     }
 
     @Override
