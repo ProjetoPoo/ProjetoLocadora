@@ -64,7 +64,7 @@ public class TelaDevolucao extends javax.swing.JPanel {
                 };
                 totalapagar = totalapagar + valorfilme;
                 modeloTable.addRow(new Object[]{
-                    locacaoMidia.getMidias().getTitulos().getId(),
+                    locacaoMidia.getId(),
                     locacaoMidia.getMidias().getTitulos().getNome(),
                     dateFormat.format(locacaoMidia.getLocacao().getDtLocacao()),
                     dateFormat.format(locacaoMidia.getDtPrevDevolucao()),
@@ -296,8 +296,10 @@ public class TelaDevolucao extends javax.swing.JPanel {
         Integer valorCodigoSelecionado = (Integer) tabela.getValueAt(linhaSelecionada, 0);
         
         try {
-            Devolucao devolucao = devolucaoServiceImpl.calcularPagamento(linhaSelecionada);
+            Devolucao devolucao = devolucaoServiceImpl.calcularPagamento(valorCodigoSelecionado);
             txtMulta.setText(String.valueOf(devolucao.getMulta()));
+            txtSaldo.setText(String.valueOf(devolucao.getValor()));
+            txtTotalPagar.setText(String.valueOf(devolucao.getMulta()+devolucao.getValor()));
             
             
         } catch (Exception ex) {
