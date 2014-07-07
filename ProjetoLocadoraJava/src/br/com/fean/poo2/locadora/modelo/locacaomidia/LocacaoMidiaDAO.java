@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,6 +57,19 @@ public class LocacaoMidiaDAO {
         }
         shutdown();
     }
-
+    
+    public LocacaoMidia pesquisaLocacaoMidia(int id) throws Exception {
+        LocacaoMidia locacaoMidia = null;
+        
+        try {
+            locacaoMidia = entityManager.find(LocacaoMidia.class, id);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "ERRO ao Retornar Locacao Midia Pelo ID" + ex);
+        }
+        
+        return locacaoMidia;
+    }
     
 }

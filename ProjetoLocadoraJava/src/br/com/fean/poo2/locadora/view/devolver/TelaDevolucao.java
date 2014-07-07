@@ -1,13 +1,17 @@
 package br.com.fean.poo2.locadora.view.devolver;
 
+import br.com.fean.poo2.locadora.control.devolucao.DevolucaoServiceImpl;
 import br.com.fean.poo2.locadora.control.locacaomidia.LocacaoMidiaServiceImpl;
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
+import br.com.fean.poo2.locadora.modelo.devolucao.Devolucao;
 import br.com.fean.poo2.locadora.modelo.locacaomidia.LocacaoMidia;
 import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaClienteDevolucao;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -17,6 +21,7 @@ public class TelaDevolucao extends javax.swing.JPanel {
     
     private ArrayList<LocacaoMidia> locacaofilmes = null;
     LocacaoMidiaServiceImpl locacaoMidiaServiceImpl = new LocacaoMidiaServiceImpl();
+    DevolucaoServiceImpl devolucaoServiceImpl = new DevolucaoServiceImpl();
     SocioServiceImpl socioServiceImpl = new SocioServiceImpl();
 
     public TelaDevolucao() {
@@ -168,6 +173,11 @@ public class TelaDevolucao extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
         painelDeRolagem.setViewportView(tabela);
 
         painelSaldoPagar.setBorder(javax.swing.BorderFactory.createTitledBorder("Saldo a Pagar"));
@@ -280,6 +290,21 @@ public class TelaDevolucao extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_txtCodigoClienteMouseClicked
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        Integer linhaSelecionada = tabela.getSelectedRow();
+        Integer valorCodigoSelecionado = (Integer) tabela.getValueAt(linhaSelecionada, 0);
+        
+        try {
+            Devolucao devolucao = devolucaoServiceImpl.calcularPagamento(linhaSelecionada);
+            txtMulta.setText(String.valueOf(devolucao.getMulta()));
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(TelaDevolucao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_tabelaMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;

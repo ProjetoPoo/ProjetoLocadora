@@ -23,4 +23,6 @@ public interface LocacaoMidiaService {
     public void deletarLocacaoMidia() throws Exception;//Apagar
 
     public ArrayList<LocacaoMidia> retornarLocacao(Socio socio) throws Exception;
+    
+    public LocacaoMidia retornarLocacaoMidia (int id) throws Exception;
 }

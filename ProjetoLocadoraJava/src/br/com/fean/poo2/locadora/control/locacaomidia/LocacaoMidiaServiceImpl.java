@@ -42,5 +42,13 @@ public class LocacaoMidiaServiceImpl implements LocacaoMidiaService{
         return lista;
         
     }
+
+    @Override
+    public LocacaoMidia retornarLocacaoMidia(int id) throws Exception {
+        LocacaoMidia locacaoMidia;
+        locacaoMidia = locacaoMidiaDao.pesquisaLocacaoMidia(id);
+        return locacaoMidia;
+        
+    }
     
 }

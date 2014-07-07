@@ -32,6 +32,8 @@ public interface DevolucaoService {
 
     public Devolucao retornarDevolucao(Integer id) throws Exception;//Retorna o categoria com o id passado
 
-    public ArrayList<Devolucao> retornarDevolucao() throws Exception;//Retorna todo os registros  
+    public ArrayList<Devolucao> retornarDevolucao() throws Exception;//Retorna todo os registros
+    
+    public Devolucao calcularPagamento(int id) throws Exception;
     
 }
