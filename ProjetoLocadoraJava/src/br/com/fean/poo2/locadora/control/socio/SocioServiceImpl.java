@@ -13,32 +13,14 @@ public class SocioServiceImpl implements SocioService {
     SocioDAO socioDAO = new SocioDAO();
 
 @Override
-    public void inserirSocio(String nome, Integer sexo, String cpf, Date datanascimento, String foneRes, String endereco, String localTrabalho, String foneCom ) throws Exception {
-        if(nome.length() > 3){            
-            Socio socio = new Socio();
-            socio.setNome(nome); 
-            socio.setSexo(sexo);
-            socio.setCpf(cpf);
-            socio.setDatanascimento(datanascimento);
-            socio.setFoneRes(foneRes);
-            socio.setEndereco(endereco);
-            socio.setLocalTrabalho(localTrabalho);
-            socio.setFoneCom(foneCom);
+    public void inserirSocio(Socio socio) throws Exception {
+        if (socio.getNome().length()>3){
             socioDAO.inserirSocio(socio);
-        }      
+        }     
     }
 
     @Override
-    public void alterarSocio(String nome, Integer sexo, String cpf, Date datanascimento, String foneRes, String endereco, String localTrabalho, String foneCom) throws Exception {
-        Socio socio = new Socio();        
-        socio.setNome(nome);
-        socio.setSexo(sexo);
-        socio.setCpf(cpf);
-        socio.setDatanascimento(datanascimento);
-        socio.setFoneRes(foneRes);
-        socio.setEndereco(endereco);
-        socio.setLocalTrabalho(localTrabalho);
-        socio.setFoneCom(foneCom);
+    public void alterarSocio(Socio socio) throws Exception {        
         socioDAO.alterarSocio(socio);        
     }
 

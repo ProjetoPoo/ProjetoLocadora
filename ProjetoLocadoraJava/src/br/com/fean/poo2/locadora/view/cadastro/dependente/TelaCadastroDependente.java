@@ -1,20 +1,24 @@
 package br.com.fean.poo2.locadora.view.cadastro.dependente;
 
 import br.com.fean.poo2.locadora.control.dependente.DependenteServiceImpl;
+import br.com.fean.poo2.locadora.modelo.dependente.Dependente;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
-import java.sql.Date;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaCadastroDependente extends javax.swing.JFrame {
     
     private int idDependente = 0;
+    private int sexo;
     
     DependenteServiceImpl dependenteServiceImpl = new DependenteServiceImpl();
 
     public TelaCadastroDependente() {
         initComponents();
+        retornarTodosDepenetes();
         desabilitarBotoes();
         bloquearCamposDeTexto();
     }
@@ -41,7 +45,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
         txtDataNascimento = new com.toedter.calendar.JDateChooser();
         cbSexo = new javax.swing.JComboBox();
         painelDeRolagem = new javax.swing.JScrollPane();
-        tabelaDependete = new javax.swing.JTable();
+        tabelaDependente = new javax.swing.JTable();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
@@ -175,37 +179,33 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tabelaDependete.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaDependente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código do sócio", "Código", "Nome", "Sexo", "Data de nascimento"
+                "Código", "Nome", "Sexo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, false, false
+                false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tabelaDependete.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelaDependente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaDependeteMouseClicked(evt);
+                tabelaDependenteMouseClicked(evt);
             }
         });
-        painelDeRolagem.setViewportView(tabelaDependete);
-        if (tabelaDependete.getColumnModel().getColumnCount() > 0) {
-            tabelaDependete.getColumnModel().getColumn(0).setMinWidth(80);
-            tabelaDependete.getColumnModel().getColumn(0).setMaxWidth(80);
-            tabelaDependete.getColumnModel().getColumn(1).setMinWidth(80);
-            tabelaDependete.getColumnModel().getColumn(1).setMaxWidth(80);
-            tabelaDependete.getColumnModel().getColumn(3).setMinWidth(80);
-            tabelaDependete.getColumnModel().getColumn(3).setMaxWidth(80);
-            tabelaDependete.getColumnModel().getColumn(4).setMinWidth(120);
-            tabelaDependete.getColumnModel().getColumn(4).setMaxWidth(120);
+        painelDeRolagem.setViewportView(tabelaDependente);
+        if (tabelaDependente.getColumnModel().getColumnCount() > 0) {
+            tabelaDependente.getColumnModel().getColumn(0).setMinWidth(80);
+            tabelaDependente.getColumnModel().getColumn(0).setMaxWidth(80);
+            tabelaDependente.getColumnModel().getColumn(2).setMinWidth(80);
+            tabelaDependente.getColumnModel().getColumn(2).setMaxWidth(80);
         }
 
         javax.swing.GroupLayout painelCadastrarDependenteLayout = new javax.swing.GroupLayout(painelCadastrarDependente);
@@ -315,7 +315,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
         try {
             // botão pesquisar sócio
             TelaListaCliente listaCliente = new TelaListaCliente();
-            listaCliente.setEnabled(true);
+            listaCliente.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(TelaCadastroDependente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -334,6 +334,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {           
             try {                
                 dependenteServiceImpl.deletarDependente(dependenteServiceImpl.retornarDependente(idDependente));
+                retornarTodosDepenetes();
                 JOptionPane.showMessageDialog(null, "Registro deletado com sucesso!");
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao deletar registro! \n \n ERRO: " + ex);
@@ -346,9 +347,9 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-      /*  // botão salvar
+        // botão salvar
         
-        if ((txtNome.getText().length() == 0) && (txtSexo.getText().length() == 0)) {
+        if (txtNome.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Campos obrigatórios!");        
         } else {
 
@@ -356,8 +357,8 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
                 try {
                     dependenteServiceImpl.inserirDependente(
                             txtNome.getText(),
-                            Integer.parseInt(txtSexo.getText()),                            
-                            Date.valueOf(txtDataNascimento.getText())
+                            sexo,                            
+                            txtDataNascimento.getDate()
                     );
 
                     JOptionPane.showMessageDialog(null, "Novo registro salvo com sucesso!");
@@ -370,8 +371,8 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
                 try {
                     dependenteServiceImpl.alterarDependente(
                             txtNome.getText(),
-                            Integer.parseInt(txtSexo.getText()),                            
-                            Date.valueOf(txtDataNascimento.getText())                           
+                            sexo,                            
+                            txtDataNascimento.getDate()
                     );
 
                     JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!");
@@ -380,11 +381,11 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
                 }
             }
         }
-           
-            limparCamposDeTexto();
-            desabilitarBotoes();
-            bloquearCamposDeTexto();
-              */
+        retornarTodosDepenetes();   
+        limparCamposDeTexto();
+        desabilitarBotoes();
+        bloquearCamposDeTexto();
+             
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -397,9 +398,14 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
         editarCamposDeTexto();
     }//GEN-LAST:event_btnNovoActionPerformed
 
-    private void tabelaDependeteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDependeteMouseClicked
+    private void tabelaDependenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaDependenteMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tabelaDependeteMouseClicked
+        DefaultTableModel dependenteTebela = (DefaultTableModel) tabelaDependente.getModel();        
+        idDependente = Integer.parseInt(dependenteTebela.getValueAt(tabelaDependente.getSelectedRow(), 0).toString());
+        txtNome.setText(dependenteTebela.getValueAt(tabelaDependente.getSelectedRow(), 1).toString());
+        cbSexo.setSelectedItem(dependenteTebela.getValueAt (tabelaDependente.getSelectedRow(), 2));
+        
+    }//GEN-LAST:event_tabelaDependenteMouseClicked
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         // sair
@@ -408,31 +414,81 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
 
     private void cbSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSexoActionPerformed
         // combo sexo
-       // if(comboSexo.lenth){
-            
-      //  }
+       if (cbSexo.getSelectedIndex() == 0) {
+            sexo = 0;//Feminino
+        } else {
+            sexo = 1;//Masculino
+        }
     }//GEN-LAST:event_cbSexoActionPerformed
+    
+    
+    public void retornarTodosDepenetes(){
+        ArrayList<Dependente> lista = new ArrayList<Dependente>();
+        try {
+            lista = dependenteServiceImpl.retornarDependentes();
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"erro ao retornar todos os dependente" + ex);
+        }
+        carregarDadosTabela(lista);
+    }      
+    
+    public void carregarDadosTabela(ArrayList<Dependente> lista){
+        DefaultTableModel modelo = (DefaultTableModel) tabelaDependente.getModel();
+        modelo.setRowCount( 0 );        
+        try {
+            for (int i=0;i<lista.size();i++){
+                modelo.addRow(new Object[]{lista.get(i).getId(), 
+                                           lista.get(i).getNome(),
+                                           lista.get(i).getSexo()});  
+            }
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Erro - leitura de dados de Dependete com problema - "  +ex);
+        }
+    }   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // método limpar campos
     public void limparCamposDeTexto() {
         // dependente 01
-        txtNome.setText("");
-      //  txtSexo.setText("");       
-      //  txtDataNascimento.setText("");        
+        txtNome.setText("");  
+        
+                
     }
     // método editar campos
     public void editarCamposDeTexto() {
         // dependente 01
-        txtNome.setEnabled(true);
-      //  txtSexo.setEnabled(true);        
-       // txtDataNascimento.setEnabled(true);             
+        txtNome.setEnabled(true); 
+        cbSexo.setEnabled(true);
+        txtDataNascimento.setEnabled(true);
     }
     // método bloquear campos de texto
     public void bloquearCamposDeTexto() {
         // dependente 01
         txtNome.setEnabled(false);
-       // txtSexo.setEnabled(false);
-       // txtDataNascimento.setEnabled(false);        
+        cbSexo.setEnabled(false);
+        txtDataNascimento.setEnabled(false);        
     }
     // habilitar botões
     public void habilitarBotoes() {
@@ -466,7 +522,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
     private javax.swing.JScrollPane painelDeRolagem;
     private javax.swing.JPanel painelDependente;
     private javax.swing.JPanel painelSocio;
-    private javax.swing.JTable tabelaDependete;
+    private javax.swing.JTable tabelaDependente;
     private javax.swing.JTextField txtCodigoDependente;
     private javax.swing.JTextField txtCodigoSocio;
     private com.toedter.calendar.JDateChooser txtDataNascimento;

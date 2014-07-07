@@ -46,6 +46,20 @@ public class Socio  implements java.io.Serializable {
        this.dependenteses = dependenteses;
     }
    
+    public Socio(Integer id, String nome, Integer sexo, String cpf, Date datanascimento, String foneRes, String endereco,  String localTrabalho, String foneCom ) {
+       this.id = id;
+       this.nome = nome;
+       this.sexo = sexo;
+       this.cpf = cpf;
+       this.datanascimento = datanascimento;
+       this.endereco = endereco;
+       this.foneRes = foneRes;
+       this.localTrabalho = localTrabalho;
+       this.foneCom = foneCom;       
+    }
+    
+    
+    
     public Integer getId() {
         return this.id;
     }

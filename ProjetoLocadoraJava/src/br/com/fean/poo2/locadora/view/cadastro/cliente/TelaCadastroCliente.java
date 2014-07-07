@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaCadastroCliente extends javax.swing.JPanel {
 
@@ -32,6 +33,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         initComponents();
         desabilitarBotoes();
         bloquearCamposDeTexto();
+        retornarTodosSocios();
     }
 
     @SuppressWarnings("unchecked")
@@ -62,8 +64,13 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         btnSalvar = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        btnPesquisar = new javax.swing.JButton();
         btnDependente = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        nomeSocio = new javax.swing.JLabel();
+        txtNomeSocio = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaSocios = new javax.swing.JTable();
 
         painelCadastroCliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Cliente"));
 
@@ -107,7 +114,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                 .addGroup(painelCadastroClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCadastroClienteLayout.createSequentialGroup()
                         .addComponent(nEmpresa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                         .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(nTelefoneEmpresa)
@@ -204,6 +211,17 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
             }
         });
 
+        btnDependente.setText("Dependente");
+        btnDependente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDependenteActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisar"));
+
+        nomeSocio.setText("Nome:");
+
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,12 +229,58 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
             }
         });
 
-        btnDependente.setText("Dependente");
-        btnDependente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDependenteActionPerformed(evt);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(nomeSocio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNomeSocio, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nomeSocio)
+                    .addComponent(txtNomeSocio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tabelaSocios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Nome", "CPF"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        tabelaSocios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaSociosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tabelaSocios);
+        if (tabelaSocios.getColumnModel().getColumnCount() > 0) {
+            tabelaSocios.getColumnModel().getColumn(0).setMinWidth(80);
+            tabelaSocios.getColumnModel().getColumn(0).setMaxWidth(80);
+            tabelaSocios.getColumnModel().getColumn(2).setMinWidth(120);
+            tabelaSocios.getColumnModel().getColumn(2).setMaxWidth(120);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -225,7 +289,8 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(painelCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(painelCadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -235,13 +300,12 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDependente, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnDependente, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDependente, btnPesquisar});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPanel1, jScrollPane1, painelCadastroCliente});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,12 +313,15 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(painelCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(btnSalvar)
                     .addComponent(btnDeletar)
                     .addComponent(btnCancelar)
-                    .addComponent(btnPesquisar)
                     .addComponent(btnDependente))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -262,14 +329,13 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // pesquisar
-        TelaListaCliente telaCliente;
+        ArrayList<Socio> lista = new ArrayList<Socio>();
         try {
-            telaCliente = new TelaListaCliente();
-            telaCliente.setEnabled(true);
-            telaCliente.setVisible(true);
+            lista = socioServiceImpl.pesquisarSocioNome(btnPesquisar.getText());           
         } catch (Exception ex) {
-            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"erro ao pesquisar cliente - " + ex);
         }
+        carregarDadosTabela(lista);     
 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
@@ -286,6 +352,15 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // botão salvar
         Date data = new Date();
+        Socio socio = new Socio (idCliente,
+                            txtNome.getText(),
+                            sexo,
+                            txtCPF.getText(),
+                            txtDataNascimento.getDate(),
+                            txtTelefoneResidencial.getText(),
+                            txtEndereco.getText(),
+                            txtEmpresa.getText(),
+                            txtTelefoneEmpresa.getText());
         if ((txtNome.getText().length() == 0) && (txtCPF.getText().length() == 0 && (txtTelefoneResidencial.getText().length() == 0))) {
             JOptionPane.showMessageDialog(null, "Campos obrigatórios!");
         } else if (txtEmpresa.getText().length() == 0 && txtTelefoneEmpresa.getText().length() == 0) {
@@ -294,16 +369,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
 
             if (idCliente == 0) {
                 try {
-                    socioServiceImpl.inserirSocio(
-                            txtNome.getText(),
-                            sexo,
-                            txtCPF.getText(),
-                            txtDataNascimento.getDate(),
-                            txtTelefoneResidencial.getText(),
-                            txtEndereco.getText(),
-                            txtEmpresa.getText(),
-                            txtTelefoneEmpresa.getText()
-                    );
+                    socioServiceImpl.inserirSocio(socio);
 
                     JOptionPane.showMessageDialog(null, "Novo registro salvo com sucesso!");
 
@@ -314,17 +380,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                 }
             } else {
                 try {
-
-                    socioServiceImpl.alterarSocio(
-                            txtNome.getText(),
-                            sexo,
-                            txtCPF.getText(),
-                            txtDataNascimento.getDate(),
-                            txtTelefoneResidencial.getText(),
-                            txtEndereco.getText(),
-                            txtEmpresa.getText(),
-                            txtTelefoneEmpresa.getText()
-                    );
+                    socioServiceImpl.alterarSocio(socio);
 
                     JOptionPane.showMessageDialog(null, "Alteração realizada com suceso!");
 
@@ -333,7 +389,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
                 }
             }
         }
-
+        retornarTodosSocios();
         limparCamposDeTexto();
         desabilitarBotoes();
         bloquearCamposDeTexto();
@@ -342,9 +398,11 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
         // botão deletar
-        if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
+        if (JOptionPane.showConfirmDialog(null, "DESEJA EXCLUIR DADOS???") == 0) {
             try {
-                socioServiceImpl.deletarSocio(socioServiceImpl.retornarSocioId(idCliente));
+                Socio socio = socioServiceImpl.retornarSocio(idCliente);                
+                socioServiceImpl.deletarSocio(socio);
+                retornarTodosSocios();
                 JOptionPane.showMessageDialog(null, "Registro deletado com sucesso!");
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao deletar registro! \n \n ERRO: " + ex);
@@ -366,7 +424,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private void btnDependenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDependenteActionPerformed
         // tela dependete
         TelaCadastroDependente telaDependete = new TelaCadastroDependente();
-        telaDependete.setEnabled(true);
+        telaDependete.setVisible(true);
     }//GEN-LAST:event_btnDependenteActionPerformed
 
     private void cbSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSexoActionPerformed
@@ -378,26 +436,46 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cbSexoActionPerformed
 
-    
-    public void setCodCliente(Integer codigo) {
-        txtCodigo.setText(Integer.toString(codigo));
-    }
+    private void tabelaSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaSociosMouseClicked
+        // tabela com a lista de socios (clientes)
+        DefaultTableModel clienteTebela = (DefaultTableModel) tabelaSocios.getModel();        
+        idCliente = Integer.parseInt(clienteTebela.getValueAt(tabelaSocios.getSelectedRow(), 0).toString());
+        txtNome.setText(clienteTebela.getValueAt(tabelaSocios.getSelectedRow(), 1).toString());
+        txtCPF.setText(clienteTebela.getValueAt(tabelaSocios.getSelectedRow(), 2).toString());
+              
+        editarCamposDeTexto();
+        habilitarBotoes();
+    }//GEN-LAST:event_tabelaSociosMouseClicked
 
-    public void setNomeCliente(String nome) {
-        txtNome.setText(nome);
-    }
     
     
     
     
     
     
+    public void retornarTodosSocios(){
+        ArrayList<Socio> lista = new ArrayList<Socio>();
+        try {
+            lista = socioServiceImpl.retornarSocios();
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"erro ao retornar todos os Clientes" + ex);
+        }
+        carregarDadosTabela(lista);
+    }      
     
-    
-    
-    
-    
-    
+    public void carregarDadosTabela(ArrayList<Socio> lista){
+        DefaultTableModel modelo = (DefaultTableModel) tabelaSocios.getModel();
+        modelo.setRowCount( 0 );        
+        try {
+            for (int i=0;i<lista.size();i++){
+                modelo.addRow(new Object[]{lista.get(i).getId(), 
+                                           lista.get(i).getNome(), 
+                                           lista.get(i).getCpf()});  
+            }
+        }catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Erro - leitura de dados de Cliente com problema - "  +ex);
+        }
+    } 
     
     
     // método limpar campos
@@ -458,6 +536,8 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox cbSexo;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nCPF;
     private javax.swing.JLabel nCodigo;
     private javax.swing.JLabel nDataNascimento;
@@ -467,14 +547,17 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private javax.swing.JLabel nSexo;
     private javax.swing.JLabel nTelefoneEmpresa;
     private javax.swing.JLabel nTelefoneResidencial;
+    private javax.swing.JLabel nomeSocio;
     private javax.swing.JPanel painelCadastroCliente;
     private javax.swing.JScrollPane painelDeRolagem;
+    private javax.swing.JTable tabelaSocios;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCodigo;
     private com.toedter.calendar.JDateChooser txtDataNascimento;
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JTextArea txtEndereco;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNomeSocio;
     private javax.swing.JTextField txtTelefoneEmpresa;
     private javax.swing.JTextField txtTelefoneResidencial;
     // End of variables declaration//GEN-END:variables

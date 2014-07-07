@@ -9,8 +9,8 @@ import java.util.Date;
 
 public interface SocioService {
     
-    public void inserirSocio(String nome, Integer sexo, String cpf, Date datanascimento, String foneRes, String endereco, String localTrabalho, String foneCom) throws Exception;    
-    public void alterarSocio(String nome, Integer sexo, String cpf, Date datanascimento, String foneRes, String endereco, String localTrabalho, String foneCom) throws Exception;    
+    public void inserirSocio(Socio socio) throws Exception;    
+    public void alterarSocio(Socio socio) throws Exception;    
     public void deletarSocio(Socio socio) throws Exception; 
     public ArrayList<Socio> pesquisaSocioNome (String nome);
     public ArrayList<Socio> pesquisaSocioCPF (String cpf);
