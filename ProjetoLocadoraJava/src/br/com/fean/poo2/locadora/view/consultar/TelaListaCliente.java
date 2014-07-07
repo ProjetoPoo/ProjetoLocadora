@@ -4,9 +4,10 @@ import br.com.fean.poo2.locadora.control.dependente.DependenteServiceImpl;
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.modelo.dependente.Dependente;
 import br.com.fean.poo2.locadora.modelo.socio.Socio;
-import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
 import br.com.fean.poo2.locadora.modelo.socio.SocioDAO;
+import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
 import br.com.fean.poo2.locadora.view.devolver.TelaDevolucao;
+import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,7 @@ public class TelaListaCliente extends javax.swing.JFrame {
     SocioDAO socioDao = new SocioDAO();
 
     private TelaLocacao refpai;
+    private TelaCadastroCliente refpaicadastrocliente;
 
     public TelaListaCliente() throws Exception {
         initComponents();
@@ -257,13 +259,17 @@ public class TelaListaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        if (refpai != null){
         Integer linhaSelecionada = tabela.getSelectedRow();
         Integer valorCodigoSelecionado = (Integer) tabela.getValueAt(linhaSelecionada, 0);
-
         refpai.setCodCliente(valorCodigoSelecionado);
         String valorNomeSelecionado = (String) tabela.getValueAt(linhaSelecionada, 1);
         refpai.setNomeCliente(valorNomeSelecionado);
         dispose();
+        } else {
+            
+        }
+
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void preencherTabela() {
