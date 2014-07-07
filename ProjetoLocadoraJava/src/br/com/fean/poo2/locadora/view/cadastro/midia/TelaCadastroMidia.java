@@ -386,7 +386,8 @@ public class TelaCadastroMidia extends javax.swing.JPanel {
         txtDataAquisicao.setDate(new Date());
         txtSituacao.setText(modelo.getValueAt(tabela.getSelectedRow(), 6).toString());
 
-
+        habilitarBotoes(true);
+        editarCamposTexto(true);
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void txtSituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSituacaoActionPerformed
