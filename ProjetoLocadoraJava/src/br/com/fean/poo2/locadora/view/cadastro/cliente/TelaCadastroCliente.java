@@ -1,11 +1,13 @@
 package br.com.fean.poo2.locadora.view.cadastro.cliente;
 
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
+import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.view.cadastro.dependente.TelaCadastroDependente;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
 import java.awt.CardLayout;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +24,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private int sexo;
 
     SocioServiceImpl socioServiceImpl = new SocioServiceImpl();
-
+    
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date dataNascimento = new Date();
 
@@ -376,6 +378,28 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cbSexoActionPerformed
 
+    
+    public void setCodCliente(Integer codigo) {
+        txtCodigo.setText(Integer.toString(codigo));
+    }
+
+    public void setNomeCliente(String nome) {
+        txtNome.setText(nome);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // método limpar campos
     public void limparCamposDeTexto() {
         txtNome.setText("");
