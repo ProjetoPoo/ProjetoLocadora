@@ -40,6 +40,14 @@ public class Dependente  implements java.io.Serializable {
        this.locacaos = locacaos;
        this.reservases = reservases;
     }
+    
+    public Dependente (Integer id, String nome, Integer sexo, Date datanascimento){
+       this.id = id;
+       this.nome = nome;
+       this.sexo = sexo;
+       this.datanascimento = datanascimento;
+        
+    }
    
     public Integer getId() {
         return this.id;

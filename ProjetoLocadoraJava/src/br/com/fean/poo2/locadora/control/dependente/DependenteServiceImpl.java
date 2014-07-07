@@ -13,22 +13,15 @@ public class DependenteServiceImpl implements DependenteService {
     DependenteDAO dependenteDAO = new DependenteDAO();
 
     @Override
-    public void inserirDependente(String nome, Integer sexo, Date datanascimento) throws Exception {
-        if(nome.length() > 3){ 
-           Dependente dependente = new Dependente();
-            dependente.setNome(nome);
-            dependente.setSexo(sexo);
-            dependente.setDatanascimento(datanascimento);
+    public void inserirDependente(Dependente dependente) throws Exception {
+        if(dependente.getNome().length() > 3){            
             dependenteDAO.inserirDependente(dependente);  
         }
     }
 
     @Override
-    public void alterarDependente(String nome, Integer sexo, Date datanascimento) throws Exception {
-        Dependente dependente = new Dependente();        
-        dependente.setNome(nome); 
-        dependente.setSexo(sexo);
-        dependente.setDatanascimento(datanascimento);
+    public void alterarDependente(Dependente dependente) throws Exception {
+        
         dependenteDAO.alterarDependente(dependente); 
     }
 

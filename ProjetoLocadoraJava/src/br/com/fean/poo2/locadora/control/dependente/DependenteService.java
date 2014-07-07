@@ -9,9 +9,9 @@ import java.util.Date;
 
 public interface DependenteService {
     
-    public void inserirDependente(String nome, Integer sexo, Date datanascimento) throws Exception;
+    public void inserirDependente(Dependente dependente) throws Exception;
     // alterar
-    public void alterarDependente(String nome, Integer sexo, Date datanascimento) throws Exception;
+    public void alterarDependente(Dependente dependente) throws Exception;
     // deletar
     public void deletarDependente(Dependente dependente) throws Exception;
     // retorna pelo nome

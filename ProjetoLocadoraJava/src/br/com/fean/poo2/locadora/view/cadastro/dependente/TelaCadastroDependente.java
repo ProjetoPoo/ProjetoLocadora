@@ -348,18 +348,14 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // botão salvar
-        
+        Dependente dependente = new Dependente (idDependente, txtNome.getText(), sexo, txtDataNascimento.getDate());
         if (txtNome.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Campos obrigatórios!");        
         } else {
 
             if (idDependente == 0) {
                 try {
-                    dependenteServiceImpl.inserirDependente(
-                            txtNome.getText(),
-                            sexo,                            
-                            txtDataNascimento.getDate()
-                    );
+                    dependenteServiceImpl.inserirDependente(dependente);
 
                     JOptionPane.showMessageDialog(null, "Novo registro salvo com sucesso!");
                 } catch (Exception ex) {
@@ -369,11 +365,7 @@ public class TelaCadastroDependente extends javax.swing.JFrame {
                 }
             } else {
                 try {
-                    dependenteServiceImpl.alterarDependente(
-                            txtNome.getText(),
-                            sexo,                            
-                            txtDataNascimento.getDate()
-                    );
+                    dependenteServiceImpl.alterarDependente(dependente);
 
                     JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!");
                 } catch (Exception ex) {
