@@ -3,6 +3,7 @@ package br.com.fean.poo2.locadora.view.cadastro.cliente;
 import br.com.fean.poo2.locadora.control.socio.SocioServiceImpl;
 import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.view.cadastro.dependente.TelaCadastroDependente;
+import static br.com.fean.poo2.locadora.view.cadastro.titulo.TelaCadastroTitulo.setSelectedValue;
 import br.com.fean.poo2.locadora.view.consultar.TelaListaCliente;
 import java.awt.CardLayout;
 import java.text.DateFormat;
@@ -25,7 +26,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private int sexo;
 
     SocioServiceImpl socioServiceImpl = new SocioServiceImpl();
-    
+
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     Date dataNascimento = new Date();
 
@@ -331,11 +332,11 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         // pesquisar
         ArrayList<Socio> lista = new ArrayList<Socio>();
         try {
-            lista = socioServiceImpl.pesquisarSocioNome(btnPesquisar.getText());           
+            lista = socioServiceImpl.pesquisarSocioNome(btnPesquisar.getText());
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"erro ao pesquisar cliente - " + ex);
+            JOptionPane.showMessageDialog(null, "erro ao pesquisar cliente - " + ex);
         }
-        carregarDadosTabela(lista);     
+        carregarDadosTabela(lista);
 
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
@@ -352,15 +353,15 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // botão salvar
         Date data = new Date();
-        Socio socio = new Socio (idCliente,
-                            txtNome.getText(),
-                            sexo,
-                            txtCPF.getText(),
-                            txtDataNascimento.getDate(),
-                            txtTelefoneResidencial.getText(),
-                            txtEndereco.getText(),
-                            txtEmpresa.getText(),
-                            txtTelefoneEmpresa.getText());
+        Socio socio = new Socio(idCliente,
+                txtNome.getText(),
+                sexo,
+                txtCPF.getText(),
+                txtDataNascimento.getDate(),
+                txtTelefoneResidencial.getText(),
+                txtEndereco.getText(),
+                txtEmpresa.getText(),
+                txtTelefoneEmpresa.getText());
         if ((txtNome.getText().length() == 0) && (txtCPF.getText().length() == 0 && (txtTelefoneResidencial.getText().length() == 0))) {
             JOptionPane.showMessageDialog(null, "Campos obrigatórios!");
         } else if (txtEmpresa.getText().length() == 0 && txtTelefoneEmpresa.getText().length() == 0) {
@@ -400,7 +401,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         // botão deletar
         if (JOptionPane.showConfirmDialog(null, "DESEJA EXCLUIR DADOS???") == 0) {
             try {
-                Socio socio = socioServiceImpl.retornarSocio(idCliente);                
+                Socio socio = socioServiceImpl.retornarSocio(idCliente);
                 socioServiceImpl.deletarSocio(socio);
                 retornarTodosSocios();
                 JOptionPane.showMessageDialog(null, "Registro deletado com sucesso!");
@@ -438,46 +439,51 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
 
     private void tabelaSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaSociosMouseClicked
         // tabela com a lista de socios (clientes)
-        DefaultTableModel clienteTebela = (DefaultTableModel) tabelaSocios.getModel();        
+        DefaultTableModel clienteTebela = (DefaultTableModel) tabelaSocios.getModel();
         idCliente = Integer.parseInt(clienteTebela.getValueAt(tabelaSocios.getSelectedRow(), 0).toString());
-        txtNome.setText(clienteTebela.getValueAt(tabelaSocios.getSelectedRow(), 1).toString());
-        txtCPF.setText(clienteTebela.getValueAt(tabelaSocios.getSelectedRow(), 2).toString());
-              
+        //txtNome.setText(clienteTebela.getValueAt(tabelaSocios.getSelectedRow(), 1).toString());
+        //txtCPF.setText(clienteTebela.getValueAt(tabelaSocios.getSelectedRow(), 2).toString());
+        try {
+            Socio socio = socioServiceImpl.retornarSocio(idCliente);
+            txtNome.setText(socio.getNome());
+            txtCPF.setText(socio.getCpf());
+            txtCodigo.setText(socio.getId().toString());
+            txtEmpresa.setText(socio.getLocalTrabalho());
+            txtTelefoneEmpresa.setText(socio.getFoneCom());
+            txtTelefoneResidencial.setText(socio.getFoneRes());
+
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         editarCamposDeTexto();
         habilitarBotoes();
     }//GEN-LAST:event_tabelaSociosMouseClicked
 
-    
-    
-    
-    
-    
-    
-    public void retornarTodosSocios(){
+    public void retornarTodosSocios() {
         ArrayList<Socio> lista = new ArrayList<Socio>();
         try {
             lista = socioServiceImpl.retornarSocios();
-        }catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"erro ao retornar todos os Clientes" + ex);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "erro ao retornar todos os Clientes" + ex);
         }
         carregarDadosTabela(lista);
-    }      
-    
-    public void carregarDadosTabela(ArrayList<Socio> lista){
+    }
+
+    public void carregarDadosTabela(ArrayList<Socio> lista) {
         DefaultTableModel modelo = (DefaultTableModel) tabelaSocios.getModel();
-        modelo.setRowCount( 0 );        
+        modelo.setRowCount(0);
         try {
-            for (int i=0;i<lista.size();i++){
-                modelo.addRow(new Object[]{lista.get(i).getId(), 
-                                           lista.get(i).getNome(), 
-                                           lista.get(i).getCpf()});  
+            for (int i = 0; i < lista.size(); i++) {
+                modelo.addRow(new Object[]{lista.get(i).getId(),
+                    lista.get(i).getNome(),
+                    lista.get(i).getCpf()});
             }
-        }catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"Erro - leitura de dados de Cliente com problema - "  +ex);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro - leitura de dados de Cliente com problema - " + ex);
         }
-    } 
-    
-    
+    }
+
     // método limpar campos
     public void limparCamposDeTexto() {
         txtNome.setText("");
