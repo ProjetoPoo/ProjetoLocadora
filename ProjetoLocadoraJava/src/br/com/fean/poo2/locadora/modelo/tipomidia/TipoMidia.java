@@ -2,6 +2,7 @@ package br.com.fean.poo2.locadora.modelo.tipomidia;
 // Generated 19/06/2014 18:08:01 by Hibernate Tools 3.6.0
 
 
+import br.com.fean.poo2.locadora.modelo.midia.Midia;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,15 +14,16 @@ public class TipoMidia  implements java.io.Serializable {
 
      private Integer id;
      private String nome;
-     private Set midiases = new HashSet(0);
+     private Set<Midia> midiases = new HashSet(0);
 
     public TipoMidia() {
     }
-
+    /*
     public TipoMidia(String nome, Set midiases) {
        this.nome = nome;
        this.midiases = midiases;
     }
+    */
    
     public Integer getId() {
         return this.id;

@@ -3,6 +3,7 @@ package br.com.fean.poo2.locadora.control.tipomidia;
 import br.com.fean.poo2.locadora.modelo.tipomidia.TipoMidia;
 import br.com.fean.poo2.locadora.modelo.tipomidia.TipoMidiaDAO;
 import java.util.ArrayList;
+import javax.swing.JTable;
 
 /**
  *
@@ -49,5 +50,14 @@ public class TipoMidiaServiceImpl implements TipoMidiaService {
     public ArrayList<TipoMidia> retornarTipoMidia() throws Exception {
         return tipomidiaDAO.retornarTipoMidias();
     }
-
+ 
+    @Override
+    public boolean pesquisaCampoTabela(JTable tabela, String campo) {
+        for (int i = 0; i < tabela.getRowCount(); i++) {
+            if (tabela.getValueAt(i, 1).toString().equals(campo)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
