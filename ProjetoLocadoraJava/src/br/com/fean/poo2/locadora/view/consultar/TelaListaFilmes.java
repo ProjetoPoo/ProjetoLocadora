@@ -6,6 +6,7 @@ import br.com.fean.poo2.locadora.control.titulos.TituloServiceImpl;
 import br.com.fean.poo2.locadora.modelo.titulo.Titulo;
 import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
 import br.com.fean.poo2.locadora.view.resevar.TelaReserva;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,8 +19,12 @@ public class TelaListaFilmes extends javax.swing.JFrame {
     private TelaReserva refpaireserva;
 
     public TelaListaFilmes() throws Exception {
+        setIcone();
         initComponents();
         carregaClientes();
+    }
+        private void setIcone() {//Apresenta  icone na frame e na barra de tarefas
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/fean/poo2/locadora/imagens/claquete.gif")));
     }
 
     public TelaListaFilmes(TelaLocacao framepai) throws Exception {

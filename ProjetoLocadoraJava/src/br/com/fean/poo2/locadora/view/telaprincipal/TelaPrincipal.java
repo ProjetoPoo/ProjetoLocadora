@@ -1,5 +1,6 @@
 package br.com.fean.poo2.locadora.view.telaprincipal;
 
+import br.com.fean.poo2.locadora.view.TelaSobre;
 import br.com.fean.poo2.locadora.view.cadastro.categoria.TelaCadastroCategoria;
 import br.com.fean.poo2.locadora.view.cadastro.classe.TelaCadastroClasse;
 import br.com.fean.poo2.locadora.view.cadastro.cliente.TelaCadastroCliente;
@@ -16,6 +17,7 @@ import br.com.fean.poo2.locadora.view.resevar.TelaReserva;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,9 +30,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private JPanel painelCardLayout;
 
     public TelaPrincipal() {
+        setIcone();
         initComponents();
         setLocationRelativeTo(null);
         init();
+    }
+    
+        private void setIcone() {//Apresenta  icone na frame e na barra de tarefas
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/fean/poo2/locadora/imagens/claquete.gif")));
     }
 
     private void init() {
@@ -57,8 +64,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             painelCardLayout.add(new TelaLocacao(), "telaLocacao");
             painelCardLayout.add(new TelaDevolucao(), "telaDevolucao");
 
-            painelCardLayout.add(new JPanel(), "principal");
-            cardLayout.show(painelCardLayout, "principal");
+        
+            cardLayout.show(painelCardLayout, "telaLocacao");
             painelCardLayout.setBackground(Color.GREEN);
 
             return painelCardLayout;
@@ -322,9 +329,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mReservaMouseClicked
 
     private void mSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mSobreMouseClicked
-        // Sobre
-        JOptionPane.showMessageDialog(null, "FEAN - Faculdades Energia de Administração e Negocio \n\n"
-                + "Sistema desenvolvido pela equipe 2.", "Sobre", JOptionPane.INFORMATION_MESSAGE);
+       // TelaSobre
+        TelaSobre novaTela = new TelaSobre(this, true);
+        novaTela.setVisible(true);
+        novaTela.dispose();
     }//GEN-LAST:event_mSobreMouseClicked
 
     private void miTiposMidiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTiposMidiaActionPerformed

@@ -7,6 +7,7 @@ import br.com.fean.poo2.locadora.modelo.socio.Socio;
 import br.com.fean.poo2.locadora.view.locar.TelaLocacao;
 import br.com.fean.poo2.locadora.modelo.socio.SocioDAO;
 import br.com.fean.poo2.locadora.view.devolver.TelaDevolucao;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,9 +22,13 @@ public class TelaListaClienteDevolucao extends javax.swing.JFrame {
     private TelaDevolucao reffilho;
 
     public TelaListaClienteDevolucao() throws Exception {
+        setIcone();
         initComponents();
         carregaClientes();
         //        preencherTabela();
+    }
+        private void setIcone() {//Apresenta  icone na frame e na barra de tarefas
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/com/fean/poo2/locadora/imagens/claquete.gif")));
     }
 
     public TelaListaClienteDevolucao(TelaDevolucao framepai) throws Exception {
