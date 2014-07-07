@@ -11,8 +11,6 @@ import br.com.fean.poo2.locadora.modelo.titulo.Titulo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,6 +31,9 @@ public class TelaCadastroMidia extends javax.swing.JPanel {
         tipoMidiaServiceImpl = new TipoMidiaServiceImpl();
         distribuidorServiceImpl = new DistribuidorServiceImpl();
         midiaServiceImpl = new MidiaServiceImpl();
+
+        editarCamposTexto(false);
+        habilitarBotoes(false);
 
         try {
             titulos = tituloServiceImpl.retornarTitulos();
@@ -280,11 +281,15 @@ public class TelaCadastroMidia extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        limparCampos();
+        editarCamposTexto(false);
+        habilitarBotoes(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
 
+        editarCamposTexto(true);
+        habilitarBotoes(true);
         limparCampos();
         txtId.setText("0");
         txtSituacao.setText(Situacao.DISPONIVEL.name());
@@ -293,68 +298,74 @@ public class TelaCadastroMidia extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-//        if ((txtRazaoSocial.getText().length() == 0 && txtTelefoneContato.getText().length() == 0)) {
-//            JOptionPane.showMessageDialog(null, "Campos obrigatórios!");
-//        } else if (txtRazaoSocial.getText().length() == 0 && txtTelefoneContato.getText().length() == 0) {
-//            JOptionPane.showMessageDialog(null, "Preencha o campo da razão social e telefone!");
-//        } else {
-
-        Situacao s;
-        if (txtSituacao.getText().equals(Situacao.DISPONIVEL.name())) {
-            s = Situacao.DISPONIVEL;
+        if ((cmbTitulo.getSelectedItem() == null && cmbTipoMidia.getSelectedItem() == null)) {
+            JOptionPane.showMessageDialog(null, "Campos obrigatórios!");
+        } else if (txtNumSerie.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Preencha o campo numero de serie!");
         } else {
-            s = Situacao.LOCADO;
-        }
 
-        if (txtId.getText().equalsIgnoreCase("0")) {
-            try {
-                midiaServiceImpl.inserirMidia(
-                        null,
-                        (Titulo) cmbTitulo.getSelectedItem(),
-                        (TipoMidia) cmbTipoMidia.getSelectedItem(),
-                        (Distribuidor) cmbDistribuidor.getSelectedItem(),
-                        s.getValor(),
-                        txtDataAquisicao.getDate(),
-                        txtNumSerie.getText());
-
-                JOptionPane.showMessageDialog(null, "Novo registro salvo com sucesso!");
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
+            Situacao s;
+            if (txtSituacao.getText().equals(Situacao.DISPONIVEL.name())) {
+                s = Situacao.DISPONIVEL;
+            } else {
+                s = Situacao.LOCADO;
             }
-        } else {
-            try {
-                midiaServiceImpl.alterarMidia(
-                        Integer.parseInt(txtId.getText()),
-                        (Titulo) cmbTitulo.getSelectedItem(),
-                        (TipoMidia) cmbTipoMidia.getSelectedItem(),
-                        (Distribuidor) cmbDistribuidor.getSelectedItem(),
-                        s.getValor(),
-                        txtDataAquisicao.getDate(),
-                        txtNumSerie.getText());
 
-                JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!");
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n ERRO: " + ex);
+            if (txtId.getText().equalsIgnoreCase("0")) {
+                try {
+                    midiaServiceImpl.inserirMidia(
+                            null,
+                            (Titulo) cmbTitulo.getSelectedItem(),
+                            (TipoMidia) cmbTipoMidia.getSelectedItem(),
+                            (Distribuidor) cmbDistribuidor.getSelectedItem(),
+                            s.getValor(),
+                            txtDataAquisicao.getDate(),
+                            txtNumSerie.getText());
+
+                    JOptionPane.showMessageDialog(null, "Novo registro salvo com sucesso!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
+                }
+            } else {
+                try {
+                    midiaServiceImpl.alterarMidia(
+                            Integer.parseInt(txtId.getText()),
+                            (Titulo) cmbTitulo.getSelectedItem(),
+                            (TipoMidia) cmbTipoMidia.getSelectedItem(),
+                            (Distribuidor) cmbDistribuidor.getSelectedItem(),
+                            s.getValor(),
+                            txtDataAquisicao.getDate(),
+                            txtNumSerie.getText());
+
+                    JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao alterar registro! \n \n ERRO: " + ex);
+                }
             }
-        }
 
-        preencherTabelaMidias();
-        limparCampos();
-//            desabilitarBotoes();
-//            bloquearCamposDeTexto();
-//        }
+            preencherTabelaMidias();
+            limparCampos();
+
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Deseja realmente apagar a linha selecionada?") == 0) {
 
-        if (tabela.getSelectedRow() > -1) {
-            Midia m = new Midia();
-            m.setId(Integer.parseInt(txtId.getText()));
-            midiaServiceImpl.deletarMidia(m);
+            try {
+                midiaServiceImpl.deletarMidia(midiaServiceImpl.retornaMidia(Integer.parseInt(txtId.getText().toString())));
+                JOptionPane.showMessageDialog(null, "Registro deletado com sucesso!");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao deletar registro! \n \n ERRO: " + e);
+            }
         }
 
         preencherTabelaMidias();
         limparCampos();
+        habilitarBotoes(false);
+        editarCamposTexto(false);
+
+
     }//GEN-LAST:event_btnDeletarActionPerformed
 
     private void txtNumSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumSerieActionPerformed
@@ -375,19 +386,14 @@ public class TelaCadastroMidia extends javax.swing.JPanel {
         txtDataAquisicao.setDate(new Date());
         txtSituacao.setText(modelo.getValueAt(tabela.getSelectedRow(), 6).toString());
 
-//        editarCamposTexto(true);
-//        habilitarBotoes(true);
+        habilitarBotoes(true);
+        editarCamposTexto(true);
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void txtSituacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSituacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSituacaoActionPerformed
 
-    /* Na mensagem de erro da tabela utilizar:
-    
-     "Erro ao preencher a tabela! \n \n ERRO: "
-    
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -474,5 +480,22 @@ public class TelaCadastroMidia extends javax.swing.JPanel {
         txtSituacao.setText("");
         txtNumSerie.setText("");
 
+    }
+
+    private void editarCamposTexto(boolean editar) {
+
+        cmbTitulo.setEnabled(editar);
+        cmbTipoMidia.setEnabled(editar);
+        cmbDistribuidor.setEnabled(editar);
+        txtId.setEnabled(editar);
+        txtDataAquisicao.setEnabled(editar);
+        txtSituacao.setEnabled(editar);
+        txtNumSerie.setEnabled(editar);
+    }
+
+    private void habilitarBotoes(boolean habilitar) {
+        btnSalvar.setEnabled(habilitar);
+        btnDeletar.setEnabled(habilitar);
+        btnCancelar.setEnabled(habilitar);
     }
 }
