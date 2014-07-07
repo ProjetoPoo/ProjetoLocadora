@@ -266,6 +266,7 @@ public class TelaCadastroCliente extends javax.swing.JPanel {
         try {
             telaCliente = new TelaListaCliente();
             telaCliente.setEnabled(true);
+            telaCliente.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(TelaCadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
