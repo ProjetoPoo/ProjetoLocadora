@@ -53,6 +53,7 @@ public class MidiaDAO {
 
         try {
             tx.begin();
+            midia=pesquisaMidiaCodigo(midia.getId()).get(0);
             entityManager.remove(midia);
             tx.commit();
         } catch (Throwable t) {

@@ -81,6 +81,11 @@ public class Distribuidor  implements java.io.Serializable {
         this.midiases = midiases;
     }
 
+    @Override
+    public String toString() {
+        return this.razaoSocial;
+    }
+
 
 
 

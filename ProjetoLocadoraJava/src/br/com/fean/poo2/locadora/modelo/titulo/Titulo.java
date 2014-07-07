@@ -69,4 +69,9 @@ public class Titulo implements java.io.Serializable {
         this.midiases = midiases;
     }
 
+    @Override
+    public String toString() {
+        return this.nome;
+    }
+
 }

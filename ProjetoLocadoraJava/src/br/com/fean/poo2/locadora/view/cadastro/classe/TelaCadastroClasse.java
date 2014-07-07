@@ -217,8 +217,8 @@ public class TelaCadastroClasse extends javax.swing.JPanel {
                             Integer.parseInt(cbDiasDevolucao.getSelectedItem().toString()));
 
                     JOptionPane.showMessageDialog(null, "Novo registro salvo com sucesso!");
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + ex);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Erro ao salvar registro!\n \n ERRO: " + e);
                 }
             } else {
                 try {
